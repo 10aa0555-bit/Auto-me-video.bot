@@ -1,0 +1,33 @@
+name: Generate Audio
+
+on:
+  workflow_dispatch: # 手動でいつでも実行できるようにする設定
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run script
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: |
+          python generate_audio.py
+
+      - name: Save audio file
+        uses: actions/upload-artifact@v4
+        with:
+          name: narration-mp3
+          path: narration.mp3
