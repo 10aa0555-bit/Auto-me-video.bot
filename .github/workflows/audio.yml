@@ -1,33 +1,36 @@
-name: Generate Audio
+ name: Generate Video Pipeline
 
 on:
-  workflow_dispatch: # 手動でいつでも実行できるようにする設定
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Check out repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
       - name: Install dependencies
         run: |
-          pip install requests
+          python -m pip install --upgrade pip
+          pip install requests moviepy ffmpeg-python
 
-      - name: Run script
+      - name: Run Audio Script
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-        run: |
-          python generate_audio.py
+        run: python generate_audio.py
 
-      - name: Save audio file
+      - name: Run Video Assembly Script
+        run: python make_video.py
+
+      - name: Upload Final Video
         uses: actions/upload-artifact@v4
         with:
-          name: narration-mp3
-          path: narration.mp3
+          name: final-video-mp4
+          path: final_output.mp4
