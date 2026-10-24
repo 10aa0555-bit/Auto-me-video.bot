@@ -1,0 +1,10 @@
+{
+  "scenes": [
+    {"genre": "industrial", "bg": [160, 140, 120], "text": "産業革命の足音"},
+    {"genre": "industrial", "bg": [150, 130, 110], "text": "街を覆う煙と病"},
+    {"genre": "aristocrat", "bg": [70, 60, 50],   "text": "貴族たちの企み"},
+    {"genre": "aristocrat", "bg": [60, 50, 40],   "text": "密室の契約書"},
+    {"genre": "modern",     "bg": [30, 40, 50],   "text": "現代への教訓"},
+    {"genre": "modern",     "bg": [20, 30, 40],   "text": "マインドを変えろ"}
+  ]
+}
