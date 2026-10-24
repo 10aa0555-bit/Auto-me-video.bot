@@ -1,5 +1,8 @@
 import os
 from PIL import Image
+if not hasattr(Image, 'ANTIALIAS'):
+    Image.ANTIALIAS = Image.Resampling.LANCZOS
+
 from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
 
 # 音声ファイルの読み込み
