@@ -1,10 +1,8 @@
 {
   "scenes": [
-    {"genre": "industrial", "bg": [160, 140, 120], "text": "産業革命の足音"},
-    {"genre": "industrial", "bg": [150, 130, 110], "text": "街を覆う煙と病"},
-    {"genre": "aristocrat", "bg": [70, 60, 50],   "text": "貴族たちの企み"},
-    {"genre": "aristocrat", "bg": [60, 50, 40],   "text": "密室の契約書"},
-    {"genre": "modern",     "bg": [30, 40, 50],   "text": "現代への教訓"},
-    {"genre": "modern",     "bg": [20, 30, 40],   "text": "マインドを変えろ"}
+    {"genre": "industrial", "bg": [160, 140, 120], "text": "街全体が悪臭で止まった日"},
+    {"genre": "aristocrat", "bg": [70, 60, 50],   "text": "議会の窓から逃げ出す貴族"},
+    {"genre": "industrial", "bg": [130, 110, 90], "text": "巨大下水道計画の始動"},
+    {"genre": "modern",     "bg": [40, 50, 60],   "text": "命を救った近代下水道"}
   ]
 }
