@@ -1,5 +1,6 @@
 import os
-from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
+from PIL import Image
+from moviepy.editor import ImageClip, AudioFileclip, concatenate_videoclips
 
 # 音声ファイルの読み込み
 audio = AudioFileClip("narration.mp3")
@@ -15,11 +16,13 @@ for i in range(1, num_scenes + 1):
     img_path = f"scene{i}.png"
     
     # 画像が存在しない場合のフォールバック（黒背景など）
-    if os.path.exists(img_path):
-        clip = ImageClip(img_path).set_duration(scene_duration)
-    else:
-        print(f"Warning: {img_path} が見つからないためスキップします")
-        continue
+     # 画像が存在しない場合は自動で生成する
+    if not os.path.exists(img_path):
+        img = Image.new("RGB", (1080, 1920), color=(20, 20, 20))
+        img.save(img_path)
+        
+    clip = ImageClip(img_path).set_duration(scene_duration)
+    clips.append(clip)
     
     clips.append(clip)
 
