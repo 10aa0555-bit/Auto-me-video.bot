@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -21,13 +21,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests "moviepy<2.0" ffmpeg-python
 
-      - name: Run Audio Script
+      - name: Run Audio Script and Make Video
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-        run: python generate_audio.py
-
-      - name: Run Video Assembly Script
-        run: python make_video.py
+        run: |
+          python generate_audio.py
+          python make_video.py
 
       - name: Upload Final Video
         uses: actions/upload-artifact@v4
