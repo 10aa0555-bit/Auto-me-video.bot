@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-from moviepy.editor import ImageClip, AudioFileclip, concatenate_videoclips
+from moviepy.editor import ImageClip, AudioFileClip, concatenate_videoclips
 
 # 音声ファイルの読み込み
 audio = AudioFileClip("narration.mp3")
