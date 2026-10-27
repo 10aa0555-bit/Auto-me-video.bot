@@ -98,6 +98,8 @@ def write_post(script, path):
         return
     lines = [post.get("title", script.get("title", "")), "", post.get("description", ""), "",
              " ".join(post.get("hashtags", []))]
+    if post.get("pinned_comment"):
+        lines += ["", "--- 固定コメント ---", post["pinned_comment"]]
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines).strip() + "\n")
     print(f"投稿文: {path}")

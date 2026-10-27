@@ -7,7 +7,7 @@ import subprocess
 import cairo
 import numpy as np
 
-from .geo import World, merc
+from .geo import Ghost, World, merc
 
 W, H = 1080, 1920
 
@@ -225,6 +225,14 @@ class Timeline:
                 ev.append((t0 + c.get("delay", 0.3), "whoosh", {"dur": 0.5, "seed": 99}))
             for i, tx in enumerate(sp.get("texts", [])):
                 ev.append((t0 + tx.get("delay", 0.5 + i * 0.3), "pop", {"pitch": 0.8}))
+            for g in sp.get("ghosts", []):
+                if g.get("to") and g.get("to") != g.get("from"):
+                    ev.append((t0 + g.get("delay", 0.4) + 0.3, "whoosh", {"dur": 0.9, "seed": 7}))
+            if sp.get("cta"):
+                ct = t0 + sp["cta"].get("delay", 0.5)
+                ev.append((ct, "pop", {"pitch": 1.2}))
+                ev.append((ct + 1.0, "tick", {}))
+                ev.append((ct + 1.05, "ding", {}))
             if sp.get("banner"):
                 bt = t0 + sp["banner"].get("delay", 0.3)
                 if bt > 1.3:
@@ -287,6 +295,7 @@ class Renderer:
         self.icons = Icons()
         self.flags = Flags()
         self.out = 1.0
+        self.ghosts = {}
 
     # -- 座標変換
     def set_camera(self, cam):
@@ -477,17 +486,22 @@ class Renderer:
         # (チリのように細長い国や、本土が画面外の飛び地でも旗全体が見えるように)
         x0, y0, x1, y1 = self._visible_extents(shp)
         bw, bh = max(x1 - x0, 1), max(y1 - y0, 1)
-        k = max(bw / flag.get_width(), bh / flag.get_height())
-        ox, oy = (x0 + x1) / 2 - flag.get_width() * k / 2, (y0 + y1) / 2 - flag.get_height() * k / 2
-        if bh > bw * 1.6:  # チリのように縦長: 幅に合わせて上端にそろえ、下は旗の端の色で伸ばす
-            k = bw / flag.get_width()
+        fw, fh = flag.get_width(), flag.get_height()
+        sx, sy = bw / fw, bh / fh
+        if max(sx, sy) <= min(sx, sy) * 1.25:  # 旗と同じくらいの縦横比: そのまま覆う
+            sx = sy = max(sx, sy)
+            ox, oy = (x0 + x1) / 2 - fw * sx / 2, (y0 + y1) / 2 - fh * sy / 2
+        else:
+            # 細長い国 (チリ、画面からはみ出たロシアなど): 旗を最大 2.5 倍まで引き伸ばし、
+            # 左上 (カントンや紋章がある側) にそろえる
+            sx, sy = max(sx, sy / 2.5), max(sy, sx / 2.5)
             ox, oy = x0, y0
         ctx.save()
         ctx.new_path()
         self.path_shape(shp)
         ctx.clip_preserve()
         ctx.translate(ox, oy)
-        ctx.scale(k, k)
+        ctx.scale(sx, sy)
         ctx.set_source_surface(flag)
         ctx.get_source().set_filter(cairo.FILTER_GOOD)
         ctx.get_source().set_extend(cairo.EXTEND_PAD)  # 本土から離れた島などは国旗の端の色で塗る
@@ -517,7 +531,10 @@ class Renderer:
         ys, xs = np.nonzero(a)
         if len(xs) == 0:
             return 0, 0, W, H
-        return xs.min() * q, ys.min() * q, (xs.max() + 1) * q, (ys.max() + 1) * q
+        # 小さな離島 (ロシアの北極海の島など) に引っぱられないよう、端の 3% は無視する
+        x0, x1 = np.percentile(xs, [3, 97])
+        y0, y1 = np.percentile(ys, [3, 97])
+        return x0 * q, y0 * q, (x1 + 1) * q, (y1 + 1) * q
 
     def draw_outlines(self, s, lt):
         for k in s["spec"].get("outline", []):
@@ -700,6 +717,125 @@ class Renderer:
             if ic.get("label"):
                 a = ease((lt - delay - 0.2) / 0.3)
                 self.tag(ic["label"], bx, by - size * 0.62, alpha=a)
+
+    # -- 国の形を動かす (本当の大きさ比べ)
+    def draw_ghosts(self, s, lt):
+        ctx = self.ctx
+        for i, g in enumerate(s["spec"].get("ghosts", [])):
+            key = g["of"]
+            if key not in self.ghosts:
+                self.ghosts[key] = Ghost(self.world.raw_polygons(key))
+            gh = self.ghosts[key]
+            delay = g.get("delay", 0.4)
+            a = ease((lt - delay) / 0.3) * self.out
+            if a <= 0.01:
+                continue
+            start = g.get("from", gh.center)
+            end = g.get("to", start)
+            u = ease((lt - delay - 0.3) / g.get("move_time", 2.2))
+            lon = start[0] + (end[0] - start[0]) * u
+            lat = start[1] + (end[1] - start[1]) * u
+            shp = gh.shape_at(lon, lat)
+            if not self.visible(shp.bbox):
+                continue
+            # 持ち上げて運んでいるように、移動中は影を遠くに
+            lift = math.sin(math.pi * u) * 18 if 0 < u < 1 else 0
+            ctx.save()
+            ctx.translate(8 + lift, 12 + lift * 1.5)
+            ctx.new_path()
+            self.path_shape(shp)
+            ctx.set_source_rgba(0, 0, 0, 0.4 * a)
+            ctx.fill()
+            ctx.restore()
+            ctx.save()
+            ctx.translate(0, -lift)
+            fill = g.get("fill", "#ffffff")
+            if fill.startswith("flag:"):
+                self._fill_layer(shp, fill, a)
+            else:
+                c = hex2rgba(fill)
+                ctx.new_path()
+                self.path_shape(shp)
+                ctx.set_source_rgba(c[0], c[1], c[2], c[3] * a * 0.92)
+                ctx.fill()
+            ctx.new_path()
+            self.path_shape(shp)
+            ctx.set_source_rgba(1, 1, 1, a)
+            ctx.set_line_width(4)
+            ctx.stroke()
+            ctx.restore()
+            if g.get("label") and u >= 1:
+                lx, ly = self.to_px(lon, lat)
+                self.text(g["label"], lx, ly, g.get("label_size", 56), alpha=ease((lt - delay - 0.3 - g.get("move_time", 2.2)) / 0.3) * a)
+
+    # -- フォローを促すボタン
+    def draw_cta(self, s, lt):
+        cta = s["spec"].get("cta")
+        if not cta:
+            return
+        delay = cta.get("delay", 0.5)
+        k = ease_out_back((lt - delay) / 0.45)
+        if k < 0.02:
+            return
+        ctx = self.ctx
+        text = cta.get("text", "FOLLOW FOR MORE")
+        size = cta.get("size", 52)
+        tap = lt - delay - 1.0  # 1 秒後に指でタップ
+        press = 0.92 if 0 < tap < 0.18 else 1.0
+        ctx.save()
+        ctx.translate(W / 2, H * cta.get("y", 0.8))
+        ctx.scale(k * press, k * press)
+        ctx.select_font_face(self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(size)
+        tw = ctx.text_extents(text).x_advance
+        bell = 92
+        w, h = tw + bell + 90, size * 2.0
+        x0, y0, r = -w / 2, -h / 2, h / 2
+        ctx.new_path()
+        ctx.arc(x0 + r, 0, r, math.pi / 2, 3 * math.pi / 2)
+        ctx.arc(x0 + w - r, 0, r, -math.pi / 2, math.pi / 2)
+        ctx.close_path()
+        ctx.set_source_rgba(0, 0, 0, 0.35)
+        ctx.save()
+        ctx.translate(0, 8)
+        ctx.fill_preserve()
+        ctx.restore()
+        ctx.set_source_rgba(*hex2rgba("#b71c1c" if 0 < tap < 0.18 else cta.get("color", "#e53935")))
+        ctx.fill_preserve()
+        ctx.set_source_rgba(1, 1, 1, 1)
+        ctx.set_line_width(5)
+        ctx.stroke()
+        ctx.move_to(x0 + bell + 40, size * 0.36)
+        ctx.text_path(text)
+        ctx.set_source_rgba(1, 1, 1, 1)
+        ctx.fill()
+        # ベル (揺れる)
+        img = self.icons.get("bell", bell * self.scale * 1.15, sticker=False)
+        ctx.save()
+        ctx.translate(x0 + 30 + bell / 2, 0)
+        ctx.rotate(math.sin(lt * 18) * 0.25 * max(0.0, 1 - abs(tap - 0.3) * 1.5))
+        f = bell / img.get_width()
+        ctx.scale(f, f)
+        ctx.translate(-img.get_width() / 2, -img.get_height() / 2)
+        ctx.set_source_surface(img)
+        ctx.paint()
+        ctx.restore()
+        ctx.restore()
+        # タップする指
+        if -0.6 < tap < 0.9:
+            hand = self.icons.get("backhand index pointing up", 130 * self.scale * 1.15)
+            m = ease((tap + 0.6) / 0.6) if tap < 0 else 1.0
+            fade = 1.0 if tap < 0.5 else max(0.0, 1 - (tap - 0.5) / 0.4)
+            hx = W / 2 + w * 0.22
+            hy = H * cta.get("y", 0.8) + 60 + (1 - m) * 160 - (10 if 0 < tap < 0.18 else 0)
+            ctx.save()
+            ctx.translate(hx, hy)
+            f = 130 / hand.get_width()
+            ctx.scale(f, f)
+            ctx.translate(-hand.get_width() / 2, 0)
+            ctx.set_source_surface(hand)
+            ctx.paint_with_alpha(fade)
+            ctx.restore()
 
     # -- 大きい文字・タイトル帯
     def draw_texts(self, s, lt):
@@ -1021,11 +1157,13 @@ class Renderer:
         self.draw_lines(s, lt)
         self.ctx.pop_group_to_source()
         self.ctx.paint_with_alpha(self.out)
+        self.draw_ghosts(s, lt)
         self.draw_markers(s, lt)
         self.draw_icons(s, lt)
         self.draw_labels(s, lt)
         self.draw_texts(s, lt)
         self.draw_banner(s, lt)
+        self.draw_cta(s, lt)
         self.draw_year(s, lt)
         self.draw_caption(t, timeline)
         # シーン頭の軽いフラッシュで場面転換を強調

@@ -124,3 +124,52 @@ class World:
         lon = x * 360 - 180
         lat = math.degrees(math.atan(math.sinh(math.pi * (1 - 2 * y))))
         return lon, lat
+
+    def raw_polygons(self, key):
+        """国 (または "CODE@lon,lat" の一部) の経緯度ポリゴン [[ring, hole, ...], ...]。"""
+        if "@" in key:
+            code, at = key.split("@")
+            lon, lat = (float(v) for v in at.split(","))
+            return [poly for poly in self.raw[code] if _point_in_ring(lon, lat, poly[0])]
+        return self.raw[key]
+
+
+class Ghost:
+    """国の形を、面積を保ったまま別の緯度経度へ移す (メルカトル図法の歪みを見せる用)。
+
+    各点を中心からの km オフセットに直しておき、移動先でその km を経緯度に戻す。
+    高緯度から赤道へ動かすと、地図上では縮んで見える (= 本当の大きさ)。
+    """
+
+    def __init__(self, polygons):
+        main = max(polygons, key=lambda p: len(p[0]))
+        lon0 = float(np.mean(np.asarray(main[0])[:, 0]))
+        rings = []
+        for poly in polygons:
+            for r in poly:
+                a = np.asarray(r, dtype=np.float64)
+                a[:, 0] = (a[:, 0] - lon0 + 180) % 360 - 180 + lon0  # 日付変更線をまたぐ国 (ロシア) 対策
+                rings.append(a)
+        allp = np.concatenate(rings)
+        self.center = ((allp[:, 0].min() + allp[:, 0].max()) / 2, (allp[:, 1].min() + allp[:, 1].max()) / 2)
+        lonc, latc = self.center
+        self.offsets = []  # 各リングを (東西 km, 南北 km) で持つ
+        for a in rings:
+            dx = (a[:, 0] - lonc) * 111.32 * np.cos(np.radians(a[:, 1]))
+            dy = (a[:, 1] - latc) * 110.57
+            self.offsets.append(np.stack([dx, dy], axis=1))
+        self.n_rings = [len(p) for p in polygons]
+
+    def shape_at(self, lon, lat):
+        """中心を (lon, lat) に置いたときの Shape。"""
+        rings = []
+        for o in self.offsets:
+            la = np.clip(lat + o[:, 1] / 110.57, -84, 84)
+            lo = lon + o[:, 0] / (111.32 * np.cos(np.radians(la)))
+            rings.append(merc_arr(np.stack([lo, la], axis=1)))
+        polys, i = [], 0
+        for n in self.n_rings:
+            polys.append(rings[i:i + n])
+            i += n
+        return Shape(polys)
+

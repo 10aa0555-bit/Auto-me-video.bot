@@ -17,6 +17,11 @@ on:
 permissions:
   contents: write
 
+# 複数の push が重なっても順番に作る (renders ブランチへの push がぶつからないように)
+concurrency:
+  group: geo-short-renders
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -103,4 +108,7 @@ jobs:
           cp /tmp/renders/* .
           git add -f -- *.mp4 $(ls *_post.txt 2>/dev/null)
           git commit -qm "render: ${{ steps.pick.outputs.scripts }} (${GITHUB_SHA::7})" || exit 0
-          git push -q origin renders
+          for i in 1 2 3; do
+            git push -q origin renders && break
+            git fetch -q origin renders && git rebase -q FETCH_HEAD
+          done
