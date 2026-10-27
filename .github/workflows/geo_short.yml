@@ -61,22 +61,31 @@ jobs:
         if: steps.pick.outputs.scripts != ''
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg fonts-noto-cjk libcairo2-dev pkg-config
+          sudo apt-get install -y ffmpeg fonts-noto-cjk libcairo2-dev pkg-config espeak-ng
           python -m pip install --upgrade pip
           pip install -r geo_short/requirements.txt
+          # 無料の音声合成 Kokoro (ElevenLabs のクレジットが足りないときに使う)。CPU 版 PyTorch で軽く
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install "kokoro>=0.9" soundfile
 
-      - name: Cache satellite texture, icons and flags
+      # 衛星画像・アイコン・国旗・音声モデル・作ったナレーションを次回に持ち越す
+      # (毎回新しいキーで保存し、前回分から復元する)
+      - name: Cache assets and narration
         if: steps.pick.outputs.scripts != ''
         uses: actions/cache@v4
         with:
           path: ~/.cache/geo_short
-          key: geo-short-assets-v2
+          key: geo-short-assets-v3-${{ github.run_id }}
+          restore-keys: |
+            geo-short-assets-v3-
+            geo-short-assets-v2
 
       - name: Build videos
         if: steps.pick.outputs.scripts != ''
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: |
+          export HF_HOME="$HOME/.cache/geo_short/hf"  # Kokoro の音声モデルもキャッシュに入れる
           for s in ${{ steps.pick.outputs.scripts }}; do
             python -m geo_short.build "$s" --require-tts
           done
