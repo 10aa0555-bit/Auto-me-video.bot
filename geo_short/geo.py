@@ -59,6 +59,8 @@ class Shape:
         xs = [p[0].bbox for p in self.polygons]
         self.bbox = (min(b[0] for b in xs), min(b[1] for b in xs),
                      max(b[2] for b in xs), max(b[3] for b in xs))
+        # 国旗を貼るときの基準 (本土 = 一番大きいポリゴン)
+        self.main_bbox = max(xs, key=lambda b: (b[2] - b[0]) * (b[3] - b[1]))
 
 
 def _point_in_ring(lon, lat, ring):
