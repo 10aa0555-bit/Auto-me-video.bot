@@ -1,0 +1,429 @@
+{
+  "title": "The Pig War: America vs Britain over a pig",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Mock-epic comedic historical documentary music, playful snare march, pizzicato strings, no vocals",
+    "volume": 0.22,
+    "bpm": 106
+  },
+  "post": {
+    "title": "America and Britain almost went to war… over a PIG 🐷",
+    "description": "Ridiculous Wars #2 — In 1859 a farmer shot a pig on San Juan Island, and two superpowers nearly started a war. The only casualty? The pig.",
+    "hashtags": [
+      "#history",
+      "#ridiculouswars",
+      "#pigwar",
+      "#funnyhistory",
+      "#didyouknow",
+      "#storytime",
+      "#shorts"
+    ],
+    "pinned_comment": "Was it worth $10 or $100? 🐷👇"
+  },
+  "scenes": [
+    {
+      "narration": "In 1859, America and Britain almost went to war... over a pig.",
+      "tts": "In eighteen fifty-nine, America and Britain almost went to war... over a pig.",
+      "camera": {
+        "center": [
+          -121,
+          48
+        ],
+        "span": 26
+      },
+      "fill": {
+        "USA": "flag:us",
+        "CAN": "flag:gb"
+      },
+      "icons": [
+        {
+          "ai": "a cute pink pig looking guilty with a half-eaten potato in its mouth",
+          "name": "pig",
+          "at": [
+            -123.0,
+            48.6
+          ],
+          "size": 300,
+          "delay": 1.0
+        }
+      ],
+      "banner": {
+        "lines": [
+          "THE PIG WAR",
+          "RIDICULOUS WARS #2"
+        ],
+        "y": 0.18,
+        "delay": 0.15,
+        "size": 80
+      }
+    },
+    {
+      "narration": "It happened on San Juan Island, right between Canada and the United States.",
+      "camera": {
+        "center": [
+          -123.0,
+          48.55
+        ],
+        "span": 6
+      },
+      "markers": [
+        {
+          "at": [
+            -123.05,
+            48.53
+          ],
+          "type": "pin",
+          "label": "San Juan Island",
+          "delay": 1.2
+        }
+      ],
+      "labels": [
+        {
+          "text": "CANADA",
+          "at": [
+            -124.6,
+            49.2
+          ],
+          "size": 52,
+          "delay": 2.2
+        },
+        {
+          "text": "USA",
+          "at": [
+            -121.9,
+            48.2
+          ],
+          "size": 52,
+          "delay": 2.5
+        }
+      ],
+      "reset_fills": true
+    },
+    {
+      "narration": "A treaty said the border ran through the middle of the channel. But there were two channels... and both countries claimed the islands.",
+      "camera": {
+        "center": [
+          -123.0,
+          48.55
+        ],
+        "span": 5.5
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.3,
+              48.25
+            ],
+            [
+              -123.22,
+              48.55
+            ],
+            [
+              -123.18,
+              48.78
+            ]
+          ],
+          "color": "#e53935",
+          "style": "dashed",
+          "width": 9,
+          "delay": 2.0,
+          "draw_time": 1.2
+        },
+        {
+          "path": [
+            [
+              -122.76,
+              48.25
+            ],
+            [
+              -122.72,
+              48.55
+            ],
+            [
+              -122.8,
+              48.78
+            ]
+          ],
+          "color": "#1e88e5",
+          "style": "dashed",
+          "width": 9,
+          "delay": 3.0,
+          "draw_time": 1.2
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a confused cartoon diplomat scratching his head holding an old map",
+          "name": "thinking face",
+          "at": [
+            -123.0,
+            48.45
+          ],
+          "size": 260,
+          "delay": 4.6
+        }
+      ]
+    },
+    {
+      "narration": "Then one morning, an American farmer named Lyman Cutlar found a pig eating his potatoes. So he shot it.",
+      "year": "1859",
+      "flash": true,
+      "camera": {
+        "center": [
+          -123.05,
+          48.53
+        ],
+        "span": 5.5
+      },
+      "icons": [
+        {
+          "ai": "an angry 1850s American farmer in suspenders and a straw hat pointing at his ruined potato patch",
+          "name": "man farmer",
+          "at": [
+            -123.25,
+            48.6
+          ],
+          "size": 280,
+          "delay": 0.6
+        },
+        {
+          "ai": "a happy pink pig digging up and munching potatoes in a garden",
+          "name": "pig",
+          "at": [
+            -122.85,
+            48.45
+          ],
+          "size": 230,
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "The pig belonged to the British Hudson's Bay Company.",
+      "camera": {
+        "center": [
+          -123.05,
+          48.53
+        ],
+        "span": 5.5
+      },
+      "icons": [
+        {
+          "ai": "a shocked 1850s British fur trader in a top hat and tailcoat, jaw dropped",
+          "name": "top hat",
+          "at": [
+            -123.05,
+            48.55
+          ],
+          "size": 300,
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "Cutlar offered ten dollars for the pig. The British wanted a hundred.",
+      "camera": {
+        "center": [
+          -123.05,
+          48.53
+        ],
+        "span": 5.5
+      },
+      "texts": [
+        {
+          "text": "$10 vs $100",
+          "accent": [
+            "$100"
+          ],
+          "y": 0.22,
+          "size": 110,
+          "delay": 1.0
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a small stack of old 1850s dollar coins next to a much bigger stack",
+          "name": "money with wings",
+          "at": [
+            -123.05,
+            48.5
+          ],
+          "size": 260,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "But this is where it gets ridiculous.",
+      "camera": {
+        "center": [
+          -123.05,
+          48.53
+        ],
+        "span": 5.5
+      },
+      "icons": [
+        {
+          "ai": "a pink pig raising one eyebrow with a smug grin",
+          "name": "pig face",
+          "at": [
+            -123.05,
+            48.53
+          ],
+          "size": 330,
+          "anim": "bob",
+          "delay": 0.2
+        }
+      ]
+    },
+    {
+      "narration": "The Americans sent soldiers. The British sent warships, one of them with 84 cannons.",
+      "tts": "The Americans sent soldiers. The British sent warships, one of them with eighty-four cannons.",
+      "card": {
+        "ai": "comedic standoff on a grassy island shore: a small group of 1850s American soldiers in blue uniforms on the beach, a huge old British wooden warship with many cannons in the bay, a confused pink pig standing in the middle, bright sunny day",
+        "delay": 0.2
+      },
+      "texts": [
+        {
+          "text": "{n} CANNONS",
+          "count": 84,
+          "accent": [
+            "CANNONS"
+          ],
+          "y": 0.8,
+          "size": 92,
+          "delay": 3.2
+        }
+      ]
+    },
+    {
+      "narration": "Luckily, the British admiral refused to start a war between two great nations over a squabble about a pig.",
+      "camera": {
+        "center": [
+          -123.05,
+          48.53
+        ],
+        "span": 5.5
+      },
+      "icons": [
+        {
+          "ai": "a Victorian British navy admiral with white sideburns covering his face with one hand in disbelief",
+          "name": "person facepalming",
+          "at": [
+            -123.1,
+            48.55
+          ],
+          "size": 300,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "So both armies ended up sharing the island... for twelve years.",
+      "camera": {
+        "center": [
+          -123.05,
+          48.53
+        ],
+        "span": 5.5
+      },
+      "icons": [
+        {
+          "ai": "two 1860s soldiers, one American in a blue uniform and one British in a red coat, happily sharing a picnic on the grass",
+          "name": "handshake",
+          "at": [
+            -123.05,
+            48.5
+          ],
+          "size": 310,
+          "delay": 0.6
+        }
+      ],
+      "texts": [
+        {
+          "text": "12 YEARS",
+          "accent": [
+            "12"
+          ],
+          "y": 0.22,
+          "size": 110,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "In 1872, Germany's Kaiser was asked to settle it, and he gave the islands to the United States.",
+      "tts": "In eighteen seventy-two, Germany's Kaiser was asked to settle it, and he gave the islands to the United States.",
+      "year": "1872",
+      "camera": {
+        "center": [
+          -123.0,
+          48.55
+        ],
+        "span": 6
+      },
+      "icons": [
+        {
+          "ai": "a stern 19th-century German emperor with a big moustache and spiked helmet banging a judge's gavel",
+          "name": "crown",
+          "at": [
+            -123.6,
+            48.75
+          ],
+          "size": 290,
+          "delay": 1.2
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -123.05,
+            48.53
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 3.6
+        }
+      ]
+    },
+    {
+      "narration": "The only casualty of the entire war? The pig. Whose side are you on? Follow for part three.",
+      "camera": {
+        "center": [
+          -121,
+          48
+        ],
+        "span": 26
+      },
+      "icons": [
+        {
+          "ai": "a cute pink pig with angel wings and a golden halo floating peacefully",
+          "name": "baby angel",
+          "at": [
+            -123.0,
+            48.8
+          ],
+          "size": 300,
+          "delay": 0.8
+        }
+      ],
+      "cta": {
+        "text": "FOLLOW FOR PART 3",
+        "delay": 3.4,
+        "y": 0.8
+      },
+      "min_duration": 6.0
+    }
+  ]
+}
