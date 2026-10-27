@@ -1,0 +1,397 @@
+{
+  "title": "The Whisky War between Canada and Denmark",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Playful, slightly comedic documentary music for a funny history short, pizzicato strings, light percussion, no vocals",
+    "volume": 0.22,
+    "bpm": 104
+  },
+  "post": {
+    "title": "Canada and Denmark fought a war… with whisky 🥃",
+    "description": "For decades, Canada and Denmark fought over tiny Hans Island by swapping flags and leaving bottles of booze. In 2022 they finally split it.",
+    "hashtags": [
+      "#history",
+      "#geography",
+      "#maps",
+      "#canada",
+      "#denmark",
+      "#funnyhistory",
+      "#shorts"
+    ],
+    "pinned_comment": "Which drink would you leave on the island? 🥃👇"
+  },
+  "scenes": [
+    {
+      "narration": "Canada and Denmark fought a war for almost forty years... using alcohol.",
+      "camera": {
+        "center": [
+          -58,
+          74
+        ],
+        "span": 55
+      },
+      "fill": {
+        "CAN": "flag:ca",
+        "GRL": "flag:dk"
+      },
+      "icons": [
+        {
+          "name": "tumbler glass",
+          "at": [
+            -80,
+            71
+          ],
+          "size": 224,
+          "delay": 1.6
+        },
+        {
+          "name": "bottle with popping cork",
+          "at": [
+            -38,
+            72
+          ],
+          "size": 224,
+          "delay": 2.2
+        }
+      ],
+      "banner": {
+        "lines": [
+          "THE",
+          "WHISKY WAR"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 90
+      }
+    },
+    {
+      "narration": "It was all about this tiny rock, Hans Island, stuck right between Canada and Greenland.",
+      "camera": {
+        "center": [
+          -66.5,
+          80.8
+        ],
+        "span": 9
+      },
+      "markers": [
+        {
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "type": "pin",
+          "label": "Hans Island",
+          "delay": 1.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "rock",
+          "at": [
+            -66.46,
+            80.6
+          ],
+          "size": 168,
+          "delay": 2.4
+        }
+      ],
+      "labels": [
+        {
+          "text": "CANADA",
+          "at": [
+            -72.5,
+            80.2
+          ],
+          "size": 52,
+          "delay": 3.0
+        },
+        {
+          "text": "GREENLAND",
+          "at": [
+            -58.5,
+            81.0
+          ],
+          "size": 52,
+          "delay": 3.3
+        }
+      ]
+    },
+    {
+      "narration": "In 1973, the two countries drew a border through the sea here... but they couldn't agree who owned the island. So they just left it out.",
+      "tts": "In nineteen seventy-three, the two countries drew a border through the sea here... but they couldn't agree who owned the island. So they just left it out.",
+      "year": "1973",
+      "camera": {
+        "center": [
+          -67.0,
+          80.6
+        ],
+        "span": 14
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -74.0,
+              78.3
+            ],
+            [
+              -70.5,
+              79.6
+            ],
+            [
+              -67.2,
+              80.62
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "dashed",
+          "width": 8,
+          "delay": 1.4,
+          "draw_time": 1.4
+        },
+        {
+          "path": [
+            [
+              -65.7,
+              81.03
+            ],
+            [
+              -63.0,
+              81.6
+            ],
+            [
+              -61.0,
+              82.1
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "dashed",
+          "width": 8,
+          "delay": 2.8,
+          "draw_time": 1.2
+        }
+      ],
+      "icons": [
+        {
+          "name": "thinking face",
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "size": 182,
+          "delay": 5.0
+        }
+      ]
+    },
+    {
+      "narration": "Then in 1984, Canadian soldiers landed, planted a flag... and left a bottle of Canadian whisky.",
+      "tts": "Then in nineteen eighty-four, Canadian soldiers landed, planted a flag... and left a bottle of Canadian whisky.",
+      "year": "1984",
+      "camera": {
+        "center": [
+          -66.46,
+          80.8
+        ],
+        "span": 6
+      },
+      "icons": [
+        {
+          "name": "military helmet",
+          "at": [
+            -67.4,
+            80.62
+          ],
+          "to": [
+            -66.6,
+            80.8
+          ],
+          "size": 168,
+          "delay": 0.6,
+          "travel_time": 1.6
+        },
+        {
+          "name": "tumbler glass",
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "size": 210,
+          "delay": 3.4,
+          "label": "WHISKY"
+        }
+      ]
+    },
+    {
+      "narration": "That same year, Denmark's minister for Greenland showed up, swapped in a Danish flag, and left a bottle of schnapps.",
+      "camera": {
+        "center": [
+          -66.46,
+          80.8
+        ],
+        "span": 6
+      },
+      "icons": [
+        {
+          "name": "bottle with popping cork",
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "size": 210,
+          "delay": 3.6,
+          "label": "SCHNAPPS"
+        },
+        {
+          "name": "face with tears of joy",
+          "at": [
+            -64.6,
+            81.1
+          ],
+          "size": 168,
+          "delay": 5.0
+        }
+      ]
+    },
+    {
+      "narration": "For decades, both sides kept visiting, swapping flags, and leaving each other bottles.",
+      "camera": {
+        "center": [
+          -66.46,
+          80.8
+        ],
+        "span": 8
+      },
+      "icons": [
+        {
+          "name": "clinking glasses",
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "size": 154,
+          "count": 5,
+          "spread": 104,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "Finally, in 2022, they ended it by splitting the island roughly in half.",
+      "tts": "Finally, in twenty twenty-two, they ended it by splitting the island roughly in half.",
+      "year": "2022",
+      "flash": true,
+      "camera": {
+        "center": [
+          -66.46,
+          80.8
+        ],
+        "span": 6
+      },
+      "icons": [
+        {
+          "name": "handshake",
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "size": 238,
+          "delay": 0.8
+        },
+        {
+          "name": "scissors",
+          "at": [
+            -65.0,
+            81.15
+          ],
+          "size": 168,
+          "anim": "shake",
+          "delay": 2.6
+        }
+      ],
+      "texts": [
+        {
+          "text": "SPLIT IN HALF",
+          "accent": [
+            "HALF"
+          ],
+          "y": 0.25,
+          "size": 88,
+          "delay": 2.8
+        }
+      ]
+    },
+    {
+      "narration": "Which means Canada now has a land border... with Denmark.",
+      "camera": {
+        "center": [
+          -58,
+          74
+        ],
+        "span": 45
+      },
+      "outline": [
+        "CAN",
+        "GRL"
+      ],
+      "markers": [
+        {
+          "at": [
+            -66.46,
+            80.83
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "exploding head",
+          "at": [
+            -45,
+            68
+          ],
+          "size": 238,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "And yes, they sealed the deal with one last swap of drinks. Would you fight a war like this? Follow for more.",
+      "camera": {
+        "center": [
+          -58,
+          74
+        ],
+        "span": 50
+      },
+      "icons": [
+        {
+          "name": "clinking glasses",
+          "at": [
+            -62,
+            77
+          ],
+          "size": 280,
+          "delay": 0.6
+        }
+      ],
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 3.6,
+        "y": 0.8
+      },
+      "min_duration": 6.0
+    }
+  ]
+}
