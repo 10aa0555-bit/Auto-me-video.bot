@@ -1,0 +1,41 @@
+name: Geo Short Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "台本 JSON のパス"
+        required: true
+        default: "scripts/kaliningrad.json"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk libcairo2-dev pkg-config
+          python -m pip install --upgrade pip
+          pip install -r geo_short/requirements.txt
+
+      - name: Build video
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: |
+          python -m geo_short.build "${{ inputs.script }}" -o out/geo_short.mp4
+
+      - name: Upload video
+        uses: actions/upload-artifact@v4
+        with:
+          name: geo-short-mp4
+          path: out/geo_short.mp4
