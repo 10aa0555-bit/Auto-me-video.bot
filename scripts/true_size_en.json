@@ -2,77 +2,325 @@
   "title": "Your map has been lying to you",
   "lang": "en",
   "style": "satellite",
-  "voice": {"id": "pNInz6obpgDQGcFmaJgB", "model": "eleven_multilingual_v2", "settings": {"speed": 1.1, "stability": 0.4, "style": 0.35}},
-  "music": {"prompt": "Curious, slightly mysterious documentary background music for a geography short video, light pulsing beat, plucked synth, no vocals", "volume": 0.22},
+  "voice": {
+    "id": "pNInz6obpgDQGcFmaJgB",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Curious, slightly mysterious documentary background music for a geography short video, light pulsing beat, plucked synth, no vocals",
+    "volume": 0.22
+  },
   "post": {
     "title": "Your map has been lying to you 🗺️😳",
     "description": "The Mercator map makes countries near the poles look huge. Here's how big Greenland, Russia, Brazil and Indonesia really are.",
-    "hashtags": ["#geography", "#maps", "#truesize", "#mercator", "#greenland", "#didyouknow", "#shorts"],
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#truesize",
+      "#mercator",
+      "#greenland",
+      "#didyouknow",
+      "#shorts"
+    ],
     "pinned_comment": "Which country should I move next? 👇"
   },
   "scenes": [
     {
       "narration": "This map has been lying to you your whole life.",
-      "camera": {"center": [0, 28], "span": 150},
-      "fill": {"GRL": "flag:gl"},
-      "icons": [{"name": "face with monocle", "at": [-40, 50], "size": 170, "delay": 1.2}],
-      "banner": {"lines": ["YOUR MAP", "IS LYING"], "y": 0.2, "delay": 0.15, "size": 90}
+      "camera": {
+        "center": [
+          0,
+          28
+        ],
+        "span": 150
+      },
+      "fill": {
+        "GRL": "flag:gl"
+      },
+      "icons": [
+        {
+          "name": "face with monocle",
+          "at": [
+            -40,
+            50
+          ],
+          "size": 170,
+          "delay": 1.2
+        }
+      ],
+      "banner": {
+        "lines": [
+          "YOUR MAP",
+          "IS LYING"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 90
+      }
     },
     {
       "narration": "Look at Greenland. It looks about as big as all of Africa.",
-      "camera": {"center": [-10, 38], "span": 120},
-      "outline": ["GRL"],
-      "texts": [{"text": "AFRICA", "at": [20, 5], "size": 90, "delay": 1.8}],
-      "labels": [{"text": "GREENLAND", "of": "GRL", "size": 54, "delay": 0.6}]
+      "camera": {
+        "center": [
+          -10,
+          38
+        ],
+        "span": 120
+      },
+      "outline": [
+        "GRL"
+      ],
+      "texts": [
+        {
+          "text": "AFRICA",
+          "at": [
+            20,
+            22
+          ],
+          "size": 90,
+          "delay": 1.8
+        }
+      ],
+      "labels": [
+        {
+          "text": "GREENLAND",
+          "of": "GRL",
+          "size": 54,
+          "delay": 0.6
+        }
+      ]
     },
     {
       "narration": "But watch what happens when we move it down to Africa.",
-      "camera": {"center": [0, 32], "span": 110},
-      "fill": {"GRL": "#ffffff55"},
-      "ghosts": [{"of": "GRL", "to": [20, 3], "fill": "flag:gl", "delay": 0.6, "move_time": 2.6}]
+      "camera": {
+        "center": [
+          0,
+          32
+        ],
+        "span": 110
+      },
+      "fill": {
+        "GRL": "#ffffff55"
+      },
+      "ghosts": [
+        {
+          "of": "GRL",
+          "to": [
+            20,
+            3
+          ],
+          "fill": "flag:gl",
+          "delay": 0.6,
+          "move_time": 2.6
+        }
+      ]
     },
     {
       "narration": "Africa is actually fourteen times bigger than Greenland.",
-      "camera": {"center": [20, 5], "span": 75},
-      "ghosts": [{"of": "GRL", "from": [20, 3], "to": [20, 3], "fill": "flag:gl", "delay": 0}],
-      "texts": [{"text": "14x BIGGER", "accent": ["14x"], "y": 0.24, "size": 110, "delay": 1.4}],
-      "icons": [{"name": "exploding head", "at": [42, -16], "size": 170, "delay": 2.6}]
+      "camera": {
+        "center": [
+          20,
+          5
+        ],
+        "span": 75
+      },
+      "ghosts": [
+        {
+          "of": "GRL",
+          "from": [
+            20,
+            3
+          ],
+          "to": [
+            20,
+            3
+          ],
+          "fill": "flag:gl",
+          "delay": 0
+        }
+      ],
+      "texts": [
+        {
+          "text": "14x BIGGER",
+          "accent": [
+            "14x"
+          ],
+          "y": 0.24,
+          "size": 110,
+          "delay": 1.4
+        }
+      ],
+      "icons": [
+        {
+          "name": "exploding head",
+          "at": [
+            42,
+            -16
+          ],
+          "size": 170,
+          "delay": 2.6
+        }
+      ]
     },
     {
       "narration": "The reason? This map was made in 1569 for sailors, and it stretches everything near the poles.",
       "tts": "The reason? This map was made in fifteen sixty-nine for sailors, and it stretches everything near the poles.",
       "year": "1569",
       "flash": true,
-      "camera": {"center": [-10, 40], "span": 130},
-      "fill": {"GRL": "flag:gl"},
+      "camera": {
+        "center": [
+          -10,
+          40
+        ],
+        "span": 130
+      },
+      "fill": {
+        "GRL": "flag:gl"
+      },
       "icons": [
-        {"name": "sailboat", "at": [-38, 30], "to": [-25, 38], "size": 160, "delay": 1.2, "travel_time": 3.0},
-        {"name": "compass", "at": [-30, 58], "size": 150, "delay": 2.4}
+        {
+          "name": "sailboat",
+          "at": [
+            -38,
+            30
+          ],
+          "to": [
+            -25,
+            38
+          ],
+          "size": 160,
+          "delay": 1.2,
+          "travel_time": 3.0
+        },
+        {
+          "name": "compass",
+          "at": [
+            -30,
+            58
+          ],
+          "size": 150,
+          "delay": 2.4
+        }
       ]
     },
     {
       "narration": "Even Russia, the biggest country on Earth, shrinks a lot when you move it to the equator.",
-      "camera": {"center": [45, 30], "span": 150},
-      "fill": {"RUS": "#ffffff55"},
-      "ghosts": [{"of": "RUS", "to": [25, 2], "fill": "flag:ru", "delay": 1.6, "move_time": 3.0}]
+      "camera": {
+        "center": [
+          45,
+          30
+        ],
+        "span": 150
+      },
+      "fill": {
+        "RUS": "#ffffff55"
+      },
+      "ghosts": [
+        {
+          "of": "RUS",
+          "to": [
+            25,
+            2
+          ],
+          "fill": "flag:ru",
+          "delay": 1.6,
+          "move_time": 3.0
+        }
+      ]
     },
     {
       "narration": "And Brazil? It's actually bigger than the entire mainland United States.",
-      "camera": {"center": [-90, 30], "span": 80},
-      "fill": {"RUS": "flag:ru", "USA": "flag:us"},
-      "ghosts": [{"of": "BRA", "to": [-98, 39], "fill": "flag:br", "delay": 1.0, "move_time": 2.6}]
+      "camera": {
+        "center": [
+          -90,
+          30
+        ],
+        "span": 80
+      },
+      "fill": {
+        "RUS": "flag:ru",
+        "USA": "flag:us"
+      },
+      "ghosts": [
+        {
+          "of": "BRA",
+          "to": [
+            -98,
+            39
+          ],
+          "fill": "flag:br",
+          "delay": 1.0,
+          "move_time": 2.6
+        }
+      ]
     },
     {
       "narration": "Meanwhile, Indonesia is wider than the whole United States.",
-      "camera": {"center": [-97, 34], "span": 80},
-      "ghosts": [{"of": "IDN", "to": [-97, 38], "fill": "flag:id", "delay": 0.6, "move_time": 2.6}],
-      "lines": [{"path": [[-126, 26], [-66, 26]], "color": "#ffe14d", "style": "dashed", "width": 8, "label": "auto", "delay": 3.2, "draw_time": 1.4}]
+      "camera": {
+        "center": [
+          -97,
+          34
+        ],
+        "span": 80
+      },
+      "ghosts": [
+        {
+          "of": "IDN",
+          "to": [
+            -97,
+            38
+          ],
+          "fill": "flag:id",
+          "delay": 0.6,
+          "move_time": 2.6
+        }
+      ],
+      "lines": [
+        {
+          "path": [
+            [
+              -126,
+              26
+            ],
+            [
+              -66,
+              26
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "dashed",
+          "width": 8,
+          "label": "auto",
+          "delay": 3.2,
+          "draw_time": 1.4
+        }
+      ]
     },
     {
       "narration": "Which one surprised you the most? Follow for more maps that break your brain.",
-      "camera": {"center": [0, 28], "span": 160},
-      "fill": {"USA": null, "RUS": "flag:ru", "BRA": "flag:br", "IDN": "flag:id"},
-      "cta": {"text": "FOLLOW FOR MORE", "delay": 2.0, "y": 0.8}
+      "camera": {
+        "center": [
+          0,
+          28
+        ],
+        "span": 160
+      },
+      "fill": {
+        "USA": null,
+        "RUS": "flag:ru",
+        "BRA": "flag:br",
+        "IDN": "flag:id"
+      },
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 2.0,
+        "y": 0.8
+      }
     }
   ]
 }

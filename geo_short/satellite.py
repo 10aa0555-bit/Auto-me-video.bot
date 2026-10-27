@@ -115,6 +115,17 @@ class SatelliteLayer:
         map_y = np.broadcast_to(row.astype(np.float32)[:, None], (h, w))
         out = cv2.remap(tex, np.ascontiguousarray(map_x), np.ascontiguousarray(map_y),
                         cv2.INTER_LINEAR, borderMode=cv2.BORDER_WRAP)
+        # 世界全体を映すほど引いたときは、引き伸ばされて荒れる極地方を暗くぼかし、
+        # 地図の上下 (極より外側) も端の画素が縦縞に伸びないよう暗く塗る
+        void = np.array((34, 20, 8), np.float32)
+        span_deg = w / ppu * 360
+        k = float(np.clip((span_deg - 200) / 80, 0.0, 1.0))
+        if k > 0:
+            fade = (np.clip((np.abs(lat) - 68) / 10, 0, 1) * k).astype(np.float32)[:, None, None]
+            out = (out * (1 - fade) + void * fade).astype(np.uint8)
+        outside = (my < 0.0) | (my > 1.0)
+        if outside.any():
+            out[outside] = void.astype(np.uint8)
         return out
 
     def cloud_alpha(self, ppu, t, cx, cy):
