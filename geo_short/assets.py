@@ -161,6 +161,18 @@ ART_STYLE = ("stylized 3D animated-film cartoon illustration, rounded friendly s
 CUTOUT_HINT = "single subject, full body, centered, isolated on a plain pure white background, no shadow"
 
 
+def _cf_credentials():
+    """Secrets に改行や「Bearer 」、ID とトークンの取り違えが混ざっていても使えるように取り出す。"""
+    import re
+    parts = re.findall(r"[A-Za-z0-9_-]{20,}", " ".join(
+        [os.environ.get("CF_ACCOUNT_ID", ""), os.environ.get("CF_API_TOKEN", "")]))
+    ids = [p for p in parts if re.fullmatch(r"[0-9a-f]{32}", p)]
+    tokens = [p for p in parts if p not in ids]
+    acct = ids[0] if ids else os.environ.get("CF_ACCOUNT_ID", "").strip()
+    token = tokens[-1] if tokens else os.environ.get("CF_API_TOKEN", "").strip()
+    return acct, token
+
+
 class AIArt:
     """台本に書いた説明文から AI でイラストを描く (結果は保存して再利用)。
 
@@ -209,7 +221,7 @@ class AIArt:
                         return base64.b64decode(data)
             raise RuntimeError(f"Gemini が画像を返しませんでした: {r.text[:300]}")
         if self.provider == "cloudflare":
-            acct, token = os.environ["CF_ACCOUNT_ID"], os.environ["CF_API_TOKEN"]
+            acct, token = _cf_credentials()
             r = requests.post(
                 f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/@cf/black-forest-labs/flux-1-schnell",
                 headers={"Authorization": f"Bearer {token}"},
