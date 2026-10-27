@@ -38,7 +38,7 @@ Secrets に `ELEVENLABS_API_KEY` が必要です。完成した mp4 と投稿文
 | `voice` | `{"id": ElevenLabs のボイス ID, "model": ..., "settings": {...}}` |
 | `lang` | `"en"` で英語 (1〜3 語ずつの TikTok 風字幕・Poppins フォント)。既定は `"ja"` |
 | `music` | BGM `{"prompt": "英語で曲の雰囲気", "volume": 0.22}`。ElevenLabs Music で生成し、使えなければ合成 BGM。`false` で BGM なし |
-| `post` | 投稿用 `{"title", "description", "hashtags"}` → `out/<名前>_post.txt` に書き出し |
+| `post` | 投稿用 `{"title", "description", "hashtags", "pinned_comment"}` → `out/<名前>_post.txt` に書き出し |
 | `regions` | 現在の国境に無い地域を `[[経度, 緯度], ...]` で定義 (例: 東プロイセン南部) |
 | `scenes` | シーンの配列 (下表) |
 
@@ -59,6 +59,8 @@ Secrets に `ELEVENLABS_API_KEY` が必要です。完成した mp4 と投稿文
 | `circles` | 半径◯km の円 `[{"at", "radius_km", "color", "label", "delay"}]` |
 | `texts` | 大きい文字 `[{"text": "{n} PEOPLE", "count": 2000000, "accent": ["PEOPLE"], "at" or "y", "size"}]` |
 | `banner` | タイトル帯 `{"lines": ["MOST DANGEROUS", "PLACE IN EUROPE?"], "colors", "y", "delay"}` |
+| `ghosts` | 国の形を面積そのままで動かす (本当の大きさ比べ) `[{"of": "GRL", "to": [経度, 緯度], "from", "fill": "flag:gl", "delay", "move_time", "label"}]` |
+| `cta` | フォローを促すボタン `{"text": "FOLLOW FOR MORE", "delay", "y"}` (ベル + タップする指 + 効果音) |
 | `year` | 画面上部に出す年号 |
 | `flash` | `true` でシーン頭に白フラッシュ |
 
@@ -80,3 +82,11 @@ Secrets に `ELEVENLABS_API_KEY` が必要です。完成した mp4 と投稿文
 - 国旗: flag-icons (MIT)
 - フォント: Poppins (SIL OFL, `fonts/OFL.txt`)
 - 効果音・合成 BGM: プログラムで合成
+
+## 伸びるショートのための台本の型
+
+- 1 シーン目: 答えが気になる問いかけ + タイトル帯 (`banner`)。最初の 1〜2 秒で離脱が決まる
+- 1.5〜3 秒ごとに何か変化させる (アイコン、数字、矢印、カメラ移動)
+- 字幕は単語ハイライト (ミュート視聴向け)
+- 最後はコメントを誘う質問 + `cta`。最後の一言が冒頭につながるとループして平均視聴時間が伸びる
+- `post.pinned_comment` に固定コメント用の質問を書いておく
