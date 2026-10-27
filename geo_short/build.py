@@ -103,6 +103,7 @@ def prepare_art(script):
     if not art.provider:
         print("※ AI イラストのサービスが未設定のため、3D アイコンや写真で代用します")
         return credits
+    print(f"AI イラスト: {art.provider} で {len(dict.fromkeys(jobs))} 枚")
     for prompt, kind in dict.fromkeys(jobs):
         try:
             art.prepare(prompt, kind)
