@@ -27,7 +27,8 @@
       "#europe",
       "#mapping",
       "#shorts"
-    ]
+    ],
+    "pinned_comment": "Did you know Kaliningrad was German? 👇"
   },
   "regions": {
     "east_prussia_south": [
@@ -554,7 +555,13 @@
         ],
         "y": 0.22,
         "delay": 2.6
-      }
+      },
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 3.4,
+        "y": 0.8
+      },
+      "min_duration": 5.8
     }
   ]
 }

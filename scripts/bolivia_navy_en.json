@@ -26,7 +26,8 @@
       "#chile",
       "#southamerica",
       "#shorts"
-    ]
+    ],
+    "pinned_comment": "Should Chile give Bolivia its coast back? 👇"
   },
   "regions": {
     "bolivia_litoral": [
@@ -475,7 +476,13 @@
         "y": 0.2,
         "delay": 1.4,
         "size": 84
-      }
+      },
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 2.2,
+        "y": 0.8
+      },
+      "min_duration": 4.6
     }
   ]
 }
