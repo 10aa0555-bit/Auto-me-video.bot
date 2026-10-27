@@ -58,3 +58,34 @@ def synthesize(script, workdir):
         alignments.append(al if "tts" not in sc else None)
         print(f"  ナレーション生成: scene {i}")
     return alignments
+
+
+def music(prompt, seconds, path):
+    """ElevenLabs Music で BGM を作る。使えなければ False (呼び出し側で合成 BGM に切り替え)。"""
+    key = os.getenv("ELEVENLABS_API_KEY")
+    if not key or not prompt:
+        return False
+    if os.path.exists(path) and os.path.exists(path + ".prompt"):
+        with open(path + ".prompt", encoding="utf-8") as f:
+            if f.read() == f"{prompt}|{seconds:.0f}":
+                return True
+    try:
+        r = requests.post(
+            "https://api.elevenlabs.io/v1/music?output_format=mp3_44100_128",
+            headers={"xi-api-key": key, "Content-Type": "application/json"},
+            json={"prompt": prompt, "music_length_ms": int(seconds * 1000) + 2000,
+                  "force_instrumental": True},
+            timeout=300,
+        )
+    except requests.RequestException as e:
+        print(f"  ElevenLabs Music に接続できません ({e})。合成 BGM を使います")
+        return False
+    if r.status_code != 200 or not r.headers.get("content-type", "").startswith("audio"):
+        print(f"  ElevenLabs Music が使えません ({r.status_code} {r.text[:200]})。合成 BGM を使います")
+        return False
+    with open(path, "wb") as f:
+        f.write(r.content)
+    with open(path + ".prompt", "w", encoding="utf-8") as f:
+        f.write(f"{prompt}|{seconds:.0f}")
+    print("  BGM 生成: ElevenLabs Music")
+    return True

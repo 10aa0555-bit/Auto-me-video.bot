@@ -12,7 +12,7 @@ import subprocess
 import sys
 import time
 
-from . import sfx, tts
+from . import bgm, sfx, tts
 from .render import Renderer, Timeline
 
 PAD = 0.35          # シーン末尾の間 (秒)
@@ -37,30 +37,58 @@ def scene_durations(script, workdir, have_audio):
     return durs
 
 
-def mix_audio(workdir, durations, out_path, sfx_wav, have_voice, bgm=None):
-    """ナレーション (あれば) + 効果音 + BGM (任意) を 1 本の音声にする。"""
-    inputs, filters, mix = [], [], []
+def mix_audio(workdir, durations, out_path, sfx_wav, have_voice, bgm_path=None, bgm_volume=0.22):
+    """ナレーション + 効果音 + BGM を 1 本にする。
+
+    BGM はナレーション中だけ自動で下がり (サイドチェイン)、最後に -14 LUFS に揃える。
+    """
+    inputs, filters = [], []
     total = sum(durations)
     if have_voice:
         for i, d in enumerate(durations):
             inputs += ["-i", os.path.join(workdir, f"scene_{i:02d}.mp3")]
             filters.append(f"[{i}:a]aresample=44100,apad=whole_dur={d:.3f}[a{i}]")
         n = len(durations)
-        filters.append("".join(f"[a{i}]" for i in range(n)) + f"concat=n={n}:v=0:a=1[voice]")
-        mix.append("[voice]")
+        filters.append("".join(f"[a{i}]" for i in range(n)) +
+                       f"concat=n={n}:v=0:a=1,aformat=channel_layouts=stereo,asplit=2[voice][key]")
     k = len(inputs) // 2
     inputs += ["-i", sfx_wav]
-    filters.append(f"[{k}:a]aresample=44100[fx]")
-    mix.append("[fx]")
-    if bgm:
-        inputs += ["-stream_loop", "-1", "-i", bgm]
-        filters.append(f"[{k + 1}:a]volume=0.12,atrim=0:{total:.3f},"
-                       f"afade=t=out:st={total - 2:.3f}:d=2[bg]")
+    filters.append(f"[{k}:a]aresample=44100,aformat=channel_layouts=stereo[fx]")
+    mix = (["[voice]"] if have_voice else []) + ["[fx]"]
+    if bgm_path:
+        inputs += ["-stream_loop", "-1", "-i", bgm_path]
+        filters.append(f"[{k + 1}:a]aresample=44100,aformat=channel_layouts=stereo,"
+                       f"volume={bgm_volume},atrim=0:{total:.3f},"
+                       f"afade=t=out:st={max(total - 2, 0):.3f}:d=2[bg0]")
+        if have_voice:
+            filters.append("[bg0][key]sidechaincompress=threshold=0.02:ratio=8:attack=30:release=400[bg]")
+        else:
+            filters.append("[bg0]anull[bg]")
         mix.append("[bg]")
+    elif have_voice:
+        filters.append("[key]anullsink")
     filters.append("".join(mix) + f"amix=inputs={len(mix)}:duration=longest:normalize=0,"
-                   f"atrim=0:{total:.3f}[out]")
+                   f"atrim=0:{total:.3f},loudnorm=I=-14:TP=-1.5:LRA=11[out]")
     subprocess.check_call(["ffmpeg", "-y", "-v", "error", *inputs, "-filter_complex",
-                           ";".join(filters), "-map", "[out]", "-c:a", "aac", "-b:a", "192k", out_path])
+                           ";".join(filters), "-map", "[out]", "-ar", "44100",
+                           "-c:a", "aac", "-b:a", "192k", out_path])
+
+
+def prepare_bgm(script, workdir, total, override=None):
+    """BGM のファイルを用意する: --bgm 指定 > ElevenLabs Music > 合成 BGM。"""
+    if override:
+        return override
+    spec = script.get("music", {})
+    if spec is False or spec == "none":
+        return None
+    os.makedirs(workdir, exist_ok=True)
+    mp3 = os.path.join(workdir, "bgm_elevenlabs.mp3")
+    if tts.music(spec.get("prompt"), total, mp3):
+        return mp3
+    wav = os.path.join(workdir, "bgm_synth.wav")
+    bgm.render(total, wav, bpm=spec.get("bpm", 98))
+    print("  BGM: 合成 (ドキュメンタリー風)")
+    return wav
 
 
 def write_post(script, path):
@@ -82,6 +110,7 @@ def main():
     ap.add_argument("--preview", action="store_true", help="540x960 / 15fps で素早く確認")
     ap.add_argument("--still", type=float, help="この秒数のフレームを PNG で書き出して終了")
     ap.add_argument("--no-tts", action="store_true")
+    ap.add_argument("--require-tts", action="store_true", help="ナレーションを作れなければ失敗させる (CI 用)")
     ap.add_argument("--bgm", help="BGM ファイル (任意)")
     ap.add_argument("--fps", type=int, default=30)
     args = ap.parse_args()
@@ -95,6 +124,8 @@ def main():
 
     alignments = None if args.no_tts or args.still is not None else tts.synthesize(script, workdir)
     have_audio = alignments is not None
+    if args.require_tts and not have_audio:
+        sys.exit("ELEVENLABS_API_KEY が設定されていません (GitHub の Secrets を確認してください)")
     if not have_audio and args.still is None:
         print("※ ELEVENLABS_API_KEY が無いため無音で書き出します (尺は文字数から推定)")
     durations = scene_durations(script, workdir, have_audio)
@@ -128,7 +159,9 @@ def main():
     fx = out.replace(".mp4", "_sfx.wav")
     sfx.render_track(timeline.sfx, timeline.total, fx)
     audio = out.replace(".mp4", "_audio.m4a")
-    mix_audio(workdir, durations, audio, fx, have_audio, args.bgm)
+    music = prepare_bgm(script, workdir, timeline.total, args.bgm)
+    mix_audio(workdir, durations, audio, fx, have_audio, music,
+              script.get("music", {}).get("volume", 0.22) if isinstance(script.get("music"), dict) else 0.22)
     subprocess.check_call(["ffmpeg", "-y", "-v", "error", "-i", silent, "-i", audio,
                            "-c:v", "copy", "-c:a", "copy", "-shortest", out])
     for f in (silent, audio, fx):

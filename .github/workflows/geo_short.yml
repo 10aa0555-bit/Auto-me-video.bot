@@ -6,7 +6,14 @@ on:
       script:
         description: "台本 JSON のパス"
         required: true
-        default: "scripts/kaliningrad.json"
+        default: "scripts/kaliningrad_en.json"
+  # 台本を push すると、変更された台本の動画を自動で作る
+  push:
+    paths:
+      - "scripts/*.json"
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -15,33 +22,73 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Pick scripts
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "scripts=${{ inputs.script }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "scripts=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'scripts/*.json' | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up Python
+        if: steps.pick.outputs.scripts != ''
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.pick.outputs.scripts != ''
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg fonts-noto-cjk libcairo2-dev pkg-config
           python -m pip install --upgrade pip
           pip install -r geo_short/requirements.txt
 
-      - name: Cache satellite texture
+      - name: Cache satellite texture, icons and flags
+        if: steps.pick.outputs.scripts != ''
         uses: actions/cache@v4
         with:
           path: ~/.cache/geo_short
-          key: geo-short-bluemarble-21600
+          key: geo-short-assets-v1
 
-      - name: Build video
+      - name: Build videos
+        if: steps.pick.outputs.scripts != ''
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
         run: |
-          python -m geo_short.build "${{ inputs.script }}" -o out/geo_short.mp4
+          for s in ${{ steps.pick.outputs.scripts }}; do
+            python -m geo_short.build "$s" --require-tts
+          done
 
-      - name: Upload video
+      - name: Upload videos
+        if: steps.pick.outputs.scripts != ''
         uses: actions/upload-artifact@v4
         with:
-          name: geo-short-mp4
-          path: out/geo_short.mp4
+          name: geo-short-videos
+          path: |
+            out/*.mp4
+            out/*_post.txt
+
+      # 完成した動画を renders ブランチにも置く (ブラウザや別の環境から取り出しやすいように)
+      - name: Publish to renders branch
+        if: steps.pick.outputs.scripts != ''
+        run: |
+          mkdir -p /tmp/renders && cp out/*.mp4 /tmp/renders/
+          cp out/*_post.txt /tmp/renders/ 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin renders; then
+            git checkout -q -B renders FETCH_HEAD
+          else
+            git checkout -q --orphan renders
+            git rm -rfq .
+          fi
+          git clean -fdxq
+          cp /tmp/renders/* .
+          git add -f -- *.mp4 $(ls *_post.txt 2>/dev/null)
+          git commit -qm "render: ${{ steps.pick.outputs.scripts }} (${GITHUB_SHA::7})" || exit 0
+          git push -q origin renders

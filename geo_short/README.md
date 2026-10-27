@@ -20,7 +20,14 @@ python -m geo_short.build scripts/kaliningrad.json --bgm bgm.mp3    # BGM を薄
   取れなければ `basemap-data` 同梱の 5400px 版を使います。`GEO_SAT_TEXTURE` で任意の画像を指定可。
 - `"parchment"`: 古地図風のフラットな配色
 
-GitHub Actions の「Geo Short Video」を手動実行しても作れます (Secrets に `ELEVENLABS_API_KEY` が必要)。
+## GitHub Actions
+
+`scripts/*.json` を push すると、変更された台本の動画が自動で作られます (手動実行も可)。
+Secrets に `ELEVENLABS_API_KEY` が必要です。完成した mp4 と投稿文は Actions の成果物と
+`renders` ブランチに置かれます。
+
+音声: ナレーション (ElevenLabs) + 効果音 + BGM。BGM はナレーション中だけ自動で下がり、
+全体の音量は TikTok / YouTube 推奨の -14 LUFS に揃えます。
 
 ## 台本の書き方
 
@@ -30,6 +37,7 @@ GitHub Actions の「Geo Short Video」を手動実行しても作れます (Sec
 |---|---|
 | `voice` | `{"id": ElevenLabs のボイス ID, "model": ..., "settings": {...}}` |
 | `lang` | `"en"` で英語 (1〜3 語ずつの TikTok 風字幕・Poppins フォント)。既定は `"ja"` |
+| `music` | BGM `{"prompt": "英語で曲の雰囲気", "volume": 0.22}`。ElevenLabs Music で生成し、使えなければ合成 BGM。`false` で BGM なし |
 | `post` | 投稿用 `{"title", "description", "hashtags"}` → `out/<名前>_post.txt` に書き出し |
 | `regions` | 現在の国境に無い地域を `[[経度, 緯度], ...]` で定義 (例: 東プロイセン南部) |
 | `scenes` | シーンの配列 (下表) |
@@ -70,4 +78,4 @@ GitHub Actions の「Geo Short Video」を手動実行しても作れます (Sec
 - 3D アイコン: Microsoft Fluent Emoji (MIT)
 - 国旗: flag-icons (MIT)
 - フォント: Poppins (SIL OFL, `fonts/OFL.txt`)
-- 効果音: プログラムで合成
+- 効果音・合成 BGM: プログラムで合成
