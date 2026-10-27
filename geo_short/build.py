@@ -97,25 +97,46 @@ def prepare_art(script):
     art = AIArt(script.get("art_style"))
     jobs = [(ic["ai"], "cutout") for sc in script["scenes"] for ic in sc.get("icons", []) if ic.get("ai")]
     jobs += [(sc["card"]["ai"], "card") for sc in script["scenes"] if sc.get("card", {}).get("ai")]
+    credits = prepare_photos(script, skip_if_art=bool(art.provider))
     if not jobs:
-        return
+        return credits
     if not art.provider:
-        print("※ AI イラストのサービスが未設定のため、3D アイコンで代用します")
-        return
+        print("※ AI イラストのサービスが未設定のため、3D アイコンや写真で代用します")
+        return credits
     for prompt, kind in dict.fromkeys(jobs):
         try:
             art.prepare(prompt, kind)
         except Exception as e:  # noqa: BLE001 — 1 枚の失敗で動画全体を止めない
             print(f"  AI イラスト失敗 ({kind}): {prompt[:50]} -> {e}")
+    return credits
 
 
-def write_post(script, path):
+def prepare_photos(script, skip_if_art=False):
+    """挿絵カードの本物の写真をコモンズから用意し、クレジットのリストを返す。"""
+    from .assets import Photos
+    photos = Photos()
+    for sc in script["scenes"]:
+        card = sc.get("card") or {}
+        if not card.get("photo") or (skip_if_art and card.get("ai")):
+            continue
+        spec = card["photo"] if isinstance(card["photo"], dict) else {"query": card["photo"]}
+        try:
+            photos.prepare(spec)
+        except Exception as e:  # noqa: BLE001 — 写真が取れなくても動画は作る
+            print(f"  写真の取得に失敗: {spec} -> {e}")
+    return photos.credits
+
+
+def write_post(script, path, credits=()):
     """投稿用のタイトル・説明・ハッシュタグをテキストに書き出す。"""
     post = script.get("post")
     if not post:
         return
     lines = [post.get("title", script.get("title", "")), "", post.get("description", ""), "",
              " ".join(post.get("hashtags", []))]
+    if credits:
+        names = ", ".join(c["title"].replace("File:", "") for c in credits)
+        lines[2] = (lines[2] + f"\n\nImages: Wikimedia Commons (public domain): {names}").strip()
     if post.get("pinned_comment"):
         lines += ["", "--- 固定コメント ---", post["pinned_comment"]]
     with open(path, "w", encoding="utf-8") as f:
@@ -151,7 +172,7 @@ def main():
     durations = scene_durations(script, workdir, have_audio)
     timeline = Timeline(script, durations, alignments)
 
-    prepare_art(script)
+    credits = prepare_art(script) or []
     scale = 0.5 if args.preview else 1.0
     fps = 15 if args.preview else args.fps
     r = Renderer(script, scale=scale)
@@ -187,7 +208,7 @@ def main():
                            "-c:v", "copy", "-c:a", "copy", "-shortest", out])
     for f in (silent, audio, fx):
         os.remove(f)
-    write_post(script, out.replace(".mp4", "_post.txt"))
+    write_post(script, out.replace(".mp4", "_post.txt"), credits)
     print(f"完成: {out} ({timeline.total:.1f}秒)")
 
 

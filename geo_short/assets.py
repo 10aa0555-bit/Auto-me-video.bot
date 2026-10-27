@@ -290,3 +290,81 @@ def _cutout(data):
     sq[(s - h) // 2:(s - h) // 2 + h, (s - w) // 2:(s - w) // 2 + w] = img
     ok, buf = cv2.imencode(".png", sq)
     return buf.tobytes()
+
+
+# ---------------------------------------------------------------- 本物の写真 (ウィキメディア・コモンズ)
+
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+UA = {"User-Agent": "geo-short-video-bot/1.0 (https://github.com/10aa0555-bit/Auto-me-video.bot)"}
+
+
+def _is_free(meta):
+    """パブリックドメインか CC0 の画像だけを使う (クレジット表記の義務が無く、収益化しても安全)。"""
+    lic = (meta.get("LicenseShortName", {}).get("value", "") + " " +
+           meta.get("License", {}).get("value", "")).lower()
+    return any(k in lic for k in ("public domain", "pd-", "pd ", "cc0")) or lic.strip() == "pd"
+
+
+class Photos:
+    """コモンズから著作権切れの写真・絵画を探して保存する。"""
+
+    def __init__(self):
+        self.dir = os.path.join(CACHE, "photos")
+        os.makedirs(self.dir, exist_ok=True)
+        self.credits = []
+
+    def _path(self, key):
+        import hashlib
+        return os.path.join(self.dir, hashlib.sha256(key.encode()).hexdigest()[:20] + ".jpg")
+
+    def _query(self, params):
+        params = dict(params, format="json", prop="imageinfo",
+                      iiprop="url|extmetadata|size|mime", iiurlwidth=1400)
+        r = requests.get(COMMONS_API, params=params, headers=UA, timeout=60)
+        r.raise_for_status()
+        pages = r.json().get("query", {}).get("pages", {})
+        return sorted(pages.values(), key=lambda p: p.get("index", 0))
+
+    def prepare(self, spec):
+        """spec: {"file": "File:...jpg"} または {"query": "検索語"}。保存先のパス (見つからなければ None)。"""
+        key = spec.get("file") or spec.get("query")
+        path = self._path(key)
+        meta_path = path + ".json"
+        if os.path.exists(path) and os.path.exists(meta_path):
+            import json
+            with open(meta_path, encoding="utf-8") as f:
+                self.credits.append(json.load(f))
+            return path
+        if spec.get("file"):
+            pages = self._query({"action": "query", "titles": spec["file"]})
+        else:
+            pages = self._query({"action": "query", "generator": "search", "gsrnamespace": 6,
+                                 "gsrsearch": f"{spec['query']} filetype:bitmap", "gsrlimit": 15})
+        for p in pages:
+            info = (p.get("imageinfo") or [{}])[0]
+            meta = info.get("extmetadata", {})
+            if info.get("mime") not in ("image/jpeg", "image/png") or info.get("width", 0) < 500:
+                continue
+            if not _is_free(meta):
+                continue
+            data = requests.get(info.get("thumburl") or info["url"], headers=UA, timeout=120).content
+            import cv2
+            import numpy as np
+            img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+            if img is None:
+                continue
+            cv2.imwrite(path, img, [cv2.IMWRITE_JPEG_QUALITY, 92])
+            credit = {"title": p.get("title"), "license": meta.get("LicenseShortName", {}).get("value", ""),
+                      "url": info.get("descriptionurl", "")}
+            import json
+            with open(meta_path, "w", encoding="utf-8") as f:
+                json.dump(credit, f, ensure_ascii=False)
+            self.credits.append(credit)
+            print(f"  写真: {credit['title']} ({credit['license']})")
+            return path
+        print(f"  写真が見つかりません (パブリックドメインに限定): {key}")
+        return None
+
+    def path_for(self, spec):
+        path = self._path(spec.get("file") or spec.get("query"))
+        return path if os.path.exists(path) else None

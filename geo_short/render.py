@@ -297,13 +297,14 @@ class Renderer:
             self.sat = SatelliteLayer(self.w, self.h)
         self.overlay = self._make_overlay()
         self.t = 0.0
-        from .assets import AIArt, Flags, Icons, install_fonts
+        from .assets import AIArt, Flags, Icons, Photos, install_fonts
         install_fonts()
         self.lang = script.get("lang", "ja")
         self.font = FONT if self.lang == "ja" else os.environ.get("GEO_FONT_EN", "Poppins Black")
         self.icons = Icons()
         self.flags = Flags()
         self.art = AIArt(script.get("art_style"))
+        self.photos = Photos()
         self.card_cache = {}
         self.out = 1.0
         self.flag_cache = {}
@@ -888,15 +889,26 @@ class Renderer:
             ctx.restore()
 
     # -- 全画面の挿絵カード (AI イラスト)
-    def _card_layers(self, prompt):
+    def _card_path(self, card):
+        """挿絵の画像: AI イラストがあればそれ、無ければ本物の写真 (コモンズ)。"""
+        if card.get("ai"):
+            path = self.art._path(card["ai"], "card")
+            if os.path.exists(path):
+                return path
+        if card.get("photo"):
+            spec = card["photo"] if isinstance(card["photo"], dict) else {"query": card["photo"]}
+            return self.photos.path_for(spec)
+        return None
+
+    def _card_layers(self, card):
         """(背景: ぼかして画面いっぱい, 前景: 画面幅に合わせた絵) の cairo サーフェス。"""
-        if prompt in self.card_cache:
-            return self.card_cache[prompt]
+        path = self._card_path(card)
+        if path in self.card_cache:
+            return self.card_cache[path]
         import cv2
-        path = self.art._path(prompt, "card")
-        if not os.path.exists(path):
-            self.card_cache[prompt] = None
+        if path is None:
             return None
+        prompt = path
         img = cv2.imread(path, cv2.IMREAD_COLOR)
         h, w = img.shape[:2]
         tw, th = self.w, self.h
@@ -928,7 +940,7 @@ class Renderer:
         card = s["spec"].get("card")
         if not card:
             return
-        layers = self._card_layers(card["ai"])
+        layers = self._card_layers(card)
         if layers is None:
             return
         delay = card.get("delay", 0.15)
@@ -964,6 +976,9 @@ class Renderer:
             ctx.set_line_width(6 * self.scale)
             ctx.stroke()
         ctx.restore()
+        if card.get("caption") and fg is not None:  # 例: "REAL PHOTO · 1859"
+            fh = fg.get_height() / self.scale
+            self.tag(card["caption"], W / 2, H * 0.42 + fh / 2 + 40, alpha=a, size=38)
 
     # -- 大きい文字・タイトル帯
     def draw_texts(self, s, lt):

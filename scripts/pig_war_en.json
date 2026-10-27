@@ -292,7 +292,11 @@
       "tts": "The Americans sent soldiers. The British sent warships, one of them with eighty-four cannons.",
       "card": {
         "ai": "comedic standoff on a grassy island shore: a small group of 1850s American soldiers in blue uniforms on the beach, a huge old British wooden warship with many cannons in the bay, a confused pink pig standing in the middle, bright sunny day",
-        "delay": 0.2
+        "delay": 0.2,
+        "photo": {
+          "query": "Pig War San Juan Island 1859"
+        },
+        "caption": "FROM THE ARCHIVES"
       },
       "texts": [
         {
