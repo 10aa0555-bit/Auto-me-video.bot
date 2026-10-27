@@ -120,8 +120,11 @@ def split_caption_en(text, max_words=3, max_chars=18):
         chunks.append(cur)
     out = []
     for c in chunks:
-        t = " ".join(w for w, _ in c).strip("—").rstrip(".,;:").strip()
-        out.append((t, c[0][1]))
+        words = [(w.rstrip(".,;:") if i == len(c) - 1 else w, pos) for i, (w, pos) in enumerate(c)]
+        words = [(w, pos) for w, pos in words if w.strip("—")]
+        if not words:
+            continue
+        out.append((" ".join(w for w, _ in words), words[0][1], words))
     return out
 
 
@@ -130,9 +133,10 @@ def caption_timings(text, start, dur, alignment=None, lang="ja"):
         pairs = split_caption_en(text)
         ok = alignment and "".join(alignment["characters"]) == text
         st = alignment["character_start_times_seconds"] if ok else None
-        times = [start + (st[pos] if ok else dur * pos / max(len(text), 1)) for _, pos in pairs]
-        times.append(start + dur)
-        return [(pairs[i][0], times[i], times[i + 1]) for i in range(len(pairs))]
+        at = lambda pos: start + (st[pos] if ok else dur * pos / max(len(text), 1))
+        times = [at(pos) for _, pos, _ in pairs] + [start + dur]
+        return [(pairs[i][0], times[i], times[i + 1], [(w, at(pos)) for w, pos in pairs[i][2]])
+                for i in range(len(pairs))]
     chunks = split_caption(text)
     total = sum(len(c) for c in chunks) or 1
     times = []
@@ -149,7 +153,7 @@ def caption_timings(text, start, dur, alignment=None, lang="ja"):
             times.append(start + dur * acc / total)
             acc += len(c)
     times.append(start + dur)
-    return [(chunks[i], times[i], times[i + 1]) for i in range(len(chunks))]
+    return [(chunks[i], times[i], times[i + 1], None) for i in range(len(chunks))]
 
 
 # ---------------------------------------------------------------- タイムライン
@@ -195,6 +199,8 @@ class Timeline:
             s["cam_to"] = target
             prev_cam = self._drifted(target, 1.0)
 
+        for s, nxt in zip(self.scenes, self.scenes[1:] + [None]):
+            s["year_changes"] = nxt is None or nxt["spec"].get("year") != s["spec"].get("year")
         self.sfx = self._sfx_events()
 
     def _sfx_events(self):
@@ -220,7 +226,10 @@ class Timeline:
             for i, tx in enumerate(sp.get("texts", [])):
                 ev.append((t0 + tx.get("delay", 0.5 + i * 0.3), "pop", {"pitch": 0.8}))
             if sp.get("banner"):
-                ev.append((t0 + sp["banner"].get("delay", 0.3), "thud", {}))
+                bt = t0 + sp["banner"].get("delay", 0.3)
+                if bt > 1.3:
+                    ev.append((bt - 1.2, "riser", {}))
+                ev.append((bt, "thud", {}))
         return ev
 
     @staticmethod
@@ -276,6 +285,7 @@ class Renderer:
         self.font = FONT if self.lang == "ja" else os.environ.get("GEO_FONT_EN", "Poppins Black")
         self.icons = Icons()
         self.flags = Flags()
+        self.out = 1.0
 
     # -- 座標変換
     def set_camera(self, cam):
@@ -394,6 +404,8 @@ class Renderer:
         u = ease(lt / FILL_FADE)
         before, after = s["fills_before"], s["fills_after"]
         keys = list(dict.fromkeys(list(before) + list(after)))
+        # 国全体 -> 国の一部 ("RUS@..") -> カスタム地域 の順に重ねる (飛び地が本土の塗りに隠れないように)
+        keys.sort(key=lambda k: 2 if k in self.world.custom and "@" not in k else 1 if "@" in k else 0)
         land = hex2rgba(STYLE["land"])
         for k in keys:
             shp = self.world.resolve(k)
@@ -443,14 +455,23 @@ class Renderer:
             ctx.fill()
             return
         flag = self.flags.get(value[5:])
-        # 影 -> 国旗 (国の形で切り抜き) -> 白い縁
+        # 影 -> 厚み -> 国旗 (国の形で切り抜き) -> 白い縁。少し浮き上がった板のように見せる
+        lift = 10 * alpha
         ctx.save()
-        ctx.translate(5, 9)
+        ctx.translate(6, 6 + lift * 1.6)
         ctx.new_path()
         self.path_shape(shp)
-        ctx.set_source_rgba(0, 0, 0, 0.45 * alpha)
+        ctx.set_source_rgba(0, 0, 0, 0.35 * alpha)
         ctx.fill()
         ctx.restore()
+        for d in (lift, lift * 0.66, lift * 0.33):
+            ctx.save()
+            ctx.translate(0, d)
+            ctx.new_path()
+            self.path_shape(shp)
+            ctx.set_source_rgba(0.82, 0.82, 0.86, alpha)
+            ctx.fill()
+            ctx.restore()
         b = shp.main_bbox
         x0, y0 = (b[0] - self.cx) * self.ppu + W / 2, (b[1] - self.cy) * self.ppu + H / 2
         x1, y1 = (b[2] - self.cx) * self.ppu + W / 2, (b[3] - self.cy) * self.ppu + H / 2
@@ -464,6 +485,7 @@ class Renderer:
         ctx.scale(k, k)
         ctx.set_source_surface(flag)
         ctx.get_source().set_filter(cairo.FILTER_GOOD)
+        ctx.get_source().set_extend(cairo.EXTEND_PAD)  # 本土から離れた島などは国旗の端の色で塗る
         ctx.paint_with_alpha(alpha)
         ctx.restore()
         ctx.new_path()
@@ -619,7 +641,7 @@ class Renderer:
             img = self.icons.get(ic["name"], size * self.scale * 1.15)
             for j in range(n):
                 d = delay + j * 0.08
-                k = ease_out_back((lt - d) / 0.45)
+                k = ease_out_back((lt - d) / 0.45) * self.out
                 if k < 0.02:  # 縮尺が 0 付近だと cairo の行列が特異になる
                     continue
                 r = spread * math.sqrt(j) * 0.9
@@ -658,7 +680,7 @@ class Renderer:
     def draw_texts(self, s, lt):
         for i, tx in enumerate(s["spec"].get("texts", [])):
             delay = tx.get("delay", 0.5 + i * 0.3)
-            k = ease_out_back((lt - delay) / 0.4)
+            k = ease_out_back((lt - delay) / 0.4) * self.out
             if k < 0.02:
                 continue
             text = tx["text"]
@@ -753,7 +775,7 @@ class Renderer:
         ctx = self.ctx
         for i, m in enumerate(s["spec"].get("markers", [])):
             delay = m.get("delay", 0.4 + i * 0.25)
-            k = ease_out_back((lt - delay) / 0.45)
+            k = ease_out_back((lt - delay) / 0.45) * self.out
             if k < 0.02:
                 continue
             x, y = self.to_px(*m["at"])
@@ -839,7 +861,7 @@ class Renderer:
     def draw_labels(self, s, lt):
         for i, lb in enumerate(s["spec"].get("labels", [])):
             delay = lb.get("delay", 0.5 + i * 0.2)
-            a = ease((lt - delay) / 0.4)
+            a = ease((lt - delay) / 0.4) * self.out
             if a <= 0:
                 continue
             lon, lat = lb["at"] if "at" in lb else self.world.label_pos(lb["of"])
@@ -850,7 +872,7 @@ class Renderer:
         year = s["spec"].get("year")
         if not year:
             return
-        k = ease_out_back(lt / 0.5)
+        k = ease_out_back(lt / 0.5) * (self.out if s.get("year_changes") else 1.0)
         if k < 0.02:
             return
         ctx = self.ctx
@@ -862,7 +884,10 @@ class Renderer:
         ctx.restore()
 
     def draw_caption(self, t, timeline):
-        for text, t0, t1 in timeline.captions:
+        for text, t0, t1, words in timeline.captions:
+            if t0 <= t < t1 and words:
+                self._karaoke(words, t, t0)
+                return
             if t0 <= t < t1:
                 pop = ease_out_back((t - t0) / 0.18)
                 ctx = self.ctx
@@ -875,6 +900,28 @@ class Renderer:
                     self.text(ln, 0, (j - (len(lines) - 1) / 2) * 90, size)
                 ctx.restore()
                 return
+
+    def _karaoke(self, words, t, t0, size=78):
+        """今しゃべっている単語だけ黄色く少し大きく (TikTok 風)。"""
+        ctx = self.ctx
+        pop = ease_out_back((t - t0) / 0.18)
+        ctx.save()
+        ctx.translate(W / 2, H * 0.68)
+        ctx.scale(0.85 + 0.15 * pop, 0.85 + 0.15 * pop)
+        ctx.select_font_face(self.font, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(size)
+        space = size * 0.32
+        active = max([i for i, (_, tw) in enumerate(words) if tw <= t + 0.03] or [0])
+        sizes = [size * (1.08 if i == active else 1.0) for i in range(len(words))]
+        widths = []
+        for (w, _), sz in zip(words, sizes):
+            ctx.set_font_size(sz)
+            widths.append(ctx.text_extents(w).x_advance)
+        x = -(sum(widths) + space * (len(words) - 1)) / 2
+        for i, ((w, _), wd, sz) in enumerate(zip(words, widths, sizes)):
+            self.text(w, x + wd / 2, 0, sz, color="#ffe14d" if i == active else "#ffffff")
+            x += wd + space
+        ctx.restore()
 
     def _wrap(self, text, size, maxw):
         ctx = self.ctx
@@ -892,10 +939,45 @@ class Renderer:
         cut = min(cands, key=lambda i: abs(i - mid)) if cands else len(text) // 2
         return [text[:cut], text[cut:]]
 
+    def motion_blur(self, t):
+        """カメラが速く動いている間だけ、移動方向のブラーとズームブラーをかける。"""
+        import cv2
+        cur = (self.cx, self.cy, self.ppu, t)
+        prev, self.prev_cam = getattr(self, "prev_cam", None), cur
+        if prev is None or not (0 < t - prev[3] < 0.1):
+            return
+        k = self.scale * self.ppu
+        dx, dy = (self.cx - prev[0]) * k, (self.cy - prev[1]) * k
+        dz = math.log(self.ppu / prev[2])
+        move = math.hypot(dx, dy)
+        if move < 3 and abs(dz) < 0.006:
+            return
+        px = self._pixels()
+        img = np.ascontiguousarray(px[..., :3])
+        if move >= 3:
+            n = int(min(move * 0.9, 70)) | 1
+            ker = np.zeros((n, n), np.float32)
+            c = n // 2
+            ux, uy = dx / move, dy / move
+            cv2.line(ker, (int(c - ux * c), int(c - uy * c)), (int(c + ux * c), int(c + uy * c)), 1.0, 1)
+            img = cv2.filter2D(img, -1, ker / ker.sum())
+        if abs(dz) >= 0.006:
+            h, w = img.shape[:2]
+            acc = img.astype(np.float32)
+            steps = 4
+            for j in range(1, steps):
+                f = 1 + (math.exp(dz * 1.6) - 1) * j / steps
+                m = cv2.getRotationMatrix2D((w / 2, h / 2), 0, f)
+                acc += cv2.warpAffine(img, m, (w, h), borderMode=cv2.BORDER_REFLECT)
+            img = (acc / steps).astype(np.uint8)
+        px[..., :3] = img
+        self.surface.mark_dirty()
+
     # -- 1 フレーム
     def frame(self, t, timeline):
         i, s, lt = timeline.scene_at(t)
         self.t = t
+        self.out = ease((s["dur"] - lt) / 0.22) if i < len(timeline.scenes) - 1 else 1.0
         self.set_camera(timeline.camera(s, lt))
         self.ctx.set_dash([])
         self.draw_base()
@@ -903,13 +985,17 @@ class Renderer:
         self.draw_outlines(s, lt)
         if self.sat is not None:
             self.draw_clouds()
+        self.motion_blur(t)
         self.ctx.save()
         self.ctx.identity_matrix()
         self.ctx.set_source_surface(self.overlay)
         self.ctx.paint()
         self.ctx.restore()
+        self.ctx.push_group()
         self.draw_circles(s, lt)
         self.draw_lines(s, lt)
+        self.ctx.pop_group_to_source()
+        self.ctx.paint_with_alpha(self.out)
         self.draw_markers(s, lt)
         self.draw_icons(s, lt)
         self.draw_labels(s, lt)

@@ -64,6 +64,7 @@ Secrets に `ELEVENLABS_API_KEY` が必要です。完成した mp4 と投稿文
 
 国の指定は ISO 3 文字コード (`POL`, `LTU`, ...)。国の一部だけ塗るときは `"RUS@20.5,54.7"` のように
 その地点を含む島・飛び地だけを指定できます。地図データは Natural Earth 1:50m (パブリックドメイン)。
+クリミア半島は国連の立場に合わせてウクライナ (`UKR`) に含めています。
 
 アイコン名は [Fluent Emoji](https://github.com/microsoft/fluentui-emoji/tree/main/assets) のフォルダ名
 (例: `castle`, `ship`, `person walking`, `loudly crying face`)。場面転換の風切り音・ポップ音などの

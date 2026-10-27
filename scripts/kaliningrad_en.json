@@ -6,7 +6,9 @@
     "id": "pNInz6obpgDQGcFmaJgB",
     "model": "eleven_multilingual_v2",
     "settings": {
-      "speed": 1.05
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
     }
   },
   "music": {
@@ -106,7 +108,16 @@
           "size": 190,
           "delay": 1.8
         }
-      ]
+      ],
+      "banner": {
+        "lines": [
+          "RUSSIA CAN'T",
+          "REACH THIS LAND?"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 80
+      }
     },
     {
       "narration": "This is Kaliningrad, squeezed between Poland and Lithuania, over a thousand kilometers from Moscow.",

@@ -57,7 +57,14 @@ def _grade(img):
     hsv[..., 0] -= sea * 8
     hsv[..., 1] *= 1 - sea * 0.35
     hsv[..., 2] *= 1 - sea * 0.2
-    return cv2.cvtColor(hsv.astype(np.uint8), cv2.COLOR_HSV2BGR)
+    img = cv2.cvtColor(hsv.astype(np.uint8), cv2.COLOR_HSV2BGR)
+    # 地形と海底地形のメリハリ (局所コントラスト) + 軽いシャープ
+    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
+    clahe = cv2.createCLAHE(clipLimit=1.8, tileGridSize=(32, 16))
+    lab[..., 0] = clahe.apply(lab[..., 0])
+    img = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+    blur = cv2.GaussianBlur(img, (0, 0), 1.2)
+    return cv2.addWeighted(img, 1.4, blur, -0.4, 0)
 
 
 class SatelliteLayer:

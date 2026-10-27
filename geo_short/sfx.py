@@ -65,7 +65,19 @@ def ding():
     return x * _env(n, 0.002, 0.25) * 0.35
 
 
-SOUNDS = {"whoosh": whoosh, "pop": pop, "thud": thud, "tick": tick, "ding": ding}
+def riser(dur=1.2):
+    """盛り上げ: 高くなっていくノイズ + 上昇音。最後に向かって大きくなる。"""
+    n = int(dur * SR)
+    u = np.linspace(0, 1, n)
+    noise = np.random.default_rng(5).standard_normal(n)
+    x = _lowpass(noise, 300 + 6000 * u ** 2) * 0.6
+    f = 200 + 900 * u ** 2
+    tone = np.sin(2 * np.pi * np.cumsum(f) / SR) * 0.25
+    x = (x / (np.abs(x).max() + 1e-9) + tone) * u ** 2
+    return x * 0.55
+
+
+SOUNDS = {"riser": riser, "whoosh": whoosh, "pop": pop, "thud": thud, "tick": tick, "ding": ding}
 
 
 def render_track(events, total, path, gain=0.35):

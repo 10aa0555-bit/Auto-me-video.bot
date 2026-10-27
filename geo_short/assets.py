@@ -80,11 +80,45 @@ class Icons:
         raise KeyError(f"アイコンが見つかりません: '{name}' "
                        "(https://github.com/microsoft/fluentui-emoji/tree/main/assets の名前を指定)")
 
-    def get(self, name, size):
-        key = (name, int(size))
+    def get(self, name, size, sticker=True):
+        key = (name, int(size), sticker)
         if key not in self.mem:
-            self.mem[key] = _png_surface(self._fetch(name), int(size))
+            surf = _png_surface(self._fetch(name), int(size))
+            self.mem[key] = _sticker(surf) if sticker else surf
         return self.mem[key]
+
+
+def _sticker(src):
+    """アイコンの周りに白いフチを付けてステッカー風にする (サイズは同じに保つ)。"""
+    import cv2
+    import numpy as np
+    w, h = src.get_width(), src.get_height()
+    r = max(2, int(w * 0.045))
+    # 周囲に余白を作ってからフチを描き、元のサイズに縮める
+    pw, ph = w + 4 * r, h + 4 * r
+    pad = cairo.ImageSurface(cairo.FORMAT_ARGB32, pw, ph)
+    c = cairo.Context(pad)
+    c.set_source_surface(src, 2 * r, 2 * r)
+    c.paint()
+    pad.flush()
+    arr = np.ndarray((ph, pad.get_stride() // 4, 4), np.uint8, buffer=pad.get_data())[:, :pw]
+    alpha = arr[..., 3].copy()
+    ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * r + 1, 2 * r + 1))
+    edge = cv2.GaussianBlur(cv2.dilate(alpha, ker), (0, 0), 0.8)
+    out = cairo.ImageSurface(cairo.FORMAT_ARGB32, pw, ph)
+    oarr = np.ndarray((ph, out.get_stride() // 4, 4), np.uint8, buffer=out.get_data())[:, :pw]
+    oarr[...] = edge[..., None]  # 白 (プリマルチプライド)
+    out.mark_dirty()
+    c = cairo.Context(out)
+    c.set_source_surface(pad)
+    c.paint()
+    fin = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
+    c = cairo.Context(fin)
+    c.scale(w / pw, h / ph)
+    c.set_source_surface(out)
+    c.get_source().set_filter(cairo.FILTER_BEST)
+    c.paint()
+    return fin
 
 
 class Flags:
