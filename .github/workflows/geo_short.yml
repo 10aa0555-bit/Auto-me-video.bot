@@ -13,6 +13,7 @@ on:
     paths:
       - "scripts/*.json"
       - "geo_short/**"
+      - "!geo_short/**/*.md"
 
 permissions:
   contents: write
