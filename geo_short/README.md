@@ -11,6 +11,15 @@ python -m geo_short.build scripts/kaliningrad.json --still 20       # 20 秒地�
 python -m geo_short.build scripts/kaliningrad.json --bgm bgm.mp3    # BGM を薄く敷く
 ```
 
+## 見た目
+
+台本のトップレベルに `"style"` を書いて切り替えます。
+
+- `"satellite"` (既定): NASA Blue Marble の衛星写真 + 流れる雲。初回に 21600px 版
+  (約 1.9km/px, パブリックドメイン) を NASA から `~/.cache/geo_short/` に取得し、
+  取れなければ `basemap-data` 同梱の 5400px 版を使います。`GEO_SAT_TEXTURE` で任意の画像を指定可。
+- `"parchment"`: 古地図風のフラットな配色
+
 GitHub Actions の「Geo Short Video」を手動実行しても作れます (Secrets に `ELEVENLABS_API_KEY` が必要)。
 
 ## 台本の書き方

@@ -187,7 +187,14 @@ class Renderer:
         self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.w, self.h)
         self.ctx = cairo.Context(self.surface)
         self.ctx.scale(scale, scale)
+        # "satellite" (衛星写真) か "parchment" (古地図風のフラット)
+        self.style = script.get("style", "satellite")
+        self.sat = None
+        if self.style == "satellite":
+            from .satellite import SatelliteLayer
+            self.sat = SatelliteLayer(self.w, self.h)
         self.overlay = self._make_overlay()
+        self.t = 0.0
 
     # -- 座標変換
     def set_camera(self, cam):
@@ -228,9 +235,11 @@ class Renderer:
         c.scale(self.scale, self.scale)
         g = cairo.RadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.75)
         g.add_color_stop_rgba(0, 0, 0, 0, 0)
-        g.add_color_stop_rgba(1, 0, 0, 0, 0.45)
+        g.add_color_stop_rgba(1, 0, 0, 0, 0.45 if self.sat is None else 0.35)
         c.set_source(g)
         c.paint()
+        if self.sat is not None:
+            return surf
         rng = np.random.default_rng(7)
         n = (rng.random((self.h, self.w)) * 255).astype(np.uint8)
         a = np.full((self.h, self.w), 14, np.uint8)
@@ -242,7 +251,40 @@ class Renderer:
         c.paint()
         return surf
 
+    def _pixels(self):
+        self.surface.flush()
+        stride = self.surface.get_stride()
+        return np.ndarray((self.h, stride // 4, 4), np.uint8, buffer=self.surface.get_data())[:, :self.w]
+
+    def draw_satellite(self):
+        px = self._pixels()
+        px[..., :3] = self.sat.render(self.cx, self.cy, self.ppu * self.scale, self.t)
+        px[..., 3] = 255
+        self.surface.mark_dirty()
+        # 国境線は細く白っぽく
+        ctx = self.ctx
+        ctx.new_path()
+        for shp in self.world.shapes.values():
+            if self.visible(shp.bbox):
+                self.path_shape(shp)
+        ctx.set_source_rgba(1, 1, 1, 0.38)
+        ctx.set_line_width(max(1.2, min(2.2, self.ppu / 7000)))
+        ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+        ctx.stroke()
+
+    def draw_clouds(self):
+        a, strength = self.sat.cloud_alpha(self.ppu * self.scale, self.t, self.cx, self.cy)
+        if a is None:
+            return
+        px = self._pixels()
+        k = (a * strength)[..., None]
+        rgb = px[..., :3].astype(np.float32)
+        px[..., :3] = (rgb + (232.0 - rgb) * k).astype(np.uint8)
+        self.surface.mark_dirty()
+
     def draw_base(self):
+        if self.sat is not None:
+            return self.draw_satellite()
         ctx = self.ctx
         g = cairo.LinearGradient(0, 0, 0, H)
         g.add_color_stop_rgba(0, *hex2rgba(STYLE["ocean"]))
@@ -276,17 +318,28 @@ class Renderer:
             shp = self.world.resolve(k)
             if not self.visible(shp.bbox):
                 continue
-            base = land if k not in self.world.custom else land[:3] + (0.0,)
-            c0 = hex2rgba(before[k]) if k in before else base
-            c1 = hex2rgba(after[k]) if k in after else base
+            if self.sat is not None or k in self.world.custom:
+                c0 = hex2rgba(before[k]) if k in before else None
+                c1 = hex2rgba(after[k]) if k in after else None
+                # 無い側は「同じ色で透明」にしてフェードさせる
+                c0 = c0 or c1[:3] + (0.0,)
+                c1 = c1 or c0[:3] + (0.0,)
+            else:
+                c0 = hex2rgba(before[k]) if k in before else land
+                c1 = hex2rgba(after[k]) if k in after else land
             col = lerp(c0, c1, u)
             if col[3] <= 0.001:
                 continue
             self.ctx.new_path()
             self.path_shape(shp)
-            self.ctx.set_source_rgba(*col)
-            self.ctx.fill_preserve()
-            self.ctx.set_source_rgba(0.12, 0.1, 0.08, 0.55 * col[3])
+            if self.sat is not None:  # 地形が透けるように半透明で塗る
+                self.ctx.set_source_rgba(col[0], col[1], col[2], col[3] * 0.8)
+                self.ctx.fill_preserve()
+                self.ctx.set_source_rgba(1, 1, 1, 0.7 * col[3])
+            else:
+                self.ctx.set_source_rgba(*col)
+                self.ctx.fill_preserve()
+                self.ctx.set_source_rgba(0.12, 0.1, 0.08, 0.55 * col[3])
             self.ctx.set_line_width(2.2)
             self.ctx.stroke()
 
@@ -508,11 +561,14 @@ class Renderer:
     # -- 1 フレーム
     def frame(self, t, timeline):
         i, s, lt = timeline.scene_at(t)
+        self.t = t
         self.set_camera(timeline.camera(s, lt))
         self.ctx.set_dash([])
         self.draw_base()
         self.draw_fills(s, lt)
         self.draw_outlines(s, lt)
+        if self.sat is not None:
+            self.draw_clouds()
         self.ctx.save()
         self.ctx.identity_matrix()
         self.ctx.set_source_surface(self.overlay)
