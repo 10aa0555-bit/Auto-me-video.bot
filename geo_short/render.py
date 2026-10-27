@@ -228,6 +228,8 @@ class Timeline:
             for g in sp.get("ghosts", []):
                 if g.get("to") and g.get("to") != g.get("from"):
                     ev.append((t0 + g.get("delay", 0.4) + 0.3, "whoosh", {"dur": 0.9, "seed": 7}))
+            if sp.get("card"):
+                ev.append((t0 + sp["card"].get("delay", 0.15), "whoosh", {"dur": 0.6, "seed": 11}))
             if sp.get("cta"):
                 ct = t0 + sp["cta"].get("delay", 0.5)
                 ev.append((ct, "pop", {"pitch": 1.2}))
@@ -295,12 +297,14 @@ class Renderer:
             self.sat = SatelliteLayer(self.w, self.h)
         self.overlay = self._make_overlay()
         self.t = 0.0
-        from .assets import Flags, Icons, install_fonts
+        from .assets import AIArt, Flags, Icons, install_fonts
         install_fonts()
         self.lang = script.get("lang", "ja")
         self.font = FONT if self.lang == "ja" else os.environ.get("GEO_FONT_EN", "Poppins Black")
         self.icons = Icons()
         self.flags = Flags()
+        self.art = AIArt(script.get("art_style"))
+        self.card_cache = {}
         self.out = 1.0
         self.flag_cache = {}
         self.timeline = None
@@ -724,7 +728,9 @@ class Renderer:
                 m = ease((lt - delay - 0.3) / ic.get("travel_time", 2.0))
                 bx, by = bx + (tx - bx) * m, by + (ty - by) * m
             spread = ic.get("spread", size * 0.75)
-            img = self.icons.get(ic["name"], size * self.scale * 1.15)
+            img = self.art.get(ic["ai"], "cutout", size * self.scale * 1.15) if ic.get("ai") else None
+            if img is None:  # AI イラストが無ければ 3D アイコンで代用
+                img = self.icons.get(ic.get("name", "sparkles"), size * self.scale * 1.15)
             for j in range(n):
                 d = delay + j * 0.08
                 k = ease_out_back((lt - d) / 0.45) * self.out
@@ -880,6 +886,84 @@ class Renderer:
             ctx.set_source_surface(hand)
             ctx.paint_with_alpha(fade)
             ctx.restore()
+
+    # -- 全画面の挿絵カード (AI イラスト)
+    def _card_layers(self, prompt):
+        """(背景: ぼかして画面いっぱい, 前景: 画面幅に合わせた絵) の cairo サーフェス。"""
+        if prompt in self.card_cache:
+            return self.card_cache[prompt]
+        import cv2
+        path = self.art._path(prompt, "card")
+        if not os.path.exists(path):
+            self.card_cache[prompt] = None
+            return None
+        img = cv2.imread(path, cv2.IMREAD_COLOR)
+        h, w = img.shape[:2]
+        tw, th = self.w, self.h
+
+        def to_surface(bgr):
+            hh, ww = bgr.shape[:2]
+            arr = np.dstack([bgr, np.full((hh, ww), 255, np.uint8)])
+            surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, ww, hh)
+            np.ndarray((hh, surf.get_stride() // 4, 4), np.uint8, buffer=surf.get_data())[:, :ww] = arr
+            surf.mark_dirty()
+            return surf
+
+        k = max(tw / w, th / h)
+        cover = cv2.resize(img, (int(w * k) + 1, int(h * k) + 1), interpolation=cv2.INTER_AREA)
+        y0, x0 = (cover.shape[0] - th) // 2, (cover.shape[1] - tw) // 2
+        cover = cover[y0:y0 + th, x0:x0 + tw]
+        if abs(w / h - tw / th) < 0.08:  # 縦長の絵はそのまま画面いっぱいに
+            layers = (to_surface(cover), None)
+        else:  # 正方形の絵は、ぼかした背景の上に画面幅で置く
+            bg = cv2.GaussianBlur(cover, (0, 0), 28)
+            bg = (bg * 0.6).astype(np.uint8)
+            fw = int(tw * 0.94)
+            fg = cv2.resize(img, (fw, int(h * fw / w)), interpolation=cv2.INTER_AREA)
+            layers = (to_surface(bg), to_surface(fg))
+        self.card_cache[prompt] = layers
+        return layers
+
+    def draw_card(self, s, lt):
+        card = s["spec"].get("card")
+        if not card:
+            return
+        layers = self._card_layers(card["ai"])
+        if layers is None:
+            return
+        delay = card.get("delay", 0.15)
+        a = ease((lt - delay) / 0.35) * self.out
+        if a <= 0.01:
+            return
+        bg, fg = layers
+        zoom = 1.0 + card.get("zoom", 0.07) * min(1.0, max(0.0, lt - delay) / max(s["dur"], 1e-6))
+        ctx = self.ctx
+        ctx.save()
+        ctx.identity_matrix()
+        ctx.translate(self.w / 2, self.h / 2)
+        ctx.scale(zoom, zoom)
+        ctx.translate(-self.w / 2, -self.h / 2)
+        ctx.set_source_surface(bg, 0, 0)
+        ctx.paint_with_alpha(a)
+        if fg is not None:
+            fw, fh = fg.get_width(), fg.get_height()
+            x, y = (self.w - fw) / 2, self.h * 0.42 - fh / 2
+            r = 28 * self.scale
+            ctx.new_path()
+            ctx.arc(x + r, y + r, r, math.pi, 1.5 * math.pi)
+            ctx.arc(x + fw - r, y + r, r, 1.5 * math.pi, 2 * math.pi)
+            ctx.arc(x + fw - r, y + fh - r, r, 0, 0.5 * math.pi)
+            ctx.arc(x + r, y + fh - r, r, 0.5 * math.pi, math.pi)
+            ctx.close_path()
+            ctx.save()
+            ctx.clip_preserve()
+            ctx.set_source_surface(fg, x, y)
+            ctx.paint_with_alpha(a)
+            ctx.restore()
+            ctx.set_source_rgba(1, 1, 1, 0.9 * a)
+            ctx.set_line_width(6 * self.scale)
+            ctx.stroke()
+        ctx.restore()
 
     # -- 大きい文字・タイトル帯
     def draw_texts(self, s, lt):
@@ -1206,6 +1290,7 @@ class Renderer:
         self.draw_markers(s, lt)
         self.draw_icons(s, lt)
         self.draw_labels(s, lt)
+        self.draw_card(s, lt)
         self.draw_texts(s, lt)
         self.draw_banner(s, lt)
         self.draw_cta(s, lt)

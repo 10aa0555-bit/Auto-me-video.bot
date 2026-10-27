@@ -152,3 +152,141 @@ class Flags:
             png = cairosvg.svg2png(url=svg, output_width=width)
             self.mem[code] = cairo.ImageSurface.create_from_png(io.BytesIO(png))
         return self.mem[code]
+
+
+# ---------------------------------------------------------------- AI イラスト
+
+ART_STYLE = ("stylized 3D animated-film cartoon illustration, rounded friendly shapes, expressive, "
+             "soft studio lighting, vibrant saturated colors, high detail, no text, no letters, no watermark")
+CUTOUT_HINT = "single subject, full body, centered, isolated on a plain pure white background, no shadow"
+
+
+class AIArt:
+    """台本に書いた説明文から AI でイラストを描く (結果は保存して再利用)。
+
+    使う画像生成サービスは環境変数で決まる:
+    - GEMINI_API_KEY: Google Gemini の画像生成 (高品質、有料)
+    - CF_ACCOUNT_ID + CF_API_TOKEN: Cloudflare Workers AI の FLUX.1 schnell (無料枠あり、Apache 2.0)
+    どちらも無ければ None を返し、呼び出し側は 3D アイコンで代用する。
+    """
+
+    def __init__(self, style=None):
+        self.dir = os.path.join(CACHE, "art")
+        os.makedirs(self.dir, exist_ok=True)
+        self.style = style or ART_STYLE
+        self.mem = {}
+        forced = os.environ.get("GEO_ART_PROVIDER")
+        if forced:
+            self.provider = forced
+        elif os.environ.get("GEMINI_API_KEY"):
+            self.provider = "gemini"
+        elif os.environ.get("CF_ACCOUNT_ID") and os.environ.get("CF_API_TOKEN"):
+            self.provider = "cloudflare"
+        else:
+            self.provider = None
+
+    def _path(self, prompt, kind):
+        import hashlib
+        h = hashlib.sha256(f"{self.style}|{kind}|{prompt}".encode()).hexdigest()[:20]
+        return os.path.join(self.dir, f"{kind}_{h}.png")
+
+    def _generate(self, prompt, aspect):
+        import base64
+        if self.provider == "gemini":
+            model = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
+            r = requests.post(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "Content-Type": "application/json"},
+                json={"contents": [{"parts": [{"text": prompt}]}],
+                      "generationConfig": {"responseModalities": ["IMAGE"],
+                                           "imageConfig": {"aspectRatio": aspect}}},
+                timeout=180)
+            r.raise_for_status()
+            for cand in r.json().get("candidates", []):
+                for part in cand.get("content", {}).get("parts", []):
+                    data = (part.get("inlineData") or part.get("inline_data") or {}).get("data")
+                    if data:
+                        return base64.b64decode(data)
+            raise RuntimeError(f"Gemini が画像を返しませんでした: {r.text[:300]}")
+        if self.provider == "cloudflare":
+            acct, token = os.environ["CF_ACCOUNT_ID"], os.environ["CF_API_TOKEN"]
+            r = requests.post(
+                f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/@cf/black-forest-labs/flux-1-schnell",
+                headers={"Authorization": f"Bearer {token}"},
+                json={"prompt": prompt, "steps": 8}, timeout=180)
+            r.raise_for_status()
+            return base64.b64decode(r.json()["result"]["image"])
+        raise RuntimeError("AI イラストのサービスが設定されていません")
+
+    def prepare(self, prompt, kind):
+        """kind: "cutout" (地図に乗せる切り抜き) / "card" (全画面の挿絵)。保存先のパスを返す。"""
+        path = self._path(prompt, kind)
+        if os.path.exists(path):
+            return path
+        if not self.provider:
+            return None
+        if kind == "cutout":
+            full = f"{prompt}. {CUTOUT_HINT}. {self.style}"
+            raw = self._generate(full, "1:1")
+            png = _cutout(raw)
+        else:
+            full = f"{prompt}. Cinematic vertical composition. {self.style}"
+            png = self._generate(full, "9:16")
+        with open(path, "wb") as f:
+            f.write(png)
+        print(f"  AI イラスト生成 ({self.provider}, {kind}): {prompt[:60]}")
+        return path
+
+    def get(self, prompt, kind, size):
+        """cairo サーフェス (size px 角に収まる大きさ) または None。"""
+        key = (prompt, kind, int(size))
+        if key not in self.mem:
+            path = self._path(prompt, kind)
+            if not os.path.exists(path):
+                self.mem[key] = None
+            else:
+                with open(path, "rb") as f:
+                    surf = _png_surface(f.read(), int(size))
+                self.mem[key] = _sticker(surf) if kind == "cutout" else surf
+        return self.mem[key]
+
+
+def _cutout(data):
+    """白っぽい無地の背景を消して PNG (透過) にする。rembg があればそれを使う。"""
+    import cv2
+    import numpy as np
+    try:
+        from rembg import remove
+        out = remove(data)
+        img = cv2.imdecode(np.frombuffer(out, np.uint8), cv2.IMREAD_UNCHANGED)
+    except ImportError:
+        img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
+        h, w = img.shape[:2]
+        mask = np.zeros((h + 2, w + 2), np.uint8)
+        flags = 4 | cv2.FLOODFILL_MASK_ONLY | (255 << 8)
+        # 画像の縁から、背景色に近い所を塗りつぶして背景とみなす
+        for x in range(0, w, 16):
+            for y in (0, h - 1):
+                if mask[y + 1, x + 1] == 0 and img[y, x].min() > 200:
+                    cv2.floodFill(img, mask, (x, y), 0, (14, 14, 14), (14, 14, 14), flags)
+        for y in range(0, h, 16):
+            for x in (0, w - 1):
+                if mask[y + 1, x + 1] == 0 and img[y, x].min() > 200:
+                    cv2.floodFill(img, mask, (x, y), 0, (14, 14, 14), (14, 14, 14), flags)
+        bg = mask[1:-1, 1:-1] > 0
+        alpha = np.where(bg, 0, 255).astype(np.uint8)
+        alpha = cv2.morphologyEx(alpha, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+        alpha = cv2.erode(alpha, np.ones((2, 2), np.uint8))
+        alpha = cv2.GaussianBlur(alpha, (0, 0), 0.8)
+        img = np.dstack([img, alpha])
+    # 余白を詰めて正方形にそろえる (サイズ指定どおりの大きさで出るように)
+    a = img[..., 3]
+    ys, xs = np.nonzero(a > 10)
+    if len(xs):
+        img = img[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+    h, w = img.shape[:2]
+    s = max(h, w)
+    sq = np.zeros((s, s, 4), np.uint8)
+    sq[(s - h) // 2:(s - h) // 2 + h, (s - w) // 2:(s - w) // 2 + w] = img
+    ok, buf = cv2.imencode(".png", sq)
+    return buf.tobytes()

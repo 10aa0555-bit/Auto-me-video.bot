@@ -91,6 +91,24 @@ def prepare_bgm(script, workdir, total, override=None):
     return wav
 
 
+def prepare_art(script):
+    """台本に書かれた AI イラストを先にまとめて描いておく (失敗しても 3D アイコンで代用して続ける)。"""
+    from .assets import AIArt
+    art = AIArt(script.get("art_style"))
+    jobs = [(ic["ai"], "cutout") for sc in script["scenes"] for ic in sc.get("icons", []) if ic.get("ai")]
+    jobs += [(sc["card"]["ai"], "card") for sc in script["scenes"] if sc.get("card", {}).get("ai")]
+    if not jobs:
+        return
+    if not art.provider:
+        print("※ AI イラストのサービスが未設定のため、3D アイコンで代用します")
+        return
+    for prompt, kind in dict.fromkeys(jobs):
+        try:
+            art.prepare(prompt, kind)
+        except Exception as e:  # noqa: BLE001 — 1 枚の失敗で動画全体を止めない
+            print(f"  AI イラスト失敗 ({kind}): {prompt[:50]} -> {e}")
+
+
 def write_post(script, path):
     """投稿用のタイトル・説明・ハッシュタグをテキストに書き出す。"""
     post = script.get("post")
@@ -133,6 +151,7 @@ def main():
     durations = scene_durations(script, workdir, have_audio)
     timeline = Timeline(script, durations, alignments)
 
+    prepare_art(script)
     scale = 0.5 if args.preview else 1.0
     fps = 15 if args.preview else args.fps
     r = Renderer(script, scale=scale)

@@ -68,6 +68,8 @@ jobs:
           # 無料の音声合成 Kokoro (ElevenLabs のクレジットが足りないときに使う)。CPU 版 PyTorch で軽く
           pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install "kokoro>=0.9" soundfile
+          # AI イラストの背景をきれいに消す (無ければ簡易な背景除去で代用)
+          pip install "rembg[cpu]" || true
 
       # 衛星画像・アイコン・国旗・音声モデル・作ったナレーションを次回に持ち越す
       # (毎回新しいキーで保存し、前回分から復元する)
@@ -85,8 +87,13 @@ jobs:
         if: steps.pick.outputs.scripts != ''
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          # AI イラスト (どちらか片方あれば使う。無ければ 3D アイコンで代用)
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         run: |
           export HF_HOME="$HOME/.cache/geo_short/hf"  # Kokoro の音声モデルもキャッシュに入れる
+          export U2NET_HOME="$HOME/.cache/geo_short/u2net"  # 背景除去のモデルも
           for s in ${{ steps.pick.outputs.scripts }}; do
             python -m geo_short.build "$s" --require-tts
           done

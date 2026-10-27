@@ -1,0 +1,90 @@
+{
+  "title": "The Great Emu War (illustrated)",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {"engine": "auto", "kokoro_voice": "af_heart", "settings": {"speed": 1.1, "stability": 0.4, "style": 0.35}},
+  "music": {"prompt": "Mock-epic comedic war documentary music, light snare drum march, playful brass, no vocals", "volume": 0.22, "bpm": 108},
+  "post": {
+    "title": "Australia declared war on birds… and LOST 🐦",
+    "description": "The Great Emu War of 1932: two machine guns, 10,000 rounds of ammo, and around 20,000 emus. Guess who won.",
+    "hashtags": ["#history", "#australia", "#emuwar", "#funnyhistory", "#didyouknow", "#storytime", "#shorts"],
+    "pinned_comment": "Team Emu 🐦 or Team Army 🪖? 👇"
+  },
+  "scenes": [
+    {
+      "narration": "In 1932, the Australian army declared war... on a bird. And the bird won.",
+      "tts": "In nineteen thirty-two, the Australian army declared war... on a bird. And the bird won.",
+      "camera": {"center": [134, -26], "span": 48},
+      "fill": {"AUS": "flag:au"},
+      "icons": [{"ai": "a proud emu wearing a tiny green army helmet, chest puffed out", "name": "dodo", "at": [124, -28], "size": 300, "delay": 0.9}],
+      "banner": {"lines": ["THE GREAT", "EMU WAR"], "y": 0.18, "delay": 0.15, "size": 90}
+    },
+    {
+      "narration": "It started after World War One, when thousands of veterans were given land in Western Australia to grow wheat.",
+      "camera": {"center": [118.5, -31.0], "span": 14},
+      "fill": {"AUS": null},
+      "icons": [{"ai": "a friendly 1920s Australian farmer in a wide-brimmed hat holding a bundle of golden wheat", "name": "tractor", "at": [118.6, -31.2], "size": 300, "delay": 1.0}]
+    },
+    {
+      "narration": "Then, around twenty thousand emus showed up... and started eating everything.",
+      "camera": {"center": [118.5, -31.0], "span": 14},
+      "icons": [{"ai": "a hungry emu greedily eating golden wheat stalks, crumbs flying", "name": "dodo", "at": [121.5, -30.2], "to": [118.8, -31.0], "size": 190, "count": 5, "spread": 110, "delay": 0.4, "travel_time": 2.6}],
+      "texts": [{"text": "{n} EMUS", "count": 20000, "accent": ["EMUS"], "y": 0.22, "size": 92, "delay": 1.2}]
+    },
+    {
+      "narration": "The farmers begged for help. And the government sent... machine guns.",
+      "flash": true,
+      "card": {"ai": "comedic scene: 1930s Australian soldiers in slouch hats proudly riding an old farm truck with a vintage machine gun mounted on it, driving into a golden wheat field full of curious emus, bright sunny outback sky", "delay": 0.2},
+      "year": "1932"
+    },
+    {
+      "narration": "Major Meredith led the mission, with two Lewis guns and ten thousand rounds of ammunition.",
+      "camera": {"center": [118.5, -31.0], "span": 10},
+      "icons": [{"ai": "a confident 1930s army major with a big moustache saluting, cartoon, khaki uniform", "name": "military helmet", "at": [117.8, -31.2], "size": 290, "delay": 0.4}],
+      "texts": [{"text": "{n} ROUNDS", "count": 10000, "accent": ["ROUNDS"], "y": 0.22, "size": 92, "delay": 2.6}]
+    },
+    {
+      "narration": "But this is where it gets ridiculous.",
+      "camera": {"center": [118.5, -31.0], "span": 8},
+      "icons": [{"ai": "an emu raising one eyebrow with a smug grin", "name": "face with monocle", "at": [118.5, -31.0], "size": 320, "anim": "bob", "delay": 0.2}]
+    },
+    {
+      "narration": "The emus split into small groups and ran at up to fifty kilometers per hour. One gun even jammed in the very first ambush.",
+      "camera": {"center": [118.5, -31.0], "span": 10},
+      "icons": [
+        {"ai": "an emu sprinting at full speed with motion lines, legs blurred", "name": "dodo", "at": [118.4, -31.0], "to": [121.6, -30.0], "size": 190, "count": 4, "spread": 150, "delay": 0.4, "travel_time": 2.2, "anim": "shake"},
+        {"ai": "a jammed vintage machine gun puffing a little cloud of smoke, comedic", "name": "anxious face with sweat", "at": [117.4, -31.6], "size": 230, "delay": 4.4, "anim": "shake"}
+      ],
+      "texts": [{"text": "50 KM/H", "accent": ["50"], "y": 0.22, "size": 100, "delay": 2.2}]
+    },
+    {
+      "narration": "After about a month, the official count was 986 emus... using 9,860 bullets. That's ten bullets per bird.",
+      "tts": "After about a month, the official count was nine hundred eighty-six emus... using nine thousand eight hundred sixty bullets. That's ten bullets per bird.",
+      "camera": {"center": [118.5, -31.0], "span": 12},
+      "texts": [
+        {"text": "{n} BULLETS", "count": 9860, "accent": ["BULLETS"], "y": 0.22, "size": 90, "delay": 3.0},
+        {"text": "10 PER EMU", "accent": ["10"], "y": 0.29, "size": 76, "delay": 6.0}
+      ],
+      "icons": [{"ai": "a pile of empty brass bullet casings next to an exhausted soldier's helmet, comedic", "name": "military helmet", "at": [118.5, -31.2], "size": 260, "delay": 1.0}]
+    },
+    {
+      "narration": "The army retreated. Meredith said the emus could face machine guns with the invulnerability of tanks.",
+      "card": {"ai": "a proud emu standing on a hilltop like a victorious general at golden sunset over a wheat field, tiny waving flag, triumphant and funny", "delay": 0.2}
+    },
+    {
+      "narration": "And the farmers? They asked the army for help again in 1934, 1943, and 1948... and were turned down every time.",
+      "tts": "And the farmers? They asked the army for help again in nineteen thirty-four, nineteen forty-three, and nineteen forty-eight... and were turned down every time.",
+      "camera": {"center": [118.5, -31.0], "span": 12},
+      "icons": [{"ai": "a frustrated Australian farmer facepalming next to a smug emu", "name": "face with tears of joy", "at": [118.6, -31.0], "size": 300, "delay": 0.6}],
+      "texts": [{"text": "DENIED x3", "accent": ["x3"], "y": 0.22, "size": 96, "delay": 4.8}]
+    },
+    {
+      "narration": "So who really won? Comment Team Emu or Team Army, and follow for more.",
+      "camera": {"center": [134, -26], "span": 48},
+      "fill": {"AUS": "flag:au"},
+      "icons": [{"ai": "a proud emu wearing a tiny green army helmet holding a golden trophy", "name": "trophy", "at": [124, -28], "size": 300, "delay": 0.4}],
+      "cta": {"text": "FOLLOW FOR MORE", "delay": 2.6, "y": 0.8},
+      "min_duration": 5.5
+    }
+  ]
+}
