@@ -8,8 +8,12 @@ import numpy as np
 
 CACHE = os.path.expanduser("~/.cache/geo_short")
 # 2004 年 12 月の地形 + 海底地形入り Blue Marble (21600x10800, 約 1.9km/px)
-NASA_URL = ("https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73909/"
-            "world.topo.bathy.200412.3x21600x10800.jpg")
+# 北半球が夏 (雪が少ない) の月の Blue Marble (21600x10800, 約 1.9km/px)。上から順に試す
+NASA_URLS = [
+    "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73751/world.topo.bathy.200407.3x21600x10800.jpg",
+    "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73776/world.topo.bathy.200408.3x21600x10800.jpg",
+    "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73726/world.topo.bathy.200406.3x21600x10800.jpg",
+]
 
 
 def find_texture():
@@ -17,17 +21,19 @@ def find_texture():
     env = os.environ.get("GEO_SAT_TEXTURE")
     if env:
         return env
-    hi = os.path.join(CACHE, "bluemarble_21600.jpg")
+    hi = os.path.join(CACHE, "bluemarble_summer_21600.jpg")
     if os.path.exists(hi):
         return hi
-    try:
-        os.makedirs(CACHE, exist_ok=True)
-        print("衛星画像 (NASA Blue Marble 21600px) をダウンロード中…")
-        urllib.request.urlretrieve(NASA_URL, hi + ".part")
-        os.replace(hi + ".part", hi)
-        return hi
-    except OSError as e:
-        print(f"  高解像度版を取得できませんでした ({e})。低解像度版を使います")
+    os.makedirs(CACHE, exist_ok=True)
+    for url in NASA_URLS:
+        try:
+            print(f"衛星画像 (NASA Blue Marble 21600px) をダウンロード中… {url.rsplit('/', 1)[1]}")
+            urllib.request.urlretrieve(url, hi + ".part")
+            os.replace(hi + ".part", hi)
+            return hi
+        except OSError as e:
+            print(f"  取得できませんでした ({e})")
+    print("  高解像度版が無いため低解像度版を使います")
     lo = os.path.join(CACHE, "bmng_5400.jpg")
     if os.path.exists(lo):
         return lo

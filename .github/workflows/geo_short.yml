@@ -7,10 +7,12 @@ on:
         description: "台本 JSON のパス"
         required: true
         default: "scripts/kaliningrad_en.json"
-  # 台本を push すると、変更された台本の動画を自動で作る
+  # 台本を push すると、変更された台本の動画を自動で作る。
+  # コードだけ変えたときはコミットメッセージに [render scripts/xxx.json] と書くと作り直す
   push:
     paths:
       - "scripts/*.json"
+      - "geo_short/**"
 
 permissions:
   contents: write
@@ -27,12 +29,22 @@ jobs:
 
       - name: Pick scripts
         id: pick
+        env:
+          INPUT_SCRIPT: ${{ inputs.script }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "scripts=${{ inputs.script }}" >> "$GITHUB_OUTPUT"
+            list="$INPUT_SCRIPT"
           else
-            echo "scripts=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'scripts/*.json' | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+            list="$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'scripts/*.json')"
+            list="$list $(printf '%s' "$COMMIT_MSG" | grep -o '\[render [^]]*\]' | sed 's/^\[render //; s/\]$//')"
           fi
+          # scripts/ 以下に実在する JSON だけを通す
+          ok=""
+          for f in $list; do
+            case "$f" in scripts/*.json) [ -f "$f" ] && ok="$ok $f" ;; esac
+          done
+          echo "scripts=$(echo $ok | xargs -n1 | sort -u | xargs)" >> "$GITHUB_OUTPUT"
 
       - name: Set up Python
         if: steps.pick.outputs.scripts != ''
@@ -53,7 +65,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/geo_short
-          key: geo-short-assets-v1
+          key: geo-short-assets-v2
 
       - name: Build videos
         if: steps.pick.outputs.scripts != ''
