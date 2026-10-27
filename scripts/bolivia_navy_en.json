@@ -1,0 +1,481 @@
+{
+  "title": "Why Bolivia has a navy but no sea",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "id": "pNInz6obpgDQGcFmaJgB",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Tense cinematic documentary background music for a geography and history short video, mysterious minor key, steady pulsing beat, subtle synth arpeggio, no vocals",
+    "volume": 0.22
+  },
+  "post": {
+    "title": "This country has a navy… but no sea 🌊",
+    "description": "Bolivia lost its entire coastline in the War of the Pacific (1879–1884) — but it never gave up its navy.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#history",
+      "#bolivia",
+      "#chile",
+      "#southamerica",
+      "#shorts"
+    ]
+  },
+  "regions": {
+    "bolivia_litoral": [
+      [
+        -70.25,
+        -21.45
+      ],
+      [
+        -68.2,
+        -21.3
+      ],
+      [
+        -67.6,
+        -22.6
+      ],
+      [
+        -67.2,
+        -23.6
+      ],
+      [
+        -68.0,
+        -24.6
+      ],
+      [
+        -69.0,
+        -25.4
+      ],
+      [
+        -70.55,
+        -25.45
+      ],
+      [
+        -70.5,
+        -24.0
+      ],
+      [
+        -70.4,
+        -22.8
+      ],
+      [
+        -70.25,
+        -21.45
+      ]
+    ],
+    "peru_tarapaca": [
+      [
+        -70.32,
+        -18.35
+      ],
+      [
+        -69.5,
+        -17.6
+      ],
+      [
+        -69.1,
+        -18.3
+      ],
+      [
+        -68.9,
+        -19.3
+      ],
+      [
+        -68.6,
+        -20.3
+      ],
+      [
+        -68.2,
+        -21.3
+      ],
+      [
+        -70.25,
+        -21.45
+      ],
+      [
+        -70.15,
+        -20.0
+      ],
+      [
+        -70.32,
+        -18.35
+      ]
+    ]
+  },
+  "scenes": [
+    {
+      "narration": "This country has a navy... but no sea.",
+      "camera": {
+        "center": [
+          -64.5,
+          -17.5
+        ],
+        "span": 34
+      },
+      "fill": {
+        "BOL": "flag:bo"
+      },
+      "icons": [
+        {
+          "name": "ship",
+          "of": "BOL",
+          "size": 200,
+          "anim": "bob",
+          "delay": 0.6
+        }
+      ],
+      "banner": {
+        "lines": [
+          "A NAVY",
+          "WITH NO SEA?"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 84
+      }
+    },
+    {
+      "narration": "This is Bolivia, one of only two landlocked countries in South America.",
+      "camera": {
+        "center": [
+          -62.0,
+          -20.0
+        ],
+        "span": 30
+      },
+      "fill": {
+        "PRY": "flag:py"
+      },
+      "outline": [
+        "BOL",
+        "PRY"
+      ],
+      "labels": [
+        {
+          "text": "BOLIVIA",
+          "of": "BOL",
+          "size": 58,
+          "delay": 0.4
+        },
+        {
+          "text": "PARAGUAY",
+          "of": "PRY",
+          "size": 50,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "But it wasn't always like this. In 1879, Bolivia had its own coast on the Pacific Ocean.",
+      "year": "1879",
+      "flash": true,
+      "camera": {
+        "center": [
+          -68.5,
+          -21.0
+        ],
+        "span": 14
+      },
+      "fill": {
+        "PRY": null,
+        "bolivia_litoral": "flag:bo"
+      },
+      "icons": [
+        {
+          "name": "water wave",
+          "at": [
+            -72.2,
+            -23.3
+          ],
+          "size": 160,
+          "delay": 2.6
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -70.4,
+            -23.65
+          ],
+          "type": "pin",
+          "label": "Antofagasta",
+          "delay": 3.4
+        }
+      ]
+    },
+    {
+      "narration": "Then a fight over taxes on nitrate mines started the War of the Pacific.",
+      "camera": {
+        "center": [
+          -69.0,
+          -21.5
+        ],
+        "span": 11
+      },
+      "fill": {
+        "CHL": "flag:cl",
+        "PER": "flag:pe",
+        "peru_tarapaca": "flag:pe"
+      },
+      "icons": [
+        {
+          "name": "money bag",
+          "at": [
+            -69.2,
+            -23.0
+          ],
+          "size": 150,
+          "delay": 0.5
+        },
+        {
+          "name": "crossed swords",
+          "at": [
+            -69.0,
+            -20.4
+          ],
+          "size": 170,
+          "anim": "shake",
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "Chile defeated both Bolivia and Peru, and took the entire coastline.",
+      "year": "1884",
+      "camera": {
+        "center": [
+          -69.3,
+          -21.5
+        ],
+        "span": 11
+      },
+      "fill": {
+        "bolivia_litoral": null,
+        "peru_tarapaca": null
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -71.2,
+              -27.0
+            ],
+            [
+              -70.0,
+              -23.6
+            ]
+          ],
+          "color": "#e53935",
+          "style": "arrow",
+          "width": 12,
+          "delay": 0.5
+        },
+        {
+          "path": [
+            [
+              -70.9,
+              -23.2
+            ],
+            [
+              -69.8,
+              -19.8
+            ]
+          ],
+          "color": "#e53935",
+          "style": "arrow",
+          "width": 12,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "Bolivia lost around 120,000 square kilometers, and about 400 kilometers of coastline.",
+      "camera": {
+        "center": [
+          -68.8,
+          -22.0
+        ],
+        "span": 10
+      },
+      "outline": [
+        "bolivia_litoral"
+      ],
+      "texts": [
+        {
+          "text": "{n} KM²",
+          "count": 120000,
+          "y": 0.25,
+          "size": 100,
+          "delay": 0.6,
+          "count_time": 1.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "loudly crying face",
+          "at": [
+            -66.0,
+            -19.5
+          ],
+          "size": 170,
+          "delay": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "But Bolivia never gave up its navy. Its sailors still train on Lake Titicaca, 3,800 meters above the sea.",
+      "tts": "But Bolivia never gave up its navy. Its sailors still train on Lake Titicaca, three thousand eight hundred meters above the sea.",
+      "camera": {
+        "center": [
+          -69.2,
+          -16.0
+        ],
+        "span": 6
+      },
+      "markers": [
+        {
+          "at": [
+            -69.4,
+            -15.8
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.4
+        }
+      ],
+      "icons": [
+        {
+          "name": "sailboat",
+          "at": [
+            -69.8,
+            -15.6
+          ],
+          "to": [
+            -69.0,
+            -16.1
+          ],
+          "size": 150,
+          "delay": 1.6,
+          "travel_time": 3.5,
+          "label": "LAKE TITICACA"
+        },
+        {
+          "name": "mountain",
+          "at": [
+            -68.2,
+            -16.6
+          ],
+          "size": 160,
+          "delay": 3.6
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n} M",
+          "count": 3800,
+          "y": 0.25,
+          "size": 96,
+          "accent": [
+            "M"
+          ],
+          "delay": 4.2
+        }
+      ]
+    },
+    {
+      "narration": "Every March 23rd, Bolivia even celebrates the Day of the Sea, to remember the coast it lost.",
+      "tts": "Every March twenty-third, Bolivia even celebrates the Day of the Sea, to remember the coast it lost.",
+      "camera": {
+        "center": [
+          -66.5,
+          -19.0
+        ],
+        "span": 16
+      },
+      "icons": [
+        {
+          "name": "calendar",
+          "at": [
+            -64.8,
+            -17.2
+          ],
+          "size": 180,
+          "delay": 0.4,
+          "label": "MARCH 23"
+        }
+      ],
+      "outline": [
+        "bolivia_litoral"
+      ]
+    },
+    {
+      "narration": "In 2018, it took Chile to the world's highest court to win its sea back... and lost.",
+      "tts": "In twenty eighteen, it took Chile to the world's highest court to win its sea back... and lost.",
+      "year": "2018",
+      "camera": {
+        "center": [
+          -68.0,
+          -20.0
+        ],
+        "span": 14
+      },
+      "icons": [
+        {
+          "name": "classical building",
+          "at": [
+            -66.0,
+            -18.5
+          ],
+          "size": 170,
+          "delay": 0.8,
+          "label": "WORLD COURT"
+        },
+        {
+          "name": "pensive face",
+          "at": [
+            -64.6,
+            -16.6
+          ],
+          "size": 160,
+          "delay": 4.2
+        }
+      ]
+    },
+    {
+      "narration": "So today, Bolivia has a navy... with no sea to sail.",
+      "camera": {
+        "center": [
+          -64.5,
+          -17.5
+        ],
+        "span": 30
+      },
+      "icons": [
+        {
+          "name": "ship",
+          "of": "BOL",
+          "size": 210,
+          "anim": "bob",
+          "delay": 0.4
+        }
+      ],
+      "banner": {
+        "lines": [
+          "A NAVY",
+          "WITH NO SEA"
+        ],
+        "y": 0.2,
+        "delay": 1.4,
+        "size": 84
+      }
+    }
+  ]
+}

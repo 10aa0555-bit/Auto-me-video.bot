@@ -271,6 +271,7 @@ class Renderer:
         self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, self.w, self.h)
         self.ctx = cairo.Context(self.surface)
         self.ctx.scale(scale, scale)
+        self.ctx.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)  # 国の中の国 (レソトなど) を穴として抜く
         # "satellite" (衛星写真) か "parchment" (古地図風のフラット)
         self.style = script.get("style", "satellite")
         self.sat = None
@@ -472,16 +473,20 @@ class Renderer:
             ctx.set_source_rgba(0.82, 0.82, 0.86, alpha)
             ctx.fill()
             ctx.restore()
-        b = shp.main_bbox
-        x0, y0 = (b[0] - self.cx) * self.ppu + W / 2, (b[1] - self.cy) * self.ppu + H / 2
-        x1, y1 = (b[2] - self.cx) * self.ppu + W / 2, (b[3] - self.cy) * self.ppu + H / 2
+        # 画面に実際に映っている部分に国旗を合わせる
+        # (チリのように細長い国や、本土が画面外の飛び地でも旗全体が見えるように)
+        x0, y0, x1, y1 = self._visible_extents(shp)
         bw, bh = max(x1 - x0, 1), max(y1 - y0, 1)
         k = max(bw / flag.get_width(), bh / flag.get_height())
+        ox, oy = (x0 + x1) / 2 - flag.get_width() * k / 2, (y0 + y1) / 2 - flag.get_height() * k / 2
+        if bh > bw * 1.6:  # チリのように縦長: 幅に合わせて上端にそろえ、下は旗の端の色で伸ばす
+            k = bw / flag.get_width()
+            ox, oy = x0, y0
         ctx.save()
         ctx.new_path()
         self.path_shape(shp)
         ctx.clip_preserve()
-        ctx.translate((x0 + x1) / 2 - flag.get_width() * k / 2, (y0 + y1) / 2 - flag.get_height() * k / 2)
+        ctx.translate(ox, oy)
         ctx.scale(k, k)
         ctx.set_source_surface(flag)
         ctx.get_source().set_filter(cairo.FILTER_GOOD)
@@ -493,6 +498,26 @@ class Renderer:
         ctx.set_source_rgba(1, 1, 1, 0.9 * alpha)
         ctx.set_line_width(3)
         ctx.stroke()
+
+    def _visible_extents(self, shp, q=8):
+        """国の形のうち画面内に映っている範囲 (x0, y0, x1, y1)。1/q 解像度のマスクで測る。"""
+        w, h = W // q, H // q
+        mask = cairo.ImageSurface(cairo.FORMAT_A8, w, h)
+        c = cairo.Context(mask)
+        c.scale(1 / q, 1 / q)
+        c.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
+        ctx, self.ctx = self.ctx, c
+        try:
+            self.path_shape(shp)
+        finally:
+            self.ctx = ctx
+        c.fill()
+        mask.flush()
+        a = np.ndarray((h, mask.get_stride()), np.uint8, buffer=mask.get_data())[:, :w]
+        ys, xs = np.nonzero(a)
+        if len(xs) == 0:
+            return 0, 0, W, H
+        return xs.min() * q, ys.min() * q, (xs.max() + 1) * q, (ys.max() + 1) * q
 
     def draw_outlines(self, s, lt):
         for k in s["spec"].get("outline", []):

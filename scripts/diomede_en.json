@@ -1,0 +1,88 @@
+{
+  "title": "Two islands 4 km apart but almost a day apart",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {"id": "pNInz6obpgDQGcFmaJgB", "model": "eleven_multilingual_v2", "settings": {"speed": 1.1, "stability": 0.4, "style": 0.35}},
+  "music": {"prompt": "Mysterious cold arctic ambient documentary music with a steady pulse, for a geography short video, no vocals", "volume": 0.22},
+  "post": {
+    "title": "You can see TOMORROW from this island 🤯",
+    "description": "Big Diomede (Russia) and Little Diomede (USA) are under 4 km apart, but 21 hours apart in time.",
+    "hashtags": ["#geography", "#maps", "#alaska", "#russia", "#datelines", "#didyouknow", "#shorts"]
+  },
+  "scenes": [
+    {
+      "narration": "These two islands are less than 4 kilometers apart... but they're almost a whole day apart in time.",
+      "tts": "These two islands are less than four kilometers apart... but they're almost a whole day apart in time.",
+      "camera": {"center": [-169.0, 65.8], "span": 5},
+      "icons": [
+        {"name": "desert island", "at": [-169.6, 65.78], "size": 150, "delay": 0.4},
+        {"name": "desert island", "at": [-168.4, 65.76], "size": 120, "delay": 0.7}
+      ],
+      "banner": {"lines": ["4 KM APART", "1 DAY APART?"], "y": 0.2, "delay": 0.15, "size": 84}
+    },
+    {
+      "narration": "The big one, Big Diomede, belongs to Russia. The small one, Little Diomede, belongs to the United States.",
+      "camera": {"center": [-169.5, 65.6], "span": 14},
+      "fill": {"RUS": "flag:ru", "USA@-150,64": "flag:us"},
+      "markers": [
+        {"at": [-169.06, 65.78], "type": "pin", "label": "Big Diomede", "label_offset": [-150, -95], "delay": 0.6, "color": "#c62828"},
+        {"at": [-168.93, 65.75], "type": "pin", "label": "Little Diomede", "label_offset": [150, -95], "delay": 4.0, "color": "#1565c0"}
+      ]
+    },
+    {
+      "narration": "And right between them runs the International Date Line.",
+      "camera": {"center": [-169.0, 65.8], "span": 6},
+      "lines": [{"path": [[-168.98, 63.0], [-168.98, 68.6]], "color": "#ffe14d", "style": "dashed", "width": 9, "delay": 0.5, "draw_time": 1.6}],
+      "labels": [{"text": "DATE LINE", "at": [-168.98, 67.4], "size": 52, "color": "#ffe14d", "delay": 1.6}]
+    },
+    {
+      "narration": "So when it's Monday at noon on Little Diomede, it's already Tuesday morning on Big Diomede.",
+      "camera": {"center": [-169.0, 65.8], "span": 6},
+      "lines": [{"path": [[-168.98, 63.0], [-168.98, 68.6]], "color": "#ffe14d", "style": "dashed", "width": 9, "draw": false}],
+      "icons": [
+        {"name": "sun", "at": [-167.6, 66.4], "size": 140, "delay": 0.6, "label": "MON 12:00"},
+        {"name": "alarm clock", "at": [-170.4, 66.4], "size": 140, "delay": 3.0, "label": "TUE 09:00"}
+      ]
+    },
+    {
+      "narration": "That's why people call them Tomorrow Island and Yesterday Island.",
+      "camera": {"center": [-169.0, 65.8], "span": 5},
+      "texts": [{"text": "TOMORROW", "at": [-170.2, 66.5], "size": 70, "accent": ["TOMORROW"], "delay": 1.2},
+                {"text": "YESTERDAY", "at": [-167.8, 65.1], "size": 70, "delay": 2.4}],
+      "icons": [{"name": "exploding head", "at": [-169.0, 64.9], "size": 150, "delay": 3.4}]
+    },
+    {
+      "narration": "How did this happen? In 1867, Russia sold all of Alaska to the United States for just 7.2 million dollars.",
+      "tts": "How did this happen? In eighteen sixty-seven, Russia sold all of Alaska to the United States for just seven point two million dollars.",
+      "year": "1867",
+      "flash": true,
+      "camera": {"center": [-160.0, 63.5], "span": 40},
+      "fill": {"USA@-150,64": "flag:ru"},
+      "icons": [{"name": "money bag", "at": [-150.0, 64.0], "size": 190, "delay": 3.6}],
+      "texts": [{"text": "$7.2 MILLION", "accent": ["MILLION"], "y": 0.27, "size": 96, "delay": 4.2}]
+    },
+    {
+      "narration": "That's about two cents per acre.",
+      "camera": {"center": [-155.0, 63.5], "span": 34},
+      "fill": {"USA@-150,64": "flag:us"},
+      "texts": [{"text": "2¢ PER ACRE", "accent": ["2¢"], "y": 0.27, "size": 100, "delay": 0.4}]
+    },
+    {
+      "narration": "The new border was drawn right between the two Diomedes.",
+      "camera": {"center": [-169.0, 65.8], "span": 8},
+      "lines": [{"path": [[-168.98, 63.5], [-168.98, 68.0]], "color": "#e53935", "width": 10, "delay": 0.6, "draw_time": 1.4}],
+      "labels": [{"text": "RUSSIA", "at": [-171.0, 66.6], "size": 54, "delay": 1.4}, {"text": "USA", "at": [-166.8, 66.6], "size": 54, "delay": 1.6}]
+    },
+    {
+      "narration": "In winter, the sea between them freezes... so you could almost walk from America into tomorrow. But crossing is forbidden.",
+      "camera": {"center": [-169.0, 65.8], "span": 5},
+      "lines": [{"path": [[-168.98, 63.5], [-168.98, 68.0]], "color": "#e53935", "width": 10, "draw": false}],
+      "icons": [
+        {"name": "snowflake", "at": [-169.0, 66.5], "size": 120, "count": 3, "spread": 90, "delay": 0.4},
+        {"name": "person walking", "at": [-168.4, 65.6], "to": [-168.9, 65.68], "size": 110, "delay": 2.6, "travel_time": 2.5},
+        {"name": "no entry", "at": [-169.0, 65.2], "size": 140, "anim": "shake", "delay": 5.6}
+      ],
+      "banner": {"lines": ["WALK INTO", "TOMORROW?"], "y": 0.2, "delay": 6.2, "size": 84}
+    }
+  ]
+}
