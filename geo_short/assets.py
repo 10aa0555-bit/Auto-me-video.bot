@@ -168,9 +168,20 @@ def _cf_credentials():
         [os.environ.get("CF_ACCOUNT_ID", ""), os.environ.get("CF_API_TOKEN", "")]))
     ids = [p for p in parts if re.fullmatch(r"[0-9a-f]{32}", p)]
     tokens = [p for p in parts if p not in ids]
-    acct = ids[0] if ids else os.environ.get("CF_ACCOUNT_ID", "").strip()
     token = tokens[-1] if tokens else os.environ.get("CF_API_TOKEN", "").strip()
-    return acct, token
+    if ids:
+        return ids[0], token
+    # アカウント ID が見つからなければ、トークンで見られるアカウントから取る
+    try:
+        r = requests.get("https://api.cloudflare.com/client/v4/accounts",
+                         headers={"Authorization": f"Bearer {token}"}, timeout=30)
+        accts = r.json().get("result") or []
+        if accts:
+            return accts[0]["id"], token
+        print(f"  Cloudflare のアカウント ID が見つかりません ({r.status_code} {r.json().get('errors')})")
+    except Exception as e:
+        print(f"  Cloudflare のアカウント ID が見つかりません ({e})")
+    return os.environ.get("CF_ACCOUNT_ID", "").strip(), token
 
 
 class AIArt:

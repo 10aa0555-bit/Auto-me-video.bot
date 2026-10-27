@@ -38,7 +38,7 @@ def show(label, r):
 
 
 show("トークン確認 (user)", requests.get(f"{base}/user/tokens/verify", headers=H, timeout=30))
-show("トークン確認 (account)", requests.get(f"{base}/accounts/{acct}/tokens/verify", headers=H, timeout=30))
+print("アカウント ID:", "32桁の16進" if re.fullmatch(r"[0-9a-f]{32}", acct) else f"見つからない ({len(acct)}文字)")
 show("アカウント", requests.get(f"{base}/accounts/{acct}", headers=H, timeout=30))
 show("FLUX 生成", requests.post(f"{base}/accounts/{acct}/ai/run/@cf/black-forest-labs/flux-1-schnell",
                                headers=H, json={"prompt": "a cute cartoon pig", "steps": 4}, timeout=120))
