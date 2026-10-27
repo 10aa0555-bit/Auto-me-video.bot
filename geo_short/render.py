@@ -249,6 +249,13 @@ class Timeline:
             if t < s["start"] + s["dur"] or i == len(self.scenes) - 1:
                 return i, s, t - s["start"]
 
+    def cam_progress(self, s, lt):
+        """このシーンのカメラ移動がどこまで進んだか (0..1)。動かないシーンは 1。"""
+        a, b = s["cam_from"], s["cam_to"]
+        if math.hypot(b[0] - a[0], b[1] - a[1]) < 1e-9 and abs(a[2] - b[2]) < 1e-6:
+            return 1.0
+        return ease(lt / min(CAM_MOVE_MAX, s["dur"] * 0.5))
+
     def camera(self, s, lt):
         a, b = s["cam_from"], s["cam_to"]
         move = min(CAM_MOVE_MAX, s["dur"] * 0.5)
@@ -295,6 +302,10 @@ class Renderer:
         self.icons = Icons()
         self.flags = Flags()
         self.out = 1.0
+        self.flag_cache = {}
+        self.timeline = None
+        self.scene_idx = 0
+        self.cam_u = 1.0
         self.ghosts = {}
 
     # -- 座標変換
@@ -424,9 +435,9 @@ class Renderer:
             vb, va = before.get(k), after.get(k)
             if any(isinstance(v, str) and v.startswith("flag:") for v in (vb, va)):
                 if vb and vb != va:
-                    self._fill_layer(shp, vb, 1 - u)
+                    self._fill_layer(shp, vb, 1 - u, key=k)
                 if va:
-                    self._fill_layer(shp, va, u if vb != va else 1.0)
+                    self._fill_layer(shp, va, u if vb != va else 1.0, key=k)
                 continue
             if self.sat is not None or k in self.world.custom:
                 c0 = hex2rgba(before[k]) if k in before else None
@@ -453,7 +464,7 @@ class Renderer:
             self.ctx.set_line_width(2.2)
             self.ctx.stroke()
 
-    def _fill_layer(self, shp, value, alpha):
+    def _fill_layer(self, shp, value, alpha, key=None):
         if alpha <= 0.001:
             return
         ctx = self.ctx
@@ -482,20 +493,10 @@ class Renderer:
             ctx.set_source_rgba(0.82, 0.82, 0.86, alpha)
             ctx.fill()
             ctx.restore()
-        # 画面に実際に映っている部分に国旗を合わせる
-        # (チリのように細長い国や、本土が画面外の飛び地でも旗全体が見えるように)
-        x0, y0, x1, y1 = self._visible_extents(shp)
-        bw, bh = max(x1 - x0, 1), max(y1 - y0, 1)
-        fw, fh = flag.get_width(), flag.get_height()
-        sx, sy = bw / fw, bh / fh
-        if max(sx, sy) <= min(sx, sy) * 1.25:  # 旗と同じくらいの縦横比: そのまま覆う
-            sx = sy = max(sx, sy)
-            ox, oy = (x0 + x1) / 2 - fw * sx / 2, (y0 + y1) / 2 - fh * sy / 2
-        else:
-            # 細長い国 (チリ、画面からはみ出たロシアなど): 旗を最大 2.5 倍まで引き伸ばし、
-            # 左上 (カントンや紋章がある側) にそろえる
-            sx, sy = max(sx, sy / 2.5), max(sy, sx / 2.5)
-            ox, oy = x0, y0
+        # 国旗の貼り方は地図座標で決めて固定する (毎フレーム測り直すとガタつくため)
+        ax, ay, bx, by = self._flag_placement(key, shp, value, flag)
+        ox, oy = (ax - self.cx) * self.ppu + W / 2, (ay - self.cy) * self.ppu + H / 2
+        sx, sy = bx * self.ppu, by * self.ppu
         ctx.save()
         ctx.new_path()
         self.path_shape(shp)
@@ -512,6 +513,49 @@ class Renderer:
         ctx.set_source_rgba(1, 1, 1, 0.9 * alpha)
         ctx.set_line_width(3)
         ctx.stroke()
+
+    def _fit_flag(self, x0, y0, x1, y1, fw, fh):
+        """画面上の範囲に国旗を合わせる (ox, oy, sx, sy)。"""
+        bw, bh = max(x1 - x0, 1e-9), max(y1 - y0, 1e-9)  # 画素でも地図座標でも使う
+        sx, sy = bw / fw, bh / fh
+        if max(sx, sy) <= min(sx, sy) * 1.25:  # 旗と同じくらいの縦横比: そのまま覆う
+            sx = sy = max(sx, sy)
+            return (x0 + x1) / 2 - fw * sx / 2, (y0 + y1) / 2 - fh * sy / 2, sx, sy
+        # 細長い国 (チリ、画面からはみ出たロシアなど): 旗を最大 2.5 倍まで引き伸ばし、
+        # 左上 (カントンや紋章がある側) にそろえる
+        return x0, y0, max(sx, sy / 2.5), max(sy, sx / 2.5)
+
+    def _scene_flag_placement(self, key, shp, flag, idx):
+        """シーン idx の最終カメラで見えている部分に合わせた国旗の置き方 (地図座標)。"""
+        ck = (key, idx, id(flag))
+        if ck not in self.flag_cache:
+            saved = (self.cx, self.cy, self.ppu, self.px_size)
+            self.set_camera(self.timeline.scenes[idx]["cam_to"])
+            x0, y0, x1, y1 = self._visible_extents(shp)
+            ox, oy, sx, sy = self._fit_flag(x0, y0, x1, y1, flag.get_width(), flag.get_height())
+            self.flag_cache[ck] = (self.cx + (ox - W / 2) / self.ppu, self.cy + (oy - H / 2) / self.ppu,
+                                   sx / self.ppu, sy / self.ppu)
+            self.cx, self.cy, self.ppu, self.px_size = saved
+        return self.flag_cache[ck]
+
+    def _flag_placement(self, key, shp, value, flag):
+        """国旗の置き方 (ax, ay, bx, by): 旗の画素 (u, v) が地図座標 (ax + u*bx, ay + v*by) に来る。
+
+        シーンごとに 1 回だけ決め、場面転換ではカメラの動きに合わせて前のシーンの置き方から
+        なめらかに移す。動く国 (ghosts) は形全体の範囲に合わせる。
+        """
+        if key is None or self.timeline is None:
+            b = shp.main_bbox
+            ox, oy, sx, sy = self._fit_flag(b[0], b[1], b[2], b[3], flag.get_width(), flag.get_height())
+            return ox, oy, sx, sy
+        i = self.scene_idx
+        cur = self._scene_flag_placement(key, shp, flag, i)
+        prev_scene = self.timeline.scenes[i - 1] if i > 0 else None
+        if prev_scene is None or prev_scene["fills_after"].get(key) != value:
+            return cur
+        prev = self._scene_flag_placement(key, shp, flag, i - 1)
+        u = self.cam_u
+        return tuple(p + (c - p) * u for p, c in zip(prev, cur))
 
     def _visible_extents(self, shp, q=8):
         """国の形のうち画面内に映っている範囲 (x0, y0, x1, y1)。1/q 解像度のマスクで測る。"""
@@ -1138,6 +1182,7 @@ class Renderer:
     def frame(self, t, timeline):
         i, s, lt = timeline.scene_at(t)
         self.t = t
+        self.timeline, self.scene_idx, self.cam_u = timeline, i, timeline.cam_progress(s, lt)
         self.out = ease((s["dur"] - lt) / 0.22) if i < len(timeline.scenes) - 1 else 1.0
         self.set_camera(timeline.camera(s, lt))
         self.ctx.set_dash([])
