@@ -58,13 +58,14 @@ def main():
     ap.add_argument("--no-tts", action="store_true")
     ap.add_argument("--require-tts", action="store_true")
     ap.add_argument("--fps", type=int, default=30)
+    ap.add_argument("--icons", action="store_true", help="AI イラストの代わりに 3D アイコンで作る (出力名に _icons)")
     args = ap.parse_args()
 
     with open(args.script, encoding="utf-8") as f:
         script = json.load(f)
     script.setdefault("lang", "en")
     name = os.path.splitext(os.path.basename(args.script))[0]
-    out = args.out or os.path.join("out", f"{name}.mp4")
+    out = args.out or os.path.join("out", f"{name}{'_icons' if args.icons else ''}.mp4")
     workdir = os.path.join("out", f"{name}_audio")
     os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
 
@@ -73,11 +74,12 @@ def main():
     if args.require_tts and not have_audio:
         sys.exit("ナレーションを作れませんでした")
     durations = scene_durations(script, workdir, have_audio)
-    timeline = Timeline(script, durations, alignments)
-    prepare_art(script)
+    timeline = Timeline(script, durations, alignments, icon_mode=args.icons)
+    if not args.icons:
+        prepare_art(script)
     scale = 0.5 if args.preview else 1.0
     fps = 15 if args.preview else args.fps
-    r = Renderer(script, scale=scale)
+    r = Renderer(script, scale=scale, icon_mode=args.icons)
 
     if args.still is not None:
         png = out.replace(".mp4", f"_{args.still:.1f}s.png")

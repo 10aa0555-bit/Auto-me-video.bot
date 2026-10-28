@@ -19,7 +19,12 @@
   "scenes": [
     {
       "narration": "You open your phone to check one thing. Twenty minutes later, you're still scrolling.",
-      "art": "a young adult lying in bed at night, face lit by a glowing phone, an endless stream of colorful cards flowing out of the phone, a wall clock showing late time"
+      "art": "a young adult lying in bed at night, face lit by a glowing phone, an endless stream of colorful cards flowing out of the phone, a wall clock showing late time",
+      "icons": [
+        "mobile phone",
+        "bed",
+        "alarm clock"
+      ]
     },
     {
       "narration": "It's not just weak willpower. A few things are working on you.",
@@ -27,7 +32,12 @@
       "stat": {
         "text": "NOT WILLPOWER",
         "delay": 0.4
-      }
+      },
+      "icons": [
+        "mobile phone with arrow",
+        "magnet",
+        "fishing pole"
+      ]
     },
     {
       "narration": "One: habit. A typical phone check lasts under thirty seconds, and it's triggered by the same moments, like boredom or a commute.",
@@ -60,7 +70,12 @@
           "color": "#7cf29c"
         }
       ],
-      "cite": "Oulasvirta et al., 2012"
+      "cite": "Oulasvirta et al., 2012",
+      "icons": [
+        "bus",
+        "mobile phone",
+        "yawning face"
+      ]
     },
     {
       "narration": "Two: rewards. Most posts are meh, then one is great. Studies of social media find our behavior follows the rules of reward learning.",
@@ -75,7 +90,12 @@
           "delay": 0.2
         }
       ],
-      "cite": "Lindström et al., Nature Communications 2021"
+      "cite": "Lindström et al., Nature Communications 2021",
+      "icons": [
+        "slot machine",
+        "red heart",
+        "thumbs up"
+      ]
     },
     {
       "narration": "So it's not simply a dopamine addiction. It's learning, habit and design working together.",
@@ -84,7 +104,12 @@
         "text": "NOT JUST DOPAMINE",
         "size": 78,
         "delay": 0.3
-      }
+      },
+      "icons": [
+        "brain",
+        "repeat button",
+        "gear"
+      ]
     },
     {
       "narration": "Three: no stopping point. A book has chapters. A feed has no last page.",
@@ -98,6 +123,11 @@
           ],
           "delay": 0.2
         }
+      ],
+      "icons": [
+        "scroll",
+        "open book",
+        "infinity"
       ]
     },
     {
@@ -107,7 +137,12 @@
         "text": "MORE MISTAKES",
         "delay": 2.6
       },
-      "cite": "Stothart et al., 2015"
+      "cite": "Stothart et al., 2015",
+      "icons": [
+        "bell",
+        "writing hand",
+        "face with spiral eyes"
+      ]
     },
     {
       "narration": "Sometimes your brain even invents them. In one hospital survey, sixty-eight percent of staff had felt phantom phone vibrations.",
@@ -118,7 +153,12 @@
         "label": "felt phantom vibrations",
         "delay": 3.6
       },
-      "cite": "Rothberg et al., BMJ 2010"
+      "cite": "Rothberg et al., BMJ 2010",
+      "icons": [
+        "ghost",
+        "vibration mode",
+        "hospital"
+      ]
     },
     {
       "narration": "So try this: batch your notifications. In one trial, getting them just three times a day lowered stress and helped people feel more focused.",
@@ -127,7 +167,12 @@
         "text": "3x A DAY",
         "delay": 1.4
       },
-      "cite": "Fitz et al., Computers in Human Behavior 2019"
+      "cite": "Fitz et al., Computers in Human Behavior 2019",
+      "icons": [
+        "hot beverage",
+        "envelope",
+        "alarm clock"
+      ]
     },
     {
       "narration": "Now be honest. How many times have you checked your phone today?",
@@ -135,7 +180,11 @@
       "stat": {
         "text": "HOW MANY?",
         "delay": 1.6
-      }
+      },
+      "icons": [
+        "mobile phone",
+        "thinking face"
+      ]
     }
   ],
   "post": {

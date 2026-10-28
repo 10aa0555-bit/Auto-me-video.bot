@@ -7,6 +7,10 @@ on:
         description: "台本 JSON のパス"
         required: true
         default: "shorts/look_better_en.json"
+      options:
+        description: "追加のオプション (例: --icons で 3D アイコン版)"
+        required: false
+        default: ""
   # 台本を push すると、変更された台本の動画を自動で作る。
   # コードだけ変えたときはコミットメッセージに [render shorts/xxx.json] と書くと作り直す
   push:
@@ -91,10 +95,11 @@ jobs:
           CF_ACCOUNT_ID: 4c5c855831c1a7f3ce3d0fa80b9c0d0d  # Cloudflare のアカウント ID (秘密の値ではない)
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         run: |
+          BUILD_OPTIONS="${{ inputs.options }}"
           export HF_HOME="$HOME/.cache/geo_short/hf"  # Kokoro の音声モデルもキャッシュに入れる
           export U2NET_HOME="$HOME/.cache/geo_short/u2net"  # 背景除去のモデルも
           for s in ${{ steps.pick.outputs.scripts }}; do
-            python -m explainer.build "$s" --require-tts
+            python -m explainer.build "$s" --require-tts $BUILD_OPTIONS
           done
 
       # 失敗しても、描いた AI イラストやナレーションは次回に持ち越す (無料枠を無駄にしない)

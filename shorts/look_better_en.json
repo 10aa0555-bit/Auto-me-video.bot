@@ -24,7 +24,12 @@
         "text": "0.1 SECONDS",
         "delay": 0.6
       },
-      "cite": "Willis & Todorov, 2006"
+      "cite": "Willis & Todorov, 2006",
+      "icons": [
+        "eyes",
+        "person walking",
+        "stopwatch"
+      ]
     },
     {
       "narration": "But they're not just reading your bones. They're reading signals you can change.",
@@ -62,6 +67,11 @@
           ],
           "delay": 3.4
         }
+      ],
+      "icons": [
+        "thinking face",
+        "sparkles",
+        "magnifying glass tilted left"
       ]
     },
     {
@@ -76,6 +86,11 @@
           ],
           "delay": 0.2
         }
+      ],
+      "icons": [
+        "sleeping face",
+        "crescent moon",
+        "bed"
       ]
     },
     {
@@ -101,7 +116,12 @@
           "color": "#ff6b6b"
         }
       ],
-      "cite": "Axelsson et al., BMJ 2010"
+      "cite": "Axelsson et al., BMJ 2010",
+      "icons": [
+        "tired face",
+        "camera with flash",
+        "bar chart"
+      ]
     },
     {
       "narration": "A follow-up study found what gives it away: droopier eyelids, darker circles and paler skin.",
@@ -126,7 +146,12 @@
           "color": "#ff6b6b"
         }
       ],
-      "cite": "Sundelin et al., SLEEP 2013"
+      "cite": "Sundelin et al., SLEEP 2013",
+      "icons": [
+        "weary face",
+        "eye",
+        "magnifying glass tilted right"
+      ]
     },
     {
       "narration": "Signal two: even skin tone. More even skin is read as younger and healthier.",
@@ -141,7 +166,12 @@
           "delay": 0.2
         }
       ],
-      "cite": "Matts et al., 2007"
+      "cite": "Matts et al., 2007",
+      "icons": [
+        "smiling face with smiling eyes",
+        "magnifying glass tilted left",
+        "sparkles"
+      ]
     },
     {
       "narration": "The boring fix? Daily sunscreen. In a four year trial, daily users showed no detectable increase in skin aging.",
@@ -150,7 +180,12 @@
         "text": "DAILY SPF",
         "delay": 1.0
       },
-      "cite": "Hughes et al., Annals of Internal Medicine 2013"
+      "cite": "Hughes et al., Annals of Internal Medicine 2013",
+      "icons": [
+        "sun with face",
+        "lotion bottle",
+        "shield"
+      ]
     },
     {
       "narration": "Signal three: posture. In a speed-dating study, open, expansive body language got more yeses.",
@@ -165,7 +200,12 @@
           "delay": 0.2
         }
       ],
-      "cite": "Vacharkulksemsuk et al., PNAS 2016"
+      "cite": "Vacharkulksemsuk et al., PNAS 2016",
+      "icons": [
+        "person standing",
+        "people hugging",
+        "hot beverage"
+      ]
     },
     {
       "narration": "Easy test: in your next photo, uncross your arms, drop your shoulders and take up a little more space.",
@@ -189,6 +229,11 @@
           "delay": 2.4,
           "color": "#2ee6c5"
         }
+      ],
+      "icons": [
+        "camera with flash",
+        "person raising hand",
+        "sparkles"
       ]
     },
     {
@@ -204,7 +249,12 @@
           "delay": 0.2
         }
       ],
-      "cite": "Gunnery & Ruben, 2016"
+      "cite": "Gunnery & Ruben, 2016",
+      "icons": [
+        "grinning face with smiling eyes",
+        "sparkles",
+        "red heart"
+      ]
     },
     {
       "narration": "Your bones set the frame. But sleep, skin, posture and a real smile are things you control.",
@@ -246,6 +296,13 @@
           "delay": 2.5,
           "color": "#2ee6c5"
         }
+      ],
+      "icons": [
+        "smiling face with sunglasses",
+        "bed",
+        "lotion bottle",
+        "person standing",
+        "red heart"
       ]
     },
     {
@@ -254,7 +311,11 @@
       "stat": {
         "text": "WHICH ONE?",
         "delay": 0.3
-      }
+      },
+      "icons": [
+        "thinking face",
+        "speech balloon"
+      ]
     }
   ],
   "post": {

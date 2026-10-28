@@ -12,7 +12,7 @@ import os
 import cairo
 import numpy as np
 
-from geo_short.assets import AIArt, install_fonts
+from geo_short.assets import AIArt, Icons, install_fonts
 from geo_short.render import caption_timings
 
 W, H = 1080, 1920
@@ -149,7 +149,7 @@ def _placeholder(prompt, size):
 # ---------------------------------------------------------------- タイムライン
 
 class Timeline:
-    def __init__(self, script, durations, alignments=None):
+    def __init__(self, script, durations, alignments=None, icon_mode=False):
         self.script = script
         self.scenes = []
         t = 0.0
@@ -166,7 +166,9 @@ class Timeline:
         # 同じ絵が続くシーンは窓を入れ替えない
         prev = None
         for s in self.scenes:
-            s["art"] = s["spec"].get("art") or prev
+            icons = s["spec"].get("icons")
+            key = ("icons:" + "|".join(icons)) if icon_mode and icons else s["spec"].get("art")
+            s["art"] = key or prev
             s["new_art"] = s["art"] != prev
             prev = s["art"]
         self.sfx = self._sfx_events()
@@ -196,7 +198,7 @@ class Timeline:
 # ---------------------------------------------------------------- 描画
 
 class Renderer:
-    def __init__(self, script, scale=1.0):
+    def __init__(self, script, scale=1.0, icon_mode=False):
         install_fonts()
         self.script = script
         self.scale = scale
@@ -206,6 +208,7 @@ class Renderer:
         self.ctx.scale(scale, scale)
         self.pal = PALETTES[script.get("palette", "night")]
         self.art = Art(script.get("art_style"))
+        self.icons = Icons()
         self.art_px = int(WIN[2] * 1.12 * scale)  # 寄りの分だけ大きめに持つ
         rng = np.random.default_rng(3)
         # 背景にゆっくり漂う光の玉と星
@@ -310,6 +313,10 @@ class Renderer:
         # 中身: ゆっくり寄りながら少し横に流れる (Ken Burns)
         rounded(ctx, x, y, w, h, 44)
         ctx.clip()
+        if prompt.startswith("icons:"):
+            self._icon_panel(prompt[6:].split("|"), lt, dur, alpha)
+            ctx.restore()
+            return
         surf = self.art.surface(prompt, self.art_px)
         u = clamp(lt / max(dur, 0.1))
         z = 1.0 + 0.07 * ease(u)
@@ -320,6 +327,76 @@ class Renderer:
         ctx.translate(px, py)
         ctx.scale(k, k)
         ctx.set_source_surface(surf, 0, 0)
+        ctx.get_source().set_filter(cairo.FILTER_GOOD)
+        ctx.paint_with_alpha(alpha)
+        ctx.restore()
+
+    def _icon_panel(self, names, lt, dur, alpha):
+        """AI イラストの代わりに 3D アイコンで場面を組む: 主役を大きく中央に、脇役を周りに浮かべる。"""
+        ctx = self.ctx
+        x, y, w, h = WIN
+        cx, cy = x + w / 2, y + h / 2
+        seed = sum(map(ord, "".join(names)))
+        cols = self.pal["blob"]
+        g = cairo.LinearGradient(x, y, x + w, y + h)
+        g.add_color_stop_rgba(0, *hexrgb(cols[seed % len(cols)], alpha))
+        g.add_color_stop_rgba(1, *hexrgb(self.pal["bg"][0], alpha))
+        ctx.set_source(g)
+        ctx.paint()
+        # 主役の後ろの光
+        rg = cairo.RadialGradient(cx, cy, 0, cx, cy, w * 0.55)
+        rg.add_color_stop_rgba(0, *hexrgb(self.pal["accent"], 0.45 * alpha))
+        rg.add_color_stop_rgba(1, *hexrgb(self.pal["accent"], 0.0))
+        ctx.set_source(rg)
+        ctx.paint()
+        # 放射状の光の筋がゆっくり回る
+        ctx.save()
+        ctx.translate(cx, cy)
+        ctx.rotate(lt * 0.15)
+        for k in range(12):
+            ctx.rotate(math.pi / 6)
+            ctx.move_to(0, 0)
+            ctx.line_to(w, -w * 0.09)
+            ctx.line_to(w, w * 0.09)
+            ctx.close_path()
+            ctx.set_source_rgba(1, 1, 1, 0.045 * alpha)
+            ctx.fill()
+        ctx.restore()
+        t = lt
+        main = names[0]
+        size = 520
+        pop = ease_out_back(lt / 0.5, 1.6)
+        bob = 14 * math.sin(t * 2.0)
+        sz = size * (0.85 + 0.15 * pop) * (1 + 0.04 * ease(lt / max(dur, 0.1)))
+        self._icon(main, cx, cy + 20 + bob, sz, alpha)
+        spots = [(-0.32, -0.3), (0.32, -0.28), (-0.3, 0.3), (0.31, 0.31)]
+        for k, name in enumerate(names[1:5]):
+            d = 0.25 + 0.2 * k
+            if lt < d:
+                continue
+            u = ease_out_back((lt - d) / 0.4, 2.0)
+            ox, oy = spots[(k + seed) % 4]
+            px = cx + ox * w + 10 * math.sin(t * 1.4 + k * 2)
+            py = cy + oy * h + 12 * math.cos(t * 1.7 + k)
+            self._icon(name, px, py, 230 * max(u, 0.02), alpha, tilt=0.12 * math.sin(t + k))
+
+    def _icon(self, name, x, y, size, alpha=1.0, tilt=0.0):
+        try:
+            surf = self.icons.get(name, int(260 * self.scale) * 2)
+        except Exception:  # noqa: BLE001 — 名前違いのアイコンは描かない
+            return
+        ctx = self.ctx
+        k = size / surf.get_width()
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate(tilt)
+        ctx.set_source_rgba(0, 0, 0, 0.25 * alpha)
+        ctx.scale(1, 0.25)
+        ctx.arc(0, size * 1.9, size * 0.32, 0, 2 * math.pi)
+        ctx.fill()
+        ctx.scale(1, 4)
+        ctx.scale(k, k)
+        ctx.set_source_surface(surf, -surf.get_width() / 2, -surf.get_height() / 2)
         ctx.get_source().set_filter(cairo.FILTER_GOOD)
         ctx.paint_with_alpha(alpha)
         ctx.restore()
