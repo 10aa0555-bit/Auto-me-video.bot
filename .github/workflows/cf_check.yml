@@ -19,6 +19,6 @@ jobs:
           sudo apt-get update -q && sudo apt-get install -yq libcairo2-dev pkg-config
           pip install -q -r geo_short/requirements.txt
       - env:
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_ACCOUNT_ID: 4c5c855831c1a7f3ce3d0fa80b9c0d0d  # Cloudflare のアカウント ID (秘密の値ではない)
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         run: python tools/cf_check.py

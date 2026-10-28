@@ -89,7 +89,7 @@ jobs:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           # AI イラスト (どちらか片方あれば使う。無ければ 3D アイコンで代用)
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_ACCOUNT_ID: 4c5c855831c1a7f3ce3d0fa80b9c0d0d  # Cloudflare のアカウント ID (秘密の値ではない)
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         run: |
           export HF_HOME="$HOME/.cache/geo_short/hf"  # Kokoro の音声モデルもキャッシュに入れる
