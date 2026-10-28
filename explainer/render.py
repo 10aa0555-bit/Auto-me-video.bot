@@ -505,8 +505,10 @@ class Renderer:
         a = ease((lt - 0.5) / 0.3) * ease((s["dur"] - lt) / 0.25)
         if a <= 0:
             return
-        size = 27
         label = f"SOURCE: {cite}"
+        size = 27
+        while size > 18 and self.text_width(label, size) > WIN[2] - 92:  # 窓からはみ出さない大きさに
+            size -= 1
         tw = self.text_width(label, size)
         x, y = WIN[0] + 26, WIN[1] + WIN[3] - 70
         ctx = self.ctx
