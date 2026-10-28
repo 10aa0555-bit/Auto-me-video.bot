@@ -1,0 +1,129 @@
+{
+  "title": "Why You Can't Tickle Yourself",
+  "lang": "en",
+  "palette": "dawn",
+  "pill": [
+    "WHY CAN'T YOU",
+    "TICKLE YOURSELF?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": {
+    "volume": 0.16,
+    "bpm": 100
+  },
+  "scenes": [
+    {
+      "narration": "Try to tickle yourself. Go on. Nothing, right?",
+      "art": "a young adult trying to tickle their own ribs with a deadpan bored expression, nothing happening"
+    },
+    {
+      "narration": "That's not a glitch. Your brain is doing it on purpose.",
+      "art": "a cute cartoon brain character wearing a tiny referee whistle, holding up a stop hand, confident smile",
+      "stat": {
+        "text": "ON PURPOSE",
+        "delay": 1.2
+      }
+    },
+    {
+      "narration": "Every time you move, your brain predicts what that movement is going to feel like.",
+      "art": "a cute cartoon brain looking into a glowing crystal ball that shows a hand about to touch an arm"
+    },
+    {
+      "narration": "That prediction is used to turn the feeling down. It's why your own touch feels so flat.",
+      "art": "a cute cartoon brain turning down a big glowing volume dial, a hand touching an arm in the background",
+      "points": [
+        {
+          "text": "VOLUME DOWN",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 1.4
+        }
+      ],
+      "cite": "Blakemore, Wolpert & Frith, NeuroReport 2000"
+    },
+    {
+      "narration": "Scientists tested this with a tickle robot. You move a handle, and a robot strokes your palm.",
+      "art": "a friendly cute robot arm stroking an open human palm with a soft foam pad, a person holding a handle on the other side",
+      "cite": "Blakemore et al., 1999"
+    },
+    {
+      "narration": "With no delay, it barely tickles. But add a delay of up to a fifth of a second, and it gets more and more ticklish.",
+      "art": "a cartoon stopwatch beside a palm being stroked by a robot, wavy tickle lines getting stronger, giggling face",
+      "stat": {
+        "text": "0.2 SECONDS",
+        "delay": 2.6
+      }
+    },
+    {
+      "narration": "The delay breaks the prediction. Suddenly, the touch feels like it's coming from someone else.",
+      "art": "a surprised young adult laughing as a mysterious friendly shadow hand tickles them"
+    },
+    {
+      "narration": "Scientists think this helps you notice what isn't you. A spider on your arm matters more than your own sleeve.",
+      "art": "a tiny cartoon spider walking on an arm with a glowing alert outline, while the sleeve fades into the background",
+      "points": [
+        {
+          "text": "NOT ME!",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 2.2,
+          "color": "#ff6b6b"
+        }
+      ]
+    },
+    {
+      "narration": "Here's the twist. In one study, some patients who hear voices rated their own touch as just as intense as someone else's.",
+      "art": "a calm young adult sitting in a quiet research room touching their own palm, soft sound waves floating around their head, gentle and respectful mood",
+      "cite": "Blakemore et al., Psychological Medicine 2000"
+    },
+    {
+      "narration": "Researchers think the brain's self-check may not be tagging their own actions as their own.",
+      "art": "a cartoon brain with a name tag stamp machine, a few actions slipping past without a name tag",
+      "points": [
+        {
+          "text": "SELF-CHECK",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "So if you can't tickle yourself, good news. Your brain knows you're you.",
+      "art": "a happy young adult giving a thumbs up while a smiling cartoon brain floats above them with a heart"
+    },
+    {
+      "narration": "Now be honest. Did you just try?",
+      "min_duration": 2.6,
+      "stat": {
+        "text": "DID YOU TRY?",
+        "delay": 0.4
+      }
+    }
+  ],
+  "post": {
+    "title": "Why you can't tickle yourself (your brain is doing it on purpose) 🧠",
+    "description": "Your brain predicts your own touch and turns it down. Scientists proved it with a tickle robot, and the exceptions are fascinating.\n\nSources:\nBlakemore, Wolpert & Frith (2000) NeuroReport\nBlakemore et al. (1999) Journal of Cognitive Neuroscience\nBlakemore et al. (2000) Psychological Medicine",
+    "hashtags": [
+      "#brain",
+      "#neuroscience",
+      "#psychology",
+      "#science",
+      "#didyouknow",
+      "#funfacts",
+      "#shorts"
+    ],
+    "pinned_comment": "Be honest: did you try to tickle yourself? 😂👇"
+  }
+}
