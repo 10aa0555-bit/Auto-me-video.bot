@@ -44,7 +44,7 @@ def main():
     checks = [
         ("解像度 1080x1920", v["width"] == 1080 and v["height"] == 1920, f"{v['width']}x{v['height']}"),
         ("フレームレート 30fps", abs(fps - 30) < 0.1, f"{fps:.2f}fps"),
-        ("尺 30〜45 秒", 30 <= dur <= 45.5, f"{dur:.1f}秒"),
+        ("尺 61〜75 秒 (TikTok の収益化は 1 分超)", 61 <= dur <= 75.5, f"{dur:.1f}秒"),
         ("音声あり (AAC)", a is not None and a["codec_name"] == "aac", a["codec_name"] if a else "なし"),
         ("最後までデコードできる", not dec, dec[:200] or "エラーなし"),
         ("黒画面 (0.3 秒以上) が無い", not black, ", ".join(f"{s}-{e}s" for s, e in black) or "なし"),

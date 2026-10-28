@@ -2,9 +2,20 @@
   "title": "Can You Really Change Your Face Shape?",
   "lang": "en",
   "palette": "dawn",
-  "pill": ["CAN YOU CHANGE", "YOUR FACE SHAPE?"],
-  "voice": {"kokoro_voice": "af_heart", "settings": {"speed": 1.0}},
-  "music": {"volume": 0.16, "bpm": 94},
+  "pill": [
+    "CAN YOU CHANGE",
+    "YOUR FACE SHAPE?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": {
+    "volume": 0.16,
+    "bpm": 94
+  },
   "scenes": [
     {
       "narration": "The internet says you can reshape your jawline. Your skeleton has other ideas.",
@@ -14,68 +25,199 @@
       "narration": "Your face is built in layers. Bone at the bottom, then muscle, fat and fluid on top.",
       "art": "a clean cartoon cross-section diagram of a human face showing layers: bone, red muscle, yellow fat, and a light blue fluid layer, educational infographic",
       "points": [
-        {"text": "BONE", "at": [0.24, 0.14], "delay": 1.4, "color": "#f2e6d0"},
-        {"text": "MUSCLE", "at": [0.76, 0.14], "delay": 2.0, "color": "#ff6b6b"},
-        {"text": "FAT", "at": [0.24, 0.86], "delay": 2.4, "color": "#ffd23f"},
-        {"text": "FLUID", "at": [0.76, 0.86], "delay": 2.8, "color": "#5ee7ff"}
+        {
+          "text": "BONE",
+          "at": [
+            0.24,
+            0.14
+          ],
+          "delay": 1.4,
+          "color": "#f2e6d0"
+        },
+        {
+          "text": "MUSCLE",
+          "at": [
+            0.76,
+            0.14
+          ],
+          "delay": 2.0,
+          "color": "#ff6b6b"
+        },
+        {
+          "text": "FAT",
+          "at": [
+            0.24,
+            0.86
+          ],
+          "delay": 2.4,
+          "color": "#ffd23f"
+        },
+        {
+          "text": "FLUID",
+          "at": [
+            0.76,
+            0.86
+          ],
+          "delay": 2.8,
+          "color": "#5ee7ff"
+        }
       ]
     },
     {
       "narration": "Bone first. Mewing, pressing your tongue to the roof of your mouth, has no controlled studies showing it reshapes an adult jaw.",
       "art": "a cartoon side profile of a young adult pressing their tongue to the roof of the mouth, a big question mark floating next to their jaw",
-      "points": [{"text": "MEWING", "at": [0.5, 0.12], "delay": 0.4}],
-      "stat": {"text": "NO GOOD EVIDENCE", "size": 80, "delay": 4.2}
+      "points": [
+        {
+          "text": "MEWING",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.4
+        }
+      ],
+      "stat": {
+        "text": "NO GOOD EVIDENCE",
+        "size": 80,
+        "delay": 4.2
+      }
     },
     {
       "narration": "And bone smashing? Surgeons warn it can cause fractures, nerve damage and a crooked face. Please don't.",
       "art": "a stern friendly cartoon surgeon in scrubs holding up a hand in a stop gesture, a big red warning sign beside them",
-      "stat": {"text": "DON'T", "size": 110, "delay": 3.6},
+      "stat": {
+        "text": "DON'T",
+        "size": 110,
+        "delay": 3.6
+      },
       "cite": "Surgeon warnings, Mater Health 2026"
     },
     {
       "narration": "Muscle can change a little. In one small study, twenty weeks of facial exercises made cheeks look fuller.",
       "art": "a middle-aged woman doing a facial exercise with puffed cheeks, a calendar with many checked days behind her",
-      "points": [{"text": "20 WEEKS", "at": [0.5, 0.12], "delay": 2.6}],
+      "points": [
+        {
+          "text": "20 WEEKS",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 2.6
+        }
+      ],
       "cite": "Alam et al., JAMA Dermatology 2018"
     },
     {
       "narration": "But it was only sixteen people, with no control group. Promising, not proven.",
       "art": "a small group of sixteen simple cartoon people standing in a row next to an empty dashed outline where a control group should be",
-      "stat": {"text": "16 PEOPLE", "delay": 0.6}
+      "stat": {
+        "text": "16 PEOPLE",
+        "delay": 0.6
+      }
     },
     {
       "narration": "Fat is the big one. Facial fat tracks body weight so closely that people can estimate weight from a face alone.",
       "art": "an observer studying a portrait gallery of different faces, a glowing scale icon floating above the frames",
-      "points": [{"text": "FACIAL FAT", "at": [0.5, 0.12], "delay": 0.4}],
+      "points": [
+        {
+          "text": "FACIAL FAT",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.4
+        }
+      ],
       "cite": "de Jager et al., Frontiers in Psychology 2018"
+    },
+    {
+      "narration": "And faces are sensitive. In one study, people noticed a change of under two BMI points just from someone's face.",
+      "art": "two nearly identical cartoon portraits side by side with a tiny difference in cheek fullness, a magnifying glass hovering between them",
+      "stat": {
+        "text": "< 2 BMI POINTS",
+        "size": 84,
+        "delay": 3.4
+      },
+      "cite": "Re & Rule, Social Psychological and Personality Science 2016"
     },
     {
       "narration": "And fluid changes day to day. Salt, alcohol and short sleep can all make your face look puffier.",
       "art": "a sleepy young adult in the morning with a slightly puffy face, a salty snack bag and an empty glass on the nightstand",
       "points": [
-        {"text": "SALT", "at": [0.2, 0.86], "delay": 1.8, "color": "#5ee7ff"},
-        {"text": "ALCOHOL", "at": [0.5, 0.86], "delay": 2.2, "color": "#5ee7ff"},
-        {"text": "SLEEP", "at": [0.8, 0.86], "delay": 2.6, "color": "#5ee7ff"}
+        {
+          "text": "SALT",
+          "at": [
+            0.2,
+            0.86
+          ],
+          "delay": 1.8,
+          "color": "#5ee7ff"
+        },
+        {
+          "text": "ALCOHOL",
+          "at": [
+            0.5,
+            0.86
+          ],
+          "delay": 2.2,
+          "color": "#5ee7ff"
+        },
+        {
+          "text": "SLEEP",
+          "at": [
+            0.8,
+            0.86
+          ],
+          "delay": 2.6,
+          "color": "#5ee7ff"
+        }
       ]
     },
     {
       "narration": "So you can't hack your skeleton. But the layers on top are where real change happens.",
       "art": "a confident young adult silhouette with a calm glowing outline, layers of soft light peeling around the face like a reveal, hopeful sunrise colors",
       "points": [
-        {"text": "BONE: NO", "at": [0.27, 0.14], "delay": 1.2, "color": "#ff6b6b"},
-        {"text": "HABITS: YES", "at": [0.73, 0.14], "delay": 2.4, "color": "#7cf29c"}
+        {
+          "text": "BONE: NO",
+          "at": [
+            0.27,
+            0.14
+          ],
+          "delay": 1.2,
+          "color": "#ff6b6b"
+        },
+        {
+          "text": "HABITS: YES",
+          "at": [
+            0.73,
+            0.14
+          ],
+          "delay": 2.4,
+          "color": "#7cf29c"
+        }
       ]
     },
     {
       "narration": "Have you ever tried mewing? Be honest.",
       "min_duration": 2.6,
-      "stat": {"text": "BE HONEST", "delay": 0.4}
+      "stat": {
+        "text": "BE HONEST",
+        "delay": 0.4
+      }
     }
   ],
   "post": {
     "title": "Can you really change your face shape? (mewing, bone smashing, face yoga) 🦴",
     "description": "Your face is built in layers: bone, muscle, fat and fluid. Here's what the evidence says each one can and can't do. Bone smashing is dangerous: don't try it.\n\nSources:\nAlam et al. (2018) JAMA Dermatology\nde Jager, Coetzee & Coetzee (2018) Frontiers in Psychology\nMater Health (2026) surgeons' warning on bone smashing",
-    "hashtags": ["#mewing", "#jawline", "#looksmaxxing", "#science", "#mythbusting", "#glowup", "#shorts"],
+    "hashtags": [
+      "#mewing",
+      "#jawline",
+      "#looksmaxxing",
+      "#science",
+      "#mythbusting",
+      "#glowup",
+      "#shorts"
+    ],
     "pinned_comment": "Mewing: tried it, still doing it, or never? 👇"
   }
 }

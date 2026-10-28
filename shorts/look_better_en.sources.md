@@ -10,3 +10,10 @@
 | 目まで笑う笑顔 (デュシェンヌ・スマイル) はより本物で魅力的と評価される | Gunnery & Ruben (2016) "Perceptions of Duchenne and non-Duchenne smiles: A meta-analysis", Cognition and Emotion 30:501–515 https://informahealthcare.com/doi/full/10.1080/02699931.2015.1018817 | メタ分析の平均。魅力への効果は研究によってばらつく → 「rated as」 |
 
 言わないことにしたもの: 髪型の効果 (質の高い研究が見つからない)、具体的な % の数字 (研究ごとに条件が違い誤解を招く)。
+
+追加した主張:
+
+| 台本の主張 | 根拠 | 限界・言い方の注意 |
+|---|---|---|
+| 徹夜明けの顔は、まぶたが下がり、クマが濃く、肌が青白く見える | Sundelin et al. (2013) "Cues of Fatigue: Effects of Sleep Deprivation on Facial Appearance", SLEEP 36(9):1355–60 https://pubmed.ncbi.nlm.nih.gov/23997369/ | 10 人を 31 時間起きた後に撮影、40 人が評価。写真での評価 |
+| 写真では腕を組まず、肩を下げ、少し場所を取る | 上の Vacharkulksemsuk et al. (2016) から導いた提案 | 「Easy test」として提案の形で言い、効果の大きさは言わない |

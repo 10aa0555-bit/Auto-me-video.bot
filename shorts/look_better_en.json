@@ -104,6 +104,31 @@
       "cite": "Axelsson et al., BMJ 2010"
     },
     {
+      "narration": "A follow-up study found what gives it away: droopier eyelids, darker circles and paler skin.",
+      "art": "a close-up comparison of two pairs of cartoon eyes, left bright and rested, right tired with droopy eyelids and dark circles underneath",
+      "points": [
+        {
+          "text": "DROOPY LIDS",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 1.8,
+          "color": "#ff6b6b"
+        },
+        {
+          "text": "DARK CIRCLES",
+          "at": [
+            0.5,
+            0.86
+          ],
+          "delay": 2.6,
+          "color": "#ff6b6b"
+        }
+      ],
+      "cite": "Sundelin et al., SLEEP 2013"
+    },
+    {
       "narration": "Signal two: even skin tone. More even skin is read as younger and healthier.",
       "art": "a close up of a smiling young adult cheek with a magnifying glass showing smooth even skin tone, clean scientific style",
       "points": [
@@ -141,6 +166,30 @@
         }
       ],
       "cite": "Vacharkulksemsuk et al., PNAS 2016"
+    },
+    {
+      "narration": "Easy test: in your next photo, uncross your arms, drop your shoulders and take up a little more space.",
+      "art": "a young adult posing for a phone photo with relaxed open shoulders and uncrossed arms, a friend holding the phone, sunny park",
+      "points": [
+        {
+          "text": "UNCROSS ARMS",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 1.4,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "SHOULDERS DOWN",
+          "at": [
+            0.5,
+            0.86
+          ],
+          "delay": 2.4,
+          "color": "#2ee6c5"
+        }
+      ]
     },
     {
       "narration": "Signal four: a real smile, the kind that reaches your eyes. It's rated as more genuine and more attractive.",

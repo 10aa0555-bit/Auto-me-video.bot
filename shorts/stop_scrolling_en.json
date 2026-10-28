@@ -2,9 +2,20 @@
   "title": "Why You Can't Stop Scrolling",
   "lang": "en",
   "palette": "ocean",
-  "pill": ["WHY CAN'T YOU", "STOP SCROLLING?"],
-  "voice": {"kokoro_voice": "af_heart", "settings": {"speed": 1.0}},
-  "music": {"volume": 0.16, "bpm": 90},
+  "pill": [
+    "WHY CAN'T YOU",
+    "STOP SCROLLING?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": {
+    "volume": 0.16,
+    "bpm": 90
+  },
   "scenes": [
     {
       "narration": "You open your phone to check one thing. Twenty minutes later, you're still scrolling.",
@@ -13,56 +24,132 @@
     {
       "narration": "It's not just weak willpower. A few things are working on you.",
       "art": "a tiny young adult standing in front of a giant smartphone with cartoon hooks and magnets reaching out of the screen toward them",
-      "stat": {"text": "NOT WILLPOWER", "delay": 0.4}
+      "stat": {
+        "text": "NOT WILLPOWER",
+        "delay": 0.4
+      }
     },
     {
       "narration": "One: habit. A typical phone check lasts under thirty seconds, and it's triggered by the same moments, like boredom or a commute.",
       "art": "a young adult on a bus commute checking a phone out of boredom, small thought bubble with a yawning face, calm teal city outside the window",
       "points": [
-        {"text": "1  HABIT", "at": [0.5, 0.12], "delay": 0.2},
-        {"text": "BORED", "at": [0.26, 0.86], "delay": 3.4, "color": "#7cf29c"},
-        {"text": "CHECK", "at": [0.74, 0.86], "delay": 3.8, "color": "#7cf29c"}
+        {
+          "text": "1  HABIT",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        },
+        {
+          "text": "BORED",
+          "at": [
+            0.26,
+            0.86
+          ],
+          "delay": 3.4,
+          "color": "#7cf29c"
+        },
+        {
+          "text": "CHECK",
+          "at": [
+            0.74,
+            0.86
+          ],
+          "delay": 3.8,
+          "color": "#7cf29c"
+        }
       ],
       "cite": "Oulasvirta et al., 2012"
     },
     {
       "narration": "Two: rewards. Most posts are meh, then one is great. Studies of social media find our behavior follows the rules of reward learning.",
       "art": "a cute cartoon brain character pulling a slot machine lever, the slot reels showing hearts, thumbs up and laughing faces, notification bubbles floating",
-      "points": [{"text": "2  REWARDS", "at": [0.5, 0.12], "delay": 0.2}],
+      "points": [
+        {
+          "text": "2  REWARDS",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        }
+      ],
       "cite": "Lindström et al., Nature Communications 2021"
     },
     {
       "narration": "So it's not simply a dopamine addiction. It's learning, habit and design working together.",
       "art": "three glowing interlocking gears labeled only with simple icons: a loop arrow, a star, and a phone screen, floating in space",
-      "stat": {"text": "NOT JUST DOPAMINE", "size": 78, "delay": 0.3}
+      "stat": {
+        "text": "NOT JUST DOPAMINE",
+        "size": 78,
+        "delay": 0.3
+      }
     },
     {
       "narration": "Three: no stopping point. A book has chapters. A feed has no last page.",
       "art": "a split image: on the left an open book with a clear final page and a bookmark, on the right a phone feed stretching endlessly upward into the stars",
-      "points": [{"text": "3  NO LAST PAGE", "at": [0.5, 0.12], "delay": 0.2}]
+      "points": [
+        {
+          "text": "3  NO LAST PAGE",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        }
+      ]
     },
     {
       "narration": "And alerts keep pulling you back. In one study, just getting a notification, without even checking it, made people miss more on a focus task.",
       "art": "a young adult trying to focus on homework at a desk while a phone buzzes with a glowing notification bubble, their attention drawn by a dotted line to the phone",
-      "stat": {"text": "MORE MISTAKES", "delay": 2.6},
+      "stat": {
+        "text": "MORE MISTAKES",
+        "delay": 2.6
+      },
       "cite": "Stothart et al., 2015"
+    },
+    {
+      "narration": "Sometimes your brain even invents them. In one hospital survey, sixty-eight percent of staff had felt phantom phone vibrations.",
+      "art": "a confused young adult in a hospital hallway touching their pocket where a ghostly cartoon phone vibration glows, but the phone is actually on the table",
+      "stat": {
+        "text": "{n}%",
+        "count": 68,
+        "label": "felt phantom vibrations",
+        "delay": 3.6
+      },
+      "cite": "Rothberg et al., BMJ 2010"
     },
     {
       "narration": "So try this: batch your notifications. In one trial, getting them just three times a day lowered stress and helped people feel more focused.",
       "art": "a calm young adult relaxing with tea while a phone rests face down, three small neat envelopes arriving at a clock showing morning, noon and evening",
-      "stat": {"text": "3x A DAY", "delay": 1.4},
+      "stat": {
+        "text": "3x A DAY",
+        "delay": 1.4
+      },
       "cite": "Fitz et al., Computers in Human Behavior 2019"
     },
     {
       "narration": "Now be honest. How many times have you checked your phone today?",
       "min_duration": 3.0,
-      "stat": {"text": "HOW MANY?", "delay": 1.6}
+      "stat": {
+        "text": "HOW MANY?",
+        "delay": 1.6
+      }
     }
   ],
   "post": {
     "title": "Why you can't stop scrolling (it's not just dopamine) 📱",
     "description": "Habit, reward learning and feeds with no last page. Plus one simple fix that actually has evidence behind it.\n\nSources:\nOulasvirta et al. (2012) Personal and Ubiquitous Computing\nLindström et al. (2021) Nature Communications\nStothart et al. (2015) J Exp Psychol: Human Perception and Performance\nFitz et al. (2019) Computers in Human Behavior",
-    "hashtags": ["#psychology", "#phoneaddiction", "#screentime", "#productivity", "#science", "#selfimprovement", "#shorts"],
+    "hashtags": [
+      "#psychology",
+      "#phoneaddiction",
+      "#screentime",
+      "#productivity",
+      "#science",
+      "#selfimprovement",
+      "#shorts"
+    ],
     "pinned_comment": "Guess your screen time today, then check it. How close were you? 👇"
   }
 }
