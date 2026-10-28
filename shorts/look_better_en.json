@@ -1,0 +1,225 @@
+{
+  "title": "How to Look Better Without Changing Your Face",
+  "lang": "en",
+  "palette": "night",
+  "pill": [
+    "LOOK BETTER,",
+    "SAME FACE?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": {
+    "volume": 0.16,
+    "bpm": 92
+  },
+  "scenes": [
+    {
+      "narration": "Strangers judge your face in about a tenth of a second.",
+      "art": "a young adult walking down a busy city street while many floating cartoon eyes glance at them from all directions",
+      "stat": {
+        "text": "0.1 SECONDS",
+        "delay": 0.6
+      },
+      "cite": "Willis & Todorov, 2006"
+    },
+    {
+      "narration": "But they're not just reading your bones. They're reading signals you can change.",
+      "art": "a friendly young adult face shown like a scientific diagram, glowing circles highlighting the skin, the eyes, the smile and the shoulders",
+      "points": [
+        {
+          "text": "SLEEP",
+          "at": [
+            0.25,
+            0.14
+          ],
+          "delay": 2.2
+        },
+        {
+          "text": "SKIN",
+          "at": [
+            0.75,
+            0.14
+          ],
+          "delay": 2.6
+        },
+        {
+          "text": "POSTURE",
+          "at": [
+            0.28,
+            0.86
+          ],
+          "delay": 3.0
+        },
+        {
+          "text": "SMILE",
+          "at": [
+            0.74,
+            0.86
+          ],
+          "delay": 3.4
+        }
+      ]
+    },
+    {
+      "narration": "Signal one: sleep.",
+      "art": "a young adult sleeping peacefully in a cozy bed under a big crescent moon, soft blue night light",
+      "points": [
+        {
+          "text": "1  SLEEP",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        }
+      ]
+    },
+    {
+      "narration": "In one experiment, people photographed after a sleepless night were rated less healthy and less attractive.",
+      "art": "two side by side portraits of the same young adult, left one well rested and bright, right one tired with droopy eyelids and pale skin",
+      "points": [
+        {
+          "text": "RESTED",
+          "at": [
+            0.26,
+            0.12
+          ],
+          "delay": 1.6,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "NO SLEEP",
+          "at": [
+            0.74,
+            0.12
+          ],
+          "delay": 2.2,
+          "color": "#ff6b6b"
+        }
+      ],
+      "cite": "Axelsson et al., BMJ 2010"
+    },
+    {
+      "narration": "Signal two: even skin tone. More even skin is read as younger and healthier.",
+      "art": "a close up of a smiling young adult cheek with a magnifying glass showing smooth even skin tone, clean scientific style",
+      "points": [
+        {
+          "text": "2  SKIN",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        }
+      ],
+      "cite": "Matts et al., 2007"
+    },
+    {
+      "narration": "The boring fix? Daily sunscreen. In a four year trial, daily users showed no detectable increase in skin aging.",
+      "art": "a cheerful young adult applying sunscreen in front of a bright cartoon sun with a protective shield bubble around their face",
+      "stat": {
+        "text": "DAILY SPF",
+        "delay": 1.0
+      },
+      "cite": "Hughes et al., Annals of Internal Medicine 2013"
+    },
+    {
+      "narration": "Signal three: posture. In a speed-dating study, open, expansive body language got more yeses.",
+      "art": "two young adults at a cafe table on a speed date, one sitting open and relaxed with arms wide, confident and smiling",
+      "points": [
+        {
+          "text": "3  POSTURE",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        }
+      ],
+      "cite": "Vacharkulksemsuk et al., PNAS 2016"
+    },
+    {
+      "narration": "Signal four: a real smile, the kind that reaches your eyes. It's rated as more genuine and more attractive.",
+      "art": "a young adult with a big genuine smile that makes the eyes crinkle, warm sparkles around the face",
+      "points": [
+        {
+          "text": "4  REAL SMILE",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.2
+        }
+      ],
+      "cite": "Gunnery & Ruben, 2016"
+    },
+    {
+      "narration": "Your bones set the frame. But sleep, skin, posture and a real smile are things you control.",
+      "art": "a young adult standing tall and confident on a small stage with a soft spotlight, four small glowing orbs orbiting around them",
+      "points": [
+        {
+          "text": "SLEEP",
+          "at": [
+            0.22,
+            0.14
+          ],
+          "delay": 1.6,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "SKIN",
+          "at": [
+            0.78,
+            0.14
+          ],
+          "delay": 1.9,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "POSTURE",
+          "at": [
+            0.25,
+            0.86
+          ],
+          "delay": 2.2,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "SMILE",
+          "at": [
+            0.76,
+            0.86
+          ],
+          "delay": 2.5,
+          "color": "#2ee6c5"
+        }
+      ]
+    },
+    {
+      "narration": "So which one do you skip the most?",
+      "min_duration": 2.6,
+      "stat": {
+        "text": "WHICH ONE?",
+        "delay": 0.3
+      }
+    }
+  ],
+  "post": {
+    "title": "Look better without changing your face 👀",
+    "description": "Strangers judge your face in about 0.1 seconds, but they're reading more than bone structure. 4 science-backed signals you can actually change: sleep, even skin, posture and a real smile.\n\nSources:\nWillis & Todorov (2006) Psychological Science\nAxelsson et al. (2010) BMJ\nMatts et al. (2007) J Am Acad Dermatol\nHughes et al. (2013) Annals of Internal Medicine\nVacharkulksemsuk et al. (2016) PNAS\nGunnery & Ruben (2016) Cognition and Emotion",
+    "hashtags": [
+      "#glowup",
+      "#selfimprovement",
+      "#psychology",
+      "#science",
+      "#skincare",
+      "#looksmaxxing",
+      "#shorts"
+    ],
+    "pinned_comment": "Which one do you skip the most: sleep, sunscreen, posture or smiling? 👇"
+  }
+}
