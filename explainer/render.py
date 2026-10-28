@@ -369,7 +369,7 @@ class Renderer:
         if not text:
             return
         lines = text if isinstance(text, list) else [text]
-        u = ease_out_back(t / 0.45, 1.4)
+        u = max(ease_out_back(t / 0.45, 1.4), 0.02)
         size = 54
         widths = [self.text_width(ln, size) for ln in lines]
         bw = max(widths) + 90
@@ -398,7 +398,7 @@ class Renderer:
     def draw_points(self, s, lt):
         for j, p in enumerate(s["spec"].get("points", [])):
             d = p.get("delay", 0.5 + j * 0.5)
-            u = ease_out_back((lt - d) / 0.35, 2.0)
+            u = max(ease_out_back((lt - d) / 0.35, 2.0), 0.02)
             if lt < d:
                 continue
             ax, ay = p.get("at", [0.5, 0.15 + 0.14 * j])
@@ -446,7 +446,7 @@ class Renderer:
         d = st.get("delay", 0.35)
         if lt < d:
             return
-        u = ease_out_back((lt - d) / 0.4, 1.8)
+        u = max(ease_out_back((lt - d) / 0.4, 1.8), 0.02)
         txt = st["text"]
         if st.get("count") is not None:
             n = st["count"] * ease_out((lt - d) / 1.0)
