@@ -274,13 +274,19 @@ class AIArt:
         return self.mem[key]
 
 
+_REMBG = []
+
+
 def _cutout(data):
     """白っぽい無地の背景を消して PNG (透過) にする。rembg があればそれを使う。"""
     import cv2
     import numpy as np
     try:
-        from rembg import remove
-        out = remove(data)
+        from rembg import new_session, remove
+        # 既定のモデルは 1GB あり Actions のメモリが足りなくなるので、軽いモデル (約 170MB) を使う
+        if not _REMBG:
+            _REMBG.append(new_session("isnet-general-use"))
+        out = remove(data, session=_REMBG[0])
         img = cv2.imdecode(np.frombuffer(out, np.uint8), cv2.IMREAD_UNCHANGED)
     except ImportError:
         img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)

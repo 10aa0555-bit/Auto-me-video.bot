@@ -73,9 +73,9 @@ jobs:
 
       # 衛星画像・アイコン・国旗・音声モデル・作ったナレーションを次回に持ち越す
       # (毎回新しいキーで保存し、前回分から復元する)
-      - name: Cache assets and narration
+      - name: Restore assets and narration
         if: steps.pick.outputs.scripts != ''
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: ~/.cache/geo_short
           key: geo-short-assets-v3-${{ github.run_id }}
@@ -97,6 +97,14 @@ jobs:
           for s in ${{ steps.pick.outputs.scripts }}; do
             python -m geo_short.build "$s" --require-tts
           done
+
+      # 失敗しても、描いた AI イラストやナレーションは次回に持ち越す (無料枠を無駄にしない)
+      - name: Save assets and narration
+        if: always() && steps.pick.outputs.scripts != ''
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/geo_short
+          key: geo-short-assets-v3-${{ github.run_id }}
 
       - name: Upload videos
         if: steps.pick.outputs.scripts != ''
