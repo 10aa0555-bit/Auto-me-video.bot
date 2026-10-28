@@ -18,15 +18,22 @@
 
 ## 候補 (上から順に作る)
 
-- [ ] ゲシュタルト崩壊 / semantic satiation (同じ単語を見続けると変に見える)
-- [ ] 録音した自分の声が気持ち悪い理由 (骨伝導)
-- [ ] ベン・フランクリン効果 (頼みごとをすると好かれる)
-- [ ] IKEA 効果 (自分で作ったものを高く評価する)
-- [ ] 午前 2 時の考え事が暗くなる理由
+アルゴリズム狙い: 「What if…? / What happens if…?」の好奇心型を中心に、funny なあるあると交互に作る。
+タイトルと 1 シーン目は必ず問いの形にする (例: "What happens if you swallow gum?")。
+
+- [ ] What happens if you swallow gum? (7 年残る説のウソ)
+- [ ] What happens to your body in space without a suit? (爆発はしない、意識は約 15 秒)
+- [ ] What if the Moon disappeared? (潮・夜の明るさ・地軸の傾き)
 - [ ] 歌が頭から離れない理由 (イヤーワーム)
-- [ ] 人はなぜ予定より時間がかかると見積もれないのか (計画錯誤)
-- [ ] シャワー中にいいアイデアが浮かぶ理由
-- [ ] 猫はなぜ物をテーブルから落とすのか
-- [ ] タコには心臓が 3 つ、血は青い
+- [ ] What if you fell into the Mariana Trench? (水圧)
+- [ ] ゲシュタルト崩壊 / semantic satiation (同じ単語を見続けると変に見える)
+- [ ] What happens if you don't sleep for days? (不安をあおらず、記録と研究の範囲で)
+- [ ] 録音した自分の声が気持ち悪い理由 (骨伝導)
+- [ ] What if all the ants disappeared?
 - [ ] カラスは人の顔を覚えて恨む
-- [ ] 人はなぜ高い所で「飛び降りたら」と思うのか (call of the void)
+- [ ] What if you only drank soda? (健康の話は誇張しない)
+- [ ] ベン・フランクリン効果 (頼みごとをすると好かれる)
+- [ ] 猫はなぜ物をテーブルから落とすのか
+- [ ] IKEA 効果 (自分で作ったものを高く評価する)
+- [ ] タコには心臓が 3 つ、血は青い
+- [ ] 午前 2 時の考え事が暗くなる理由
