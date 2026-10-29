@@ -198,6 +198,60 @@ def map_textures(timeline, job, looks, use_tiles=True):
     return out, credits
 
 
+def prepare_shapes(script, tl):
+    """塗り・輪郭に使う国の形を、正規化メルカトル座標の輪郭 (間引き済み) にする。"""
+    from geo_short.geo import World, merc_arr
+    keys = set()
+    for sc in script["scenes"]:
+        keys |= set(sc.get("fill", {})) | set(sc.get("outline", []))
+    if not keys:
+        return {}
+    world = World()
+    for name, coords in script.get("regions", {}).items():
+        world.add_region(name, coords)
+    spans = [math.exp(s["cam_to"][2]) for s in tl.scenes if s["cam_to"]]
+    eps = (min(spans) if spans else 0.05) / W * 0.6  # 画面で 0.6px 以下の凹凸は省く
+    out = {}
+    for k in sorted(keys):
+        if k in world.custom:
+            polys = [[[p for p in r.lods[0]] for r in poly] for poly in world.custom[k].polygons]
+            polys = [[np.asarray(r) for r in poly] for poly in polys]
+        else:
+            polys = [[merc_arr(r) for r in poly] for poly in world.raw_polygons(k)]
+        rings = []
+        for poly in polys:
+            for r in poly:
+                a = cv2.approxPolyDP(np.round(np.asarray(r, np.float64) * 1e7).astype(np.int32).reshape(-1, 1, 2),
+                                     eps * 1e7, True).reshape(-1, 2) / 1e7
+                if len(a) >= 3:
+                    rings.append([[round(x, 7), round(y, 7)] for x, y in a])
+        out[k] = rings
+    return out
+
+
+def prepare_swarms(script):
+    """swarm (人が住む場所の点の群れ) を、線に沿ってばらまいた点の列にする。"""
+    rng = np.random.default_rng(7)
+    for sc in script["scenes"]:
+        for sw in sc.get("swarms", []):
+            path = np.asarray(sw["path"], dtype=np.float64)
+            seg = np.hypot(*np.diff(path, axis=0).T)
+            cum = np.concatenate([[0], np.cumsum(seg)])
+            n = sw.get("count", 300)
+            spread = sw.get("spread_km", 8) / 111.0
+            pts = []
+            for d in np.sort(rng.random(n)) * cum[-1]:
+                i = min(np.searchsorted(cum, d, side="right") - 1, len(seg) - 1)
+                u = (d - cum[i]) / max(seg[i], 1e-9)
+                p = path[i] + (path[i + 1] - path[i]) * u
+                nx, ny = -(path[i + 1][1] - path[i][1]), path[i + 1][0] - path[i][0]
+                norm = math.hypot(nx, ny) or 1
+                off = rng.normal(0, spread)
+                pts.append([round(p[0] + nx / norm * off, 4), round(p[1] + ny / norm * off, 4),
+                            round(d / cum[-1], 3)])
+            sw["pts"] = pts
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("script")
@@ -223,6 +277,8 @@ def main():
     total = tl.total
 
     prepare_art(script, job)
+    prepare_swarms(script)
+    shapes = prepare_shapes(script, tl)
     fonts = os.path.join(os.path.dirname(__file__), "..", "fonts")
     for f in os.listdir(fonts):
         if f.startswith("Poppins"):
@@ -243,11 +299,12 @@ def main():
         cx, cy, ls = tl.camera(s, lt) if s["cam_to"] else (0.5, 0.5, 0.0)
         cams.append([round(cx, 7), round(cy, 7), round(math.exp(ls), 7)])
 
-    scenes = [{"spec": s["spec"], "start": s["start"], "dur": s["dur"]} for s in tl.scenes]
+    scenes = [{"spec": s["spec"], "start": s["start"], "dur": s["dur"],
+               "fillsBefore": s["fills_before"], "fillsAfter": s["fills_after"]} for s in tl.scenes]
     captions = [{"text": c[0], "start": c[1], "end": c[2], "words": [[w, t] for w, t in (c[3] or [])]}
                 for c in tl.captions]
     props = {"name": name, "fps": FPS, "frames": n, "scenes": scenes, "captions": captions,
-             "camera": cams, "maps": tex or [], "credits": credits, "audio": "audio.m4a",
+             "camera": cams, "shapes": shapes, "maps": tex or [], "credits": credits, "audio": "audio.m4a",
              "captionStyle": script.get("captions", "plain"),
              "version": hashlib.sha1(str(os.path.getmtime(audio)).encode()).hexdigest()[:8]}
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)

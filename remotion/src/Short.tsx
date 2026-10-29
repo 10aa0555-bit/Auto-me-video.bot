@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Fills, Line, Outlines, SwarmDots} from './Geo';
 import type {Caption, Icon, MapTex, Marker, Props, Scene, TextSpec} from './types';
 import {FONT, H, W, clamp01, easeIn, easeInOut, easeOut, outScale, popIn, stickerFilter, toScreen} from './util';
 
@@ -232,12 +233,15 @@ const Banner: React.FC<{b: NonNullable<Scene['spec']['banner']>; lt: number; dur
   const delay = b.delay ?? 0.3;
   const size = b.size ?? 80;
   const fade = 1 - easeIn((lt - (dur - 0.35)) / 0.35);
-  const [title, ...rest] = b.lines;
-  const words = title.split(' ');
+  // badge: false なら全行を大きな文字で出す (問いのタイトル向け)
+  const big = b.badge === false ? b.lines : [b.lines[0]];
+  const rest = b.badge === false ? [] : b.lines.slice(1);
+  const words = big.join(' \n ').split(' ');
   return (
     <div style={{position: 'absolute', top: H * (b.y ?? 0.18), width: W, textAlign: 'center', opacity: fade}}>
       <div style={{fontFamily: FONT, fontWeight: 900, fontSize: size, color: '#fff', lineHeight: 1.05, letterSpacing: 1}}>
         {words.map((w, i) => {
+          if (w === '\n') return <br key={i} />;
           const k = popIn(lt - delay - i * 0.09, 0.4);
           return (
             <span key={i} style={{
@@ -331,6 +335,9 @@ const SceneLayer: React.FC<{s: Scene; prevYear?: string; props: Props}> = ({s, p
   const sp = s.spec;
   return (
     <AbsoluteFill>
+      {sp.outline && sp.outline.length > 0 && <Outlines keys={sp.outline} shapes={props.shapes ?? {}} cam={cam} lt={lt} dur={s.dur} />}
+      {(sp.swarms ?? []).map((sw, i) => <SwarmDots key={`s${i}`} sw={sw} cam={cam} lt={lt} dur={s.dur} />)}
+      {(sp.lines ?? []).map((ln, i) => <Line key={`l${i}`} ln={ln} cam={cam} lt={lt} dur={s.dur} />)}
       {(sp.markers ?? []).map((m, i) => <Pin key={`m${i}`} m={m} lt={lt} dur={s.dur} cam={cam} />)}
       {(sp.icons ?? []).map((ic, i) => <Sticker key={`i${i}`} ic={{delay: 0.4 + i * 0.3, ...ic}} lt={lt} dur={s.dur} cam={cam} />)}
       {(sp.texts ?? []).map((tx, i) => <BigText key={`t${i}`} tx={{delay: 0.5 + i * 0.3, ...tx}} lt={lt} dur={s.dur} />)}
@@ -352,6 +359,7 @@ export const Short: React.FC<Props> = (props) => {
     <AbsoluteFill style={{backgroundColor: '#0d2238', overflow: 'hidden'}}>
       <FontFaces />
       {props.maps.length > 0 && <MapLayer maps={props.maps} cam={cam} scenes={props.scenes} t={t} />}
+      <Fills scenes={props.scenes} shapes={props.shapes ?? {}} cam={cam} t={t} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.32) 100%)'}} />
       <Blueprint scenes={props.scenes} t={t} />
       {props.scenes.map((s, i) => (

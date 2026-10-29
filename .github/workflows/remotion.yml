@@ -12,12 +12,6 @@ on:
         description: "tools/remotion_prep.py に渡すオプション (例: --scenes 4 / --no-tiles)"
         required: false
         default: ""
-  # 書き出しの仕組みを変えたら、ザンジバル戦争で試しに作る
-  push:
-    paths:
-      - "remotion/src/**"
-      - "tools/remotion_prep.py"
-      - ".github/workflows/remotion.yml"
 
 permissions:
   contents: write
@@ -87,7 +81,7 @@ jobs:
           export U2NET_HOME="$HOME/.cache/geo_short/u2net"
           mkdir -p out
           for s in $SCRIPTS; do
-            case "$s" in scripts/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
+            case "$s" in scripts/*.json|maps/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
             name=$(basename "$s" .json)
             python tools/remotion_prep.py "$s" $PREP_OPTIONS
             (cd remotion && npx remotion render src/index.ts Short "../out/${name}_hq.mp4" --props=props.json --log=info)

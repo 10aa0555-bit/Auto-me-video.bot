@@ -28,19 +28,41 @@ export type TextSpec = {
   delay?: number;
 };
 
+export type LineSpec = {
+  path: LonLat[];
+  style?: 'solid' | 'dashed' | 'glow' | 'arrow' | 'arrow_dashed';
+  color?: string;
+  width?: number;
+  delay?: number;
+  draw_time?: number;
+  label?: string;
+  count?: number;
+};
+
+export type Swarm = {pts?: [number, number, number][]; keep?: boolean; color?: string; delay?: number; duration?: number; size?: number};
+
 export type SceneSpec = {
+  outline?: string[];
+  lines?: LineSpec[];
+  swarms?: Swarm[];
   narration?: string;
   icons?: Icon[];
   markers?: Marker[];
   texts?: TextSpec[];
-  banner?: {lines: string[]; y?: number; delay?: number; size?: number};
+  banner?: {lines: string[]; y?: number; delay?: number; size?: number; badge?: boolean};
   year?: string;
   base?: 'satellite' | 'relief';
   blueprint?: boolean;
   flash?: boolean;
 };
 
-export type Scene = {spec: SceneSpec; start: number; dur: number};
+export type Scene = {
+  spec: SceneSpec;
+  start: number;
+  dur: number;
+  fillsBefore: Record<string, string | null>;
+  fillsAfter: Record<string, string | null>;
+};
 
 export type Caption = {text: string; start: number; end: number; words: [string, number][]};
 
@@ -61,6 +83,7 @@ export type Props = {
   captions: Caption[];
   camera: [number, number, number][];
   maps: MapTex[];
+  shapes: Record<string, [number, number][][]>;
   credits?: string[];
   audio: string;
   captionStyle: string;
