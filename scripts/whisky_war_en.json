@@ -11,11 +11,7 @@
       "style": 0.35
     }
   },
-  "music": {
-    "prompt": "Playful, slightly comedic documentary music for a funny history short, pizzicato strings, light percussion, no vocals",
-    "volume": 0.22,
-    "bpm": 104
-  },
+  "music": false,
   "post": {
     "title": "Canada and Denmark fought a war… with whisky 🥃",
     "description": "For decades, Canada and Denmark fought over tiny Hans Island by swapping flags and leaving bottles of booze. In 2022 they finally split it.",
@@ -66,12 +62,12 @@
       ],
       "banner": {
         "lines": [
-          "THE",
-          "WHISKY WAR"
+          "THE WHISKY WAR",
+          "RIDICULOUS WARS #3"
         ],
-        "y": 0.2,
+        "y": 0.18,
         "delay": 0.15,
-        "size": 90
+        "size": 80
       }
     },
     {
@@ -282,6 +278,41 @@
           "count": 5,
           "spread": 104,
           "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "Then in 2005, Canada's defense minister flew in and walked onto the island himself. Denmark sent a formal protest.",
+      "tts": "Then in two thousand five, Canada's defense minister flew in and walked onto the island himself. Denmark sent a formal protest.",
+      "year": 2005,
+      "camera": {
+        "center": [
+          -66.46,
+          80.8
+        ],
+        "span": 8
+      },
+      "icons": [
+        {
+          "name": "helicopter",
+          "at": [
+            -67.2,
+            80.95
+          ],
+          "size": 240,
+          "anim": "bob",
+          "delay": 0.3
+        },
+        {
+          "name": "envelope",
+          "at": [
+            -65.4,
+            80.6
+          ],
+          "size": 200,
+          "anim": "shake",
+          "delay": 3.6,
+          "label": "PROTEST"
         }
       ]
     },
