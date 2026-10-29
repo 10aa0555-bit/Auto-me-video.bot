@@ -12,10 +12,7 @@
       "speed": 1.0
     }
   },
-  "music": {
-    "volume": 0.14,
-    "bpm": 88
-  },
+  "music": false,
   "scenes": [
     {
       "narration": "Try not to yawn while watching this. Good luck.",

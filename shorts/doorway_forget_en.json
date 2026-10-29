@@ -12,10 +12,7 @@
       "speed": 1.0
     }
   },
-  "music": {
-    "volume": 0.16,
-    "bpm": 98
-  },
+  "music": false,
   "scenes": [
     {
       "narration": "You walk into a room, and instantly forget why you came in.",

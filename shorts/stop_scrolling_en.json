@@ -12,10 +12,7 @@
       "speed": 1.0
     }
   },
-  "music": {
-    "volume": 0.16,
-    "bpm": 90
-  },
+  "music": false,
   "scenes": [
     {
       "narration": "You open your phone to check one thing. Twenty minutes later, you're still scrolling.",

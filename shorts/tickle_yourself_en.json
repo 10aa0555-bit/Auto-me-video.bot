@@ -12,10 +12,7 @@
       "speed": 1.0
     }
   },
-  "music": {
-    "volume": 0.16,
-    "bpm": 100
-  },
+  "music": false,
   "scenes": [
     {
       "narration": "Try to tickle yourself. Go on. Nothing, right?",

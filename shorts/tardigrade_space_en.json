@@ -12,10 +12,7 @@
       "speed": 1.0
     }
   },
-  "music": {
-    "volume": 0.16,
-    "bpm": 96
-  },
+  "music": false,
   "scenes": [
     {
       "narration": "There's an animal that survived the vacuum of space. And it's smaller than a grain of sand.",
