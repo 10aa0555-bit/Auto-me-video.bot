@@ -84,7 +84,12 @@ jobs:
             case "$s" in scripts/*.json|maps/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
             name=$(basename "$s" .json)
             python tools/remotion_prep.py "$s" $PREP_OPTIONS
-            (cd remotion && npx remotion render src/index.ts Short "../out/${name}_hq.mp4" --props=props.json --log=info)
+            (cd remotion && npx remotion render src/index.ts Short "../out/${name}_raw.mp4" --props=props.json --log=info)
+            # 衛星写真は細かくてファイルが大きくなるので、画質を保ったまま 80MB 以下に収める
+            # (GitHub は 100MB を超えるファイルを置けない。TikTok / YouTube にも十分な画質)
+            ffmpeg -y -v error -i "out/${name}_raw.mp4" -c:v libx264 -preset slow -crf 19 \
+              -maxrate 9M -bufsize 18M -pix_fmt yuv420p -movflags +faststart -c:a copy "out/${name}_hq.mp4"
+            rm "out/${name}_raw.mp4"
             cp "remotion/out/${name}_post.txt" "out/${name}_hq_post.txt" 2>/dev/null || true
             python tools/qa.py "out/${name}_hq.mp4" --grid "out/${name}_hq_grid.jpg" || true
           done
