@@ -111,6 +111,16 @@ def tile_mosaic(x0, y0, x1, y1, z):
     return big[oy:oy + int((y1 - y0) * ppu), ox:ox + int((x1 - x0) * ppu)], ppu
 
 
+def _grade_tiles(img):
+    """Sentinel-2 はもともと色が濃いので、Blue Marble 用の補正は使わず、少し落ち着かせるだけにする。"""
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV).astype(np.float32)
+    hsv[..., 1] *= 0.82
+    img = cv2.cvtColor(np.clip(hsv, 0, 255).astype(np.uint8), cv2.COLOR_HSV2BGR)
+    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
+    lab[..., 0] = cv2.createCLAHE(clipLimit=1.3, tileGridSize=(16, 16)).apply(lab[..., 0])
+    return cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+
+
 def _bounds(cams, grow=1.6):
     xs, ys = [], []
     for cx, cy, span in cams:
@@ -165,6 +175,7 @@ def map_textures(timeline, job, looks, use_tiles=True):
                 if TILE_CREDIT not in credits:
                     credits.append(TILE_CREDIT)
                 src_name = f"Sentinel-2 z{z}"
+                grade = _grade_tiles
             except (OSError, requests.RequestException) as e:
                 print(f"  地図タイルを使えません ({e})。Blue Marble で代用します")
                 use_tiles = False
@@ -175,9 +186,10 @@ def map_textures(timeline, job, looks, use_tiles=True):
             img = _from_bluemarble(src, x0, y0, x1, y1, ppu)
             sigma = max(2.0, ppu / 21600 * 8)
             src_name = "Blue Marble"
+            grade = _grade
         files = {}
         for look in looks:
-            tex = _relief(img, sigma) if look == "relief" else _grade(img)
+            tex = _relief(img, sigma) if look == "relief" else grade(img)
             name = f"map{i}_{look}.jpg"
             cv2.imwrite(os.path.join(job, name), tex, [cv2.IMWRITE_JPEG_QUALITY, 92])
             files[look] = name
