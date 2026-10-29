@@ -33,10 +33,15 @@ PALETTES = {
               "pill": "#061a33", "text": "#ffffff", "hl": "#ffd23f", "blob": ["#0f5e78", "#1d7f8c", "#2a3f8f"]},
 }
 
-ART_STYLE = ("flat vector illustration, bold saturated colors, deep purple and teal background with warm "
-             "orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, "
-             "simple characters with big round eyes, educational science animation style, "
+ART_STYLE = ("minimalist flat vector illustration, simple geometric shapes, limited color palette of deep "
+             "purple, teal and warm orange, flat solid colors, no gradients, no texture, clean bold shapes, "
+             "simple stylized characters without detailed faces, educational animation style, "
              "no text, no letters, no watermark")
+# 2026-10-29 までの絵柄。この絵柄で描いた絵を使い回す台本は "art_style": "v1" と書く
+ART_STYLE_V1 = ("flat vector illustration, bold saturated colors, deep purple and teal background with warm "
+                "orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, "
+                "simple characters with big round eyes, educational science animation style, "
+                "no text, no letters, no watermark")
 
 
 def hexrgb(h, a=1.0):
@@ -79,7 +84,7 @@ class Art:
     """台本の "art" (英語の説明) から正方形のイラストを描いて保存する。"""
 
     def __init__(self, style=None):
-        self.ai = AIArt(style or ART_STYLE)
+        self.ai = AIArt(ART_STYLE_V1 if style == "v1" else style or ART_STYLE)
         self.mem = {}
 
     def path(self, prompt):
@@ -96,6 +101,21 @@ class Art:
             f.write(_to_png(data))
         print(f"  イラスト生成 ({self.ai.provider}): {prompt[:60]}")
         return p
+
+    def full(self, prompt, w, h):
+        key = ("full", prompt, w, h)
+        if key not in self.mem:
+            p = self.path(prompt)
+            if os.path.exists(p):
+                self.mem[key] = _fullscreen(p, w, h)
+            else:
+                sq = _placeholder(prompt, h)
+                surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
+                c = cairo.Context(surf)
+                c.set_source_surface(sq, -(h - w) / 2, 0)
+                c.paint()
+                self.mem[key] = surf
+        return self.mem[key]
 
     def surface(self, prompt, size):
         key = (prompt, size)
@@ -123,6 +143,56 @@ def _load_square(path, size):
     bgra = np.dstack([img, np.full((size, size), 255, np.uint8)])
     surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, size, size)
     np.ndarray((size, size, 4), np.uint8, surf.get_data(), strides=(surf.get_stride(), 4, 1))[:] = bgra
+    surf.mark_dirty()
+    return surf
+
+
+def _flatten(img, k=14):
+    """AI の絵の細かいグラデーションやノイズを消し、少ない色のフラットな塗りにする。"""
+    import cv2
+    small = cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA)
+    data = small.reshape(-1, 3).astype(np.float32)
+    _, _, centers = cv2.kmeans(data, k, None, (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 1.0),
+                               3, cv2.KMEANS_PP_CENTERS)
+    smooth = cv2.bilateralFilter(img, 9, 60, 9)
+    flat = smooth.reshape(-1, 3).astype(np.float32)
+    # 一番近い代表色に置き換える (メモリを食わないよう分けて計算)
+    out = np.empty(flat.shape[0], np.int32)
+    for a in range(0, flat.shape[0], 262144):
+        d = ((flat[a:a + 262144, None, :] - centers[None]) ** 2).sum(-1)
+        out[a:a + 262144] = d.argmin(1)
+    res = centers[out].reshape(img.shape).astype(np.uint8)
+    return cv2.medianBlur(res, 3)
+
+
+def _fullscreen(path, w, h, flatten=True):
+    """正方形の絵を縦長の画面いっぱいに置く。上下は同じ絵をぼかした背景に溶け込ませる (枠なし)。"""
+    import cv2
+    img = cv2.imread(path, cv2.IMREAD_COLOR)
+    if flatten:
+        img = _flatten(img)
+    # 背景: 画面を覆うまで拡大してぼかし、少し暗くする
+    bg = cv2.resize(img, (h, h), interpolation=cv2.INTER_LINEAR)[:, (h - w) // 2:(h - w) // 2 + w]
+    bg = cv2.GaussianBlur(bg, (0, 0), h / 40)
+    bg = (bg.astype(np.float32) * 0.72).astype(np.uint8)
+    # 前景: 横幅いっぱい (少しはみ出す) に置き、上下の端をなめらかに消す
+    fw = int(w * 1.18)
+    fg = cv2.resize(img, (fw, fw), interpolation=cv2.INTER_LANCZOS4)
+    fg = fg[:, (fw - w) // 2:(fw - w) // 2 + w]
+    y0 = int(h * 0.47 - fw / 2)
+    fade = int(fw * 0.16)
+    alpha = np.ones((fw, 1), np.float32)
+    ramp = np.linspace(0, 1, fade, dtype=np.float32) ** 1.5
+    alpha[:fade, 0] = ramp
+    alpha[-fade:, 0] = ramp[::-1]
+    out = bg.astype(np.float32)
+    ys, ye = max(0, y0), min(h, y0 + fw)
+    seg = slice(ys - y0, ye - y0)
+    out[ys:ye] = out[ys:ye] * (1 - alpha[seg, :, None]) + fg[seg].astype(np.float32) * alpha[seg, :, None]
+    out = out.astype(np.uint8)
+    surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
+    np.ndarray((h, w, 4), np.uint8, surf.get_data(), strides=(surf.get_stride(), 4, 1))[:] = \
+        np.dstack([out, np.full((h, w), 255, np.uint8)])
     surf.mark_dirty()
     return surf
 
@@ -209,6 +279,7 @@ class Renderer:
         self.pal = PALETTES[script.get("palette", "night")]
         self.art = Art(script.get("art_style"))
         self.icons = Icons()
+        self.layout = script.get("layout", "full")  # "full" (枠なし全画面) / "window" (枠付き)
         self.art_px = int(WIN[2] * 1.12 * scale)  # 寄りの分だけ大きめに持つ
         rng = np.random.default_rng(3)
         # 背景にゆっくり漂う光の玉と星
@@ -400,6 +471,53 @@ class Renderer:
         ctx.get_source().set_filter(cairo.FILTER_GOOD)
         ctx.paint_with_alpha(alpha)
         ctx.restore()
+
+    def _full(self, key, local, span, alpha=1.0, zoom_in=0.0):
+        """全画面の絵をゆっくり寄りながら少し流す (Ken Burns)。"""
+        ctx = self.ctx
+        surf = self.art.full(key, self.w, self.h)
+        u = clamp(local / max(span, 0.1))
+        z = 1.0 + 0.08 * ease(u) + zoom_in
+        dx = 26 * math.sin(u * 1.4 + len(key))
+        ctx.save()
+        ctx.translate(W / 2 + dx, H * 0.47)
+        ctx.scale(z / self.scale, z / self.scale)
+        ctx.translate(-self.w / 2, -self.h * 0.47)
+        ctx.set_source_surface(surf, 0, 0)
+        ctx.get_source().set_filter(cairo.FILTER_GOOD)
+        ctx.paint_with_alpha(alpha)
+        ctx.restore()
+
+    def draw_full(self, timeline, i, s, lt):
+        """枠なし・画面いっぱいの絵。絵が変わる時は前の絵に重ねて、寄りながらふわっと切り替える。"""
+        cur = s["art"]
+        if not cur:
+            return
+        j = i
+        while j > 0 and not timeline.scenes[j]["new_art"]:
+            j -= 1
+        span = sum(sc["dur"] for sc in timeline.scenes[j:] if sc["art"] == cur)
+        local = s["start"] + lt - timeline.scenes[j]["start"]
+        if j > 0 and local < TRANS and timeline.scenes[j - 1]["art"]:
+            pj = j - 1
+            while pj > 0 and not timeline.scenes[pj]["new_art"]:
+                pj -= 1
+            prev_span = sum(sc["dur"] for sc in timeline.scenes[pj:j])
+            prev_t = s["start"] + lt - timeline.scenes[pj]["start"]
+            u = ease(local / TRANS)
+            self._full(timeline.scenes[j - 1]["art"], prev_t, prev_span, zoom_in=0.05 * u)
+            self._full(cur, local, span, alpha=u, zoom_in=0.05 * (1 - u))
+        else:
+            self._full(cur, local, span)
+        # 上 (タイトル帯) と下 (字幕) を読みやすくする暗いグラデーション
+        ctx = self.ctx
+        for y0, y1, a0, a1 in ((0, 420, 0.55, 0.0), (1150, H, 0.0, 0.78)):
+            g = cairo.LinearGradient(0, y0, 0, y1)
+            g.add_color_stop_rgba(0, 0.03, 0.02, 0.08, a0)
+            g.add_color_stop_rgba(1, 0.03, 0.02, 0.08, a1)
+            ctx.set_source(g)
+            ctx.rectangle(0, y0, W, y1 - y0)
+            ctx.fill()
 
     def draw_window(self, timeline, i, s, lt):
         """今のシーンの絵。新しい絵になる時は前の絵を左へ送り、新しい絵を右から入れる。"""
@@ -594,7 +712,10 @@ class Renderer:
         i, s, lt = timeline.scene_at(t)
         self.ctx.save()
         self.draw_background(t)
-        self.draw_window(timeline, i, s, lt)
+        if self.layout == "full" and not s["art"].startswith("icons:") if s["art"] else False:
+            self.draw_full(timeline, i, s, lt)
+        else:
+            self.draw_window(timeline, i, s, lt)
         self.draw_cite(s, lt)
         self.draw_points(s, lt)
         self.draw_pill(t)
