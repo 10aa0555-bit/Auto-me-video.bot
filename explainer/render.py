@@ -147,49 +147,39 @@ def _load_square(path, size):
     return surf
 
 
-def _flatten(img, k=14):
-    """AI の絵の細かいグラデーションやノイズを消し、少ない色のフラットな塗りにする。"""
+def _clean(img):
+    """AI の絵の細かいノイズだけを、輪郭を残したまま軽くならす (色数は減らさない)。"""
     import cv2
-    small = cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA)
-    data = small.reshape(-1, 3).astype(np.float32)
-    _, _, centers = cv2.kmeans(data, k, None, (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 1.0),
-                               3, cv2.KMEANS_PP_CENTERS)
-    smooth = cv2.bilateralFilter(img, 9, 60, 9)
-    flat = smooth.reshape(-1, 3).astype(np.float32)
-    # 一番近い代表色に置き換える (メモリを食わないよう分けて計算)
-    out = np.empty(flat.shape[0], np.int32)
-    for a in range(0, flat.shape[0], 262144):
-        d = ((flat[a:a + 262144, None, :] - centers[None]) ** 2).sum(-1)
-        out[a:a + 262144] = d.argmin(1)
-    res = centers[out].reshape(img.shape).astype(np.uint8)
-    return cv2.medianBlur(res, 3)
+    return cv2.bilateralFilter(img, 7, 30, 7)
 
 
-def _fullscreen(path, w, h, flatten=True):
-    """正方形の絵を縦長の画面いっぱいに置く。上下は同じ絵をぼかした背景に溶け込ませる (枠なし)。"""
+def _fullscreen(path, w, h, clean=True):
+    """正方形の絵を縦長の画面いっぱいに置く。上下は絵の端の色のなめらかなグラデーションに溶け込ませる (枠なし)。"""
     import cv2
     img = cv2.imread(path, cv2.IMREAD_COLOR)
-    if flatten:
-        img = _flatten(img)
-    # 背景: 画面を覆うまで拡大してぼかし、少し暗くする
-    bg = cv2.resize(img, (h, h), interpolation=cv2.INTER_LINEAR)[:, (h - w) // 2:(h - w) // 2 + w]
-    bg = cv2.GaussianBlur(bg, (0, 0), h / 40)
-    bg = (bg.astype(np.float32) * 0.72).astype(np.uint8)
-    # 前景: 横幅いっぱい (少しはみ出す) に置き、上下の端をなめらかに消す
+    if clean:
+        img = _clean(img)
     fw = int(w * 1.18)
     fg = cv2.resize(img, (fw, fw), interpolation=cv2.INTER_LANCZOS4)
-    fg = fg[:, (fw - w) // 2:(fw - w) // 2 + w]
+    fg = fg[:, (fw - w) // 2:(fw - w) // 2 + w].astype(np.float32)
     y0 = int(h * 0.47 - fw / 2)
-    fade = int(fw * 0.16)
+    # 背景: 絵の上端・下端の平均色から作る縦のグラデーション (ぼかした絵は使わない)
+    band = max(4, fw // 40)
+    top = fg[:band].mean(axis=(0, 1))
+    bot = fg[-band:].mean(axis=(0, 1))
+    t = np.clip((np.arange(h, dtype=np.float32) - y0) / fw, 0, 1)[:, None]
+    bg = (top[None] * (1 - t) + bot[None] * t)[:, None, :].repeat(w, axis=1) * 0.85
+    fade = int(fw * 0.14)
     alpha = np.ones((fw, 1), np.float32)
-    ramp = np.linspace(0, 1, fade, dtype=np.float32) ** 1.5
+    ramp = np.linspace(0, 1, fade, dtype=np.float32)
+    ramp = ramp * ramp * (3 - 2 * ramp)
     alpha[:fade, 0] = ramp
     alpha[-fade:, 0] = ramp[::-1]
-    out = bg.astype(np.float32)
+    out = bg
     ys, ye = max(0, y0), min(h, y0 + fw)
     seg = slice(ys - y0, ye - y0)
-    out[ys:ye] = out[ys:ye] * (1 - alpha[seg, :, None]) + fg[seg].astype(np.float32) * alpha[seg, :, None]
-    out = out.astype(np.uint8)
+    out[ys:ye] = out[ys:ye] * (1 - alpha[seg, :, None]) + fg[seg] * alpha[seg, :, None]
+    out = np.clip(out, 0, 255).astype(np.uint8)
     surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
     np.ndarray((h, w, 4), np.uint8, surf.get_data(), strides=(surf.get_stride(), 4, 1))[:] = \
         np.dstack([out, np.full((h, w), 255, np.uint8)])
