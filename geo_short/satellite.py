@@ -67,14 +67,16 @@ def _grade(img):
     return cv2.addWeighted(img, 1.4, blur, -0.4, 0)
 
 
-def _relief(img):
-    """衛星画像から、ベージュの陸と灰青の海の落ち着いた地形図 (陰影付き) を作る。"""
+def _relief(img, sigma=None):
+    """衛星画像から、ベージュの陸と灰青の海の落ち着いた地形図 (陰影付き) を作る。
+
+    sigma は陰影のぼかし幅 (px)。切り出した一部に使うときは元画像と同じ値を渡す。"""
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     sea = ((hsv[..., 0] > 85) & (hsv[..., 0] < 135) & (hsv[..., 1] > 40)).astype(np.float32)
     sea = cv2.morphologyEx(sea, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
     sea = cv2.GaussianBlur(sea, (0, 0), 1.0)[..., None]
     lum = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255.0
-    sigma = max(2.0, img.shape[1] / 2700)
+    sigma = sigma or max(2.0, img.shape[1] / 2700)
     detail = lum - cv2.GaussianBlur(lum, (0, 0), sigma * 4)  # 山の陰影 (細かい起伏)
     shade = np.clip(0.92 + detail[..., None] * 2.6, 0.55, 1.25)
     land = np.array((150, 190, 214), np.float32) * shade  # BGR: ベージュ
