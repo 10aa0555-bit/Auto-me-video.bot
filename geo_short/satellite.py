@@ -67,20 +67,40 @@ def _grade(img):
     return cv2.addWeighted(img, 1.4, blur, -0.4, 0)
 
 
+def _relief(img):
+    """衛星画像から、ベージュの陸と灰青の海の落ち着いた地形図 (陰影付き) を作る。"""
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    sea = ((hsv[..., 0] > 85) & (hsv[..., 0] < 135) & (hsv[..., 1] > 40)).astype(np.float32)
+    sea = cv2.morphologyEx(sea, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+    sea = cv2.GaussianBlur(sea, (0, 0), 1.0)[..., None]
+    lum = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255.0
+    sigma = max(2.0, img.shape[1] / 2700)
+    detail = lum - cv2.GaussianBlur(lum, (0, 0), sigma * 4)  # 山の陰影 (細かい起伏)
+    shade = np.clip(0.92 + detail[..., None] * 2.6, 0.55, 1.25)
+    land = np.array((150, 190, 214), np.float32) * shade  # BGR: ベージュ
+    ocean = np.array((178, 168, 150), np.float32) * np.clip(0.95 + detail[..., None] * 0.8, 0.85, 1.05)
+    out = land * (1 - sea) + ocean * sea
+    # 海岸線をうっすら暗く
+    edge = cv2.GaussianBlur(np.abs(cv2.Laplacian(sea[..., 0], cv2.CV_32F)), (0, 0), 0.8)[..., None]
+    out *= 1 - np.clip(edge * 0.8, 0, 0.25)
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
 class SatelliteLayer:
-    def __init__(self, w, h):
+    def __init__(self, w, h, look="satellite"):
         self.w, self.h = w, h
+        self.look = look
         path = find_texture()
         img = cv2.imread(path, cv2.IMREAD_COLOR)
         if img is None:
             raise RuntimeError(f"衛星画像を読めません: {path}")
-        img = _grade(img)
+        img = _relief(img) if look == "relief" else _grade(img)
         # 縮小表示時のちらつき防止にミップマップを作る
         self.levels = [img]
         while self.levels[-1].shape[1] > 2048:
             self.levels.append(cv2.pyrDown(self.levels[-1]))
         self.clouds = self._make_clouds()
-        print(f"衛星画像: {os.path.basename(path)} {img.shape[1]}x{img.shape[0]}")
+        print(f"{'地形図' if look == 'relief' else '衛星画像'}: {os.path.basename(path)} {img.shape[1]}x{img.shape[0]}")
 
     @staticmethod
     def _make_clouds(size=1024, seed=3):

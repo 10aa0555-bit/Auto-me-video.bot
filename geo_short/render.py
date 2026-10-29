@@ -379,13 +379,35 @@ class Renderer:
         stride = self.surface.get_stride()
         return np.ndarray((self.h, stride // 4, 4), np.uint8, buffer=self.surface.get_data())[:, :self.w]
 
+    def _layer(self, look):
+        if look == "relief":
+            if getattr(self, "relief", None) is None:
+                from .satellite import SatelliteLayer
+                self.relief = SatelliteLayer(self.w, self.h, look="relief")
+            return self.relief
+        return self.sat
+
     def draw_satellite(self):
+        """下地: 衛星画像か、落ち着いた地形図 (シーンの "base": "relief")。切り替わりは 0.6 秒で重ねる。"""
         px = self._pixels()
-        px[..., :3] = self.sat.render(self.cx, self.cy, self.ppu * self.scale, self.t)
+        tl, i = self.timeline, self.scene_idx
+        look = tl.scenes[i]["spec"].get("base", self.script.get("base", "satellite"))
+        prev = tl.scenes[i - 1]["spec"].get("base", self.script.get("base", "satellite")) if i > 0 else look
+        lt = self.t - tl.scenes[i]["start"]
+        img = self._layer(look).render(self.cx, self.cy, self.ppu * self.scale, self.t)
+        if prev != look and lt < 0.6:
+            u = lt / 0.6
+            u = u * u * (3 - 2 * u)
+            old = self._layer(prev).render(self.cx, self.cy, self.ppu * self.scale, self.t)
+            img = (old.astype(np.float32) * (1 - u) + img.astype(np.float32) * u).astype(np.uint8)
+        self.look = look
+        px[..., :3] = img
         px[..., 3] = 255
         self.surface.mark_dirty()
-        # 国境線は細く白っぽく
         ctx = self.ctx
+        if look == "relief":  # 地形図では国境線はほとんど見せない
+            return
+        # 国境線は細く白っぽく
         ctx.new_path()
         for shp in self.world.shapes.values():
             if self.visible(shp.bbox):
@@ -1375,7 +1397,7 @@ class Renderer:
         self.draw_base()
         self.draw_fills(s, lt)
         self.draw_outlines(s, lt)
-        if self.sat is not None:
+        if self.sat is not None and getattr(self, "look", "satellite") != "relief":
             self.draw_clouds()
         self.motion_blur(t)
         self.ctx.save()

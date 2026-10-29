@@ -23,13 +23,13 @@
       },
       "icons": [
         {
-          "ai": "a cute cartoon stopwatch with a worried face and sweat drops",
+          "ai": "a cartoon stopwatch with a nervous face and little arms",
           "name": "stopwatch",
           "pos": [
             0.5,
             0.42
           ],
-          "size": 300,
+          "size": 240,
           "delay": 0.9
         }
       ],
@@ -77,23 +77,23 @@
       },
       "icons": [
         {
-          "ai": "a cute cartoon sultan sitting on a golden throne, simple sticker style",
+          "ai": "a sultan in white robes and a white turban sitting on a small golden throne",
           "name": "crown",
           "at": [
             38.75,
             -5.7
           ],
-          "size": 260,
+          "size": 200,
           "delay": 0.5
         },
         {
-          "ai": "a cute cartoon british admiral in a navy uniform with a telescope, simple sticker style",
+          "ai": "a victorian british naval officer in a dark blue uniform and bicorne hat holding a telescope",
           "name": "man police officer",
           "at": [
             39.85,
             -6.5
           ],
-          "size": 240,
+          "size": 190,
           "delay": 2.4
         }
       ]
@@ -109,7 +109,7 @@
       },
       "icons": [
         {
-          "ai": "a cheeky cartoon man in a turban running away with a golden crown, simple sticker style",
+          "ai": "a cheeky young man in a turban and robes running while holding a golden crown",
           "name": "person running",
           "at": [
             38.85,
@@ -120,10 +120,11 @@
             -6.16
           ],
           "travel_time": 1.6,
-          "size": 260,
+          "size": 190,
           "delay": 1.0
         }
-      ]
+      ],
+      "base": "relief"
     },
     {
       "narration": "Britain was not amused. Warships showed up, with a deadline: leave the palace by nine a.m.",
@@ -137,15 +138,15 @@
       },
       "icons": [
         {
-          "ai": "a small cute cartoon grey steam warship with a british flag, side view, simple sticker style",
+          "ai": "a small grey victorian steam warship with a british flag, side view",
           "name": "ship",
           "at": [
             38.95,
             -6.25
           ],
           "count": 5,
-          "spread": 90,
-          "size": 150,
+          "spread": 80,
+          "size": 130,
           "delay": 0.8
         },
         {
@@ -159,7 +160,8 @@
           "delay": 3.4,
           "label": "9:00 AM"
         }
-      ]
+      ],
+      "base": "relief"
     },
     {
       "narration": "Khalid locked himself inside with around two thousand eight hundred defenders.",
@@ -172,14 +174,26 @@
       },
       "icons": [
         {
-          "ai": "a cartoon palace with a red flag and many tiny guards on the walls, simple sticker style",
+          "ai": "a small arabian palace with white walls and a red flag on top",
           "name": "classical building",
           "at": [
             39.19,
             -6.16
           ],
-          "size": 300,
+          "size": 230,
           "delay": 0.4
+        },
+        {
+          "ai": "an arab palace guard in robes holding an old rifle",
+          "name": "guard",
+          "at": [
+            39.19,
+            -6.16
+          ],
+          "count": 9,
+          "spread": 60,
+          "size": 90,
+          "delay": 1.4
         }
       ],
       "texts": [
@@ -193,7 +207,8 @@
           "size": 84,
           "delay": 1.6
         }
-      ]
+      ],
+      "base": "relief"
     },
     {
       "narration": "Nine o'clock came. Nobody left. At two minutes past nine, the ships opened fire.",
@@ -210,13 +225,13 @@
           "delay": 0.4
         },
         {
-          "ai": "a small cute cartoon grey steam warship firing its cannon with a puff of smoke, side view",
+          "ai": "a small grey victorian steam warship firing its cannon with a puff of smoke, side view",
           "name": "ship",
           "pos": [
             0.32,
             0.5
           ],
-          "size": 260,
+          "size": 240,
           "delay": 2.6
         },
         {
@@ -252,13 +267,13 @@
           "delay": 0.4
         },
         {
-          "ai": "a cute cartoon royal yacht sinking with bubbles, simple sticker style",
+          "ai": "a small white royal steam yacht sinking with bubbles",
           "name": "sailboat",
           "pos": [
             0.66,
             0.46
           ],
-          "size": 260,
+          "size": 240,
           "anim": "shake",
           "delay": 2.4
         }
@@ -296,7 +311,8 @@
           "size": 220,
           "delay": 0.6
         }
-      ]
+      ],
+      "base": "relief"
     },
     {
       "narration": "Around five hundred people on the sultan's side were killed or wounded. On the British side, one sailor was hurt.",
@@ -330,7 +346,7 @@
       },
       "icons": [
         {
-          "ai": "a cartoon man in a turban sneaking out of a door on tiptoe, simple sticker style",
+          "ai": "a young man in a turban and robes sneaking on tiptoe",
           "name": "person running",
           "at": [
             39.2,
@@ -341,7 +357,7 @@
             -5.9
           ],
           "travel_time": 1.8,
-          "size": 230,
+          "size": 180,
           "delay": 0.5
         },
         {
@@ -350,12 +366,14 @@
             38.85,
             -6.4
           ],
-          "size": 220,
+          "size": 170,
           "anim": "shake",
           "delay": 3.8,
-          "label": "THE BILL"
+          "label": "THE BILL",
+          "ai": "a long paper bill receipt with a big red total"
         }
-      ]
+      ],
+      "base": "relief"
     },
     {
       "narration": "So what took longer today: this war, or your morning coffee?",
@@ -393,5 +411,6 @@
       "#shorts"
     ],
     "pinned_comment": "What's the shortest thing you've ever quit? 😂👇"
-  }
+  },
+  "art_style": "cute chibi cartoon sticker illustration, big head small body, soft cel shading, muted earthy colors, thin dark outline, simple clean design, full body, centered, isolated on plain white background, no text"
 }
