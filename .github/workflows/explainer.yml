@@ -22,8 +22,10 @@ permissions:
   contents: write
 
 # 複数の push が重なっても順番に作る (renders ブランチへの push がぶつからないように)
+# 待ち行列は 1 件しか持てず、後から来た run が前の待ち run を取り消してしまうので、run ごとに別のグループにする
+# (renders ブランチへの push は失敗したら取り込み直して再挑戦する)
 concurrency:
-  group: geo-short-renders
+  group: renders-${{ github.run_id }}
   cancel-in-progress: false
 
 jobs:
