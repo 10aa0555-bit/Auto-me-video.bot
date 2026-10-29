@@ -486,10 +486,10 @@
       "narration": "So Egypt is trying something wild: a brand new capital city, out in the desert east of Cairo.",
       "camera": {
         "center": [
-          31.5,
+          31.62,
           30.05
         ],
-        "span": 1.3
+        "span": 1.4
       },
       "markers": [
         {

@@ -200,6 +200,8 @@ const Pin: React.FC<{m: Marker; lt: number; dur: number; cam: Cam}> = ({m, lt, d
   const bounce = t > 0.32 ? Math.exp(-(t - 0.32) * 9) * Math.sin((t - 0.32) * 26) * 0.12 : 0;
   const ring = clamp01((t - 0.3) / 0.7);
   const labelK = popIn(t - 0.45) * out;
+  // 札が画面の右端からはみ出すときだけピンの左側に出す
+  const flip = x + 50 + (m.label ?? '').length * 27 + 48 > W - 20;
   return (
     <>
       {ring > 0 && ring < 1 && (
@@ -218,7 +220,8 @@ const Pin: React.FC<{m: Marker; lt: number; dur: number; cam: Cam}> = ({m, lt, d
       </svg>
       {labelK > 0.01 && m.label && (
         <div style={{
-          position: 'absolute', left: x + 50, top: y - 92, transformOrigin: '0% 50%', transform: `scale(${labelK})`,
+          position: 'absolute', top: y - 92, transformOrigin: flip ? '100% 50%' : '0% 50%', transform: `scale(${labelK})`,
+          ...(flip ? {right: W - x + 50} : {left: x + 50}),
           background: '#fff', color: '#1d2433', fontFamily: FONT, fontWeight: 800, fontSize: 46,
           padding: '6px 24px', borderRadius: 14, boxShadow: '0 6px 14px rgba(0,0,0,0.3)', whiteSpace: 'nowrap',
         }}>{m.label}</div>
@@ -314,7 +317,7 @@ const Captions: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
     <div style={{position: 'absolute', top: H * 0.635 - 40, width: W, textAlign: 'center', padding: '0 70px', boxSizing: 'border-box'}}>
       <span style={{
         display: 'inline-block', fontFamily: FONT, fontWeight: 800, fontSize: 54, lineHeight: 1.2, color: '#fff',
-        textShadow: '0 3px 6px rgba(0,0,0,0.7), 0 0 18px rgba(0,0,0,0.35)', transform: `scale(${k})`,
+        textShadow: outline(3.5) + ', 0 0 22px rgba(0,0,0,0.45)', transform: `scale(${k})`,
       }}>
         {words.map(([w, wt], i) => (
           <span key={i} style={{opacity: t >= wt - 0.02 ? 1 : 0.55}}>{(i ? ' ' : '') + w}</span>

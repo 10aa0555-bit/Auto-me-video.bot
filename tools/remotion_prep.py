@@ -115,6 +115,7 @@ def _grade_tiles(img):
     """Sentinel-2 はもともと色が濃いので、Blue Marble 用の補正は使わず、少し落ち着かせるだけにする。"""
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV).astype(np.float32)
     hsv[..., 1] *= 0.82
+    hsv[..., 2] *= 0.88  # 砂漠が白飛びして字幕が読みにくくならないよう少し暗く
     img = cv2.cvtColor(np.clip(hsv, 0, 255).astype(np.uint8), cv2.COLOR_HSV2BGR)
     lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
     lab[..., 0] = cv2.createCLAHE(clipLimit=1.3, tileGridSize=(16, 16)).apply(lab[..., 0])

@@ -54,9 +54,10 @@ export const Outlines: React.FC<{keys: string[]; shapes: Shapes; cam: Cam; lt: n
         const d = ringsPath(shapes[k], cam);
         return (
           <g key={k} opacity={a} fill="none" strokeLinejoin="round">
-            <path d={d} stroke="#ffd23f" strokeOpacity={0.25} strokeWidth={22} />
-            <path d={d} stroke="#ffd23f" strokeOpacity={0.5} strokeWidth={10} />
-            <path d={d} stroke="#fff6c8" strokeWidth={4} />
+            <path d={d} stroke="#000" strokeOpacity={0.35} strokeWidth={12} />
+            <path d={d} stroke="#ff4f3a" strokeOpacity={0.35} strokeWidth={24} />
+            <path d={d} stroke="#ff4f3a" strokeWidth={8} />
+            <path d={d} stroke="#fff" strokeWidth={3} />
           </g>
         );
       })}
@@ -146,7 +147,7 @@ export const SwarmDots: React.FC<{sw: Swarm; cam: Cam; lt: number; dur: number}>
   if (!sw.pts) return null;
   const delay = sw.delay ?? 0.4;
   const span = sw.duration ?? 1.6;
-  const color = sw.color ?? '#fff3c4';
+  const color = sw.color ?? '#ff7b2e';
   const r = sw.size ?? 2.6;
   const fade = sw.keep ? 1 : outScale(lt, dur, 0.3);
   return (
@@ -160,8 +161,10 @@ export const SwarmDots: React.FC<{sw: Swarm; cam: Cam; lt: number; dur: number}>
           const tw = 0.75 + 0.25 * Math.sin(lt * 3 + i);
           return (
             <g key={i}>
-              <circle cx={x} cy={y} r={r * 3 * k} fill={color} fillOpacity={0.1 * tw} />
-              <circle cx={x} cy={y} r={r * k} fill={color} fillOpacity={0.85} />
+              <circle cx={x} cy={y} r={r * 3 * k} fill={color} fillOpacity={0.22 * tw} />
+              <circle cx={x} cy={y} r={r * 1.25 * k} fill="#3a1405" fillOpacity={0.35} />
+              <circle cx={x} cy={y} r={r * k} fill={color} fillOpacity={0.95} />
+              <circle cx={x} cy={y} r={r * 0.45 * k} fill="#fff4d6" />
             </g>
           );
         })}
