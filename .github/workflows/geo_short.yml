@@ -83,6 +83,10 @@ jobs:
             geo-short-assets-v3-
             geo-short-assets-v2
 
+      - name: Restore drawn art
+        if: steps.pick.outputs.scripts != ''
+        run: python tools/art_cache.py restore
+
       - name: Build videos
         if: steps.pick.outputs.scripts != ''
         env:
@@ -105,6 +109,10 @@ jobs:
         with:
           path: ~/.cache/geo_short
           key: geo-short-assets-v3-${{ github.run_id }}
+
+      - name: Save drawn art
+        if: always() && steps.pick.outputs.scripts != ''
+        run: python tools/art_cache.py save
 
       - name: Upload videos
         if: steps.pick.outputs.scripts != ''

@@ -4,7 +4,7 @@
     python tools/art_cache.py restore   # ブランチの絵を ~/.cache/geo_short/art に戻す
     python tools/art_cache.py save      # まだ保存していない絵を JPEG にしてブランチに push する
 
-ファイル名はキャッシュと同じ (square_<hash>) で、拡張子だけ .jpg にする。読み込みは中身で判定するので、
+ファイル名はキャッシュと同じ。不透明な square_<hash> は拡張子だけ .jpg にし、切り抜き (cutout_ / card_) は PNG のまま置く。読み込みは中身で判定するので、
 復元時は .png の名前のまま JPEG を置く。
 """
 import glob
@@ -40,8 +40,8 @@ def restore():
             print("art-cache ブランチはまだありません")
             return
         n = 0
-        for f in glob.glob(os.path.join(d, "*.jpg")):
-            dst = os.path.join(ART, os.path.basename(f)[:-4] + ".png")
+        for f in glob.glob(os.path.join(d, "*.jpg")) + glob.glob(os.path.join(d, "*.png")):
+            dst = os.path.join(ART, os.path.splitext(os.path.basename(f))[0] + ".png")
             if not os.path.exists(dst):
                 shutil.copy(f, dst)
                 n += 1
@@ -54,13 +54,18 @@ def save():
         os.makedirs(repo)
         have = fetch(repo)
         new = []
-        for f in glob.glob(os.path.join(ART, "square_*.png")):
-            name = os.path.basename(f)[:-4] + ".jpg"
-            if not os.path.exists(os.path.join(repo, name)):
-                img = cv2.imread(f, cv2.IMREAD_COLOR)
-                if img is not None:
-                    cv2.imwrite(os.path.join(repo, name), img, [cv2.IMWRITE_JPEG_QUALITY, 93])
-                    new.append(name)
+        for f in glob.glob(os.path.join(ART, "*.png")):
+            base = os.path.basename(f)
+            if base.startswith("square_"):  # 不透明な絵は JPEG で小さく
+                name = base[:-4] + ".jpg"
+                if not os.path.exists(os.path.join(repo, name)):
+                    img = cv2.imread(f, cv2.IMREAD_COLOR)
+                    if img is not None:
+                        cv2.imwrite(os.path.join(repo, name), img, [cv2.IMWRITE_JPEG_QUALITY, 93])
+                        new.append(name)
+            elif not os.path.exists(os.path.join(repo, base)):  # 切り抜き (透明) はそのまま PNG
+                shutil.copy(f, os.path.join(repo, base))
+                new.append(base)
         if not new:
             print("新しく保存する絵はありません")
             return

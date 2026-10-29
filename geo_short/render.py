@@ -53,6 +53,11 @@ def ease(u):
     return u * u * (3 - 2 * u) if u < 1 else 1.0
 
 
+def ease_out(u):
+    u = min(max(u, 0.0), 1.0)
+    return 1 - (1 - u) ** 3
+
+
 def ease_out_back(u):
     u = min(max(u, 0.0), 1.0)
     c = 1.70158
@@ -301,6 +306,7 @@ class Renderer:
         install_fonts()
         self.lang = script.get("lang", "ja")
         self.font = FONT if self.lang == "ja" else os.environ.get("GEO_FONT_EN", "Poppins Black")
+        self.font_plain = "Poppins ExtraBold"  # 控えめな字幕用
         self.icons = Icons()
         self.flags = Flags()
         self.art = AIArt(script.get("art_style"))
@@ -641,6 +647,20 @@ class Renderer:
                 ctx.line_to(*p)
             ctx.set_line_cap(cairo.LINE_CAP_ROUND)
             ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+            if style == "glow":
+                for wmul, a in ((7, 0.07), (4.5, 0.12), (2.6, 0.22)):
+                    ctx.set_source_rgba(color[0], color[1], color[2], a)
+                    ctx.set_line_width(width * wmul)
+                    ctx.stroke_preserve()
+                ctx.set_source_rgba(*color)
+                ctx.set_line_width(width)
+                ctx.stroke_preserve()
+                ctx.set_source_rgba(1, 1, 1, 0.85)
+                ctx.set_line_width(max(1.5, width * 0.35))
+                ctx.stroke()
+                if ln.get("label") and prog > 0.05:
+                    self._line_label(ln, pts, prog)
+                continue
             if style in ("dashed", "arrow_dashed"):
                 ctx.set_dash([width * 2.4, width * 1.8], -lt * 40)
             ctx.set_source_rgba(0, 0, 0, 0.35)
@@ -722,10 +742,13 @@ class Renderer:
             delay = ic.get("delay", 0.4 + i * 0.3)
             size = ic.get("size", 170)
             n = ic.get("count", 1)
-            lon, lat = ic["at"] if "at" in ic else self.world.label_pos(ic["of"])
-            bx, by = self.to_px(lon, lat)
+            if "pos" in ic:  # 画面の割合で置く (青い方眼の場面など、地図と関係ない絵)
+                bx, by = W * ic["pos"][0], H * ic["pos"][1]
+            else:
+                lon, lat = ic["at"] if "at" in ic else self.world.label_pos(ic["of"])
+                bx, by = self.to_px(lon, lat)
             if "to" in ic:  # 移動 (人の流れ・船の航路など)
-                tx, ty = self.to_px(*ic["to"])
+                tx, ty = (W * ic["to"][0], H * ic["to"][1]) if "pos" in ic else self.to_px(*ic["to"])
                 m = ease((lt - delay - 0.3) / ic.get("travel_time", 2.0))
                 bx, by = bx + (tx - bx) * m, by + (ty - by) * m
             spread = ic.get("spread", size * 0.75)
@@ -768,6 +791,44 @@ class Renderer:
             if ic.get("label"):
                 a = ease((lt - delay - 0.2) / 0.3)
                 self.tag(ic["label"], bx, by - size * 0.62, alpha=a)
+
+    def draw_blueprint(self, s, lt, timeline):
+        """青い方眼紙の背景。前の場面が地図なら横から入ってきて、次が地図なら横に出ていく。"""
+        if not s["spec"].get("blueprint"):
+            return
+        i = timeline.scenes.index(s)
+        prev_bp = i > 0 and timeline.scenes[i - 1]["spec"].get("blueprint")
+        nxt = timeline.scenes[i + 1] if i + 1 < len(timeline.scenes) else None
+        next_bp = nxt is not None and nxt["spec"].get("blueprint")
+        x0 = 0.0
+        if not prev_bp:
+            x0 = W * (1 - ease_out(lt / 0.35))
+        if not next_bp and nxt is not None:
+            x0 -= W * ease((lt - (s["dur"] - 0.3)) / 0.3)
+        ctx = self.ctx
+        ctx.save()
+        ctx.rectangle(x0, 0, W, H)
+        ctx.clip()
+        g = cairo.RadialGradient(W / 2 + x0, H * 0.45, 80, W / 2 + x0, H * 0.45, H * 0.75)
+        g.add_color_stop_rgb(0, 0.10, 0.45, 0.88)
+        g.add_color_stop_rgb(1, 0.03, 0.22, 0.58)
+        ctx.set_source(g)
+        ctx.paint()
+        for step, a, lw in ((36, 0.10, 1.2), (180, 0.22, 2.2)):
+            ctx.set_source_rgba(0.75, 0.88, 1.0, a)
+            ctx.set_line_width(lw)
+            gx = x0 % step
+            while gx < W:
+                ctx.move_to(gx, 0)
+                ctx.line_to(gx, H)
+                gx += step
+            gy = 0.0
+            while gy < H:
+                ctx.move_to(0, gy)
+                ctx.line_to(W, gy)
+                gy += step
+            ctx.stroke()
+        ctx.restore()
 
     # -- 国の形を動かす (本当の大きさ比べ)
     def draw_ghosts(self, s, lt):
@@ -1188,6 +1249,8 @@ class Renderer:
         ctx.restore()
 
     def draw_caption(self, t, timeline):
+        if self.script.get("captions") == "plain":
+            return self._plain_caption(t, timeline)
         for text, t0, t1, words in timeline.captions:
             if t0 <= t < t1 and words:
                 self._karaoke(words, t, t0)
@@ -1204,6 +1267,30 @@ class Renderer:
                     self.text(ln, 0, (j - (len(lines) - 1) / 2) * 90, size)
                 ctx.restore()
                 return
+
+    def _plain_caption(self, t, timeline):
+        """控えめな字幕: 小さめの白文字に柔らかい影。単語の色替えや弾む動きはしない。"""
+        for text, t0, t1, words in timeline.captions:
+            if not (t0 <= t < t1):
+                continue
+            ctx = self.ctx
+            size = 50
+            ctx.select_font_face(self.font_plain, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+            ctx.set_font_size(size)
+            ext = ctx.text_extents(text)
+            x, y = W / 2 - ext.x_advance / 2, H * 0.635
+            for dx, dy, a in ((0, 3, 0.55), (0, 0, 0.35)):
+                ctx.move_to(x + dx, y + dy)
+                ctx.text_path(text)
+                ctx.set_source_rgba(0, 0, 0, a)
+                ctx.set_line_width(8 if dy == 0 else 10)
+                ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+                ctx.stroke()
+            ctx.move_to(x, y)
+            ctx.text_path(text)
+            ctx.set_source_rgba(1, 1, 1, 1)
+            ctx.fill()
+            return
 
     def _karaoke(self, words, t, t0, size=78):
         """今しゃべっている単語だけ黄色く少し大きく (TikTok 風)。"""
@@ -1296,6 +1383,7 @@ class Renderer:
         self.ctx.set_source_surface(self.overlay)
         self.ctx.paint()
         self.ctx.restore()
+        self.draw_blueprint(s, lt, timeline)
         self.ctx.push_group()
         self.draw_circles(s, lt)
         self.draw_lines(s, lt)
