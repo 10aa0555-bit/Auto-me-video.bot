@@ -293,7 +293,8 @@ const BigText: React.FC<{tx: TextSpec; lt: number; dur: number}> = ({tx, lt, dur
     const n = Math.round(tx.count * easeOut((lt - delay) / 1.2));
     text = text.replace('{n}', n.toLocaleString('en-US'));
   }
-  const size = tx.size ?? 90;
+  // 横幅に収まらない長い文字は小さくする (Poppins Black はおよそ 1 文字 0.68em)
+  const size = Math.min(tx.size ?? 90, (W - 90) / Math.max(1, text.length * 0.68));
   return (
     <div style={{position: 'absolute', top: H * (tx.y ?? 0.3) - size * 0.6, width: W, textAlign: 'center'}}>
       <span style={{
@@ -359,7 +360,7 @@ const Bars: React.FC<{b: NonNullable<Scene['spec']['bars']>; lt: number; dur: nu
                 boxShadow: '0 6px 16px rgba(0,0,0,0.35), inset 0 -6px 0 rgba(0,0,0,0.18)',
               }} />
               <div style={{fontFamily: FONT, fontWeight: 900, fontSize: 52, color: '#fff', textShadow: outline(3), whiteSpace: 'nowrap'}}>
-                {(it.value < 10 ? (it.value * grow).toFixed(1) : Math.round(it.value * grow).toLocaleString('en-US'))}{b.unit ?? ''}
+                {(!Number.isInteger(it.value) ? (it.value * grow).toFixed(1) : Math.round(it.value * grow).toLocaleString('en-US'))}{b.unit ?? ''}
               </div>
             </div>
           </div>

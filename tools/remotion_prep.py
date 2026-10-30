@@ -373,7 +373,9 @@ def main():
         if f.startswith("Poppins"):
             shutil.copy(os.path.join(fonts, f), job)
     looks = {"satellite"} | {sc.get("base", "satellite") for sc in script["scenes"] if not sc.get("blueprint")}
-    tex, credits = map_textures(tl, job, sorted(looks), not args.no_tiles)
+    # 熱帯など Sentinel-2 の継ぎ目 (斜めの縞) が目立つ地域は "imagery": "bluemarble" で Blue Marble だけにする
+    use_tiles = not args.no_tiles and script.get("imagery", "sentinel") != "bluemarble"
+    tex, credits = map_textures(tl, job, sorted(looks), use_tiles)
 
     fx = os.path.join(job, "sfx.wav")
     sfx.render_track(tl.sfx, total, fx)

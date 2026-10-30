@@ -73,10 +73,10 @@
       "narration": "Here, at the very tip of Colombia, sits the town of Leticia. Right next to it is Tabatinga, in Brazil.",
       "camera": {
         "center": [
-          -70.0,
-          -4.2
+          -70.4,
+          -4.0
         ],
-        "span": 1.2
+        "span": 4.0
       },
       "markers": [
         {
@@ -94,10 +94,10 @@
       "narration": "The border between them is basically a street. People cross it to buy groceries.",
       "camera": {
         "center": [
-          -70.0,
-          -4.2
+          -70.4,
+          -4.0
         ],
-        "span": 1.2
+        "span": 4.0
       },
       "texts": [
         {
@@ -115,10 +115,10 @@
       "narration": "And across the river is Peru. Three countries, a short boat ride apart.",
       "camera": {
         "center": [
-          -70.0,
-          -4.2
+          -70.4,
+          -4.0
         ],
-        "span": 1.2
+        "span": 4.0
       },
       "markers": [
         {
@@ -169,7 +169,7 @@
           -71.6,
           -3.8
         ],
-        "span": 5
+        "span": 6.0
       },
       "lines": [
         {
@@ -225,7 +225,7 @@
           -71.6,
           -3.8
         ],
-        "span": 5
+        "span": 6.0
       }
     },
     {
@@ -235,7 +235,7 @@
           -71.6,
           -3.8
         ],
-        "span": 5
+        "span": 6.0
       },
       "icons": [
         {
@@ -336,5 +336,6 @@
       "#shorts"
     ],
     "pinned_comment": "Could you live somewhere with no roads out? 👇"
-  }
+  },
+  "imagery": "bluemarble"
 }

@@ -338,7 +338,6 @@
         ],
         "span": 34
       },
-      "base": "relief",
       "texts": [
         {
           "text": "CANADIAN SHIELD",
@@ -360,7 +359,6 @@
         ],
         "span": 40
       },
-      "base": "relief",
       "texts": [
         {
           "text": "~{n}% PERMAFROST",
@@ -383,7 +381,6 @@
         ],
         "span": 40
       },
-      "base": "relief",
       "icons": [
         {
           "ai": "a cute cartoon moose wearing a red scarf, shivering in the cold",

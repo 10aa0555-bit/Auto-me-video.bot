@@ -90,7 +90,6 @@
         ],
         "span": 6
       },
-      "base": "relief",
       "lines": [
         {
           "path": [
@@ -131,7 +130,6 @@
         ],
         "span": 6
       },
-      "base": "relief",
       "icons": [
         {
           "ai": "a cute cartoon lumberjack in a red plaid shirt holding a chainsaw",

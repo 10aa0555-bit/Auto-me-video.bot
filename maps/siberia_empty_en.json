@@ -118,7 +118,6 @@
         ],
         "span": 95
       },
-      "base": "relief",
       "texts": [
         {
           "text": "PERMAFROST",
@@ -139,8 +138,7 @@
           58
         ],
         "span": 22
-      },
-      "base": "relief"
+      }
     },
     {
       "narration": "The Vasyugan Swamp alone is bigger than Switzerland.",

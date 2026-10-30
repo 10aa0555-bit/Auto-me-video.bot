@@ -26,7 +26,9 @@ Remotion 版だけの追加は下の表。
 
 エジプト編 (`egypt_empty_en`) とザンジバル戦争 (`scripts/zanzibar_war_en.json`) の見た目を基準にする。
 
-- 地図: Sentinel-2 の衛星写真が主役。地形図 (`base: "relief"`) は物語の場面で使う。寄りは span 0.8〜1.0 度まで
+- 地図: Sentinel-2 の衛星写真が主役。寄りは span 0.8〜1.0 度まで
+- 地形図 (`base: "relief"`) は砂漠・乾いた土地 (アフリカ、中東、オーストラリア内陸など) だけ。森や凍土・湖の多い所では迷彩柄のようにまだらになるので使わない
+- 熱帯雨林 (アマゾン、コンゴ、東南アジア) は Sentinel-2 に斜めの縞が出るので、台本の一番上に `"imagery": "bluemarble"` を書き、寄りは span 4 度まで
 - 文字: 1 シーン目は 2 行の大きな問いのタイトル帯 (`banner.badge: false`)。字幕は Poppins の白文字 + 黒フチ
 - 数字: カウントアップ (`texts.count`)、比べるときは暗くした地図 + 棒グラフ (`dim` + `bars`)、大きさ比べは `ghosts`
 - 人の分布: オレンジの光る点 (`swarms`)、国は赤く光る輪郭 (`outline`)、川・鉄道・柵は光る線 (`lines` の glow)
