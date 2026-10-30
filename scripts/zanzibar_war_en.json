@@ -152,13 +152,14 @@
         {
           "name": "alarm clock",
           "at": [
-            39.45,
-            -5.85
+            39.6,
+            -5.75
           ],
           "size": 200,
           "anim": "shake",
           "delay": 3.4,
-          "label": "9:00 AM"
+          "label": "9:00 AM",
+          "ai": "a cartoon red alarm clock ringing and shaking, with motion lines"
         }
       ],
       "base": "relief"
@@ -221,7 +222,8 @@
           ],
           "size": 300,
           "anim": "shake",
-          "delay": 0.4
+          "delay": 0.4,
+          "ai": "a cartoon red alarm clock ringing and shaking, with motion lines"
         },
         {
           "ai": "a small grey victorian steam warship firing its cannon with a puff of smoke, side view",
@@ -240,7 +242,8 @@
             0.46
           ],
           "size": 200,
-          "delay": 3.4
+          "delay": 3.4,
+          "ai": "a cartoon explosion burst with orange and yellow smoke puff"
         }
       ],
       "texts": [
@@ -263,7 +266,8 @@
             0.42
           ],
           "size": 280,
-          "delay": 0.4
+          "delay": 0.4,
+          "ai": "a cartoon orange fire flame with a little smoke"
         },
         {
           "ai": "a small white royal steam yacht sinking with bubbles",
@@ -309,7 +313,8 @@
             -6.16
           ],
           "size": 220,
-          "delay": 0.6
+          "delay": 0.6,
+          "ai": "a small white surrender flag on a wooden pole"
         }
       ],
       "base": "relief"
@@ -393,7 +398,8 @@
             0.42
           ],
           "size": 280,
-          "delay": 0.5
+          "delay": 0.5,
+          "ai": "a cartoon cup of hot tea with steam"
         }
       ]
     }
