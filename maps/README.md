@@ -67,3 +67,18 @@ Remotion 版だけの追加は下の表。
 | 9 | Why nobody lives in Siberia | ロシアの約 77%。ヴァシュガン湿原 (約 5 万 km²、スイスより広い) |
 | 14 | China's desert ghost city (Ordos) | 「国家の長期戦略」は推測なので「説がある」と言う |
 | 10 | The Amazon's lawless border | 実在の事件・犯罪が絡むので後回し。扱うなら断定を避ける |
+
+### 次のネタ (2026-10-30 追加。上から順に作る)
+
+| # | ネタ | 見せ場・注意 |
+|---|---|---|
+| 16 | Why is Chile so long and thin? | 約 4,300km × 平均約 180km。ghosts で欧州や米国に重ねる。アンデスとアタカマ砂漠の「なぜ」 |
+| 17 | Point Nemo: the loneliest place on Earth | 陸から約 2,700km。一番近い人間は宇宙ステーションのことがある。宇宙機の墓場 (imagery は海なので Blue Marble で可) |
+| 18 | Russia and the US are 4 km apart | ダイオミード諸島。間に日付変更線があり「明日の島」と「昨日の島」。冬は氷で歩けるが渡るのは禁止 |
+| 19 | The town where borders go through houses | バールレ = ヘルトフ / ナッサウ (ベルギーとオランダの飛び地が入り組む)。玄関の位置で国が決まる |
+| 20 | The country inside a country | レソト: 南アフリカに完全に囲まれた国。国土全体が標高 1,000m 以上 |
+| 21 | Why is Mongolia so empty? | 世界で一番人口密度が低い国 (約 2 人/km²)。人口の約半分がウランバートル |
+| 22 | The 100 km gap in the Pan-American Highway | ダリエン地峡。道路がアラスカからアルゼンチンまでつながらない理由 (熱帯なので imagery: bluemarble) |
+| 23 | Why does Alaska belong to the US? | 1867 年にロシアから 720 万ドルで購入。「スワードの愚行」と笑われた |
+| 24 | Why is Indonesia moving its capital? | ジャカルタが沈んでいる (地下水のくみ上げ)。ボルネオの新首都ヌサンタラ (熱帯なので bluemarble) |
+| 25 | Why do Japanese cities squeeze onto the coast? | 国土の約 3 分の 2 が森林・山地。平野に人が集中 |
