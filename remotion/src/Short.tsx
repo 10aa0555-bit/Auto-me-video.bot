@@ -344,12 +344,12 @@ const Bars: React.FC<{b: NonNullable<Scene['spec']['bars']>; lt: number; dur: nu
       )}
       {b.items.map((it, i) => {
         const d = delay + i * 0.9;
-        const grow = easeOut((lt - d) / 1.1) * out;
+        const grow = easeOut((lt - d) / 1.1);  // 消えるときは数字を戻さず、全体を薄くする
         const k = popIn(lt - d) * out;
         if (k < 0.01) return <div key={i} style={{height: 150}} />;
         const w = (W - 180) * 0.82 * (it.value / max) * grow;
         return (
-          <div key={i} style={{height: 150, opacity: Math.min(1, k)}}>
+          <div key={i} style={{height: 150, opacity: Math.min(1, k) * out}}>
             <div style={{fontFamily: FONT, fontWeight: 900, fontSize: 50, color: '#fff', textShadow: outline(3), marginBottom: 10}}>
               {it.label}
             </div>
