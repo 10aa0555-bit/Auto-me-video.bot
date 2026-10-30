@@ -212,7 +212,6 @@
     },
     {
       "narration": "Nine o'clock came. Nobody left. At two minutes past nine, the ships opened fire.",
-      "blueprint": true,
       "icons": [
         {
           "name": "alarm clock",
@@ -251,11 +250,11 @@
           "size": 110,
           "delay": 2.4
         }
-      ]
+      ],
+      "dim": true
     },
     {
       "narration": "The palace caught fire. The sultan's only warship, a royal yacht, was sunk.",
-      "blueprint": true,
       "icons": [
         {
           "name": "fire",
@@ -277,7 +276,8 @@
           "anim": "shake",
           "delay": 2.4
         }
-      ]
+      ],
+      "dim": true
     },
     {
       "narration": "At nine forty, the flag came down. The whole war lasted about thirty-eight minutes.",
@@ -316,7 +316,6 @@
     },
     {
       "narration": "Around five hundred people on the sultan's side were killed or wounded. On the British side, one sailor was hurt.",
-      "blueprint": true,
       "texts": [
         {
           "text": "~500",
@@ -333,7 +332,8 @@
           "size": 120,
           "delay": 3.6
         }
-      ]
+      ],
+      "dim": true
     },
     {
       "narration": "Khalid escaped through the German consulate. And his supporters were reportedly billed for the shells.",

@@ -327,6 +327,48 @@ const Captions: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   );
 };
 
+// ---------------------------------------------------------------- 棒グラフ (数字の比べっこ)
+
+const Bars: React.FC<{b: NonNullable<Scene['spec']['bars']>; lt: number; dur: number}> = ({b, lt, dur}) => {
+  const delay = b.delay ?? 0.8;
+  const max = Math.max(...b.items.map((it) => it.value));
+  const out = outScale(lt, dur, 0.3);
+  const titleK = popIn(lt - delay + 0.3) * out;
+  return (
+    <div style={{position: 'absolute', top: H * (b.y ?? 0.2), left: 90, width: W - 180}}>
+      {b.title && (
+        <div style={{
+          fontFamily: FONT, fontWeight: 800, fontSize: 40, color: '#fff', letterSpacing: 2, marginBottom: 34,
+          opacity: titleK, transform: `translateY(${(1 - Math.min(titleK, 1)) * 20}px)`, textShadow: outline(3),
+        }}>{b.title}</div>
+      )}
+      {b.items.map((it, i) => {
+        const d = delay + i * 0.9;
+        const grow = easeOut((lt - d) / 1.1) * out;
+        const k = popIn(lt - d) * out;
+        if (k < 0.01) return <div key={i} style={{height: 150}} />;
+        const w = (W - 180) * 0.82 * (it.value / max) * grow;
+        return (
+          <div key={i} style={{height: 150, opacity: Math.min(1, k)}}>
+            <div style={{fontFamily: FONT, fontWeight: 900, fontSize: 50, color: '#fff', textShadow: outline(3), marginBottom: 10}}>
+              {it.label}
+            </div>
+            <div style={{display: 'flex', alignItems: 'center', gap: 22}}>
+              <div style={{
+                width: w, height: 54, borderRadius: 14, background: it.color ?? '#ffd23f',
+                boxShadow: '0 6px 16px rgba(0,0,0,0.35), inset 0 -6px 0 rgba(0,0,0,0.18)',
+              }} />
+              <div style={{fontFamily: FONT, fontWeight: 900, fontSize: 52, color: '#fff', textShadow: outline(3), whiteSpace: 'nowrap'}}>
+                {Math.round(it.value * grow).toLocaleString('en-US')}{b.unit ?? ''}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 // ---------------------------------------------------------------- 1 シーン
 
 const SceneLayer: React.FC<{s: Scene; prevYear?: string; props: Props}> = ({s, prevYear, props}) => {
@@ -338,6 +380,13 @@ const SceneLayer: React.FC<{s: Scene; prevYear?: string; props: Props}> = ({s, p
   const sp = s.spec;
   return (
     <AbsoluteFill>
+      {sp.dim && (
+        <AbsoluteFill style={{
+          background: 'linear-gradient(rgba(8,12,20,0.55), rgba(8,12,20,0.72))',
+          opacity: easeOut(lt / 0.5) * outScale(lt, s.dur, 0.35),
+        }} />
+      )}
+      {sp.bars && <Bars b={sp.bars} lt={lt} dur={s.dur} />}
       {sp.outline && sp.outline.length > 0 && <Outlines keys={sp.outline} shapes={props.shapes ?? {}} cam={cam} lt={lt} dur={s.dur} />}
       {(sp.swarms ?? []).map((sw, i) => <SwarmDots key={`s${i}`} sw={sw} cam={cam} lt={lt} dur={s.dur} />)}
       {(sp.lines ?? []).map((ln, i) => <Line key={`l${i}`} ln={ln} cam={cam} lt={lt} dur={s.dur} />)}

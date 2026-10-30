@@ -30,7 +30,8 @@ Remotion 版だけの追加は下の表。
 | `banner.badge` | `false` で 2 行目も大きな文字 (問いのタイトル向け) |
 | `lines[].style` | `glow` (光る線) / `solid` / `dashed` / `arrow` / `arrow_dashed` |
 | `base` | `"relief"` でベージュの地形図 |
-| `blueprint` | `true` で青い方眼の場面 |
+| `dim` | `true` で地図の上に暗い膜をかけ、文字や棒グラフを読みやすくする (青い方眼 `blueprint` は AI っぽく見えるので使わない) |
+| `bars` | 数字の比べっこの棒グラフ `{"title", "unit", "y", "delay", "items": [{"label", "value", "color"}]}`。`dim` と一緒に使う (国旗の絵文字は表示できないので文字だけ) |
 
 地図は Sentinel-2 cloudless 2016 (EOX、CC BY 4.0) のタイル。説明欄に出典が自動で入る。
 

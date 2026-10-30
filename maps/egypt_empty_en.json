@@ -436,28 +436,32 @@
     },
     {
       "narration": "Count only the land people live on, and Egypt is more crowded than Bangladesh.",
-      "blueprint": true,
-      "texts": [
-        {
-          "text": "EGYPT {n}/KM²",
-          "count": 2000,
-          "accent": [
-            "EGYPT"
-          ],
-          "y": 0.3,
-          "size": 92,
-          "delay": 1.4
-        },
-        {
-          "text": "BANGLADESH 1,200/KM²",
-          "accent": [
-            "BANGLADESH"
-          ],
-          "y": 0.42,
-          "size": 76,
-          "delay": 3.0
-        }
-      ]
+      "camera": {
+        "center": [
+          31.15,
+          29.4
+        ],
+        "span": 3
+      },
+      "dim": true,
+      "bars": {
+        "title": "PEOPLE PER KM² OF LIVED-IN LAND",
+        "unit": "",
+        "y": 0.24,
+        "delay": 1.0,
+        "items": [
+          {
+            "label": "EGYPT",
+            "value": 2000,
+            "color": "#ff7b2e"
+          },
+          {
+            "label": "BANGLADESH",
+            "value": 1200,
+            "color": "#3ddc84"
+          }
+        ]
+      }
     },
     {
       "narration": "Then in 1970, the Aswan High Dam stopped the floods for good.",
