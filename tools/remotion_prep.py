@@ -156,20 +156,33 @@ def map_textures(timeline, job, looks, use_tiles=True):
                 cams.append((cam[0], cam[1], math.exp(cam[2])))
     if not cams:
         return None, []
-    levels, todo = [], sorted(cams, key=lambda c: -c[2])
-    while todo and len(levels) < 3:
-        x0, y0, x1, y1 = _bounds(todo)
-        need = W / min(c[2] for c in todo)  # 一番寄るカメラに必要な密度
+    # 全体を覆う粗い段から始め、足りないカメラは場所ごとに固まりへ分けて細かい段を足す
+    # (離れた場所を 1 枚にまとめると画像の上限に当たって粗くなるため)
+    levels, todo = [], [sorted(cams, key=lambda c: -c[2])]
+    while todo and len(levels) < 12:
+        group = todo.pop(0)
+        x0, y0, x1, y1 = _bounds(group)
+        need = W / min(c[2] for c in group)  # 一番寄るカメラに必要な密度
         ppu = min(need * 1.1, MAX_TEX / max(x1 - x0, y1 - y0))
         levels.append([x0, y0, x1, y1, ppu])
-        todo = [c for c in todo if W / c[2] > ppu * 1.25]  # この段で足りないカメラだけ次の段へ
+        rest = [c for c in group if W / c[2] > ppu * 1.25]  # この段で足りないカメラ
+        clusters = []
+        for c in sorted(rest, key=lambda c: c[2]):
+            for cl in clusters:
+                if math.hypot(cl[0][0] - c[0], cl[0][1] - c[1]) < max(cl[0][2], c[2]) * 2:
+                    cl.append(c)
+                    break
+            else:
+                clusters.append([c])
+        todo += clusters
+    levels.sort(key=lambda lv: lv[4])  # 粗い段から順に重ねる
     credits = []
     src = None
     out = []
     for i, (x0, y0, x1, y1, ppu) in enumerate(levels):
         img = None
         if use_tiles:
-            z = min(max(int(round(math.log2(ppu / 256))), 2), MAX_TILE_Z)
+            z = min(max(math.ceil(math.log2(ppu / 256) - 0.15), 2), MAX_TILE_Z)  # 足りない側に丸めない
             try:
                 img, ppu = tile_mosaic(x0, y0, x1, y1, z)
                 sigma = max(2.0, min(12.0, ppu / 21600 * 8))
