@@ -22,9 +22,6 @@
         ],
         "span": 72
       },
-      "outline": [
-        "CAN"
-      ],
       "banner": {
         "lines": [
           "WHY DO CANADIANS",
@@ -148,7 +145,10 @@
           "duration": 0.8800000000000001,
           "keep": true
         }
-      ]
+      ],
+      "fill": {
+        "CAN": "flag:ca"
+      }
     },
     {
       "narration": "About three quarters of Canadians live within a hundred and sixty kilometers of the US border.",
@@ -278,7 +278,10 @@
           "size": 80,
           "delay": 0.4
         }
-      ]
+      ],
+      "fill": {
+        "CAN": null
+      }
     },
     {
       "narration": "In fact, Toronto is further south than Seattle.",

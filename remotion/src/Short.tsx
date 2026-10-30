@@ -425,7 +425,7 @@ export const Short: React.FC<Props> = (props) => {
     <AbsoluteFill style={{backgroundColor: '#0d2238', overflow: 'hidden'}}>
       <FontFaces />
       {props.maps.length > 0 && <MapLayer maps={props.maps} cam={cam} scenes={props.scenes} t={t} />}
-      <Fills scenes={props.scenes} shapes={props.shapes ?? {}} cam={cam} t={t} />
+      <Fills scenes={props.scenes} shapes={props.shapes ?? {}} bboxes={props.bboxes} cam={cam} t={t} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.32) 100%)'}} />
       <Blueprint scenes={props.scenes} t={t} />
       {props.scenes.map((s, i) => (

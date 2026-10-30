@@ -31,6 +31,9 @@
         "y": 0.12,
         "delay": 0.1,
         "size": 86
+      },
+      "fill": {
+        "RUS": "flag:ru"
       }
     },
     {
@@ -55,7 +58,10 @@
           "size": 80,
           "delay": 2.8
         }
-      ]
+      ],
+      "fill": {
+        "RUS": null
+      }
     },
     {
       "narration": "The obvious answer is cold. In the village of Oymyakon, it once hit minus sixty-seven point seven degrees.",

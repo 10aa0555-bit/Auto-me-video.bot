@@ -261,6 +261,25 @@ def map_textures(timeline, job, looks, use_tiles=True):
     return out, credits
 
 
+shapes_bbox = {}  # 国の本土の範囲 (国旗を貼る位置)
+
+
+def prepare_flags(script, job):
+    """塗りに "flag:xx" を使う国旗の SVG (flag-icons, MIT) を job にコピーする。"""
+    from geo_short.assets import Flags
+    codes = {v[5:] for sc in script["scenes"] for v in sc.get("fill", {}).values() if isinstance(v, str) and v.startswith("flag:")}
+    if not codes:
+        return
+    fl = Flags()
+    fl._ensure()
+    for c in codes:
+        src = os.path.join(fl.dir, f"{c.lower()}.svg")
+        if os.path.exists(src):
+            shutil.copy(src, os.path.join(job, f"flag_{c.lower()}.svg"))
+        else:
+            print(f"  国旗が見つかりません: {c}")
+
+
 def prepare_shapes(script, tl):
     """塗り・輪郭に使う国の形を、正規化メルカトル座標の輪郭 (間引き済み) にする。"""
     from geo_short.geo import World, merc_arr
@@ -275,6 +294,7 @@ def prepare_shapes(script, tl):
     spans = [math.exp(s["cam_to"][2]) for s in tl.scenes if s["cam_to"]]
     eps = (min(spans) if spans else 0.05) / W * 0.6  # 画面で 0.6px 以下の凹凸は省く
     out = {}
+    bboxes = shapes_bbox
     for k in sorted(keys):
         if k in world.custom:
             polys = [[[p for p in r.lods[0]] for r in poly] for poly in world.custom[k].polygons]
@@ -282,6 +302,9 @@ def prepare_shapes(script, tl):
         else:
             polys = [[merc_arr(r) for r in poly] for poly in world.raw_polygons(k)]
         rings = []
+        main = max((poly[0] for poly in polys), key=lambda r: (r[:, 0].max() - r[:, 0].min()) * (r[:, 1].max() - r[:, 1].min()))
+        bboxes[k] = [round(float(main[:, 0].min()), 6), round(float(main[:, 1].min()), 6),
+                     round(float(main[:, 0].max()), 6), round(float(main[:, 1].max()), 6)]
         for poly in polys:
             for r in poly:
                 a = cv2.approxPolyDP(np.round(np.asarray(r, np.float64) * 1e7).astype(np.int32).reshape(-1, 1, 2),
@@ -368,6 +391,7 @@ def main():
     prepare_swarms(script)
     prepare_ghosts(script)
     shapes = prepare_shapes(script, tl)
+    prepare_flags(script, job)
     fonts = os.path.join(os.path.dirname(__file__), "..", "fonts")
     for f in os.listdir(fonts):
         if f.startswith("Poppins"):
@@ -395,7 +419,7 @@ def main():
     captions = [{"text": c[0], "start": c[1], "end": c[2], "words": [[w, t] for w, t in (c[3] or [])]}
                 for c in tl.captions]
     props = {"name": name, "fps": FPS, "frames": n, "scenes": scenes, "captions": captions,
-             "camera": cams, "shapes": shapes, "maps": tex or [], "credits": credits, "audio": "audio.m4a",
+             "camera": cams, "shapes": shapes, "bboxes": shapes_bbox, "maps": tex or [], "credits": credits, "audio": "audio.m4a",
              "captionStyle": script.get("captions", "plain"),
              "version": hashlib.sha1(str(os.path.getmtime(audio)).encode()).hexdigest()[:8]}
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)

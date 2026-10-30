@@ -22,9 +22,6 @@
         ],
         "span": 15
       },
-      "outline": [
-        "EGY"
-      ],
       "banner": {
         "lines": [
           "WHY IS 95%",
@@ -131,7 +128,10 @@
           "duration": 0.8,
           "keep": true
         }
-      ]
+      ],
+      "fill": {
+        "EGY": "flag:eg"
+      }
     },
     {
       "narration": "About ninety-five percent of Egyptians live on roughly five percent of the land. The rest is desert.",
@@ -250,7 +250,10 @@
           "size": 96,
           "delay": 2.6
         }
-      ]
+      ],
+      "fill": {
+        "EGY": null
+      }
     },
     {
       "narration": "Why? Down in Aswan, years can pass without real rain. Without the Nile, Egypt would be empty.",

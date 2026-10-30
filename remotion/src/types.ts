@@ -99,6 +99,7 @@ export type Props = {
   camera: [number, number, number][];
   maps: MapTex[];
   shapes: Record<string, [number, number][][]>;
+  bboxes?: Record<string, [number, number, number, number]>;
   credits?: string[];
   audio: string;
   captionStyle: string;

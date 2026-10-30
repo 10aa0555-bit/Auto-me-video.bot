@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, staticFile} from 'remotion';
 import type {GhostSpec, LineSpec, Scene, Swarm} from './types';
 import {FONT, H, W, clamp01, easeInOut, easeOut, outScale, popIn, toScreen} from './util';
 
@@ -17,26 +17,49 @@ const ringsPath = (rings: [number, number][][], cam: Cam) => {
 const FILL_FADE = 0.6;
 
 /** 国の塗り。シーンをまたいで残り、シーンの頭で前の状態から 0.6 秒で切り替わる。 */
-export const Fills: React.FC<{scenes: Scene[]; shapes: Shapes; cam: Cam; t: number}> = ({scenes, shapes, cam, t}) => {
+export const Fills: React.FC<{scenes: Scene[]; shapes: Shapes; bboxes?: Record<string, [number, number, number, number]>; cam: Cam; t: number}> = ({scenes, shapes, bboxes, cam, t}) => {
   let i = scenes.findIndex((s) => t < s.start + s.dur);
   if (i < 0) i = scenes.length - 1;
   const s = scenes[i];
   const u = easeInOut((t - s.start) / FILL_FADE);
   const keys = Array.from(new Set([...Object.keys(s.fillsBefore), ...Object.keys(s.fillsAfter)]));
   if (!keys.length) return null;
+  const ppu = W / cam[2];
+  const sx = (x: number) => (x - cam[0]) * ppu + W / 2;
+  const sy = (y: number) => (y - cam[1]) * ppu + H / 2;
+  // 色の塗り、または "flag:xx" なら国の形に切り抜いた国旗
+  const layer = (k: string, c: string, op: number, id: string) => {
+    const d = ringsPath(shapes[k], cam);
+    if (c.startsWith('flag:')) {
+      const bb = bboxes?.[k];
+      if (!bb) return null;
+      const x0 = sx(bb[0]);
+      const y0 = sy(bb[1]);
+      return (
+        <g key={id} opacity={op}>
+          <defs><clipPath id={id}><path d={d} fillRule="evenodd" /></clipPath></defs>
+          <image href={staticFile(`job/flag_${c.slice(5).toLowerCase()}.svg`)} x={x0} y={y0} width={sx(bb[2]) - x0}
+            height={sy(bb[3]) - y0} preserveAspectRatio="xMidYMid slice" clipPath={`url(#${id})`} />
+          <path d={d} fill="none" stroke="#fff" strokeWidth={4} strokeLinejoin="round" />
+        </g>
+      );
+    }
+    return (
+      <path key={id} d={d} fill={c} fillOpacity={0.55 * op} fillRule="evenodd" stroke="#fff" strokeOpacity={0.6 * op}
+        strokeWidth={2.5} strokeLinejoin="round" />
+    );
+  };
   return (
     <svg width={W} height={H} style={{position: 'absolute', left: 0, top: 0}}>
       {keys.map((k) => {
         if (!shapes[k]) return null;
         const a = s.fillsBefore[k];
         const b = s.fillsAfter[k];
-        const d = ringsPath(shapes[k], cam);
-        const col = (c: string | null | undefined) => (c && !c.startsWith('flag:') ? c : '#ffd23f');
+        if (a === b) return a ? layer(k, a, 1, `f_${k}`) : null;
         return (
           <g key={k}>
-            {a && a !== b && <path d={d} fill={col(a)} fillOpacity={0.55 * (1 - u)} fillRule="evenodd" />}
-            {b && <path d={d} fill={col(b)} fillOpacity={a === b ? 0.55 : 0.55 * u} fillRule="evenodd"
-              stroke="#fff" strokeOpacity={0.6 * (a === b ? 1 : u)} strokeWidth={2.5} strokeLinejoin="round" />}
+            {a && layer(k, a, 1 - u, `fa_${k}`)}
+            {b && layer(k, b, u, `fb_${k}`)}
           </g>
         );
       })}

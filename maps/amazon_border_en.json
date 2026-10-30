@@ -42,7 +42,12 @@
           "label": "?",
           "delay": 2.4
         }
-      ]
+      ],
+      "fill": {
+        "BRA": "flag:br",
+        "COL": "flag:co",
+        "PER": "flag:pe"
+      }
     },
     {
       "narration": "The Amazon rainforest is bigger than the European Union, spread across nine countries and territories.",
@@ -57,7 +62,12 @@
         "BRA",
         "PER",
         "COL"
-      ]
+      ],
+      "fill": {
+        "BRA": null,
+        "COL": null,
+        "PER": null
+      }
     },
     {
       "narration": "Its borders run through thick jungle and winding rivers. From above, you can barely see them.",

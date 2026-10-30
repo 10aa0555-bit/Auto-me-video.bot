@@ -42,7 +42,10 @@
           "label": "Ordos",
           "delay": 2.2
         }
-      ]
+      ],
+      "fill": {
+        "CHN": "flag:cn"
+      }
     },
     {
       "narration": "This is Kangbashi, a brand new district of the city of Ordos, in Inner Mongolia.",
@@ -63,7 +66,10 @@
           "label": "Kangbashi",
           "delay": 0.8
         }
-      ]
+      ],
+      "fill": {
+        "CHN": null
+      }
     },
     {
       "narration": "Why build here? Coal. Ordos sits on a huge share of China's coal, and the boom made it rich, fast.",

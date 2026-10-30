@@ -54,7 +54,11 @@
           "delay": 1.2,
           "draw_time": 2.0
         }
-      ]
+      ],
+      "fill": {
+        "USA": "flag:us",
+        "CAN": "flag:ca"
+      }
     },
     {
       "narration": "The US and Canada share almost nine thousand kilometers of border. And through the forests, there's a straight strip cut into the trees.",
@@ -79,7 +83,11 @@
           "size": 110,
           "delay": 0.8
         }
-      ]
+      ],
+      "fill": {
+        "USA": null,
+        "CAN": null
+      }
     },
     {
       "narration": "It's about six meters wide, and it's called the slash.",

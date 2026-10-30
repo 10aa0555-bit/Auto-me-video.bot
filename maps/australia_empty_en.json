@@ -22,9 +22,6 @@
         ],
         "span": 42
       },
-      "outline": [
-        "AUS"
-      ],
       "banner": {
         "lines": [
           "WHY IS AUSTRALIA",
@@ -176,7 +173,10 @@
           "duration": 0.3,
           "keep": true
         }
-      ]
+      ],
+      "fill": {
+        "AUS": "flag:au"
+      }
     },
     {
       "narration": "About eighty-five percent of Australians live within fifty kilometers of the coast.",
@@ -333,7 +333,10 @@
           "size": 80,
           "delay": 0.4
         }
-      ]
+      ],
+      "fill": {
+        "AUS": null
+      }
     },
     {
       "narration": "Most people blame the desert. But why is there a desert in the first place?",

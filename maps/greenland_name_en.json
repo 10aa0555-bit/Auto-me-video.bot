@@ -22,9 +22,6 @@
         ],
         "span": 48
       },
-      "outline": [
-        "GRL"
-      ],
       "banner": {
         "lines": [
           "WHY IS GREENLAND",
@@ -34,6 +31,9 @@
         "y": 0.12,
         "delay": 0.1,
         "size": 86
+      },
+      "fill": {
+        "GRL": "flag:gl"
       }
     },
     {
@@ -72,7 +72,10 @@
           "size": 230,
           "delay": 2.0
         }
-      ]
+      ],
+      "fill": {
+        "GRL": null
+      }
     },
     {
       "narration": "He sailed west, found this enormous island, and spent three years exploring it.",

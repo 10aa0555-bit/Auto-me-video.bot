@@ -96,7 +96,10 @@
           "label": "{n} KM",
           "count": 5614
         }
-      ]
+      ],
+      "fill": {
+        "AUS": "flag:au"
+      }
     },
     {
       "narration": "It's called the Dingo Fence: five thousand six hundred kilometers of wire across three states.",
@@ -165,7 +168,10 @@
       ],
       "outline": [
         "AUS"
-      ]
+      ],
+      "fill": {
+        "AUS": null
+      }
     },
     {
       "narration": "It started as rabbit fences in the eighteen-eighties. By the nineteen-fifties, it had become one giant wall against wild dogs.",

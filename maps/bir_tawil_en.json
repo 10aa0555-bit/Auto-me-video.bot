@@ -33,12 +33,10 @@
         "size": 86
       },
       "fill": {
-        "BIR": "#ffd23f"
-      },
-      "outline": [
-        "EGY",
-        "SDN"
-      ]
+        "BIR": "#ffd23f",
+        "EGY": "flag:eg",
+        "SDN": "flag:sd"
+      }
     },
     {
       "narration": "It's called Bir Tawil, and it sits right between Egypt and Sudan.",
@@ -59,7 +57,11 @@
           "label": "Bir Tawil",
           "delay": 0.8
         }
-      ]
+      ],
+      "fill": {
+        "EGY": null,
+        "SDN": null
+      }
     },
     {
       "narration": "The problem started with two lines, both drawn by the British.",
