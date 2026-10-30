@@ -1,0 +1,361 @@
+{
+  "title": "The World's Longest Border Has a Haircut",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "The longest border on Earth is protected by... a haircut.",
+      "camera": {
+        "center": [
+          -100,
+          50
+        ],
+        "span": 62
+      },
+      "banner": {
+        "lines": [
+          "THE WORLD'S",
+          "LONGEST BORDER"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.32,
+              49.0
+            ],
+            [
+              -110,
+              49.0
+            ],
+            [
+              -95.15,
+              49.0
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 1.2,
+          "draw_time": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "The US and Canada share almost nine thousand kilometers of border. And through the forests, there's a straight strip cut into the trees.",
+      "camera": {
+        "center": [
+          -100,
+          50
+        ],
+        "span": 62
+      },
+      "outline": [
+        "CAN"
+      ],
+      "texts": [
+        {
+          "text": "{n} KM",
+          "count": 8891,
+          "accent": [
+            "KM"
+          ],
+          "y": 0.22,
+          "size": 110,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "It's about six meters wide, and it's called the slash.",
+      "camera": {
+        "center": [
+          -120,
+          49
+        ],
+        "span": 6
+      },
+      "base": "relief",
+      "lines": [
+        {
+          "path": [
+            [
+              -123.32,
+              49.0
+            ],
+            [
+              -116.0,
+              49.0
+            ]
+          ],
+          "style": "solid",
+          "color": "#ffffff",
+          "width": 6,
+          "delay": 0.3,
+          "draw_time": 1.2
+        }
+      ],
+      "texts": [
+        {
+          "text": "6 M WIDE",
+          "accent": [
+            "WIDE"
+          ],
+          "y": 0.22,
+          "size": 100,
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "Why cut it? So everyone can see exactly where the border is. No guessing, no arguments.",
+      "camera": {
+        "center": [
+          -120,
+          49
+        ],
+        "span": 6
+      },
+      "base": "relief",
+      "icons": [
+        {
+          "ai": "a cute cartoon lumberjack in a red plaid shirt holding a chainsaw",
+          "name": "man",
+          "at": [
+            -120.5,
+            49.0
+          ],
+          "to": [
+            -118.5,
+            49.0
+          ],
+          "travel_time": 2.6,
+          "size": 220,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "A commission run by both countries has been keeping it clear for more than a century.",
+      "camera": {
+        "center": [
+          -120,
+          49
+        ],
+        "span": 6
+      },
+      "year": "1908"
+    },
+    {
+      "narration": "It also looks after more than eight thousand boundary markers.",
+      "camera": {
+        "center": [
+          -100,
+          50
+        ],
+        "span": 62
+      },
+      "texts": [
+        {
+          "text": "{n}+ MARKERS",
+          "count": 8000,
+          "accent": [
+            "MARKERS"
+          ],
+          "y": 0.22,
+          "size": 96,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "From the Lake of the Woods to the Pacific, the border follows one straight line: the forty-ninth parallel.",
+      "camera": {
+        "center": [
+          -109,
+          49
+        ],
+        "span": 32
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.32,
+              49.0
+            ],
+            [
+              -110,
+              49.0
+            ],
+            [
+              -95.15,
+              49.0
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0.4,
+          "draw_time": 2.6,
+          "label": "49°N"
+        }
+      ]
+    },
+    {
+      "narration": "And that straight line creates some very strange places.",
+      "camera": {
+        "center": [
+          -109,
+          49
+        ],
+        "span": 32
+      }
+    },
+    {
+      "narration": "Point Roberts is part of the United States. But to drive there, you have to go through Canada.",
+      "camera": {
+        "center": [
+          -123.0,
+          49.0
+        ],
+        "span": 0.9
+      },
+      "markers": [
+        {
+          "at": [
+            -123.06,
+            48.98
+          ],
+          "type": "pin",
+          "label": "Point Roberts, USA",
+          "delay": 1.0
+        }
+      ],
+      "lines": [
+        {
+          "path": [
+            [
+              -123.4,
+              49.0
+            ],
+            [
+              -122.7,
+              49.0
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 0.4,
+          "draw_time": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "And in Vermont, a library sits right on the border. A black line on the floor runs straight through the building.",
+      "camera": {
+        "center": [
+          -72.15,
+          45.0
+        ],
+        "span": 1.0
+      },
+      "markers": [
+        {
+          "at": [
+            -72.143,
+            45.006
+          ],
+          "type": "pin",
+          "label": "Haskell Library",
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "So the world's longest friendly border is basically a straight line... and a lot of chainsaws.",
+      "camera": {
+        "center": [
+          -100,
+          50
+        ],
+        "span": 62
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.32,
+              49.0
+            ],
+            [
+              -110,
+              49.0
+            ],
+            [
+              -95.15,
+              49.0
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "Would you live in Point Roberts? Yes or no?",
+      "camera": {
+        "center": [
+          -100,
+          50
+        ],
+        "span": 62
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The world's longest border has a haircut ✂️ #geography #canada",
+    "description": "The US-Canada border is almost 9,000 km long, and through the forests it's a 6-meter-wide strip of cut trees. Plus a US town you can only drive to through Canada.",
+    "hashtags": [
+      "#geography",
+      "#canada",
+      "#usa",
+      "#border",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you live in Point Roberts? 👇"
+  }
+}

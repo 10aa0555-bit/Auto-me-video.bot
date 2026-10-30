@@ -132,7 +132,9 @@ jobs:
           cp /tmp/renders/* .
           git add -f -- *.mp4 $(ls *_post.txt *_grid.jpg 2>/dev/null)
           git commit -qm "render (remotion): $SCRIPTS (${GITHUB_SHA::7})" || exit 0
-          for i in 1 2 3; do
+          # 何本も同時に書き出すと push がぶつかるので、取り込み直して何度か再挑戦する
+          for i in 1 2 3 4 5 6 7 8; do
             git push -q origin renders && break
+            sleep $((RANDOM % 20 + 5))
             git fetch -q origin renders && git rebase -q FETCH_HEAD
           done

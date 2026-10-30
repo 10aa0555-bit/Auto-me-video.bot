@@ -66,6 +66,9 @@ def prepare_art(script, job):
                 shutil.copy(path, dst)
                 ic["src"], ic["kind"] = os.path.basename(path), "ai"
                 continue
+            if ic.get("ai"):  # AI の絵が無いときは絵文字で代用せず、出さない (安っぽく見えるため)
+                ic["src"] = None
+                continue
             flat = fluent_flat(ic.get("name", "sparkles"), job)
             if flat:
                 ic["src"], ic["kind"] = os.path.basename(flat), "flat"
@@ -289,6 +292,31 @@ def prepare_shapes(script, tl):
     return out
 
 
+def prepare_ghosts(script, steps=36):
+    """ghosts (国の形を本当の大きさのまま動かす) の途中の形を、正規化メルカトルの輪郭で前もって作る。"""
+    from geo_short.geo import Ghost, World
+    world = None
+    for sc in script["scenes"]:
+        for g in sc.get("ghosts", []):
+            world = world or World()
+            gh = Ghost(world.raw_polygons(g["of"]))
+            start = g.get("from", list(gh.center))
+            end = g.get("to", start)
+            frames = []
+            for k in range(steps):
+                u = k / (steps - 1)
+                shp = gh.shape_at(start[0] + (end[0] - start[0]) * u, start[1] + (end[1] - start[1]) * u)
+                rings = []
+                for poly in shp.polygons:
+                    for ring in poly:
+                        r = ring.pick(2e-4)
+                        if len(r) >= 3 and (r[:, 0].max() - r[:, 0].min()) * 360 > 0.15:  # 小さな島は省く
+                            rings.append([[round(x, 6), round(y, 6)] for x, y in r])
+                frames.append(rings)
+            g["frames"] = frames
+            g["end"] = end
+
+
 def prepare_swarms(script):
     """swarm (人が住む場所の点の群れ) を、線に沿ってばらまいた点の列にする。"""
     rng = np.random.default_rng(7)
@@ -338,6 +366,7 @@ def main():
 
     prepare_art(script, job)
     prepare_swarms(script)
+    prepare_ghosts(script)
     shapes = prepare_shapes(script, tl)
     fonts = os.path.join(os.path.dirname(__file__), "..", "fonts")
     for f in os.listdir(fonts):

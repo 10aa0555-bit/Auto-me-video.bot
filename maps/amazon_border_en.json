@@ -1,0 +1,340 @@
+{
+  "title": "The City You Can't Drive To",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Somewhere in the Amazon, three countries meet. And you can't drive to any of them.",
+      "camera": {
+        "center": [
+          -62,
+          -6
+        ],
+        "span": 40
+      },
+      "banner": {
+        "lines": [
+          "THE CITY YOU",
+          "CAN'T DRIVE TO"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "markers": [
+        {
+          "at": [
+            -69.95,
+            -4.22
+          ],
+          "type": "pin",
+          "label": "?",
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "The Amazon rainforest is bigger than the European Union, spread across nine countries and territories.",
+      "camera": {
+        "center": [
+          -62,
+          -6
+        ],
+        "span": 40
+      },
+      "outline": [
+        "BRA",
+        "PER",
+        "COL"
+      ]
+    },
+    {
+      "narration": "Its borders run through thick jungle and winding rivers. From above, you can barely see them.",
+      "camera": {
+        "center": [
+          -70.5,
+          -4
+        ],
+        "span": 7
+      }
+    },
+    {
+      "narration": "Here, at the very tip of Colombia, sits the town of Leticia. Right next to it is Tabatinga, in Brazil.",
+      "camera": {
+        "center": [
+          -70.0,
+          -4.2
+        ],
+        "span": 1.2
+      },
+      "markers": [
+        {
+          "at": [
+            -69.94,
+            -4.22
+          ],
+          "type": "pin",
+          "label": "Leticia + Tabatinga",
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "The border between them is basically a street. People cross it to buy groceries.",
+      "camera": {
+        "center": [
+          -70.0,
+          -4.2
+        ],
+        "span": 1.2
+      },
+      "texts": [
+        {
+          "text": "COLOMBIA | BRAZIL",
+          "accent": [
+            "COLOMBIA"
+          ],
+          "y": 0.22,
+          "size": 80,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "And across the river is Peru. Three countries, a short boat ride apart.",
+      "camera": {
+        "center": [
+          -70.0,
+          -4.2
+        ],
+        "span": 1.2
+      },
+      "markers": [
+        {
+          "at": [
+            -70.02,
+            -4.2
+          ],
+          "type": "pin",
+          "label": "Peru",
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "But here's the strange part. No road connects Leticia to the rest of Colombia. You fly in, or you take a boat.",
+      "camera": {
+        "center": [
+          -72,
+          -2
+        ],
+        "span": 14
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -69.94,
+              -4.21
+            ],
+            [
+              -74.07,
+              4.71
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ff5a4f",
+          "width": 6,
+          "delay": 1.6,
+          "draw_time": 1.4,
+          "label": "NO ROAD"
+        }
+      ]
+    },
+    {
+      "narration": "Upriver, Iquitos in Peru has hundreds of thousands of people, and no road out either.",
+      "camera": {
+        "center": [
+          -71.6,
+          -3.8
+        ],
+        "span": 5
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -69.94,
+              -4.21
+            ],
+            [
+              -70.5,
+              -3.85
+            ],
+            [
+              -71.2,
+              -3.6
+            ],
+            [
+              -72.0,
+              -3.45
+            ],
+            [
+              -72.7,
+              -3.6
+            ],
+            [
+              -73.25,
+              -3.75
+            ]
+          ],
+          "style": "glow",
+          "color": "#5ee7ff",
+          "width": 8,
+          "delay": 0.6,
+          "draw_time": 2.0
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -73.25,
+            -3.75
+          ],
+          "type": "pin",
+          "label": "Iquitos",
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "Why not build roads? The ground floods for months, and new roads bring logging and fires.",
+      "camera": {
+        "center": [
+          -71.6,
+          -3.8
+        ],
+        "span": 5
+      }
+    },
+    {
+      "narration": "So out here, the river is the highway.",
+      "camera": {
+        "center": [
+          -71.6,
+          -3.8
+        ],
+        "span": 5
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon wooden river boat with a small roof",
+          "name": "canoe",
+          "at": [
+            -73.0,
+            -3.7
+          ],
+          "to": [
+            -70.2,
+            -4.15
+          ],
+          "travel_time": 2.2,
+          "size": 200,
+          "delay": 0.4
+        }
+      ],
+      "lines": [
+        {
+          "path": [
+            [
+              -69.94,
+              -4.21
+            ],
+            [
+              -70.5,
+              -3.85
+            ],
+            [
+              -71.2,
+              -3.6
+            ],
+            [
+              -72.0,
+              -3.45
+            ],
+            [
+              -72.7,
+              -3.6
+            ],
+            [
+              -73.25,
+              -3.75
+            ]
+          ],
+          "style": "glow",
+          "color": "#5ee7ff",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "That's what makes these borders so hard to watch, and so easy to cross.",
+      "camera": {
+        "center": [
+          -62,
+          -6
+        ],
+        "span": 40
+      }
+    },
+    {
+      "narration": "Would you live in a city with no roads out? Yes or no?",
+      "camera": {
+        "center": [
+          -62,
+          -6
+        ],
+        "span": 40
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The city you can't drive to 🛶 #amazon #geography",
+    "description": "In the Amazon, Colombia, Brazil and Peru meet, and Leticia has no road to the rest of Colombia. Here's why the river is the only highway.",
+    "hashtags": [
+      "#geography",
+      "#amazon",
+      "#colombia",
+      "#brazil",
+      "#peru",
+      "#maps",
+      "#shorts"
+    ],
+    "pinned_comment": "Could you live somewhere with no roads out? 👇"
+  }
+}

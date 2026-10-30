@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {Fills, Line, Outlines, SwarmDots} from './Geo';
+import {Fills, Ghost, Line, Outlines, SwarmDots} from './Geo';
 import type {Caption, Icon, MapTex, Marker, Props, Scene, TextSpec} from './types';
 import {FONT, H, W, clamp01, easeIn, easeInOut, easeOut, outScale, popIn, stickerFilter, toScreen} from './util';
 
@@ -359,7 +359,7 @@ const Bars: React.FC<{b: NonNullable<Scene['spec']['bars']>; lt: number; dur: nu
                 boxShadow: '0 6px 16px rgba(0,0,0,0.35), inset 0 -6px 0 rgba(0,0,0,0.18)',
               }} />
               <div style={{fontFamily: FONT, fontWeight: 900, fontSize: 52, color: '#fff', textShadow: outline(3), whiteSpace: 'nowrap'}}>
-                {Math.round(it.value * grow).toLocaleString('en-US')}{b.unit ?? ''}
+                {(it.value < 10 ? (it.value * grow).toFixed(1) : Math.round(it.value * grow).toLocaleString('en-US'))}{b.unit ?? ''}
               </div>
             </div>
           </div>
@@ -389,6 +389,7 @@ const SceneLayer: React.FC<{s: Scene; prevYear?: string; props: Props}> = ({s, p
       {sp.bars && <Bars b={sp.bars} lt={lt} dur={s.dur} />}
       {sp.outline && sp.outline.length > 0 && <Outlines keys={sp.outline} shapes={props.shapes ?? {}} cam={cam} lt={lt} dur={s.dur} />}
       {(sp.swarms ?? []).map((sw, i) => <SwarmDots key={`s${i}`} sw={sw} cam={cam} lt={lt} dur={s.dur} />)}
+      {(sp.ghosts ?? []).map((g, i) => <Ghost key={`g${i}`} g={g} cam={cam} lt={lt} dur={s.dur} />)}
       {(sp.lines ?? []).map((ln, i) => <Line key={`l${i}`} ln={ln} cam={cam} lt={lt} dur={s.dur} />)}
       {(sp.markers ?? []).map((m, i) => <Pin key={`m${i}`} m={m} lt={lt} dur={s.dur} cam={cam} />)}
       {(sp.icons ?? []).map((ic, i) => <Sticker key={`i${i}`} ic={{delay: 0.4 + i * 0.3, ...ic}} lt={lt} dur={s.dur} cam={cam} />)}

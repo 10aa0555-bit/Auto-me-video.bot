@@ -1,0 +1,301 @@
+{
+  "title": "Why Is Greenland Called Green?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Greenland is about eighty percent ice. So why is it called Greenland?",
+      "camera": {
+        "center": [
+          -42,
+          72
+        ],
+        "span": 48
+      },
+      "outline": [
+        "GRL"
+      ],
+      "banner": {
+        "lines": [
+          "WHY IS GREENLAND",
+          "CALLED GREEN?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Blame a Viking named Erik the Red. Around the year nine eighty-two, he was thrown out of Iceland for killing people.",
+      "camera": {
+        "center": [
+          -30,
+          66
+        ],
+        "span": 40
+      },
+      "markers": [
+        {
+          "at": [
+            -19.0,
+            64.9
+          ],
+          "type": "pin",
+          "label": "Iceland",
+          "delay": 1.0
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon viking with a big red beard and horned helmet, grinning mischievously",
+          "name": "man",
+          "at": [
+            -22,
+            64
+          ],
+          "to": [
+            -40,
+            62
+          ],
+          "travel_time": 2.6,
+          "size": 230,
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "He sailed west, found this enormous island, and spent three years exploring it.",
+      "camera": {
+        "center": [
+          -46.5,
+          62
+        ],
+        "span": 9
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -22.0,
+              64.1
+            ],
+            [
+              -35.0,
+              63.0
+            ],
+            [
+              -44.5,
+              60.6
+            ],
+            [
+              -46.0,
+              61.2
+            ]
+          ],
+          "style": "arrow_dashed",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 0.4,
+          "draw_time": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "Then he came back with a plan. According to the old sagas, he called it Greenland, because a good name would make people want to go.",
+      "camera": {
+        "center": [
+          -46.5,
+          62
+        ],
+        "span": 9
+      },
+      "texts": [
+        {
+          "text": "GOOD NAME = MORE SETTLERS",
+          "accent": [
+            "SETTLERS"
+          ],
+          "y": 0.22,
+          "size": 70,
+          "delay": 2.8
+        }
+      ]
+    },
+    {
+      "narration": "It worked. Around nine eighty-five, about twenty-five ships set out. Only fourteen made it.",
+      "camera": {
+        "center": [
+          -46.5,
+          62
+        ],
+        "span": 9
+      },
+      "bars": {
+        "title": "SHIPS",
+        "y": 0.24,
+        "delay": 1.2,
+        "items": [
+          {
+            "label": "SET OUT",
+            "value": 25,
+            "color": "#5ea8ff"
+          },
+          {
+            "label": "ARRIVED",
+            "value": 14,
+            "color": "#3ddc84"
+          }
+        ]
+      },
+      "dim": true
+    },
+    {
+      "narration": "To be fair, the southern fjords really do turn green in summer.",
+      "camera": {
+        "center": [
+          -45.6,
+          61.1
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "But look how big Greenland really is.",
+      "camera": {
+        "center": [
+          -10,
+          35
+        ],
+        "span": 130
+      },
+      "ghosts": [
+        {
+          "of": "GRL",
+          "to": [
+            18,
+            4
+          ],
+          "delay": 1.0,
+          "move_time": 2.2,
+          "fill": "#ffffff"
+        }
+      ]
+    },
+    {
+      "narration": "On most maps it looks as big as Africa. In reality, Africa is fourteen times bigger.",
+      "camera": {
+        "center": [
+          -10,
+          35
+        ],
+        "span": 130
+      },
+      "ghosts": [
+        {
+          "of": "GRL",
+          "from": [
+            18,
+            4
+          ],
+          "to": [
+            18,
+            4
+          ],
+          "delay": 0,
+          "move_time": 0.01,
+          "fill": "#ffffff",
+          "label": "GREENLAND"
+        }
+      ],
+      "texts": [
+        {
+          "text": "AFRICA = 14x",
+          "accent": [
+            "14x"
+          ],
+          "y": 0.2,
+          "size": 100,
+          "delay": 1.8
+        }
+      ]
+    },
+    {
+      "narration": "The Norse colony lasted around four hundred years. Then, in the fourteen hundreds, it vanished.",
+      "camera": {
+        "center": [
+          -46.5,
+          62
+        ],
+        "span": 9
+      },
+      "year": "1400s"
+    },
+    {
+      "narration": "Colder winters, failing trade, maybe conflict. Nobody knows for sure what happened.",
+      "camera": {
+        "center": [
+          -46.5,
+          62
+        ],
+        "span": 9
+      }
+    },
+    {
+      "narration": "Meanwhile Iceland, the one with the icy name, is far greener.",
+      "camera": {
+        "center": [
+          -19,
+          65
+        ],
+        "span": 12
+      }
+    },
+    {
+      "narration": "So which name is the bigger lie: Greenland or Iceland?",
+      "camera": {
+        "center": [
+          -42,
+          72
+        ],
+        "span": 48
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "GREENLAND OR ICELAND?",
+          "accent": [
+            "ICELAND?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Greenland called green? 🧊 #geography #greenland",
+    "description": "Greenland is about 80% ice. The name was a Viking sales pitch from Erik the Red. And on most maps it looks way bigger than it really is.",
+    "hashtags": [
+      "#geography",
+      "#greenland",
+      "#iceland",
+      "#vikings",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Greenland or Iceland: which name is the bigger lie? 👇"
+  }
+}

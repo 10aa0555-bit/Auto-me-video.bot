@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import type {LineSpec, Scene, Swarm} from './types';
+import type {GhostSpec, LineSpec, Scene, Swarm} from './types';
 import {FONT, H, W, clamp01, easeInOut, easeOut, outScale, popIn, toScreen} from './util';
 
 type Cam = [number, number, number];
@@ -179,3 +179,48 @@ export const sceneIndex = (scenes: Scene[], t: number) => {
 };
 
 export {clamp01};
+
+/** 国の形を本当の大きさのまま持ち上げて運ぶ (メルカトル図法の歪みを見せる)。 */
+export const Ghost: React.FC<{g: GhostSpec; cam: Cam; lt: number; dur: number}> = ({g, cam, lt, dur}) => {
+  if (!g.frames || !g.frames.length) return null;
+  const delay = g.delay ?? 0.4;
+  const a = easeOut((lt - delay) / 0.3) * outScale(lt, dur, 0.3);
+  if (a <= 0.01) return null;
+  const u = easeInOut((lt - delay - 0.3) / (g.move_time ?? 2.2));
+  const rings = g.frames[Math.round(u * (g.frames.length - 1))];
+  const d = ringsPath(rings, cam);
+  const lift = u > 0 && u < 1 ? Math.sin(Math.PI * u) * 18 : 0;
+  const fill = g.fill && !g.fill.startsWith('flag:') ? g.fill : '#ffffff';
+  const labelK = g.label && u >= 1 ? popIn(lt - delay - 0.3 - (g.move_time ?? 2.2)) * a : 0;
+  // 札は形の上に出す (真ん中だと字幕と重なりやすい)
+  const ppu = W / cam[2];
+  let top = Infinity;
+  let sx = 0;
+  let n = 0;
+  for (const r of rings) for (const [x, y] of r) {
+    const py = (y - cam[1]) * ppu + H / 2;
+    if (py < top) top = py;
+    sx += (x - cam[0]) * ppu + W / 2;
+    n++;
+  }
+  const lx = n ? sx / n : W / 2;
+  const ly = Math.max(140, top - 50);
+  return (
+    <>
+      <svg width={W} height={H} style={{position: 'absolute', left: 0, top: 0}}>
+        <path d={d} transform={`translate(${8 + lift} ${12 + lift * 1.5})`} fill="#000" fillOpacity={0.4 * a} fillRule="evenodd" />
+        <g transform={`translate(0 ${-lift})`}>
+          <path d={d} fill={fill} fillOpacity={0.9 * a} fillRule="evenodd" />
+          <path d={d} fill="none" stroke="#fff" strokeOpacity={a} strokeWidth={4} strokeLinejoin="round" />
+        </g>
+      </svg>
+      {labelK > 0.01 && (
+        <div style={{
+          position: 'absolute', left: lx, top: ly, transform: `translate(-50%, -50%) scale(${labelK})`,
+          fontFamily: FONT, fontWeight: 900, fontSize: 56, color: '#fff', whiteSpace: 'nowrap',
+          textShadow: '0 0 6px #000, 0 3px 10px rgba(0,0,0,0.8)',
+        }}>{g.label}</div>
+      )}
+    </>
+  );
+};

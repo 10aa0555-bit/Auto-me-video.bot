@@ -1,0 +1,480 @@
+{
+  "title": "Why Is Siberia So Empty?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This is Siberia. It's bigger than the entire United States, and almost nobody lives there.",
+      "camera": {
+        "center": [
+          100,
+          60
+        ],
+        "span": 95
+      },
+      "banner": {
+        "lines": [
+          "WHY IS SIBERIA",
+          "SO EMPTY?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "It covers around three quarters of Russia, but less than a quarter of Russians live there.",
+      "texts": [
+        {
+          "text": "~{n}% OF THE LAND",
+          "count": 77,
+          "accent": [
+            "LAND"
+          ],
+          "y": 0.2,
+          "size": 80,
+          "delay": 0.4
+        },
+        {
+          "text": "<25% OF THE PEOPLE",
+          "accent": [
+            "PEOPLE"
+          ],
+          "y": 0.29,
+          "size": 80,
+          "delay": 2.8
+        }
+      ]
+    },
+    {
+      "narration": "The obvious answer is cold. In the village of Oymyakon, it once hit minus sixty-seven point seven degrees.",
+      "camera": {
+        "center": [
+          140,
+          63.5
+        ],
+        "span": 26
+      },
+      "markers": [
+        {
+          "at": [
+            143.15,
+            63.46
+          ],
+          "type": "pin",
+          "label": "Oymyakon",
+          "delay": 1.0
+        }
+      ],
+      "texts": [
+        {
+          "text": "-67.7°C",
+          "y": 0.22,
+          "size": 120,
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "But cold is only half the problem.",
+      "camera": {
+        "center": [
+          140,
+          63.5
+        ],
+        "span": 26
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon person bundled up in a thick fur coat and hat, shivering, with frosty eyelashes",
+          "name": "cold face",
+          "pos": [
+            0.5,
+            0.42
+          ],
+          "size": 260,
+          "anim": "shake",
+          "delay": 0.3
+        }
+      ]
+    },
+    {
+      "narration": "Most of Siberia sits on permafrost, ground that stays frozen all year.",
+      "camera": {
+        "center": [
+          100,
+          60
+        ],
+        "span": 95
+      },
+      "base": "relief",
+      "texts": [
+        {
+          "text": "PERMAFROST",
+          "accent": [
+            "PERMAFROST"
+          ],
+          "y": 0.22,
+          "size": 100,
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "In summer, the top layer melts. Roads turn into mud, and huge areas become swamp.",
+      "camera": {
+        "center": [
+          80,
+          58
+        ],
+        "span": 22
+      },
+      "base": "relief"
+    },
+    {
+      "narration": "The Vasyugan Swamp alone is bigger than Switzerland.",
+      "camera": {
+        "center": [
+          79,
+          52
+        ],
+        "span": 30
+      },
+      "markers": [
+        {
+          "at": [
+            78.0,
+            57.6
+          ],
+          "type": "pin",
+          "label": "Vasyugan Swamp",
+          "delay": 0.4
+        }
+      ],
+      "ghosts": [
+        {
+          "of": "CHE",
+          "to": [
+            78.0,
+            57.2
+          ],
+          "delay": 1.2,
+          "move_time": 2.0,
+          "fill": "#ff5a4f",
+          "label": "SWITZERLAND"
+        }
+      ]
+    },
+    {
+      "narration": "So people did the one thing that worked. They followed the railway.",
+      "camera": {
+        "center": [
+          100,
+          60
+        ],
+        "span": 95
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              60.6,
+              56.84
+            ],
+            [
+              65.53,
+              57.15
+            ],
+            [
+              73.37,
+              54.98
+            ],
+            [
+              82.92,
+              55.03
+            ],
+            [
+              87.1,
+              56.0
+            ],
+            [
+              92.87,
+              56.01
+            ],
+            [
+              97.6,
+              56.1
+            ],
+            [
+              104.28,
+              52.29
+            ],
+            [
+              107.58,
+              51.83
+            ],
+            [
+              113.5,
+              52.03
+            ],
+            [
+              118.0,
+              52.9
+            ],
+            [
+              124.7,
+              53.9
+            ],
+            [
+              127.53,
+              50.26
+            ],
+            [
+              135.07,
+              48.48
+            ],
+            [
+              131.89,
+              43.12
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0.6,
+          "draw_time": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "The Trans-Siberian runs over nine thousand kilometers, and most of Siberia's big cities sit right along it.",
+      "camera": {
+        "center": [
+          100,
+          60
+        ],
+        "span": 95
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              60.6,
+              56.84
+            ],
+            [
+              65.53,
+              57.15
+            ],
+            [
+              73.37,
+              54.98
+            ],
+            [
+              82.92,
+              55.03
+            ],
+            [
+              87.1,
+              56.0
+            ],
+            [
+              92.87,
+              56.01
+            ],
+            [
+              97.6,
+              56.1
+            ],
+            [
+              104.28,
+              52.29
+            ],
+            [
+              107.58,
+              51.83
+            ],
+            [
+              113.5,
+              52.03
+            ],
+            [
+              118.0,
+              52.9
+            ],
+            [
+              124.7,
+              53.9
+            ],
+            [
+              127.53,
+              50.26
+            ],
+            [
+              135.07,
+              48.48
+            ],
+            [
+              131.89,
+              43.12
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01,
+          "label": "{n} KM",
+          "count": 9289
+        }
+      ],
+      "swarms": [
+        {
+          "path": [
+            [
+              60.6,
+              56.84
+            ],
+            [
+              65.53,
+              57.15
+            ],
+            [
+              73.37,
+              54.98
+            ],
+            [
+              82.92,
+              55.03
+            ],
+            [
+              87.1,
+              56.0
+            ],
+            [
+              92.87,
+              56.01
+            ],
+            [
+              97.6,
+              56.1
+            ],
+            [
+              104.28,
+              52.29
+            ],
+            [
+              107.58,
+              51.83
+            ],
+            [
+              113.5,
+              52.03
+            ],
+            [
+              118.0,
+              52.9
+            ],
+            [
+              124.7,
+              53.9
+            ],
+            [
+              127.53,
+              50.26
+            ],
+            [
+              135.07,
+              48.48
+            ],
+            [
+              131.89,
+              43.12
+            ]
+          ],
+          "count": 420,
+          "spread_km": 40,
+          "delay": 0.6,
+          "duration": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "Yakutsk has over three hundred thousand people, sits on permafrost, and still has no bridge across its river.",
+      "camera": {
+        "center": [
+          129.7,
+          62.0
+        ],
+        "span": 5
+      },
+      "markers": [
+        {
+          "at": [
+            129.73,
+            62.03
+          ],
+          "type": "pin",
+          "label": "Yakutsk",
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "In spring and autumn, when the river is neither ice nor water, getting across is a real problem.",
+      "camera": {
+        "center": [
+          129.7,
+          62.0
+        ],
+        "span": 5
+      }
+    },
+    {
+      "narration": "Would you survive one winter in Oymyakon for a hundred thousand dollars?",
+      "camera": {
+        "center": [
+          100,
+          60
+        ],
+        "span": 95
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Siberia so empty? 🥶 #geography #siberia",
+    "description": "Siberia is bigger than the USA, but almost empty. It's not just the cold: frozen ground, summer swamps and one very long railway decide where people live.",
+    "hashtags": [
+      "#geography",
+      "#siberia",
+      "#russia",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "One winter in Oymyakon for $100,000: deal or no deal? 👇"
+  }
+}

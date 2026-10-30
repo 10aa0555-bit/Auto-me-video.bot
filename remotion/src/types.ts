@@ -41,10 +41,21 @@ export type LineSpec = {
 
 export type Swarm = {pts?: [number, number, number][]; keep?: boolean; color?: string; delay?: number; duration?: number; size?: number};
 
+export type GhostSpec = {
+  of: string;
+  frames?: [number, number][][][];
+  end?: LonLat;
+  delay?: number;
+  move_time?: number;
+  fill?: string;
+  label?: string;
+};
+
 export type Bar = {label: string; value: number; color?: string};
 
 export type SceneSpec = {
   dim?: boolean;
+  ghosts?: GhostSpec[];
   bars?: {title?: string; unit?: string; items: Bar[]; y?: number; delay?: number};
   outline?: string[];
   lines?: LineSpec[];

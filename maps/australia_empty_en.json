@@ -1,0 +1,1019 @@
+{
+  "title": "Why Is Australia So Empty?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Twenty-seven million people live in Australia. Almost all of them are squeezed onto the edges.",
+      "camera": {
+        "center": [
+          134,
+          -27
+        ],
+        "span": 42
+      },
+      "outline": [
+        "AUS"
+      ],
+      "banner": {
+        "lines": [
+          "WHY IS AUSTRALIA",
+          "SO EMPTY?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "swarms": [
+        {
+          "path": [
+            [
+              145.77,
+              -16.92
+            ],
+            [
+              146.8,
+              -19.26
+            ],
+            [
+              149.18,
+              -21.14
+            ],
+            [
+              151.25,
+              -23.85
+            ],
+            [
+              153.03,
+              -27.47
+            ],
+            [
+              153.4,
+              -28.0
+            ],
+            [
+              152.9,
+              -31.43
+            ],
+            [
+              151.78,
+              -32.93
+            ],
+            [
+              151.21,
+              -33.87
+            ],
+            [
+              150.9,
+              -34.42
+            ],
+            [
+              150.15,
+              -35.7
+            ],
+            [
+              149.9,
+              -37.0
+            ],
+            [
+              147.6,
+              -37.9
+            ],
+            [
+              144.96,
+              -37.81
+            ],
+            [
+              144.35,
+              -38.15
+            ],
+            [
+              141.6,
+              -38.35
+            ],
+            [
+              140.0,
+              -37.2
+            ],
+            [
+              138.6,
+              -34.93
+            ]
+          ],
+          "count": 560,
+          "spread_km": 18,
+          "delay": 1.4,
+          "duration": 2.4,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              115.7,
+              -31.4
+            ],
+            [
+              115.86,
+              -31.95
+            ],
+            [
+              115.75,
+              -32.5
+            ],
+            [
+              115.65,
+              -33.3
+            ]
+          ],
+          "count": 110,
+          "spread_km": 14,
+          "delay": 2.5999999999999996,
+          "duration": 0.6,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              130.84,
+              -12.46
+            ],
+            [
+              130.95,
+              -12.5
+            ]
+          ],
+          "count": 14,
+          "spread_km": 8,
+          "delay": 2.84,
+          "duration": 0.3,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              147.2,
+              -42.85
+            ],
+            [
+              147.33,
+              -42.9
+            ]
+          ],
+          "count": 22,
+          "spread_km": 10,
+          "delay": 3.08,
+          "duration": 0.3,
+          "keep": true
+        }
+      ]
+    },
+    {
+      "narration": "About eighty-five percent of Australians live within fifty kilometers of the coast.",
+      "swarms": [
+        {
+          "path": [
+            [
+              145.77,
+              -16.92
+            ],
+            [
+              146.8,
+              -19.26
+            ],
+            [
+              149.18,
+              -21.14
+            ],
+            [
+              151.25,
+              -23.85
+            ],
+            [
+              153.03,
+              -27.47
+            ],
+            [
+              153.4,
+              -28.0
+            ],
+            [
+              152.9,
+              -31.43
+            ],
+            [
+              151.78,
+              -32.93
+            ],
+            [
+              151.21,
+              -33.87
+            ],
+            [
+              150.9,
+              -34.42
+            ],
+            [
+              150.15,
+              -35.7
+            ],
+            [
+              149.9,
+              -37.0
+            ],
+            [
+              147.6,
+              -37.9
+            ],
+            [
+              144.96,
+              -37.81
+            ],
+            [
+              144.35,
+              -38.15
+            ],
+            [
+              141.6,
+              -38.35
+            ],
+            [
+              140.0,
+              -37.2
+            ],
+            [
+              138.6,
+              -34.93
+            ]
+          ],
+          "count": 560,
+          "spread_km": 18,
+          "delay": -9,
+          "duration": 0.01,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              115.7,
+              -31.4
+            ],
+            [
+              115.86,
+              -31.95
+            ],
+            [
+              115.75,
+              -32.5
+            ],
+            [
+              115.65,
+              -33.3
+            ]
+          ],
+          "count": 110,
+          "spread_km": 14,
+          "delay": -8.995,
+          "duration": 0.6,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              130.84,
+              -12.46
+            ],
+            [
+              130.95,
+              -12.5
+            ]
+          ],
+          "count": 14,
+          "spread_km": 8,
+          "delay": -8.994,
+          "duration": 0.3,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              147.2,
+              -42.85
+            ],
+            [
+              147.33,
+              -42.9
+            ]
+          ],
+          "count": 22,
+          "spread_km": 10,
+          "delay": -8.993,
+          "duration": 0.3,
+          "keep": true
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n}% NEAR THE COAST",
+          "count": 85,
+          "accent": [
+            "COAST"
+          ],
+          "y": 0.2,
+          "size": 80,
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "Most people blame the desert. But why is there a desert in the first place?",
+      "camera": {
+        "center": [
+          133.5,
+          -25.5
+        ],
+        "span": 18
+      },
+      "base": "relief"
+    },
+    {
+      "narration": "Look at the latitude. Australia sits under a belt where dry air sinks and blocks rain clouds.",
+      "camera": {
+        "center": [
+          134,
+          -27
+        ],
+        "span": 42
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              108,
+              -29
+            ],
+            [
+              158,
+              -29
+            ]
+          ],
+          "style": "glow",
+          "color": "#ff9a3c",
+          "width": 10,
+          "delay": 1.6,
+          "draw_time": 1.6,
+          "label": "DRY AIR SINKS"
+        }
+      ]
+    },
+    {
+      "narration": "It's the same belt that made the Sahara and the Kalahari.",
+      "camera": {
+        "center": [
+          75,
+          0
+        ],
+        "span": 150
+      },
+      "markers": [
+        {
+          "at": [
+            12,
+            23
+          ],
+          "type": "pin",
+          "label": "Sahara",
+          "delay": 1.0
+        },
+        {
+          "at": [
+            22,
+            -23
+          ],
+          "type": "pin",
+          "label": "Kalahari",
+          "delay": 1.6
+        },
+        {
+          "at": [
+            133,
+            -25
+          ],
+          "type": "pin",
+          "label": "Australia",
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "Then there's the Great Dividing Range. Wet Pacific air hits these mountains and rains on the coast.",
+      "camera": {
+        "center": [
+          148.5,
+          -29
+        ],
+        "span": 16
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              145.3,
+              -16.5
+            ],
+            [
+              145.9,
+              -20.0
+            ],
+            [
+              147.6,
+              -23.8
+            ],
+            [
+              150.6,
+              -28.0
+            ],
+            [
+              151.0,
+              -31.8
+            ],
+            [
+              149.6,
+              -35.8
+            ],
+            [
+              146.6,
+              -37.3
+            ]
+          ],
+          "style": "glow",
+          "color": "#5ee7ff",
+          "width": 9,
+          "delay": 1.4,
+          "draw_time": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "So the east coast gets the water, and the inside gets the leftovers.",
+      "camera": {
+        "center": [
+          134,
+          -27
+        ],
+        "span": 42
+      },
+      "swarms": [
+        {
+          "path": [
+            [
+              145.77,
+              -16.92
+            ],
+            [
+              146.8,
+              -19.26
+            ],
+            [
+              149.18,
+              -21.14
+            ],
+            [
+              151.25,
+              -23.85
+            ],
+            [
+              153.03,
+              -27.47
+            ],
+            [
+              153.4,
+              -28.0
+            ],
+            [
+              152.9,
+              -31.43
+            ],
+            [
+              151.78,
+              -32.93
+            ],
+            [
+              151.21,
+              -33.87
+            ],
+            [
+              150.9,
+              -34.42
+            ],
+            [
+              150.15,
+              -35.7
+            ],
+            [
+              149.9,
+              -37.0
+            ],
+            [
+              147.6,
+              -37.9
+            ],
+            [
+              144.96,
+              -37.81
+            ],
+            [
+              144.35,
+              -38.15
+            ],
+            [
+              141.6,
+              -38.35
+            ],
+            [
+              140.0,
+              -37.2
+            ],
+            [
+              138.6,
+              -34.93
+            ]
+          ],
+          "count": 560,
+          "spread_km": 18,
+          "delay": 0.2,
+          "duration": 1.2,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              115.7,
+              -31.4
+            ],
+            [
+              115.86,
+              -31.95
+            ],
+            [
+              115.75,
+              -32.5
+            ],
+            [
+              115.65,
+              -33.3
+            ]
+          ],
+          "count": 110,
+          "spread_km": 14,
+          "delay": 0.8,
+          "duration": 0.6,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              130.84,
+              -12.46
+            ],
+            [
+              130.95,
+              -12.5
+            ]
+          ],
+          "count": 14,
+          "spread_km": 8,
+          "delay": 0.9199999999999999,
+          "duration": 0.3,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              147.2,
+              -42.85
+            ],
+            [
+              147.33,
+              -42.9
+            ]
+          ],
+          "count": 22,
+          "spread_km": 10,
+          "delay": 1.04,
+          "duration": 0.3,
+          "keep": true
+        }
+      ]
+    },
+    {
+      "narration": "Australia has about three and a half people per square kilometer. The UK has over two hundred and eighty.",
+      "camera": {
+        "center": [
+          151,
+          -33.8
+        ],
+        "span": 3
+      },
+      "dim": true,
+      "bars": {
+        "title": "PEOPLE PER KM²",
+        "y": 0.24,
+        "delay": 1.0,
+        "items": [
+          {
+            "label": "AUSTRALIA",
+            "value": 3.5,
+            "color": "#ff7b2e"
+          },
+          {
+            "label": "UNITED KINGDOM",
+            "value": 280,
+            "color": "#5ea8ff"
+          }
+        ]
+      }
+    },
+    {
+      "narration": "Here's the strange part. Lake Eyre is Australia's biggest lake. Most years, it's bone dry.",
+      "camera": {
+        "center": [
+          137.4,
+          -28.6
+        ],
+        "span": 4
+      },
+      "base": "relief",
+      "markers": [
+        {
+          "at": [
+            137.3,
+            -28.4
+          ],
+          "type": "pin",
+          "label": "Lake Eyre",
+          "delay": 1.8
+        }
+      ]
+    },
+    {
+      "narration": "When it does fill, pelicans show up from hundreds of kilometers away. How they know is still a mystery.",
+      "camera": {
+        "center": [
+          137.4,
+          -28.6
+        ],
+        "span": 4
+      },
+      "base": "relief",
+      "icons": [
+        {
+          "ai": "a cute cartoon pelican flying with wings spread",
+          "name": "bird",
+          "at": [
+            136.6,
+            -27.6
+          ],
+          "to": [
+            137.3,
+            -28.5
+          ],
+          "travel_time": 2.4,
+          "size": 220,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "So Australia isn't empty by accident. The sky, the mountains and the sea all decided it.",
+      "camera": {
+        "center": [
+          134,
+          -27
+        ],
+        "span": 42
+      },
+      "outline": [
+        "AUS"
+      ],
+      "swarms": [
+        {
+          "path": [
+            [
+              145.77,
+              -16.92
+            ],
+            [
+              146.8,
+              -19.26
+            ],
+            [
+              149.18,
+              -21.14
+            ],
+            [
+              151.25,
+              -23.85
+            ],
+            [
+              153.03,
+              -27.47
+            ],
+            [
+              153.4,
+              -28.0
+            ],
+            [
+              152.9,
+              -31.43
+            ],
+            [
+              151.78,
+              -32.93
+            ],
+            [
+              151.21,
+              -33.87
+            ],
+            [
+              150.9,
+              -34.42
+            ],
+            [
+              150.15,
+              -35.7
+            ],
+            [
+              149.9,
+              -37.0
+            ],
+            [
+              147.6,
+              -37.9
+            ],
+            [
+              144.96,
+              -37.81
+            ],
+            [
+              144.35,
+              -38.15
+            ],
+            [
+              141.6,
+              -38.35
+            ],
+            [
+              140.0,
+              -37.2
+            ],
+            [
+              138.6,
+              -34.93
+            ]
+          ],
+          "count": 560,
+          "spread_km": 18,
+          "delay": 0.2,
+          "duration": 1.2,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              115.7,
+              -31.4
+            ],
+            [
+              115.86,
+              -31.95
+            ],
+            [
+              115.75,
+              -32.5
+            ],
+            [
+              115.65,
+              -33.3
+            ]
+          ],
+          "count": 110,
+          "spread_km": 14,
+          "delay": 0.8,
+          "duration": 0.6,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              130.84,
+              -12.46
+            ],
+            [
+              130.95,
+              -12.5
+            ]
+          ],
+          "count": 14,
+          "spread_km": 8,
+          "delay": 0.9199999999999999,
+          "duration": 0.3,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              147.2,
+              -42.85
+            ],
+            [
+              147.33,
+              -42.9
+            ]
+          ],
+          "count": 22,
+          "spread_km": 10,
+          "delay": 1.04,
+          "duration": 0.3,
+          "keep": true
+        }
+      ]
+    },
+    {
+      "narration": "Would you live in the outback for a million dollars, or stay on the coast?",
+      "min_duration": 3.4,
+      "swarms": [
+        {
+          "path": [
+            [
+              145.77,
+              -16.92
+            ],
+            [
+              146.8,
+              -19.26
+            ],
+            [
+              149.18,
+              -21.14
+            ],
+            [
+              151.25,
+              -23.85
+            ],
+            [
+              153.03,
+              -27.47
+            ],
+            [
+              153.4,
+              -28.0
+            ],
+            [
+              152.9,
+              -31.43
+            ],
+            [
+              151.78,
+              -32.93
+            ],
+            [
+              151.21,
+              -33.87
+            ],
+            [
+              150.9,
+              -34.42
+            ],
+            [
+              150.15,
+              -35.7
+            ],
+            [
+              149.9,
+              -37.0
+            ],
+            [
+              147.6,
+              -37.9
+            ],
+            [
+              144.96,
+              -37.81
+            ],
+            [
+              144.35,
+              -38.15
+            ],
+            [
+              141.6,
+              -38.35
+            ],
+            [
+              140.0,
+              -37.2
+            ],
+            [
+              138.6,
+              -34.93
+            ]
+          ],
+          "count": 560,
+          "spread_km": 18,
+          "delay": -9,
+          "duration": 0.01
+        },
+        {
+          "path": [
+            [
+              115.7,
+              -31.4
+            ],
+            [
+              115.86,
+              -31.95
+            ],
+            [
+              115.75,
+              -32.5
+            ],
+            [
+              115.65,
+              -33.3
+            ]
+          ],
+          "count": 110,
+          "spread_km": 14,
+          "delay": -8.995,
+          "duration": 0.6
+        },
+        {
+          "path": [
+            [
+              130.84,
+              -12.46
+            ],
+            [
+              130.95,
+              -12.5
+            ]
+          ],
+          "count": 14,
+          "spread_km": 8,
+          "delay": -8.994,
+          "duration": 0.3
+        },
+        {
+          "path": [
+            [
+              147.2,
+              -42.85
+            ],
+            [
+              147.33,
+              -42.9
+            ]
+          ],
+          "count": 22,
+          "spread_km": 10,
+          "delay": -8.993,
+          "duration": 0.3
+        }
+      ],
+      "texts": [
+        {
+          "text": "OUTBACK OR COAST?",
+          "accent": [
+            "COAST?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Australia so empty? 🦘 #geography #australia",
+    "description": "Almost every Australian lives on the coast. It's not just 'because desert': a belt of sinking dry air and the Great Dividing Range decide where the rain falls.",
+    "hashtags": [
+      "#geography",
+      "#australia",
+      "#maps",
+      "#outback",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Outback for $1,000,000 or the coast? 👇"
+  }
+}

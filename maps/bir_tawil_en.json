@@ -1,0 +1,305 @@
+{
+  "title": "The Land Nobody Wants",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This patch of desert is bigger than Hong Kong, and no country on Earth wants it.",
+      "camera": {
+        "center": [
+          32,
+          25
+        ],
+        "span": 14
+      },
+      "banner": {
+        "lines": [
+          "THE LAND",
+          "NOBODY WANTS"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "fill": {
+        "BIR": "#ffd23f"
+      },
+      "outline": [
+        "EGY",
+        "SDN"
+      ]
+    },
+    {
+      "narration": "It's called Bir Tawil, and it sits right between Egypt and Sudan.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      },
+      "markers": [
+        {
+          "at": [
+            33.75,
+            21.87
+          ],
+          "type": "pin",
+          "label": "Bir Tawil",
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "The problem started with two lines, both drawn by the British.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      }
+    },
+    {
+      "narration": "In 1899, the border was a straight line along the twenty-second parallel.",
+      "tts": "In eighteen ninety-nine, the border was a straight line along the twenty-second parallel.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      },
+      "year": "1899",
+      "lines": [
+        {
+          "path": [
+            [
+              31.0,
+              22.0
+            ],
+            [
+              37.0,
+              22.0
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffffff",
+          "width": 7,
+          "delay": 0.6,
+          "draw_time": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "In 1902, they drew a second line for the local tribes. It gave Bir Tawil to Egypt, and a much bigger area, Hala'ib, to Sudan.",
+      "tts": "In nineteen-oh-two, they drew a second line for the local tribes. It gave Bir Tawil to Egypt, and a much bigger area, Halaib, to Sudan.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      },
+      "year": "1902",
+      "fill": {
+        "HAL": "#ff7b2e"
+      },
+      "markers": [
+        {
+          "at": [
+            35.52,
+            22.47
+          ],
+          "type": "pin",
+          "label": "Hala'ib",
+          "delay": 2.8
+        }
+      ]
+    },
+    {
+      "narration": "Here's the trap. Egypt says the first line counts, which gives it Hala'ib. Sudan says the second line counts, which also gives it Hala'ib.",
+      "tts": "Here's the trap. Egypt says the first line counts, which gives it Halaib. Sudan says the second line counts, which also gives it Halaib.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      }
+    },
+    {
+      "narration": "And Hala'ib is about ten times bigger, with a coast on the Red Sea.",
+      "tts": "And Halaib is about ten times bigger, with a coast on the Red Sea.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      },
+      "dim": true,
+      "bars": {
+        "title": "AREA (KM²)",
+        "y": 0.24,
+        "delay": 0.8,
+        "items": [
+          {
+            "label": "HALA'IB",
+            "value": 20580,
+            "color": "#ff7b2e"
+          },
+          {
+            "label": "BIR TAWIL",
+            "value": 2060,
+            "color": "#ffd23f"
+          }
+        ]
+      }
+    },
+    {
+      "narration": "So claiming Bir Tawil would mean admitting the other line, and losing Hala'ib.",
+      "tts": "So claiming Bir Tawil would mean admitting the other line, and losing Halaib.",
+      "camera": {
+        "center": [
+          34.4,
+          22.2
+        ],
+        "span": 5
+      }
+    },
+    {
+      "narration": "That's why nobody claims it. It's one of the only places like this left on the planet.",
+      "camera": {
+        "center": [
+          33.75,
+          21.87
+        ],
+        "span": 1.6
+      }
+    },
+    {
+      "narration": "Of course, people have tried. In 2014, an American dad planted a flag here so his daughter could be a real princess.",
+      "tts": "Of course, people have tried. In twenty fourteen, an American dad planted a flag here so his daughter could be a real princess.",
+      "camera": {
+        "center": [
+          33.75,
+          21.87
+        ],
+        "span": 1.6
+      },
+      "year": "2014",
+      "icons": [
+        {
+          "ai": "a cute cartoon dad planting a small flag in the desert sand next to his little daughter wearing a princess crown",
+          "name": "triangular flag",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 280,
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "No country recognized it. The desert is still empty.",
+      "camera": {
+        "center": [
+          33.75,
+          21.87
+        ],
+        "span": 1.6
+      }
+    },
+    {
+      "narration": "If you could claim Bir Tawil, what would you name your country?",
+      "camera": {
+        "center": [
+          32,
+          25
+        ],
+        "span": 14
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "NAME YOUR COUNTRY",
+          "accent": [
+            "COUNTRY"
+          ],
+          "y": 0.22,
+          "size": 86,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The land nobody wants 🏜️ #geography #maps",
+    "description": "Bir Tawil, between Egypt and Sudan, is one of the only unclaimed places on Earth. Claiming it would mean losing a much better piece of land.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#egypt",
+      "#sudan",
+      "#birtawil",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "What would you name your country? 👇"
+  },
+  "regions": {
+    "BIR": [
+      [
+        33.17,
+        22.0
+      ],
+      [
+        34.08,
+        22.0
+      ],
+      [
+        34.0,
+        21.8
+      ],
+      [
+        33.6,
+        21.72
+      ],
+      [
+        33.3,
+        21.86
+      ]
+    ],
+    "HAL": [
+      [
+        34.08,
+        22.0
+      ],
+      [
+        36.88,
+        22.0
+      ],
+      [
+        36.4,
+        22.6
+      ],
+      [
+        35.62,
+        23.2
+      ]
+    ]
+  }
+}

@@ -83,10 +83,13 @@ def save():
             git("reset", "-q", "--soft", "FETCH_HEAD", cwd=repo)
         git("add", "-A", cwd=repo)
         git("commit", "-qm", f"art: {len(new)} 枚", cwd=repo)
-        for _ in range(3):
+        import random
+        import time
+        for _ in range(8):  # 同時に書き出した run と push がぶつかったら取り込み直す
             if git("push", "-q", "origin", f"HEAD:{BRANCH}", cwd=repo, check=False).returncode == 0:
                 print(f"絵を {len(new)} 枚保存しました")
                 return
+            time.sleep(random.uniform(5, 25))
             git("fetch", "-q", "origin", BRANCH, cwd=repo)
             git("rebase", "-q", "FETCH_HEAD", cwd=repo, check=False)
         sys.exit("art-cache への push に失敗しました")

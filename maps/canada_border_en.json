@@ -1,0 +1,829 @@
+{
+  "title": "Why Do Canadians Hug the US Border?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Canada is the second biggest country on Earth. So why does almost everyone live in this thin strip?",
+      "camera": {
+        "center": [
+          -96,
+          57
+        ],
+        "span": 72
+      },
+      "outline": [
+        "CAN"
+      ],
+      "banner": {
+        "lines": [
+          "WHY DO CANADIANS",
+          "HUG THE BORDER?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "swarms": [
+        {
+          "path": [
+            [
+              -83.0,
+              42.3
+            ],
+            [
+              -81.25,
+              42.98
+            ],
+            [
+              -79.38,
+              43.65
+            ],
+            [
+              -77.5,
+              44.1
+            ],
+            [
+              -75.7,
+              45.42
+            ],
+            [
+              -73.57,
+              45.5
+            ],
+            [
+              -72.5,
+              46.3
+            ],
+            [
+              -71.21,
+              46.81
+            ]
+          ],
+          "count": 520,
+          "spread_km": 30,
+          "delay": 1.6,
+          "duration": 2.2,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -123.12,
+              49.28
+            ],
+            [
+              -122.3,
+              49.1
+            ],
+            [
+              -119.5,
+              49.9
+            ],
+            [
+              -114.07,
+              51.05
+            ],
+            [
+              -113.49,
+              53.55
+            ]
+          ],
+          "count": 220,
+          "spread_km": 30,
+          "delay": 2.4800000000000004,
+          "duration": 1.32,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -106.67,
+              52.13
+            ],
+            [
+              -104.6,
+              50.45
+            ],
+            [
+              -97.14,
+              49.9
+            ]
+          ],
+          "count": 80,
+          "spread_km": 30,
+          "delay": 2.7,
+          "duration": 1.1,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -63.57,
+              44.65
+            ],
+            [
+              -66.06,
+              45.27
+            ],
+            [
+              -64.8,
+              46.09
+            ]
+          ],
+          "count": 60,
+          "spread_km": 25,
+          "delay": 2.92,
+          "duration": 0.8800000000000001,
+          "keep": true
+        }
+      ]
+    },
+    {
+      "narration": "About three quarters of Canadians live within a hundred and sixty kilometers of the US border.",
+      "swarms": [
+        {
+          "path": [
+            [
+              -83.0,
+              42.3
+            ],
+            [
+              -81.25,
+              42.98
+            ],
+            [
+              -79.38,
+              43.65
+            ],
+            [
+              -77.5,
+              44.1
+            ],
+            [
+              -75.7,
+              45.42
+            ],
+            [
+              -73.57,
+              45.5
+            ],
+            [
+              -72.5,
+              46.3
+            ],
+            [
+              -71.21,
+              46.81
+            ]
+          ],
+          "count": 520,
+          "spread_km": 30,
+          "delay": -9,
+          "duration": 0.01,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -123.12,
+              49.28
+            ],
+            [
+              -122.3,
+              49.1
+            ],
+            [
+              -119.5,
+              49.9
+            ],
+            [
+              -114.07,
+              51.05
+            ],
+            [
+              -113.49,
+              53.55
+            ]
+          ],
+          "count": 220,
+          "spread_km": 30,
+          "delay": -8.996,
+          "duration": 0.006,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -106.67,
+              52.13
+            ],
+            [
+              -104.6,
+              50.45
+            ],
+            [
+              -97.14,
+              49.9
+            ]
+          ],
+          "count": 80,
+          "spread_km": 30,
+          "delay": -8.995,
+          "duration": 0.005,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -63.57,
+              44.65
+            ],
+            [
+              -66.06,
+              45.27
+            ],
+            [
+              -64.8,
+              46.09
+            ]
+          ],
+          "count": 60,
+          "spread_km": 25,
+          "delay": -8.994,
+          "duration": 0.004,
+          "keep": true
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n}% WITHIN 160 KM",
+          "count": 76,
+          "accent": [
+            "160",
+            "KM"
+          ],
+          "y": 0.2,
+          "size": 80,
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "In fact, Toronto is further south than Seattle.",
+      "camera": {
+        "center": [
+          -101,
+          46
+        ],
+        "span": 52
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -124,
+              47.61
+            ],
+            [
+              -70,
+              47.61
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffffff",
+          "width": 5,
+          "delay": 0.3,
+          "draw_time": 1.2
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -122.33,
+            47.61
+          ],
+          "type": "pin",
+          "label": "Seattle",
+          "delay": 0.5
+        },
+        {
+          "at": [
+            -79.38,
+            43.65
+          ],
+          "type": "pin",
+          "label": "Toronto",
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "Reason one is rock. About half of Canada sits on the Canadian Shield, ancient stone with little soil.",
+      "camera": {
+        "center": [
+          -86,
+          56
+        ],
+        "span": 34
+      },
+      "base": "relief",
+      "texts": [
+        {
+          "text": "CANADIAN SHIELD",
+          "accent": [
+            "SHIELD"
+          ],
+          "y": 0.22,
+          "size": 86,
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "Further north, the ground stays frozen all year. Permafrost covers around forty percent of the country.",
+      "camera": {
+        "center": [
+          -100,
+          66
+        ],
+        "span": 40
+      },
+      "base": "relief",
+      "texts": [
+        {
+          "text": "~{n}% PERMAFROST",
+          "count": 40,
+          "accent": [
+            "PERMAFROST"
+          ],
+          "y": 0.22,
+          "size": 84,
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "And up there, summer is far too short to grow much of anything.",
+      "camera": {
+        "center": [
+          -100,
+          66
+        ],
+        "span": 40
+      },
+      "base": "relief",
+      "icons": [
+        {
+          "ai": "a cute cartoon moose wearing a red scarf, shivering in the cold",
+          "name": "moose",
+          "pos": [
+            0.5,
+            0.42
+          ],
+          "size": 260,
+          "delay": 0.6,
+          "anim": "shake"
+        }
+      ]
+    },
+    {
+      "narration": "The south is the opposite: the Great Lakes and the prairies have rich soil and longer summers.",
+      "camera": {
+        "center": [
+          -79,
+          45
+        ],
+        "span": 14
+      },
+      "swarms": [
+        {
+          "path": [
+            [
+              -83.0,
+              42.3
+            ],
+            [
+              -81.25,
+              42.98
+            ],
+            [
+              -79.38,
+              43.65
+            ],
+            [
+              -77.5,
+              44.1
+            ],
+            [
+              -75.7,
+              45.42
+            ],
+            [
+              -73.57,
+              45.5
+            ],
+            [
+              -72.5,
+              46.3
+            ],
+            [
+              -71.21,
+              46.81
+            ]
+          ],
+          "count": 420,
+          "spread_km": 30,
+          "delay": 1.0,
+          "duration": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "That's also where the railways were built, and where the trade with the United States flows.",
+      "camera": {
+        "center": [
+          -96,
+          57
+        ],
+        "span": 72
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.1,
+              49.28
+            ],
+            [
+              -118.2,
+              50.98
+            ],
+            [
+              -114.07,
+              51.05
+            ],
+            [
+              -106.67,
+              52.13
+            ],
+            [
+              -97.14,
+              49.9
+            ],
+            [
+              -89.25,
+              48.4
+            ],
+            [
+              -84.33,
+              46.5
+            ],
+            [
+              -79.38,
+              43.65
+            ],
+            [
+              -75.7,
+              45.42
+            ],
+            [
+              -73.57,
+              45.5
+            ],
+            [
+              -71.21,
+              46.81
+            ],
+            [
+              -66.06,
+              45.27
+            ],
+            [
+              -63.57,
+              44.65
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 7,
+          "delay": 0.3,
+          "draw_time": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "So a country of almost ten million square kilometers lives like one long, skinny city.",
+      "camera": {
+        "center": [
+          -96,
+          57
+        ],
+        "span": 72
+      },
+      "outline": [
+        "CAN"
+      ],
+      "swarms": [
+        {
+          "path": [
+            [
+              -83.0,
+              42.3
+            ],
+            [
+              -81.25,
+              42.98
+            ],
+            [
+              -79.38,
+              43.65
+            ],
+            [
+              -77.5,
+              44.1
+            ],
+            [
+              -75.7,
+              45.42
+            ],
+            [
+              -73.57,
+              45.5
+            ],
+            [
+              -72.5,
+              46.3
+            ],
+            [
+              -71.21,
+              46.81
+            ]
+          ],
+          "count": 520,
+          "spread_km": 30,
+          "delay": 0.2,
+          "duration": 1.2,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -123.12,
+              49.28
+            ],
+            [
+              -122.3,
+              49.1
+            ],
+            [
+              -119.5,
+              49.9
+            ],
+            [
+              -114.07,
+              51.05
+            ],
+            [
+              -113.49,
+              53.55
+            ]
+          ],
+          "count": 220,
+          "spread_km": 30,
+          "delay": 0.6799999999999999,
+          "duration": 0.72,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -106.67,
+              52.13
+            ],
+            [
+              -104.6,
+              50.45
+            ],
+            [
+              -97.14,
+              49.9
+            ]
+          ],
+          "count": 80,
+          "spread_km": 30,
+          "delay": 0.8,
+          "duration": 0.6,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              -63.57,
+              44.65
+            ],
+            [
+              -66.06,
+              45.27
+            ],
+            [
+              -64.8,
+              46.09
+            ]
+          ],
+          "count": 60,
+          "spread_km": 25,
+          "delay": 0.9199999999999999,
+          "duration": 0.48,
+          "keep": true
+        }
+      ]
+    },
+    {
+      "narration": "The twist? Canada's northernmost settlement, Alert, is about eight hundred kilometers from the North Pole.",
+      "camera": {
+        "center": [
+          -64,
+          80.5
+        ],
+        "span": 30
+      },
+      "markers": [
+        {
+          "at": [
+            -62.35,
+            82.5
+          ],
+          "type": "pin",
+          "label": "Alert",
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "Nobody really lives there. Just a few dozen soldiers and scientists, taking turns.",
+      "camera": {
+        "center": [
+          -64,
+          80.5
+        ],
+        "span": 30
+      }
+    },
+    {
+      "narration": "Would you move north for free land, or stay by the border?",
+      "camera": {
+        "center": [
+          -96,
+          57
+        ],
+        "span": 72
+      },
+      "min_duration": 3.4,
+      "swarms": [
+        {
+          "path": [
+            [
+              -83.0,
+              42.3
+            ],
+            [
+              -81.25,
+              42.98
+            ],
+            [
+              -79.38,
+              43.65
+            ],
+            [
+              -77.5,
+              44.1
+            ],
+            [
+              -75.7,
+              45.42
+            ],
+            [
+              -73.57,
+              45.5
+            ],
+            [
+              -72.5,
+              46.3
+            ],
+            [
+              -71.21,
+              46.81
+            ]
+          ],
+          "count": 520,
+          "spread_km": 30,
+          "delay": -9,
+          "duration": 0.01
+        },
+        {
+          "path": [
+            [
+              -123.12,
+              49.28
+            ],
+            [
+              -122.3,
+              49.1
+            ],
+            [
+              -119.5,
+              49.9
+            ],
+            [
+              -114.07,
+              51.05
+            ],
+            [
+              -113.49,
+              53.55
+            ]
+          ],
+          "count": 220,
+          "spread_km": 30,
+          "delay": -8.996,
+          "duration": 0.006
+        },
+        {
+          "path": [
+            [
+              -106.67,
+              52.13
+            ],
+            [
+              -104.6,
+              50.45
+            ],
+            [
+              -97.14,
+              49.9
+            ]
+          ],
+          "count": 80,
+          "spread_km": 30,
+          "delay": -8.995,
+          "duration": 0.005
+        },
+        {
+          "path": [
+            [
+              -63.57,
+              44.65
+            ],
+            [
+              -66.06,
+              45.27
+            ],
+            [
+              -64.8,
+              46.09
+            ]
+          ],
+          "count": 60,
+          "spread_km": 25,
+          "delay": -8.994,
+          "duration": 0.004
+        }
+      ],
+      "texts": [
+        {
+          "text": "NORTH OR SOUTH?",
+          "accent": [
+            "SOUTH?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why do Canadians hug the US border? 🇨🇦 #geography #canada",
+    "description": "Canada is the 2nd biggest country on Earth, yet about 3 in 4 Canadians live within 160 km of the US. Rock, ice, short summers and railways explain why.",
+    "hashtags": [
+      "#geography",
+      "#canada",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Free land up north, or stay by the border? 👇"
+  }
+}
