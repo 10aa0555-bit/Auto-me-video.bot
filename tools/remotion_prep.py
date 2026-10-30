@@ -81,18 +81,25 @@ MAX_TILE_Z = 13
 
 
 def _tile(z, x, y):
+    """タイル 1 枚。一時的な失敗は待ってやり直し、それでも取れなければ None。"""
+    import time
     path = os.path.join(TILE_CACHE, f"{z}_{x}_{y}.jpg")
     if not os.path.exists(path):
-        data = _get(TILES.format(z=z, x=x, y=y))
+        data = None
+        for wait in (0, 2, 5):
+            time.sleep(wait)
+            try:
+                data = _get(TILES.format(z=z, x=x, y=y))
+            except requests.RequestException:
+                data = None
+            if data:
+                break
         if not data:
-            raise OSError(f"タイルを取得できません: {z}/{x}/{y}")
+            return None
         os.makedirs(TILE_CACHE, exist_ok=True)
         with open(path, "wb") as f:
             f.write(data)
-    img = cv2.imread(path, cv2.IMREAD_COLOR)
-    if img is None:
-        raise OSError(f"タイルを読めません: {path}")
-    return img
+    return cv2.imread(path, cv2.IMREAD_COLOR)
 
 
 def tile_mosaic(x0, y0, x1, y1, z):
@@ -103,9 +110,18 @@ def tile_mosaic(x0, y0, x1, y1, z):
     if (tx1 - tx0) * (ty1 - ty0) > 1600:
         raise OSError("タイルが多すぎます")
     big = np.zeros(((ty1 - ty0) * 256, (tx1 - tx0) * 256, 3), np.uint8)
+    missing, total = 0, (tx1 - tx0) * (ty1 - ty0)
     for ty in range(ty0, ty1):
         for tx in range(tx0, tx1):
-            big[(ty - ty0) * 256:(ty - ty0 + 1) * 256, (tx - tx0) * 256:(tx - tx0 + 1) * 256] = _tile(z, tx % n, ty)
+            img = _tile(z, tx % n, ty)
+            if img is None:
+                missing += 1
+                if missing > max(2, total * 0.02):  # 取れないタイルが多いなら早めにあきらめる
+                    raise OSError(f"タイルが {missing} 枚取れませんでした ({z}/{tx % n}/{ty})")
+                continue
+            big[(ty - ty0) * 256:(ty - ty0 + 1) * 256, (tx - tx0) * 256:(tx - tx0 + 1) * 256] = img
+    if missing:  # 少しの欠けなら下の段の地図が透けるだけなので許す
+        print(f"  タイルが {missing}/{total} 枚取れませんでした (下の段で補います)")
     ppu = 256 * n
     ox, oy = int((x0 * n - tx0) * 256), int((y0 * n - ty0) * 256)
     return big[oy:oy + int((y1 - y0) * ppu), ox:ox + int((x1 - x0) * ppu)], ppu
@@ -164,7 +180,7 @@ def map_textures(timeline, job, looks, use_tiles=True):
         x0, y0, x1, y1 = _bounds(group)
         need = W / min(c[2] for c in group)  # 一番寄るカメラに必要な密度
         ppu = min(need * 1.1, MAX_TEX / max(x1 - x0, y1 - y0))
-        levels.append([x0, y0, x1, y1, ppu])
+        levels.append([x0, y0, x1, y1, ppu, need * 1.1])
         rest = [c for c in group if W / c[2] > ppu * 1.25]  # この段で足りないカメラ
         clusters = []
         for c in sorted(rest, key=lambda c: c[2]):
@@ -176,13 +192,17 @@ def map_textures(timeline, job, looks, use_tiles=True):
                 clusters.append([c])
         todo += clusters
     levels.sort(key=lambda lv: lv[4])  # 粗い段から順に重ねる
+    need_of = [lv[5] for lv in levels]
     credits = []
     src = None
     out = []
-    for i, (x0, y0, x1, y1, ppu) in enumerate(levels):
+    for i, (x0, y0, x1, y1, ppu, _) in enumerate(levels):
         img = None
         if use_tiles:
-            z = min(max(math.ceil(math.log2(ppu / 256) - 0.15), 2), MAX_TILE_Z)  # 足りない側に丸めない
+            # 寄りの段は足りない側に丸めない。画像の上限で抑えた広い段は、上限を超えないよう切り下げる
+            capped = ppu < need_of[i] * 1.05
+            z = math.floor(math.log2(ppu / 256)) if capped else math.ceil(math.log2(ppu / 256) - 0.15)
+            z = min(max(z, 2), MAX_TILE_Z)
             try:
                 img, ppu = tile_mosaic(x0, y0, x1, y1, z)
                 sigma = max(2.0, min(12.0, ppu / 21600 * 8))
@@ -191,8 +211,7 @@ def map_textures(timeline, job, looks, use_tiles=True):
                 src_name = f"Sentinel-2 z{z}"
                 grade = _grade_tiles
             except (OSError, requests.RequestException) as e:
-                print(f"  地図タイルを使えません ({e})。Blue Marble で代用します")
-                use_tiles = False
+                print(f"  地図タイルを使えません ({e})。この段は Blue Marble で代用します")
         if img is None:
             if src is None:
                 src = cv2.imread(find_texture(), cv2.IMREAD_COLOR)
