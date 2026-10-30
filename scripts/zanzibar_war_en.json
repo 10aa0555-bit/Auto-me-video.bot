@@ -41,6 +41,9 @@
         "y": 0.18,
         "delay": 0.15,
         "size": 80
+      },
+      "fill": {
+        "TZA": "flag:tz"
       }
     },
     {
@@ -62,7 +65,10 @@
           "label": "Zanzibar",
           "delay": 2.6
         }
-      ]
+      ],
+      "fill": {
+        "TZA": null
+      }
     },
     {
       "narration": "In 1896 it had its own sultan. But Britain wanted a say in who got the job.",
