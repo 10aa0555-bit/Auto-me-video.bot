@@ -320,9 +320,21 @@ const Captions: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
         display: 'inline-block', fontFamily: FONT, fontWeight: 800, fontSize: 54, lineHeight: 1.2, color: '#fff',
         textShadow: outline(3.5) + ', 0 0 22px rgba(0,0,0,0.45)', transform: `scale(${k})`,
       }}>
-        {words.map(([w, wt], i) => (
-          <span key={i} style={{opacity: t >= wt - 0.02 ? 1 : 0.55}}>{(i ? ' ' : '') + w}</span>
-        ))}
+        {words.map(([w, wt], i) => {
+          // 今読んでいる単語だけ黄色にして少し大きく (TikTok 風)
+          const next = i + 1 < words.length ? words[i + 1][1] : c.end;
+          const now = t >= wt - 0.02 && t < next - 0.02;
+          const pop = now ? 1 + 0.08 * (1 - easeOut((t - wt) / 0.15)) : 1;
+          return (
+            <React.Fragment key={i}>
+              {i ? ' ' : ''}
+              <span style={{
+                display: 'inline-block', color: now ? '#ffd23f' : '#fff', opacity: t >= wt - 0.02 ? 1 : 0.55,
+                transform: `scale(${pop})`,
+              }}>{w}</span>
+            </React.Fragment>
+          );
+        })}
       </span>
     </div>
   );
