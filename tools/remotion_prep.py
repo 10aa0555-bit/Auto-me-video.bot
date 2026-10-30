@@ -138,6 +138,29 @@ def _grade_tiles(img):
     return cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
 
 
+def _match_tone(tex, x0, y0, ppu, below, below_img):
+    """細かい段の明るさ・色を、同じ範囲の下の段に合わせる (チャンネルごとの平均と標準偏差)。"""
+    k = below["ppu"] / ppu
+    bx0, by0 = (x0 - below["x0"]) * below["ppu"], (y0 - below["y0"]) * below["ppu"]
+    bw, bh = tex.shape[1] * k, tex.shape[0] * k
+    ix0, iy0 = int(max(bx0, 0)), int(max(by0, 0))
+    ix1, iy1 = int(min(bx0 + bw, below_img.shape[1])), int(min(by0 + bh, below_img.shape[0]))
+    if ix1 - ix0 < 8 or iy1 - iy0 < 8:
+        return tex
+    ref = below_img[iy0:iy1, ix0:ix1].astype(np.float32)
+    small = cv2.resize(tex, (max(8, int(bw)), max(8, int(bh))), interpolation=cv2.INTER_AREA).astype(np.float32)
+    small = small[iy0 - int(by0):iy1 - int(by0), ix0 - int(bx0):ix1 - int(bx0)]
+    if small.size == 0:
+        return tex
+    out = tex.astype(np.float32)
+    for c in range(3):
+        ms, ss = small[..., c].mean(), small[..., c].std() + 1e-3
+        mr, sr = ref[..., c].mean(), ref[..., c].std() + 1e-3
+        g = float(np.clip(sr / ss, 0.8, 1.25))
+        out[..., c] = (out[..., c] - ms) * g + mr
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
 def _bounds(cams, grow=1.6):
     xs, ys = [], []
     for cx, cy, span in cams:
@@ -196,6 +219,7 @@ def map_textures(timeline, job, looks, use_tiles=True):
     credits = []
     src = None
     out = []
+    cache = {}  # 見た目ごとの、ひとつ下の段の画像
     for i, (x0, y0, x1, y1, ppu, _) in enumerate(levels):
         img = None
         if use_tiles:
@@ -223,6 +247,9 @@ def map_textures(timeline, job, looks, use_tiles=True):
         files = {}
         for look in looks:
             tex = _relief(img, sigma) if look == "relief" else grade(img)
+            if out:  # 下の段と色味をそろえる (重ねた境目がうっすら見えないように)
+                tex = _match_tone(tex, x0, y0, ppu, out[-1], cache[look])
+            cache[look] = tex
             name = f"map{i}_{look}.jpg"
             cv2.imwrite(os.path.join(job, name), tex, [cv2.IMWRITE_JPEG_QUALITY, 92])
             files[look] = name
