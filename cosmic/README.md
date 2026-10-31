@@ -1,7 +1,7 @@
-# 宇宙・存在系シリーズ (GEMRIL 風、オリジナル)
+# モチベーション系 2D アニメ (GEMRIL 風)
 
-フラットなベクター調の宇宙アニメに、読み上げ中の単語を 1 語ずつ極太で重ねる英語ショート。
-絵はすべて `remotion/src/cosmic/Cosmic.tsx` の中で図形から描く (他人の映像は使わない。転載は著作権と収益化の両方で NG)。
+フラットなベクター調のアニメに、読み上げ中の単語を 1 語ずつ極太で重ねる英語ショート。前向きな哲学・人生・心理の話。
+見た目と構成は GEMRIL に寄せる。絵は `remotion/src/cosmic/Cosmic.tsx` の中で図形から描く (他人の映像・音声・台本は使わない。転載は著作権と収益化の両方で NG)。
 
 ## 台本の形 (`cosmic/<slug>_en.json`)
 - `"style": "cosmic"`、声は Kokoro `am_michael` 速さ 1.0 (落ち着いた語り)
@@ -17,13 +17,13 @@
 - 投稿文: タイトルは 1 行 + 絵文字 1 個、説明は「Send this to …」+ 事実 1〜2 行、固定コメントは問いかけ
 
 ## ネタ帳 (上から順に)
-1. ✅ stardust_en — You are 13.8 billion years old (体の原子は星から)
-2. blackhole_en — What happens if you fall into a black hole?
-3. empty_en — You are 99.9999% empty space (人類を詰めると角砂糖 1 個)
-4. touch_en — You have never actually touched anything
-5. starlight_en — Some stars you see tonight are already gone
-6. sun_death_en — The day the Sun dies
-7. sand_en — More stars than grains of sand
-8. timetravel_en — You are already a time traveler (GPS と相対性理論)
-9. dark_night_en — Why is the night sky dark?
-10. brain_en — The most complex thing in the universe is behind your eyes
+1. ✅ stardust_en — You are 13.8 billion years old (小さく感じたら、自分は宇宙のかけら)
+2. weeks_en — You only get about 4,000 weeks (80 年 ≒ 4,160 週)
+3. spotlight_en — Nobody is watching you as much as you think (スポットライト効果)
+4. one_percent_en — 1% better every day = 37 times better in a year (1.01^365 ≒ 37.8)
+5. free_en — If nothing matters, you are free to do anything
+6. fear_en — Your brain is still afraid of lions that are not there
+7. comparison_en — You are comparing your inside to everyone else's outside
+8. pale_dot_en — Every problem you have happened on a tiny dot in space
+9. boredom_en — Boredom is your brain asking for something new
+10. regret_en — What people regret most at the end of their lives
