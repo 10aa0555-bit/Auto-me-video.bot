@@ -300,7 +300,9 @@ def prepare_flags(script, job):
     for c in codes:
         src = os.path.join(fl.dir, f"{c.lower()}.svg")
         if os.path.exists(src):
-            shutil.copy(src, os.path.join(job, f"flag_{c.lower()}.svg"))
+            # SVG のままだとブラウザが preserveAspectRatio (slice) を無視して国の一部にしか貼られないので PNG にする
+            import cairosvg
+            cairosvg.svg2png(url=src, write_to=os.path.join(job, f"flag_{c.lower()}.png"), output_width=1600)
         else:
             print(f"  国旗が見つかりません: {c}")
 
@@ -327,9 +329,12 @@ def prepare_shapes(script, tl):
         else:
             polys = [[merc_arr(r) for r in poly] for poly in world.raw_polygons(k)]
         rings = []
-        main = max((poly[0] for poly in polys), key=lambda r: (r[:, 0].max() - r[:, 0].min()) * (r[:, 1].max() - r[:, 1].min()))
-        bboxes[k] = [round(float(main[:, 0].min()), 6), round(float(main[:, 1].min()), 6),
-                     round(float(main[:, 0].max()), 6), round(float(main[:, 1].max()), 6)]
+        # 国旗を貼る範囲: 大きな陸地 (一番大きい島の 5% 以上) をまとめた範囲。遠い小島 (イースター島など) は入れない
+        area = lambda r: (r[:, 0].max() - r[:, 0].min()) * (r[:, 1].max() - r[:, 1].min())
+        big = max(area(poly[0]) for poly in polys)
+        parts = [poly[0] for poly in polys if area(poly[0]) >= big * 0.05]
+        bboxes[k] = [round(float(min(r[:, 0].min() for r in parts)), 6), round(float(min(r[:, 1].min() for r in parts)), 6),
+                     round(float(max(r[:, 0].max() for r in parts)), 6), round(float(max(r[:, 1].max() for r in parts)), 6)]
         for poly in polys:
             for r in poly:
                 a = cv2.approxPolyDP(np.round(np.asarray(r, np.float64) * 1e7).astype(np.int32).reshape(-1, 1, 2),

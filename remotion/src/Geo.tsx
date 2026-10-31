@@ -38,8 +38,19 @@ export const Fills: React.FC<{scenes: Scene[]; shapes: Shapes; bboxes?: Record<s
       return (
         <g key={id} opacity={op}>
           <defs><clipPath id={id}><path d={d} fillRule="evenodd" /></clipPath></defs>
-          <image href={staticFile(`job/flag_${c.slice(5).toLowerCase()}.svg`)} x={x0} y={y0} width={sx(bb[2]) - x0}
-            height={sy(bb[3]) - y0} preserveAspectRatio="xMidYMid slice" clipPath={`url(#${id})`} />
+          {(() => {
+            // 国旗 (4:3) を国の範囲を覆う大きさで置く。縦長の国 (チリなど) は左の 1/6 (星や紋章) が真ん中に来るようにずらす
+            const bw = sx(bb[2]) - x0;
+            const bh = sy(bb[3]) - y0;
+            const ih = Math.max(bh, (bw * 3) / 4);
+            const iw = (ih * 4) / 3;
+            const tall = bh > bw * 2.2;
+            const ix = tall ? x0 + bw / 2 - iw / 6 : x0 + bw / 2 - iw / 2;
+            return (
+              <image href={staticFile(`job/flag_${c.slice(5).toLowerCase()}.png`)} x={ix} y={y0 + bh / 2 - ih / 2} width={iw}
+                height={ih} preserveAspectRatio="none" clipPath={`url(#${id})`} />
+            );
+          })()}
           <path d={d} fill="none" stroke="#fff" strokeWidth={4} strokeLinejoin="round" />
         </g>
       );
