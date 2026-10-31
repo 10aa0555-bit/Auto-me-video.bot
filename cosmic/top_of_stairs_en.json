@@ -1,0 +1,218 @@
+{
+ "title": "Nobody Sees The Stairs",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Everyone sees the top. Nobody sees the stairs. 🪜",
+  "description": "Send this to someone who is working in silence.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "How many steps have you climbed this year? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "stairs",
+   "narration": "Everyone sees the person at the top. Nobody sees the stairs.",
+   "hot": [
+    "TOP",
+    "STAIRS"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "Nobody sees the nights you worked while others slept.",
+   "hot": [
+    "NIGHTS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 3
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Nobody sees the rejections, the doubts, the moments you almost gave up.",
+   "hot": [
+    "REJECTIONS",
+    "DOUBTS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 29
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "They only see the result, and they call it luck.",
+   "hot": [
+    "LUCK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 16
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "Let them. Luck is just the name people give to work they didn't watch.",
+   "hot": [
+    "WORK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 21
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Every step looks small. One more page. One more rep. One more day.",
+   "hot": [
+    "STEP",
+    "ONE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 9
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "But steps add up. Slowly, then suddenly, you look down and realize how high you are.",
+   "hot": [
+    "SLOWLY",
+    "SUDDENLY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 5
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "The climb is lonely. It is supposed to be. The crowd lives at the bottom.",
+   "hot": [
+    "LONELY",
+    "BOTTOM"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 48
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "So stop comparing your step one to someone else's step one hundred.",
+   "hot": [
+    "COMPARING"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "Keep climbing in the dark. The view is worth it.",
+   "hot": [
+    "CLIMBING",
+    "VIEW"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 30
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So, which step are you on today?",
+   "hot": [
+    "TODAY"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,217 @@
+{
+ "title": "Your 3 AM Thoughts Are Lying",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Your 3 a.m. thoughts are lying to you. 🌙",
+  "description": "Send this to someone who overthinks at night.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What keeps you up at night? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "window",
+   "narration": "It is three in the morning, and your mind decides to replay every mistake you ever made.",
+   "hot": [
+    "THREE",
+    "MISTAKE"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Suddenly every problem looks bigger, darker, and impossible to fix.",
+   "hot": [
+    "BIGGER",
+    "IMPOSSIBLE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 27
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "But here is the truth. Your brain is tired, and a tired brain is a terrible judge.",
+   "hot": [
+    "TIRED",
+    "JUDGE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 19
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Late at night, your thoughts feel like facts. They are not facts. They are fog.",
+   "hot": [
+    "FACTS",
+    "FOG"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 12
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "Remember how many times the night told you it was over, and then the morning proved it wrong.",
+   "hot": [
+    "MORNING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 33
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "Don't make big decisions at three in the morning. Write them down. Decide in daylight.",
+   "hot": [
+    "DECISIONS",
+    "DAYLIGHT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 10
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "You have survived every bad night so far. Every single one.",
+   "hot": [
+    "SURVIVED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 40
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "This one is not different. It only feels different.",
+   "hot": [
+    "FEELS"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "So breathe slowly. Put the phone down. Let the fog pass.",
+   "hot": [
+    "BREATHE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 46
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "The sun always comes back. So will you.",
+   "hot": [
+    "SUN"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 24
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "So, what is the thought you need to let go of tonight?",
+   "hot": [
+    "TONIGHT"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

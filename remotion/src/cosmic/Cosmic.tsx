@@ -2,6 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
+import {Bridge, Chess, Crowd, Face, Fire, Mirror, Moon, Stairs, Street, Window} from './Noir';
 
 /**
  * フラットなベクター調の宇宙アニメ (2D、SVG)。読み上げ中の単語を画面の真ん中に 1 語ずつ大きく出す。
@@ -17,7 +18,7 @@ export type CosmicScene = {
     hot?: string[]; // オレンジで強調する単語
   };
 };
-export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string};
+export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir'};
 
 const C = {
   ink: '#0b0826',
@@ -507,6 +508,17 @@ const SCENES: Record<string, React.FC<{t: number; lt: number}>> = {
   city: ({t}) => <City t={t} />,
   blood: ({t}) => <Blood t={t} />,
   galaxy: ({t}) => <Galaxy t={t} />,
+  street: ({t, lt}) => <Street t={t} lt={lt} />,
+  bridge: ({t}) => <Bridge t={t} />,
+  face: ({t, lt}) => <Face t={t} lt={lt} />,
+  smile: ({t, lt}) => <Face t={t} lt={lt} smile />,
+  chess: ({t, lt}) => <Chess t={t} lt={lt} />,
+  mirror: ({t, lt}) => <Mirror t={t} lt={lt} />,
+  window: ({t}) => <Window t={t} />,
+  stairs: ({t, lt}) => <Stairs t={t} lt={lt} />,
+  fire: ({t, lt}) => <Fire t={t} lt={lt} />,
+  crowd: ({t}) => <Crowd t={t} />,
+  moon: ({t}) => <Moon t={t} />,
   blackhole: ({t}) => <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={51} /><Hole t={t} z={1.6} /></g>,
   fall: ({t, lt}) => (
     <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={52} /><Hole t={t} z={0.9} cy={H * 0.3} />
@@ -536,7 +548,7 @@ const SCENES: Record<string, React.FC<{t: number; lt: number}>> = {
 };
 
 /** 読み上げ中の単語を 1 語だけ大きく出す (GEMRIL 風の縦長の極太文字)。 */
-const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]}> = ({caps, t, hot}) => {
+const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]; theme?: string}> = ({caps, t, hot, theme}) => {
   let word = '';
   let wt = 0;
   for (const c of caps) {
@@ -554,15 +566,29 @@ const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]}> = ({caps, t
   const isHot = hot.some((h) => clean.replace(/[^A-Z0-9]/g, '') === h.toUpperCase());
   const k = easeOut(clamp01((t - wt) / 0.09));
   const size = Math.min(300, 1900 / Math.max(3, clean.length));
-  const fill = isHot ? 'linear-gradient(180deg, #fff1b0 0%, #ffb23f 50%, #ff6a2a 100%)' : 'linear-gradient(180deg, #ffffff 0%, #f3ffb8 45%, #c8ec5a 100%)';
+  const noir = theme === 'noir';
+  const stops = isHot
+    ? (noir ? ['#ff8a8a', '#e0283c', '#9c0f22'] : ['#fff1b0', '#ffb23f', '#ff6a2a'])
+    : (noir ? ['#ffffff', '#efe6d2', '#bfb39a'] : ['#ffffff', '#f3ffb8', '#c8ec5a']);
+  // Anton の 1 文字の幅はだいたい 0.47 em。はみ出しそうなら横幅を詰める
+  const est = clean.length * size * 0.47;
+  const fit = est > 980 ? {textLength: 980, lengthAdjust: 'spacingAndGlyphs' as const} : {};
+  const sc = 1.18 - 0.18 * k;
+  const cy = H * 0.5;
   return (
-    <div style={{position: 'absolute', top: H * 0.5 - size * 0.62, width: W, textAlign: 'center'}}>
-      <span style={{display: 'inline-block', fontFamily: 'Anton', fontSize: size, lineHeight: 1.15, letterSpacing: 2,
-        transform: `scale(${1.18 - 0.18 * k})`, opacity: 0.4 + 0.6 * k,
-        filter: 'drop-shadow(0 8px 0 rgba(10,6,40,0.85)) drop-shadow(0 0 28px rgba(10,6,40,0.6))'}}>
-        <span style={{background: fill, WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent'}}>{clean}</span>
-      </span>
-    </div>
+    <svg width={W} height={H} style={{position: 'absolute', left: 0, top: 0}}>
+      <defs>
+        <linearGradient id="wordG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor={stops[0]} /><stop offset="0.5" stopColor={stops[1]} /><stop offset="1" stopColor={stops[2]} />
+        </linearGradient>
+        <filter id="wordGlow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="16" /></filter>
+      </defs>
+      <g transform={`translate(${W / 2} ${cy}) scale(${sc}) translate(${-W / 2} ${-cy})`} opacity={0.4 + 0.6 * k}>
+        <text x={W / 2} y={cy + size * 0.36} textAnchor="middle" fontFamily="Anton" fontSize={size} fill="rgba(10,6,40,0.6)" filter="url(#wordGlow)" {...fit}>{clean}</text>
+        <text x={W / 2} y={cy + size * 0.36 + 9} textAnchor="middle" fontFamily="Anton" fontSize={size} fill="rgba(10,6,40,0.9)" {...fit}>{clean}</text>
+        <text x={W / 2} y={cy + size * 0.36} textAnchor="middle" fontFamily="Anton" fontSize={size} fill="url(#wordG)" letterSpacing={2} {...fit}>{clean}</text>
+      </g>
+    </svg>
   );
 };
 
@@ -602,7 +628,7 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
         </g>
         <rect width={W} height={H} fill="url(#vign)" />
       </svg>
-      <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} />
+      <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>
   );

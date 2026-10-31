@@ -78,7 +78,8 @@ def main():
     # 効果音に環境音 (波・風・街・ヘリ) を重ねる
     with wave.open(fx, "rb") as w:
         fxs = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float64) / 32767
-    amb = (ambient.render_space(scenes, tl.total) if cosmic else
+    amb = (ambient.render_noir(scenes, tl.total) if cosmic and script.get("theme") == "noir" else
+           ambient.render_space(scenes, tl.total) if cosmic else
            ambient.render_story(scenes, tl.total) if story else ambient.render(scenes, tl.total, rewind))
     m = min(len(fxs), len(amb))
     both = np.clip(fxs[:m] + amb[:m] * 0.5, -1, 1)
@@ -96,7 +97,7 @@ def main():
     n = int(round(tl.total * FPS))
     props = {"frames": n, "fps": FPS, "scenes": scenes, "captions": captions, "audio": "audio.m4a"}
     if cosmic:
-        pass
+        props["theme"] = script.get("theme", "cosmic")
     elif story:
         props["hook"] = script["hook"]
     else:

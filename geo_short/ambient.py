@@ -102,3 +102,21 @@ def render_space(scenes, total):
     out = 0.2 * pad / 2.5 + 0.05 * air
     fade = np.minimum(1, t / 1.5) * np.minimum(1, (total - t) / 1.0)
     return np.clip(out * fade, -1, 1)
+
+
+def render_noir(scenes, total):
+    """ダークなモチベーション動画の環境音: 静かな雨 + 低いうなり + たまの遠雷。"""
+    n = int(total * SR)
+    t = np.arange(n) / SR
+    rain = _shaped_noise(n, 1200, 8000, 51) * (0.8 + 0.2 * np.sin(2 * np.pi * 0.07 * t))
+    drone = sum(np.sin(2 * np.pi * f * t + p) * a for f, p, a in ((41.2, 0, 1.0), (61.7, 0.8, 0.5), (82.4, 1.9, 0.25)))
+    drone *= 0.6 + 0.4 * np.sin(2 * np.pi * 0.04 * t) ** 2
+    thunder = np.zeros(n)
+    for k, at in enumerate((total * 0.33, total * 0.71)):
+        i = int(at * SR)
+        L = min(int(3.0 * SR), n - i)
+        if L > 0:
+            thunder[i:i + L] += _shaped_noise(L, 20, 140, 60 + k) * np.exp(-np.arange(L) / (0.9 * SR))
+    out = 0.09 * rain + 0.07 * drone / 1.75 + 0.25 * thunder
+    fade = np.minimum(1, t / 1.5) * np.minimum(1, (total - t) / 1.0)
+    return np.clip(out * fade, -1, 1)

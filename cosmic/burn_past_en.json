@@ -1,0 +1,218 @@
+{
+ "title": "Burn The Old You",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Let the old you burn. 🔥",
+  "description": "Send this to someone who is ready for a new chapter.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What are you letting go of this year? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "fire",
+   "narration": "There is a version of you that has to die, so the real you can live.",
+   "hot": [
+    "DIE",
+    "LIVE"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "The one who says yes when they mean no. The one who stays where they are not respected.",
+   "hot": [
+    "RESPECTED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 14
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "You know exactly who I mean. You have been carrying them for years.",
+   "hot": [
+    "CARRYING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 19
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "That old version kept you safe once. But safe is not the same as alive.",
+   "hot": [
+    "SAFE",
+    "ALIVE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 31
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Every time you change, someone will say, you are not the same anymore.",
+   "hot": [
+    "CHANGE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 41
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "Good. You were never supposed to stay the same.",
+   "hot": [
+    "GOOD"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 45
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Some people will leave. Let them. They were only comfortable with the smaller you.",
+   "hot": [
+    "LEAVE",
+    "SMALLER"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 23
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "Burn the old habits. Burn the old fears. Burn the stories that kept you small.",
+   "hot": [
+    "BURN",
+    "FEARS"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "It will hurt. Growth always does. But staying the same hurts longer.",
+   "hot": [
+    "HURT",
+    "LONGER"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 18
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "From the ashes, something stronger walks out.",
+   "hot": [
+    "ASHES",
+    "STRONGER"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 40
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "So, what will you burn tonight?",
+   "hot": [
+    "TONIGHT"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}
