@@ -76,17 +76,24 @@ Remotion 版だけの追加は下の表。
 | 14 | China's desert ghost city (Ordos) | 「国家の長期戦略」は推測なので「説がある」と言う |
 | 10 | The Amazon's lawless border | 実在の事件・犯罪が絡むので後回し。扱うなら断定を避ける |
 
-### 次のネタ (2026-10-30 追加。上から順に作る)
+### 作成済み (2026-10-31 時点。同じネタを作らない)
+
+egypt_empty (投稿しない), bir_tawil (投稿しない), australia_empty, dingo_fence, canada_border, siberia_empty, amazon_border,
+border_slash, greenland_name, ordos_ghost, diomede_islands, chile_thin, point_nemo, baarle_border, lesotho_inside,
+mongolia_empty, darien_gap, alaska_purchase, jakarta_sinking, japan_coast, saudi_no_rivers, dancing_plague (地理以外のお試し),
+scripts/zanzibar_war_en.json (Ridiculous Wars #4)
+
+### 次のネタ (2026-10-31 追加。上から順に作る)
 
 | # | ネタ | 見せ場・注意 |
 |---|---|---|
-| 16 | Why is Chile so long and thin? | 約 4,300km × 平均約 180km。ghosts で欧州や米国に重ねる。アンデスとアタカマ砂漠の「なぜ」 |
-| 17 | Point Nemo: the loneliest place on Earth | 陸から約 2,700km。一番近い人間は宇宙ステーションのことがある。宇宙機の墓場 (imagery は海なので Blue Marble で可) |
-| 18 | Russia and the US are 4 km apart | ダイオミード諸島。間に日付変更線があり「明日の島」と「昨日の島」。冬は氷で歩けるが渡るのは禁止 |
-| 19 | The town where borders go through houses | バールレ = ヘルトフ / ナッサウ (ベルギーとオランダの飛び地が入り組む)。玄関の位置で国が決まる |
-| 20 | The country inside a country | レソト: 南アフリカに完全に囲まれた国。国土全体が標高 1,000m 以上 |
-| 21 | Why is Mongolia so empty? | 世界で一番人口密度が低い国 (約 2 人/km²)。人口の約半分がウランバートル |
-| 22 | The 100 km gap in the Pan-American Highway | ダリエン地峡。道路がアラスカからアルゼンチンまでつながらない理由 (熱帯なので imagery: bluemarble) |
-| 23 | Why does Alaska belong to the US? | 1867 年にロシアから 720 万ドルで購入。「スワードの愚行」と笑われた |
-| 24 | Why is Indonesia moving its capital? | ジャカルタが沈んでいる (地下水のくみ上げ)。ボルネオの新首都ヌサンタラ (熱帯なので bluemarble) |
-| 25 | Why do Japanese cities squeeze onto the coast? | 国土の約 3 分の 2 が森林・山地。平野に人が集中 |
+| 28 | Why is it illegal to die in Svalbard? | 永久凍土で遺体が分解しないため墓地への埋葬を原則やめた (1950 年ごろから)。世界種子貯蔵庫。人よりホッキョクグマが多いと言われる |
+| 29 | The country that ate itself | ナウル: リン鉱石を掘り尽くして国土の約 8 割が掘られた跡地に。一時は世界有数の金持ち国 |
+| 30 | The most remote inhabited island | トリスタン・ダ・クーニャ: 一番近い有人地まで約 2,400km、人口 200 人台、空港なし (船だけ) |
+| 31 | One island, two countries | サン・マルタン島: 北がフランス、南がオランダ。国境の決め方の伝説 (競走) は伝説と言うこと |
+| 32 | Why was Canberra built from nothing? | シドニーとメルボルンがどちらも首都を譲らず、間に新しく作った (1913 年〜) |
+| 33 | Why is Venice sinking? | 木の杭の上の街、地盤沈下と海面上昇、MOSE の防潮ゲート (2020 年から稼働) |
+| 34 | The deepest lake on Earth | バイカル湖: 深さ約 1,600m、世界の凍っていない淡水の約 2 割。湖にアザラシ |
+| 35 | Why does Russia own a piece of the EU? | カリーニングラード: ロシア本土とつながっていない飛び地。1945 年までドイツ領 (今の戦争には触れない) |
+| 36 | Why does the Panama Canal need a lake? | 船を持ち上げる水門の水はガトゥン湖から。1 回の通航で大量の淡水を使う。干ばつで通航制限 |
+| 37 | Why do almost all Icelanders live in one corner? | 人口の約 3 分の 2 が首都圏。内陸は氷河と溶岩原。夏も寒い |
