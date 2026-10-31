@@ -16,7 +16,7 @@ const FontFaces: React.FC = () => (
 );
 
 /** 黒いフチ + 柔らかい影の白文字。 */
-const outline = (px: number, color = 'rgba(15,20,30,0.95)') => {
+export const outline = (px: number, color = 'rgba(15,20,30,0.95)') => {
   const s: string[] = [];
   for (let a = 0; a < 16; a++) {
     const th = (a / 16) * Math.PI * 2;
@@ -314,7 +314,7 @@ const BigText: React.FC<{tx: TextSpec; lt: number; dur: number}> = ({tx, lt, dur
   );
 };
 
-const Captions: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
+export const Captions: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   const c = caps.find((c) => t >= c.start && t < c.end);
   if (!c) return null;
   const k = 0.9 + 0.1 * easeOut((t - c.start) / 0.12);

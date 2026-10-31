@@ -1,0 +1,254 @@
+{
+  "title": "What If the Sea Rose 1 Meter Every Day?",
+  "lang": "en",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "whatif": {
+    "top": "WHAT IF THE SEA",
+    "big": "Rose",
+    "bottom": "1 meter every day?"
+  },
+  "scenes": [
+    {
+      "narration": "What if the sea rose one meter, every single day?",
+      "cam": {
+        "pos": [
+          0,
+          80,
+          105
+        ],
+        "look": [
+          0,
+          0,
+          -20
+        ]
+      },
+      "sea": -1.6
+    },
+    {
+      "narration": "Day one. The beach is already gone, and waves are splashing onto the first street.",
+      "cam": {
+        "pos": [
+          0,
+          42,
+          -8
+        ],
+        "look": [
+          0,
+          0,
+          -85
+        ]
+      },
+      "sea": -0.9,
+      "counter": "DAY 1",
+      "sub": "+1 METER"
+    },
+    {
+      "narration": "Day three. Storm drains start running backwards, and the subway begins to flood.",
+      "cam": {
+        "pos": [
+          -6,
+          30,
+          48
+        ],
+        "look": [
+          -6,
+          0,
+          -45
+        ]
+      },
+      "sea": -0.15,
+      "counter": "DAY 3",
+      "sub": "+3 METERS"
+    },
+    {
+      "narration": "Day seven. Ground floors are underwater, and cars are floating down the avenue.",
+      "cam": {
+        "pos": [
+          -6,
+          30,
+          48
+        ],
+        "look": [
+          -6,
+          0,
+          -45
+        ]
+      },
+      "sea": 0.9,
+      "cars": 0.5,
+      "people": 0.25,
+      "counter": "DAY 7",
+      "sub": "+7 METERS"
+    },
+    {
+      "narration": "About one in ten people on Earth lives less than ten meters above the sea. By day ten, hundreds of millions have to leave.",
+      "tts": "About one in ten people on Earth lives less than ten meters above the sea. By day ten, hundreds of millions have to leave.",
+      "cam": {
+        "pos": [
+          30,
+          95,
+          60
+        ],
+        "look": [
+          0,
+          0,
+          -30
+        ]
+      },
+      "sea": 1.6,
+      "cars": 0.1,
+      "people": 0.0,
+      "counter": "DAY 10",
+      "sub": "~1 IN 10 HUMANS"
+    },
+    {
+      "narration": "Places like Venice, Amsterdam and most of Miami are simply gone.",
+      "cam": {
+        "pos": [
+          30,
+          95,
+          60
+        ],
+        "look": [
+          0,
+          0,
+          -30
+        ]
+      },
+      "sea": 2.4,
+      "cars": 0,
+      "counter": "DAY 12",
+      "sub": "VENICE · MIAMI"
+    },
+    {
+      "narration": "Day thirty. Only the tallest towers still stick out of the water.",
+      "cam": {
+        "pos": [
+          0,
+          80,
+          105
+        ],
+        "look": [
+          0,
+          0,
+          -20
+        ]
+      },
+      "sea": 10,
+      "counter": "DAY 30",
+      "sub": "+30 METERS"
+    },
+    {
+      "narration": "Day one hundred. Almost every big coastal city on the planet has drowned.",
+      "cam": {
+        "pos": [
+          0,
+          150,
+          90
+        ],
+        "look": [
+          0,
+          0,
+          -25
+        ]
+      },
+      "sea": 24,
+      "counter": "DAY 100",
+      "sub": "+100 METERS"
+    },
+    {
+      "narration": "But here's the twist. Even if every glacier and ice sheet on Earth melted, the sea would only rise about seventy meters.",
+      "cam": {
+        "pos": [
+          0,
+          150,
+          90
+        ],
+        "look": [
+          0,
+          0,
+          -25
+        ]
+      },
+      "sea": 24,
+      "counter": "ALL THE ICE",
+      "sub": "= ONLY ~70 METERS"
+    },
+    {
+      "narration": "So after day seventy, this water isn't coming from anywhere on Earth.",
+      "cam": {
+        "pos": [
+          0,
+          150,
+          90
+        ],
+        "look": [
+          0,
+          0,
+          -25
+        ]
+      },
+      "sea": 40,
+      "counter": "DAY 365",
+      "sub": "+365 METERS"
+    },
+    {
+      "narration": "And at this speed, it would take about twenty-four years to drown Mount Everest.",
+      "cam": {
+        "pos": [
+          0,
+          150,
+          90
+        ],
+        "look": [
+          0,
+          0,
+          -25
+        ]
+      },
+      "sea": 60,
+      "counter": "DAY 8,849",
+      "sub": "EVEREST IS GONE"
+    },
+    {
+      "narration": "How many days would your city survive? Tell me in the comments.",
+      "cam": {
+        "pos": [
+          0,
+          80,
+          105
+        ],
+        "look": [
+          0,
+          0,
+          -20
+        ]
+      },
+      "sea": 60,
+      "min_duration": 3.4,
+      "counter": "YOUR CITY?",
+      "sub": "COMMENT BELOW"
+    }
+  ],
+  "post": {
+    "title": "What if the sea rose 1 meter every day? 🌊 #whatif #science",
+    "description": "Day 1: the beach is gone. Day 30: only towers are left. And there's a twist: all the ice on Earth could only raise the sea about 70 meters.",
+    "hashtags": [
+      "#whatif",
+      "#science",
+      "#ocean",
+      "#hypothetical",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "How many days would YOUR city survive? 🌊👇"
+  }
+}
