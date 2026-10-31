@@ -314,13 +314,13 @@ const BigText: React.FC<{tx: TextSpec; lt: number; dur: number}> = ({tx, lt, dur
   );
 };
 
-export const Captions: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
+export const Captions: React.FC<{caps: Caption[]; t: number; top?: number}> = ({caps, t, top = H * 0.635}) => {
   const c = caps.find((c) => t >= c.start && t < c.end);
   if (!c) return null;
   const k = 0.9 + 0.1 * easeOut((t - c.start) / 0.12);
   const words = c.words.length ? c.words : c.text.split(' ').map((w) => [w, c.start] as [string, number]);
   return (
-    <div style={{position: 'absolute', top: H * 0.635 - 40, width: W, textAlign: 'center', padding: '0 70px', boxSizing: 'border-box'}}>
+    <div style={{position: 'absolute', top: top - 40, width: W, textAlign: 'center', padding: '0 70px', boxSizing: 'border-box'}}>
       <span style={{
         display: 'inline-block', fontFamily: FONT, fontWeight: 800, fontSize: 54, lineHeight: 1.2, color: '#fff',
         textShadow: outline(3.5) + ', 0 0 22px rgba(0,0,0,0.45)', transform: `scale(${k})`,

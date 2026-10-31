@@ -8,11 +8,15 @@ import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut, popIn} from '../util';
 import {Character, Face} from './Character';
 import {City} from './City';
-import {Blast, FishBoat, Iceberg, Island, Lifeboat, Liner, Mine, Warship} from './Props';
+import {Blast, Bolt, Cabin, FishBoat, Forest, Iceberg, Island, Lifeboat, Liner, Mine, Pond, Tower, Truck, Warship} from './Props';
 
 type V3 = [number, number, number];
 export type Obj = {
-  type: 'liner' | 'warship' | 'fishboat' | 'lifeboat' | 'island' | 'mine' | 'iceberg' | 'char';
+  type: 'liner' | 'warship' | 'fishboat' | 'lifeboat' | 'island' | 'mine' | 'iceberg' | 'tower' | 'truck' | 'cabin' | 'pond' | 'char';
+  fire?: boolean | number; // 髪が燃える (数字ならその秒から)
+  face2?: Face; // at 秒から表情を変える (カミナリの後に驚く など)
+  at?: number;
+  hat?: boolean; // レンジャーの帽子
   hull?: string;
   band?: string;
   pos: V3;
@@ -35,7 +39,8 @@ export type StoryScene = {
   dur: number;
   spec: {
     narration?: string;
-    set?: 'ocean' | 'city';
+    set?: 'ocean' | 'city' | 'forest';
+    strike?: {pos: V3; delay?: number}; // カミナリが落ちる場所
     sky?: 'day' | 'sunset' | 'night' | 'storm';
     waves?: number;
     cam?: {pos: V3; look: V3};
@@ -61,7 +66,7 @@ const SKY: Record<string, {bg: string; fog: string; sea: string; hemi: number; d
   day: {bg: '#9fd0f0', fog: '#bfe0f5', sea: '#3f9bd6', hemi: 0.95, dir: 1.9, dirColor: '#fff4e0'},
   sunset: {bg: '#f2a46e', fog: '#f3b98a', sea: '#3a6896', hemi: 0.8, dir: 1.5, dirColor: '#ffc68a'},
   night: {bg: '#162a5c', fog: '#1c3166', sea: '#22548a', hemi: 0.75, dir: 1.0, dirColor: '#b9ccff'},
-  storm: {bg: '#46515c', fog: '#525d68', sea: '#2b4859', hemi: 0.55, dir: 0.5, dirColor: '#d9e2ea'},
+  storm: {bg: '#46515c', fog: '#525d68', sea: '#2b4859', hemi: 0.85, dir: 0.85, dirColor: '#d9e2ea'},
 };
 
 /** 海の高さ (波)。船もこの式で上下・傾く。 */
@@ -157,13 +162,33 @@ const Thing: React.FC<{o: Obj; lt: number; dur: number; t: number; amp: number; 
   if (o.type === 'char') {
     return (
       <group position={[x, y, z]} rotation={[rx, 0, rz]}>
-        <Character spec={{shirt: o.shirt, hair: o.hair, pants: o.pants}} face={o.face ?? 'normal'} talk={o.talk ? talk : 0}
+        <Character spec={{shirt: o.shirt, hair: o.hair, pants: o.pants}} face={o.face2 && lt > (o.at ?? 1) ? o.face2 : o.face ?? 'normal'} talk={o.talk ? talk : 0}
           wave={o.wave ?? 0} walk={o.walk ? t : 0} hop={o.hop ? Math.abs(Math.sin(t * 6)) * 0.5 : 0} rotation={ry} scale={s} />
+        {o.hat && (
+          <group position={[0, 4.35 * s, 0]} scale={s}>
+            <mesh position={[0, 0.1, 0]}><cylinderGeometry args={[1.5, 1.5, 0.12, 20]} /><meshToonMaterial color="#8a6240" /></mesh>
+            <mesh position={[0, 0.5, 0]}><cylinderGeometry args={[0.75, 0.85, 0.8, 20]} /><meshToonMaterial color="#8a6240" /></mesh>
+          </group>
+        )}
+        {o.fire && lt > (typeof o.fire === 'number' ? o.fire : 0) && (
+          <group position={[0, 4.6 * s, 0]} scale={s}>
+            {[0, 1, 2, 3, 4].map((j) => (
+              <mesh key={j} position={[Math.cos(j * 1.26) * 0.5, 0.4 + Math.abs(Math.sin(t * 13 + j)) * 0.5, Math.sin(j * 1.26) * 0.5]}>
+                <coneGeometry args={[0.35, 1.3 + Math.sin(t * 17 + j) * 0.3, 8]} />
+                <meshBasicMaterial color={j % 2 ? '#ffb03a' : '#ff5a2a'} />
+              </mesh>
+            ))}
+          </group>
+        )}
       </group>
     );
   }
   if (o.type === 'liner') body = <Liner hull={o.hull} band={o.band} />;
   if (o.type === 'iceberg') body = <Iceberg />;
+  if (o.type === 'tower') body = <Tower />;
+  if (o.type === 'truck') body = <Truck />;
+  if (o.type === 'cabin') body = <Cabin />;
+  if (o.type === 'pond') body = <Pond />;
   if (o.type === 'warship') body = <Warship />;
   if (o.type === 'fishboat') body = <FishBoat />;
   if (o.type === 'lifeboat') body = <Lifeboat />;
@@ -248,8 +273,9 @@ export const Story: React.FC<StoryProps> = (props) => {
   const amp = blendNum(sc, t, (x) => x.spec.waves, 0.3);
   const night = (s.spec.sky === 'night' ? k : 0) + (i > 0 && sc[i - 1].spec.sky === 'night' && s.spec.sky !== 'night' ? 1 - k : 0);
   // 雷: シーンの 0.4 秒と 2.6 秒に光る
-  const bolt = s.spec.lightning ? Math.max(0, 1 - Math.abs(lt - 0.4) * 9) + Math.max(0, 1 - Math.abs(lt - 2.6) * 9) : 0;
-  const shake = (s.spec.shake ?? 0) * (1 - clamp01(lt / s.dur)) + (s.spec.blast ? Math.max(0, 1 - Math.abs(lt - (s.spec.blast.delay ?? 0.8)) * 2) : 0);
+  const bolt = (s.spec.lightning ? Math.max(0, 1 - Math.abs(lt - 0.4) * 9) + Math.max(0, 1 - Math.abs(lt - 2.6) * 9) : 0) + (s.spec.strike ? Math.max(0, 1 - Math.abs(lt - (s.spec.strike.delay ?? 0.8) - 0.12) * 7) : 0);
+  const strikeK = s.spec.strike ? Math.max(0, 1 - Math.abs(lt - (s.spec.strike.delay ?? 0.8) - 0.12) * 6) : 0;
+  const shake = (s.spec.shake ?? 0) * (1 - clamp01(lt / s.dur)) + (s.spec.blast ? Math.max(0, 1 - Math.abs(lt - (s.spec.blast.delay ?? 0.8)) * 2) : 0) + strikeK;
   // 口パク: 字幕の単語が出た直後に口を開ける
   const cap = props.captions.find((c) => t >= c.start && t < c.end);
   const lastWord = cap?.words.filter(([, wt]) => wt <= t).pop();
@@ -270,7 +296,10 @@ export const Story: React.FC<StoryProps> = (props) => {
           shadow-mapSize-width={2048} shadow-mapSize-height={2048} shadow-camera-left={-70} shadow-camera-right={70}
           shadow-camera-top={70} shadow-camera-bottom={-70} shadow-camera-far={300} />
         {night > 0.05 && <Stars />}
-        {set === 'ocean' ? <Ocean t={t} amp={amp} color={sea} /> : <City s={{t, sea: -1.6, cars: 1, people: 1}} />}
+        {set === 'ocean' && <Ocean t={t} amp={amp} color={sea} />}
+        {set === 'city' && <City s={{t, sea: -1.6, cars: 1, people: 1}} />}
+        {set === 'forest' && <Forest />}
+        {s.spec.strike && <Bolt to={s.spec.strike.pos} k={(lt - (s.spec.strike.delay ?? 0.8)) / 0.5} seed={i + 1} />}
         {s.spec.sky === 'storm' && <Rain t={t} center={look} />}
         {(s.spec.objects ?? []).map((o, j) => <Thing key={j} o={o} lt={lt} dur={s.dur} t={t} amp={amp} talk={talk} />)}
         {s.spec.blast && (
@@ -283,7 +312,7 @@ export const Story: React.FC<StoryProps> = (props) => {
       {(bolt > 0 || (s.spec.flash && lt < 0.4)) && <AbsoluteFill style={{background: '#fff', opacity: Math.max(bolt * 0.55, s.spec.flash ? (1 - lt / 0.4) * 0.8 : 0)}} />}
       <Hook lines={props.hook} t={t} />
       {t > 2.9 && <Counter sc={sc} t={t} />}
-      <Captions caps={props.captions ?? []} t={t} />
+      <Captions caps={props.captions ?? []} t={t} top={H * 0.74} />
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>
   );

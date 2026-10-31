@@ -99,10 +99,10 @@ const faceTexture = (face: Face, talk: number) => {
 const outlineMat = new THREE.MeshBasicMaterial({color: '#1b1b1f', side: THREE.BackSide});
 
 /** 太い黒フチ (裏面を少し大きく描く、アニメ風の定番のやり方)。 */
-const Outlined: React.FC<{geo: THREE.BufferGeometry; color: string; w?: number} & JSX.IntrinsicElements['group']> = ({geo, color, w = 1.08, ...rest}) => (
+const Outlined: React.FC<{geo: THREE.BufferGeometry; color: string; w?: number; glow?: number} & JSX.IntrinsicElements['group']> = ({geo, color, w = 1.08, glow = 0, ...rest}) => (
   <group {...rest}>
     <mesh geometry={geo} castShadow>
-      <meshToonMaterial color={color} />
+      <meshToonMaterial color={color} emissive={color} emissiveIntensity={glow} />
     </mesh>
     <mesh geometry={geo} material={outlineMat} scale={w} />
   </group>
@@ -148,7 +148,7 @@ export const Character: React.FC<{
         rotation={[swing * (1 - wave), 0, -0.35 - wave * (2.2 + Math.sin(walk * 12) * 0.35)]} />
       {/* 頭 */}
       <group position={[0, 3.35, 0]}>
-        <Outlined geo={g.head} color={skin} w={1.05} />
+        <Outlined geo={g.head} color={skin} w={1.05} glow={0.35} />
         <Outlined geo={g.hair} color={spec.hair ?? '#7a4a2b'} scale={1.03} position={[0, 0.06, -0.05]} w={1.04} />
         <Outlined geo={g.tuft} color={spec.hair ?? '#7a4a2b'} position={[0.05, 1.12, 0.1]} rotation={[0.3, 0, -0.3]} w={1.1} />
         <mesh position={[0, -0.05, 1.01]}>

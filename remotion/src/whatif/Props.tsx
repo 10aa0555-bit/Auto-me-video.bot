@@ -122,3 +122,109 @@ export const Iceberg: React.FC = () => (
 );
 
 export const SHARED = {THREE};
+
+/** 森と山 (国立公園) の舞台。ゆるい丘に木を並べる。 */
+export const Forest: React.FC = () => {
+  const ground = useMemo(() => {
+    const g = new THREE.PlaneGeometry(800, 800, 80, 80);
+    g.rotateX(-Math.PI / 2);
+    const p = g.attributes.position as THREE.BufferAttribute;
+    for (let k = 0; k < p.count; k++) {
+      const x = p.getX(k);
+      const z = p.getZ(k);
+      const d = Math.hypot(x, z);
+      // 真ん中 (話の舞台) は平ら、遠くほど丘になる
+      const hill = Math.max(0, d - 40) / 60;
+      p.setY(k, (Math.sin(x * 0.03) + Math.cos(z * 0.025)) * 3 * Math.min(1, hill) + Math.max(0, d - 200) * 0.25);
+    }
+    g.computeVertexNormals();
+    return g;
+  }, []);
+  const trees = useMemo(() => {
+    const r = rng(9);
+    const m = new THREE.InstancedMesh(new THREE.ConeGeometry(1.4, 4.5, 7), new THREE.MeshToonMaterial({color: '#3f8a46'}), 700);
+    const mt = new THREE.Matrix4();
+    let n = 0;
+    for (let k = 0; k < 2000 && n < 700; k++) {
+      const x = (r() - 0.5) * 500;
+      const z = (r() - 0.5) * 500;
+      if (Math.hypot(x, z) < 22) continue;
+      const s = 0.8 + r() * 0.9;
+      const d = Math.hypot(x, z);
+      const y = (Math.sin(x * 0.03) + Math.cos(z * 0.025)) * 3 * Math.min(1, Math.max(0, d - 40) / 60) + Math.max(0, d - 200) * 0.25;
+      mt.compose(new THREE.Vector3(x, y + 2.2 * s, z), new THREE.Quaternion(), new THREE.Vector3(s, s, s));
+      m.setMatrixAt(n++, mt);
+    }
+    m.count = n;
+    m.castShadow = true;
+    return m;
+  }, []);
+  return (
+    <group>
+      <mesh geometry={ground} receiveShadow><meshToonMaterial color="#7cb35c" /></mesh>
+      <primitive object={trees} />
+    </group>
+  );
+};
+
+/** 見張り塔 (木の脚に小屋)。 */
+export const Tower: React.FC = () => (
+  <group>
+    {[[-1.2, -1.2], [1.2, -1.2], [-1.2, 1.2], [1.2, 1.2]].map(([x, z], i) => (
+      <Toon key={i} color="#8a6240" position={[x, 5, z]}><boxGeometry args={[0.3, 10, 0.3]} /></Toon>
+    ))}
+    <Toon color="#c9a77a" position={[0, 11, 0]}><boxGeometry args={[3.4, 2.2, 3.4]} /></Toon>
+    <Toon color="#8a3b2e" position={[0, 12.6, 0]} rotation={[0, Math.PI / 4, 0]}><coneGeometry args={[2.8, 1.4, 4]} /></Toon>
+  </group>
+);
+
+/** 公園の小型トラック。 */
+export const Truck: React.FC = () => (
+  <group>
+    <Toon color="#3f6b3a" position={[0, 0.9, 0]}><boxGeometry args={[2.2, 1.2, 5]} /></Toon>
+    <Toon color="#3f6b3a" position={[0, 1.9, 1]}><boxGeometry args={[2.0, 1.0, 2.2]} /></Toon>
+    <Toon color="#9fd3f5" position={[0, 1.95, 2.12]}><boxGeometry args={[1.8, 0.7, 0.05]} /></Toon>
+    {[[-1.1, -1.6], [1.1, -1.6], [-1.1, 1.6], [1.1, 1.6]].map(([x, z], i) => (
+      <Toon key={i} color="#1f2229" position={[x, 0.45, z]} rotation={[0, 0, Math.PI / 2]}><cylinderGeometry args={[0.45, 0.45, 0.35, 12]} /></Toon>
+    ))}
+  </group>
+);
+
+/** 管理小屋 (レンジャーステーション)。 */
+export const Cabin: React.FC = () => (
+  <group>
+    <Toon color="#b88a5a" position={[0, 1.6, 0]}><boxGeometry args={[6, 3.2, 5]} /></Toon>
+    <Toon color="#7a3a2e" position={[0, 3.9, 0]} rotation={[0, Math.PI / 4, 0]}><coneGeometry args={[4.6, 1.8, 4]} /></Toon>
+    <Toon color="#5a3a22" position={[0, 1.1, 2.52]}><boxGeometry args={[1.2, 2.2, 0.05]} /></Toon>
+    <Toon color="#9fd3f5" position={[1.9, 1.9, 2.52]}><boxGeometry args={[1.2, 0.9, 0.05]} /></Toon>
+  </group>
+);
+
+/** 池。 */
+export const Pond: React.FC = () => (
+  <mesh position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[1, 0.7, 1]}>
+    <circleGeometry args={[9, 32]} />
+    <meshStandardMaterial color="#4aa8e0" roughness={0.2} />
+  </mesh>
+);
+
+/** カミナリ (空から地面まで、ぎざぎざに光る線)。k は 0..1 で、真ん中で一番明るい。 */
+export const Bolt: React.FC<{to: [number, number, number]; k: number; seed?: number}> = ({to, k, seed = 1}) => {
+  const geo = useMemo(() => {
+    const r = rng(seed);
+    const pts: THREE.Vector3[] = [];
+    for (let i = 0; i <= 12; i++) {
+      const u = i / 12;
+      pts.push(new THREE.Vector3(to[0] + (u < 1 ? (r() - 0.5) * 4 * (1 - u) : 0), to[1] + (1 - u) * 60, to[2] + (u < 1 ? (r() - 0.5) * 4 * (1 - u) : 0)));
+    }
+    return new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, false, 'catmullrom', 0.0), 60, 0.22, 6, false);
+  }, [to, seed]);
+  if (k <= 0 || k >= 1) return null;
+  const a = 1 - Math.abs(k - 0.3) / 0.7;
+  return (
+    <group>
+      <mesh geometry={geo}><meshBasicMaterial color="#ffffff" transparent opacity={Math.max(0, a)} /></mesh>
+      <mesh geometry={geo} scale={[3, 1, 3]} position={[to[0] * -2, 0, to[2] * -2]}><meshBasicMaterial color="#a9d8ff" transparent opacity={Math.max(0, a) * 0.25} /></mesh>
+    </group>
+  );
+};
