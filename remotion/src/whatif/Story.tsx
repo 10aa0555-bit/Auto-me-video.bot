@@ -8,11 +8,13 @@ import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut, popIn} from '../util';
 import {Character, Face} from './Character';
 import {City} from './City';
-import {Blast, FishBoat, Island, Lifeboat, Liner, Mine, Warship} from './Props';
+import {Blast, FishBoat, Iceberg, Island, Lifeboat, Liner, Mine, Warship} from './Props';
 
 type V3 = [number, number, number];
 export type Obj = {
-  type: 'liner' | 'warship' | 'fishboat' | 'lifeboat' | 'island' | 'mine' | 'char';
+  type: 'liner' | 'warship' | 'fishboat' | 'lifeboat' | 'island' | 'mine' | 'iceberg' | 'char';
+  hull?: string;
+  band?: string;
   pos: V3;
   to?: V3; // シーンの間にここまで動く
   rot?: number; // 向き (度)
@@ -58,7 +60,7 @@ export type StoryProps = {
 const SKY: Record<string, {bg: string; fog: string; sea: string; hemi: number; dir: number; dirColor: string}> = {
   day: {bg: '#9fd0f0', fog: '#bfe0f5', sea: '#3f9bd6', hemi: 0.95, dir: 1.9, dirColor: '#fff4e0'},
   sunset: {bg: '#f2a46e', fog: '#f3b98a', sea: '#3a6896', hemi: 0.8, dir: 1.5, dirColor: '#ffc68a'},
-  night: {bg: '#0b1530', fog: '#10203f', sea: '#123050', hemi: 0.35, dir: 0.55, dirColor: '#a9c0ff'},
+  night: {bg: '#162a5c', fog: '#1c3166', sea: '#22548a', hemi: 0.75, dir: 1.0, dirColor: '#b9ccff'},
   storm: {bg: '#46515c', fog: '#525d68', sea: '#2b4859', hemi: 0.55, dir: 0.5, dirColor: '#d9e2ea'},
 };
 
@@ -160,7 +162,8 @@ const Thing: React.FC<{o: Obj; lt: number; dur: number; t: number; amp: number; 
       </group>
     );
   }
-  if (o.type === 'liner') body = <Liner />;
+  if (o.type === 'liner') body = <Liner hull={o.hull} band={o.band} />;
+  if (o.type === 'iceberg') body = <Iceberg />;
   if (o.type === 'warship') body = <Warship />;
   if (o.type === 'fishboat') body = <FishBoat />;
   if (o.type === 'lifeboat') body = <Lifeboat />;

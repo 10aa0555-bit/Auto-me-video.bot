@@ -12,10 +12,11 @@ const Toon: React.FC<{color: string} & JSX.IntrinsicElements['mesh']> = ({color,
 );
 
 /** 大型客船 (タイタニック型: 黒い船体・白い上部・黄色に黒の煙突 4 本)。長さ約 30。 */
-export const Liner: React.FC<{funnels?: number; hull?: string}> = ({funnels = 4, hull = '#1f2229'}) => (
+export const Liner: React.FC<{funnels?: number; hull?: string; band?: string}> = ({funnels = 4, hull = '#1f2229', band}) => (
   <group>
     <Toon color={hull} position={[0, 1.6, 0]}><boxGeometry args={[4.2, 3.2, 30]} /></Toon>
     <Toon color="#b8362f" position={[0, 0.15, 0]}><boxGeometry args={[4.25, 0.5, 30.05]} /></Toon>
+    {band && <Toon color={band} position={[0, 2.2, 0]}><boxGeometry args={[4.24, 0.45, 30.02]} /></Toon>}
     <Toon color="#f4f1ea" position={[0, 3.7, -0.5]}><boxGeometry args={[3.6, 1.2, 24]} /></Toon>
     <Toon color="#f4f1ea" position={[0, 4.7, -1]}><boxGeometry args={[3.0, 0.8, 18]} /></Toon>
     {/* 窓の列 */}
@@ -102,13 +103,22 @@ export const Mine: React.FC = () => (
 /** 爆発 (膨らんで消える火の玉)。k は 0..1 の進み具合。 */
 export const Blast: React.FC<{k: number}> = ({k}) => {
   if (k <= 0 || k >= 1) return null;
-  const s = 1 + k * 7;
+  const s = 0.6 + k * 3.6;
   return (
     <group>
-      <mesh scale={s}><sphereGeometry args={[1, 16, 12]} /><meshBasicMaterial color="#ffb03a" transparent opacity={(1 - k) * 0.9} /></mesh>
+      <mesh scale={s}><sphereGeometry args={[1, 16, 12]} /><meshBasicMaterial color="#ff7a2a" transparent opacity={(1 - k) * 0.95} /></mesh>
       <mesh scale={s * 0.6}><sphereGeometry args={[1, 16, 12]} /><meshBasicMaterial color="#fff2c0" transparent opacity={(1 - k)} /></mesh>
     </group>
   );
 };
+
+/** 氷山 (白いとがった塊)。 */
+export const Iceberg: React.FC = () => (
+  <group>
+    <Toon color="#eef7fb" position={[0, 3, 0]} rotation={[0, 0.4, 0]}><coneGeometry args={[7, 12, 6]} /></Toon>
+    <Toon color="#d7ecf5" position={[4, 1.5, 2]} rotation={[0, 1.1, 0]}><coneGeometry args={[4, 6, 5]} /></Toon>
+    <Toon color="#e4f2f8" position={[-4, 1, -1]} rotation={[0, 2, 0]}><coneGeometry args={[4.5, 4, 6]} /></Toon>
+  </group>
+);
 
 export const SHARED = {THREE};
