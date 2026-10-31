@@ -81,9 +81,13 @@ jobs:
           export U2NET_HOME="$HOME/.cache/geo_short/u2net"
           mkdir -p out
           for s in $SCRIPTS; do
-            case "$s" in scripts/*.json|maps/*.json|whatif/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
+            case "$s" in scripts/*.json|maps/*.json|whatif/*.json|stories/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
             name=$(basename "$s" .json)
-            if [ "${s%%/*}" = "whatif" ]; then
+            if [ "${s%%/*}" = "stories" ]; then
+              # Rick 風の物語: 丸顔のキャラクターと 3D の舞台 (海・街)
+              python tools/whatif_prep.py "$s" $PREP_OPTIONS
+              (cd remotion && npx remotion render src/index.ts Story "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --log=info)
+            elif [ "${s%%/*}" = "whatif" ]; then
               # What if シリーズ: 3D のミニチュアの街 (WebGL はソフトウェアで描く)
               python tools/whatif_prep.py "$s" $PREP_OPTIONS
               (cd remotion && npx remotion render src/index.ts WhatIf "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --log=info)

@@ -60,3 +60,33 @@ def render(scenes, total, rewind=0.0):
     mix = 0.22 * waves + 0.12 * wind + 0.12 * city + 0.10 * heli
     fade = np.minimum(1, t / 0.8) * np.minimum(1, (total - t) / 0.4)
     return np.clip(mix * fade, -1, 1)
+
+
+def render_story(scenes, total):
+    """物語 (海の上) の環境音: 波 (spec.waves の大きさ)、嵐の雨と風、雷 (lightning の場面)。"""
+    n = int(total * SR)
+    t = np.arange(n) / SR
+    amp = track(scenes, "waves", 0.3, total, 1.2)
+    storm = np.zeros(n)
+    for s in scenes:
+        if s["spec"].get("sky") == "storm":
+            m = (t >= s["start"]) & (t < s["start"] + s["dur"])
+            storm[m] = 1
+    storm = np.convolve(storm, np.ones(SR) / SR, mode="same")  # 1 秒かけて出入り
+    ocean = any(s["spec"].get("set", "ocean") == "ocean" for s in scenes)
+    swell = 0.55 + 0.45 * np.sin(2 * np.pi * 0.13 * t + 0.7) ** 2
+    waves = _shaped_noise(n, 70, 900, 11) * swell * np.clip(0.3 + amp / 2.5, 0, 1.2) * (1 if ocean else 0.3)
+    rain = _shaped_noise(n, 1500, 7000, 12) * storm * 0.6
+    wind = _shaped_noise(n, 120, 600, 13) * (0.2 + 0.8 * storm)
+    thunder = np.zeros(n)
+    for s in scenes:
+        if s["spec"].get("lightning"):
+            for dt in (0.55, 2.75):
+                i = int((s["start"] + dt) * SR)
+                L = min(int(2.2 * SR), n - i)
+                if L > 0:
+                    env = np.exp(-np.arange(L) / (0.6 * SR))
+                    thunder[i:i + L] += _shaped_noise(L, 20, 160, i % 97) * env * 1.4
+    out = 0.24 * waves + 0.14 * rain + 0.1 * wind + 0.35 * thunder
+    fade = np.minimum(1, t / 0.6) * np.minimum(1, (total - t) / 0.4)
+    return np.clip(out * fade, -1, 1)
