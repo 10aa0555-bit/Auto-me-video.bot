@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
+import {Figure, Portrait} from './Youth';
 
 /**
  * ダークなモチベーション動画用の舞台 (雨のヨーロッパの夜、金髪で黒いコートの静かな青年)。
@@ -115,54 +116,11 @@ const Facades: React.FC<{t: number; base: number; seed?: number; tone?: string}>
  */
 export const Man: React.FC<{x: number; y: number; s?: number; view?: 'front' | 'back'; walk?: number; smile?: number; glint?: number}> = ({
   x, y, s = 1, view = 'front', walk = 0, smile = 0, glint = 0,
-}) => {
-  const step = Math.sin(walk * 5) * 10 * (walk ? 1 : 0);
-  return (
-    <g transform={`translate(${x} ${y}) scale(${s})`}>
-      <ellipse cy={6} rx={120} ry={18} fill="#000" opacity={0.35} />
-      {/* 脚 */}
-      <rect x={-46 + step * 0.5} y={-230} width={38} height={232} rx={12} fill={N.coat} stroke={N.ink} strokeWidth={6} />
-      <rect x={8 - step * 0.5} y={-230} width={38} height={232} rx={12} fill={N.coat} stroke={N.ink} strokeWidth={6} />
-      {/* コート (すそが広がる) */}
-      <path d="M -92 -560 Q -120 -380 -118 -150 L -40 -170 L 0 -470 L 40 -170 L 118 -150 Q 120 -380 92 -560 Q 0 -610 -92 -560 Z" fill={N.coat} stroke={N.ink} strokeWidth={7} strokeLinejoin="round" />
-      {view === 'front' && (
-        <g>
-          {/* 白いシャツの襟元 */}
-          <path d="M -38 -566 L 0 -500 L 38 -566 Z" fill={N.cream} />
-          <path d="M -60 -575 L -6 -470 L -70 -420 Z M 60 -575 L 6 -470 L 70 -420 Z" fill="#1b2228" stroke={N.ink} strokeWidth={5} />
-        </g>
-      )}
-      {/* 腕 */}
-      <path d="M -92 -548 Q -128 -430 -112 -300" stroke={N.coat} strokeWidth={46} fill="none" strokeLinecap="round" />
-      <path d="M 92 -548 Q 128 -430 112 -300" stroke={N.coat} strokeWidth={46} fill="none" strokeLinecap="round" />
-      <circle cx={-112} cy={-292} r={20} fill={N.skin} stroke={N.ink} strokeWidth={5} />
-      <circle cx={112} cy={-292} r={20} fill={N.skin} stroke={N.ink} strokeWidth={5} />
-      {/* 首と頭 */}
-      <rect x={-20} y={-610} width={40} height={50} fill={N.skin} />
-      <ellipse cy={-680} rx={66} ry={82} fill={N.skin} stroke={N.ink} strokeWidth={6} />
-      {view === 'front' ? (
-        <g>
-          {/* 目 (細く、静か) */}
-          <path d="M -40 -682 Q -26 -690 -12 -682" stroke={N.ink} strokeWidth={6} fill="none" strokeLinecap="round" />
-          <path d="M 12 -682 Q 26 -690 40 -682" stroke={N.ink} strokeWidth={6} fill="none" strokeLinecap="round" />
-          <circle cx={-26} cy={-680} r={5} fill={glint ? N.red : N.ink} />
-          <circle cx={26} cy={-680} r={5} fill={glint ? N.red : N.ink} />
-          {glint > 0 && <circle cx={26} cy={-680} r={16} fill={N.red} opacity={0.5 * glint} filter="url(#glowS)" />}
-          <path d="M 0 -672 L -6 -648 L 4 -646" stroke="#c9b2a0" strokeWidth={4} fill="none" strokeLinecap="round" />
-          <path d={`M -16 -626 Q 0 ${-626 + 4 - smile * 10} 18 ${-628 - smile * 6}`} stroke={N.ink} strokeWidth={5} fill="none" strokeLinecap="round" />
-          {/* 前髪 (横に流した金髪) */}
-          <path d="M -72 -690 Q -80 -780 -10 -772 Q 70 -778 74 -700 Q 60 -740 20 -730 Q 30 -712 -6 -706 Q -30 -742 -50 -716 Q -60 -706 -72 -690 Z" fill={N.hair} stroke={N.ink} strokeWidth={6} strokeLinejoin="round" />
-          <path d="M -40 -760 Q 0 -770 40 -748" stroke={N.hairS} strokeWidth={6} fill="none" />
-        </g>
-      ) : (
-        <g>
-          <path d="M -70 -660 Q -84 -770 0 -768 Q 84 -770 70 -660 Q 50 -630 0 -632 Q -50 -630 -70 -660 Z" fill={N.hair} stroke={N.ink} strokeWidth={6} />
-          <path d="M -40 -740 Q 0 -700 40 -742" stroke={N.hairS} strokeWidth={6} fill="none" />
-        </g>
-      )}
-    </g>
-  );
-};
+}) => (
+  <g transform={`translate(${x} ${y}) scale(${s * 0.95})`}>
+    <Figure view={view} walk={walk} smile={smile} glint={glint} />
+  </g>
+);
 
 /** 雨の石畳の通り。 */
 export const Street: React.FC<{t: number; lt: number}> = ({t, lt}) => (
@@ -213,10 +171,11 @@ export const Bridge: React.FC<{t: number}> = ({t}) => (
 export const Face: React.FC<{t: number; lt: number; smile?: boolean}> = ({t, lt, smile}) => (
   <g>
     <NightSky id="ns3" top="#060d11" bottom="#152a31" />
-    <Man x={W * 0.5} y={H * 0.66 + 680 * 3.3} s={3.3} smile={smile ? easeOut(clamp01((lt - 1) / 1.2)) : 0} glint={Math.max(0, Math.sin(lt * 1.3) - 0.6) * 2.5} />
-    {/* 顔の右半分の影 */}
-    <rect x={W * 0.5} y={0} width={W * 0.5} height={H} fill="#000" opacity={0.42} />
-    <Rain t={t} o={0.3} />
+    <circle cx={W * 0.25} cy={H * 0.3} r={500} fill={N.lamp} opacity={0.1} filter="url(#blur40)" />
+    <g transform={`translate(${W / 2} ${H * 0.71}) scale(${1.38 + lt * 0.012})`}>
+      <Portrait smile={smile ? easeOut(clamp01((lt - 1) / 1.2)) : 0.15} glint={smile ? clamp01((lt - 2.2) / 0.8) : 0} look={Math.sin(lt * 0.6) * 0.5} />
+    </g>
+    <Rain t={t} o={0.22} />
   </g>
 );
 
@@ -268,10 +227,10 @@ export const Mirror: React.FC<{t: number; lt: number}> = ({t, lt}) => (
     <rect x={W * 0.12} y={H * 0.14} width={W * 0.76} height={H * 0.62} rx={30} fill="#2a4148" stroke="#b99a52" strokeWidth={22} />
     <clipPath id="mirClip"><rect x={W * 0.12} y={H * 0.14} width={W * 0.76} height={H * 0.62} rx={30} /></clipPath>
     <g clipPath="url(#mirClip)">
-      <Man x={W * 0.6} y={H * 0.32 + 680 * 1.4} s={1.4} smile={easeOut(clamp01((lt - 1.5) / 1.5))} glint={clamp01((lt - 2) / 1)} />
+      <g transform={`translate(${W * 0.56} ${H * 0.36}) scale(1.05)`}><Portrait smile={easeOut(clamp01((lt - 1.5) / 1.5))} glint={clamp01((lt - 2) / 1)} shade={0.6} /></g>
       <rect x={W * 0.1} y={H * 0.1} width={60} height={H * 0.7} fill="#fff" opacity={0.08} transform={`skewX(-20)`} />
     </g>
-    <Man x={W * 0.28} y={H * 0.8 + 680 * 2.0} s={2.0} view="back" />
+    <g transform={`translate(${W * 0.3} ${H * 0.86}) scale(1.2)`}><Portrait back /></g>
   </g>
 );
 

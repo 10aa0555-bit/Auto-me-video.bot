@@ -2,6 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
+import {YouthDefs} from './Youth';
 import {Bridge, Chess, Crowd, Face, Fire, Mirror, Moon, Stairs, Street, Window} from './Noir';
 
 /**
@@ -616,8 +617,9 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
   const cam = (z: number) => `translate(${W / 2} ${H / 2}) scale(${z}) translate(${-W / 2} ${-H / 2})`;
   return (
     <AbsoluteFill style={{background: C.ink}}>
-      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={props.theme === 'noir' ? {filter: 'saturate(0.8) contrast(1.08)'} : undefined}>
         <Defs />
+        <YouthDefs />
         {Prev && fin < 1 && (
           <g transform={cam((1 + 0.07) * (1 + 0.25 * fin))} opacity={1}>
             <Prev t={t} lt={t - prev!.start} />
@@ -627,6 +629,17 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
           <Cur t={t} lt={lt} />
         </g>
         <rect width={W} height={H} fill="url(#vign)" />
+        {props.theme === 'noir' && (
+          <g>
+            {/* フィルムの粒子 (毎フレーム変わる) + 紙っぽい色むら */}
+            <filter id="grain" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves={2} seed={frame % 24} />
+              <feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.16 0" />
+            </filter>
+            <rect width={W} height={H} filter="url(#grain)" />
+            <rect width={W} height={H} fill="#d9b98a" opacity={0.07} style={{mixBlendMode: 'overlay'}} />
+          </g>
+        )}
       </svg>
       <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
