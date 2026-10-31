@@ -86,7 +86,7 @@ jobs:
             if [ "${s%%/*}" = "whatif" ]; then
               # What if シリーズ: 3D のミニチュアの街 (WebGL はソフトウェアで描く)
               python tools/whatif_prep.py "$s" $PREP_OPTIONS
-              (cd remotion && npx remotion render src/index.ts WhatIf "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=4 --log=info)
+              (cd remotion && npx remotion render src/index.ts WhatIf "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --log=info)
             else
               python tools/remotion_prep.py "$s" $PREP_OPTIONS
               (cd remotion && npx remotion render src/index.ts Short "../out/${name}_raw.mp4" --props=props.json --log=info)
