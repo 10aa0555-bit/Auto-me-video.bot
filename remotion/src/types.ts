@@ -51,10 +51,21 @@ export type GhostSpec = {
   label?: string;
 };
 
+export type PhotoSpec = {
+  q: string;
+  src?: string;
+  caption?: string;
+  pos?: [number, number];
+  size?: number;
+  delay?: number;
+  tilt?: number;
+};
+
 export type Bar = {label: string; value: number; color?: string};
 
 export type SceneSpec = {
   dim?: boolean;
+  photos?: PhotoSpec[];
   ghosts?: GhostSpec[];
   bars?: {title?: string; unit?: string; items: Bar[]; y?: number; delay?: number};
   outline?: string[];

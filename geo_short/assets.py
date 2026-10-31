@@ -327,20 +327,27 @@ COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 UA = {"User-Agent": "geo-short-video-bot/1.0 (https://github.com/10aa0555-bit/Auto-me-video.bot)"}
 
 
-def _is_free(meta):
-    """パブリックドメインか CC0 の画像だけを使う (クレジット表記の義務が無く、収益化しても安全)。"""
+def _is_free(meta, allow_by=False):
+    """パブリックドメインか CC0 の画像だけを使う (クレジット表記の義務が無く、収益化しても安全)。
+
+    allow_by=True なら CC BY (表示のみ、継承 SA は除く) も許す。その場合は説明欄に作者とライセンスを書く。
+    """
     lic = (meta.get("LicenseShortName", {}).get("value", "") + " " +
            meta.get("License", {}).get("value", "")).lower()
-    return any(k in lic for k in ("public domain", "pd-", "pd ", "cc0")) or lic.strip() == "pd"
+    if any(k in lic for k in ("public domain", "pd-", "pd ", "cc0")) or lic.strip() == "pd":
+        return True
+    return allow_by and ("cc by" in lic or "cc-by" in lic) and "sa" not in lic.replace("cc-by", "").replace("cc by", "") \
+        and "nc" not in lic and "nd" not in lic
 
 
 class Photos:
     """コモンズから著作権切れの写真・絵画を探して保存する。"""
 
-    def __init__(self):
+    def __init__(self, allow_by=False):
         self.dir = os.path.join(CACHE, "photos")
         os.makedirs(self.dir, exist_ok=True)
         self.credits = []
+        self.allow_by = allow_by
 
     def _path(self, key):
         import hashlib
@@ -374,7 +381,7 @@ class Photos:
             meta = info.get("extmetadata", {})
             if info.get("mime") not in ("image/jpeg", "image/png") or info.get("width", 0) < 500:
                 continue
-            if not _is_free(meta):
+            if not _is_free(meta, self.allow_by):
                 continue
             data = requests.get(info.get("thumburl") or info["url"], headers=UA, timeout=120).content
             import cv2
@@ -383,8 +390,10 @@ class Photos:
             if img is None:
                 continue
             cv2.imwrite(path, img, [cv2.IMWRITE_JPEG_QUALITY, 92])
+            import re
+            artist = re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "")).strip()
             credit = {"title": p.get("title"), "license": meta.get("LicenseShortName", {}).get("value", ""),
-                      "url": info.get("descriptionurl", "")}
+                      "url": info.get("descriptionurl", ""), "artist": artist[:80]}
             import json
             with open(meta_path, "w", encoding="utf-8") as f:
                 json.dump(credit, f, ensure_ascii=False)

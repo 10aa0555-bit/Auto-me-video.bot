@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Fills, Ghost, Line, Outlines, SwarmDots} from './Geo';
+import type {PhotoSpec} from './types';
 import type {Caption, Icon, MapTex, Marker, Props, Scene, TextSpec} from './types';
 import {FONT, H, W, clamp01, easeIn, easeInOut, easeOut, outScale, popIn, stickerFilter, toScreen} from './util';
 
@@ -201,7 +202,9 @@ const Pin: React.FC<{m: Marker; lt: number; dur: number; cam: Cam}> = ({m, lt, d
   const ring = clamp01((t - 0.3) / 0.7);
   const labelK = popIn(t - 0.45) * out;
   // 札が画面の右端からはみ出すときだけピンの左側に出す
-  const flip = x + 50 + (m.label ?? '').length * 27 + 48 > W - 20;
+  const lw = (m.label ?? '').length * 27 + 48;
+  const flip = x + 50 + lw > W - 20;
+  const center = flip && x - 50 - lw < 20;  // 左右どちらにも収まらないときはピンの上に出す
   return (
     <>
       {ring > 0 && ring < 1 && (
@@ -220,8 +223,10 @@ const Pin: React.FC<{m: Marker; lt: number; dur: number; cam: Cam}> = ({m, lt, d
       </svg>
       {labelK > 0.01 && m.label && (
         <div style={{
-          position: 'absolute', top: y - 92, transformOrigin: flip ? '100% 50%' : '0% 50%', transform: `scale(${labelK})`,
-          ...(flip ? {right: W - x + 50} : {left: x + 50}),
+          position: 'absolute', top: center ? y - 190 : y - 92,
+          transformOrigin: center ? '50% 100%' : flip ? '100% 50%' : '0% 50%',
+          transform: center ? `translateX(-50%) scale(${labelK})` : `scale(${labelK})`,
+          ...(center ? {left: Math.min(Math.max(x, lw / 2 + 20), W - lw / 2 - 20)} : flip ? {right: W - x + 50} : {left: x + 50}),
           background: '#fff', color: '#1d2433', fontFamily: FONT, fontWeight: 800, fontSize: 46,
           padding: '6px 24px', borderRadius: 14, boxShadow: '0 6px 14px rgba(0,0,0,0.3)', whiteSpace: 'nowrap',
         }}>{m.label}</div>
@@ -382,6 +387,38 @@ const Bars: React.FC<{b: NonNullable<Scene['spec']['bars']>; lt: number; dur: nu
   );
 };
 
+// ---------------------------------------------------------------- 本物の写真 (ポラロイド風のカード)
+
+const PhotoCard: React.FC<{p: PhotoSpec; lt: number; dur: number}> = ({p, lt, dur}) => {
+  if (!p.src) return null;
+  const delay = p.delay ?? 0.5;
+  const k = popIn(lt - delay, 0.5) * outScale(lt, dur, 0.3);
+  if (k < 0.01) return null;
+  const w = p.size ?? 660;
+  const h = w * 0.75;
+  const [px, py] = p.pos ?? [0.5, 0.36];
+  const tilt = (p.tilt ?? -3) + (1 - Math.min(1, (lt - delay) / 0.5)) * -10;
+  const zoom = 1 + 0.08 * clamp01((lt - delay) / Math.max(1, dur - delay));
+  return (
+    <div style={{
+      position: 'absolute', left: W * px - w / 2 - 18, top: H * py - h / 2 - 18, width: w + 36,
+      padding: 18, paddingBottom: p.caption ? 76 : 18, background: '#fbf8f1', borderRadius: 6,
+      boxShadow: '0 22px 50px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.35)', boxSizing: 'border-box',
+      transform: `rotate(${tilt}deg) scale(${k})`,
+    }}>
+      <div style={{width: w, height: h, overflow: 'hidden', background: '#222'}}>
+        <Img src={job(p.src)} style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${zoom})`}} />
+      </div>
+      {p.caption && (
+        <div style={{
+          position: 'absolute', left: 0, right: 0, bottom: 14, textAlign: 'center', fontFamily: FONT, fontWeight: 800,
+          fontSize: 40, color: '#1d2433', letterSpacing: 1,
+        }}>{p.caption}</div>
+      )}
+    </div>
+  );
+};
+
 // ---------------------------------------------------------------- 1 シーン
 
 const SceneLayer: React.FC<{s: Scene; prevYear?: string; props: Props}> = ({s, prevYear, props}) => {
@@ -406,6 +443,7 @@ const SceneLayer: React.FC<{s: Scene; prevYear?: string; props: Props}> = ({s, p
       {(sp.lines ?? []).map((ln, i) => <Line key={`l${i}`} ln={ln} cam={cam} lt={lt} dur={s.dur} />)}
       {(sp.markers ?? []).map((m, i) => <Pin key={`m${i}`} m={m} lt={lt} dur={s.dur} cam={cam} />)}
       {(sp.icons ?? []).map((ic, i) => <Sticker key={`i${i}`} ic={{delay: 0.4 + i * 0.3, ...ic}} lt={lt} dur={s.dur} cam={cam} />)}
+      {(sp.photos ?? []).map((ph, i) => <PhotoCard key={`p${i}`} p={ph} lt={lt} dur={s.dur} />)}
       {(sp.texts ?? []).map((tx, i) => <BigText key={`t${i}`} tx={{delay: 0.5 + i * 0.3, ...tx}} lt={lt} dur={s.dur} />)}
       {sp.year && <Year year={sp.year} lt={lt} dur={s.dur} first={sp.year !== prevYear} />}
       {sp.banner && <Banner b={sp.banner} lt={lt} dur={s.dur} />}

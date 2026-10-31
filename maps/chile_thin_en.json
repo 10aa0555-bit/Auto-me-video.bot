@@ -141,6 +141,18 @@
           "delay": 0.4,
           "draw_time": 3.0
         }
+      ],
+      "photos": [
+        {
+          "q": "Andes mountains Chile Argentina border aerial",
+          "caption": "THE ANDES",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 3.2,
+          "size": 600
+        }
       ]
     },
     {
@@ -270,7 +282,19 @@
       "base": "relief",
       "fill": {
         "BOL": null
-      }
+      },
+      "photos": [
+        {
+          "q": "Atacama Desert landscape",
+          "caption": "ATACAMA",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ]
     },
     {
       "narration": "Down south, the land breaks apart into fjords, islands and glaciers.",
@@ -280,7 +304,19 @@
           -50
         ],
         "span": 8
-      }
+      },
+      "photos": [
+        {
+          "q": "Patagonia glacier Chile",
+          "caption": "PATAGONIA",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ]
     },
     {
       "narration": "And in the middle, about four in ten Chileans live in one city: Santiago.",
@@ -334,6 +370,18 @@
           ],
           "size": 200,
           "delay": 2.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Santiago de Chile skyline Andes",
+          "caption": "SANTIAGO",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.4,
+          "size": 600
         }
       ]
     },

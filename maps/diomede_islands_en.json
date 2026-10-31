@@ -90,6 +90,18 @@
           "label": "Little Diomede (USA)",
           "delay": 2.4
         }
+      ],
+      "photos": [
+        {
+          "q": "Little Diomede Island Alaska village",
+          "caption": "LITTLE DIOMEDE",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.6,
+          "size": 620
+        }
       ]
     },
     {
@@ -211,6 +223,18 @@
           "label": "~80 people",
           "delay": 1.0
         }
+      ],
+      "photos": [
+        {
+          "q": "Diomede Alaska houses",
+          "caption": "THE VILLAGE",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
       ]
     },
     {
@@ -243,6 +267,18 @@
           "y": 0.22,
           "size": 100,
           "delay": 2.4
+        }
+      ],
+      "photos": [
+        {
+          "q": "Bering Strait sea ice",
+          "caption": "FROZEN STRAIT",
+          "pos": [
+            0.5,
+            0.36
+          ],
+          "delay": 0.4,
+          "size": 620
         }
       ]
     },

@@ -264,6 +264,31 @@ def map_textures(timeline, job, looks, use_tiles=True):
 shapes_bbox = {}  # 国の本土の範囲 (国旗を貼る位置)
 
 
+def prepare_photos(script, job):
+    """photos (本物の写真のカード) をウィキメディア・コモンズから用意する。PD / CC0 / CC BY だけ。クレジットを返す。"""
+    from geo_short.assets import Photos
+    ph = Photos(allow_by=True)
+    for sc in script["scenes"]:
+        for c in sc.get("photos", []):
+            spec = {"file": c["q"]} if c["q"].startswith("File:") else {"query": c["q"]}
+            try:
+                path = ph.prepare(spec)
+            except Exception as e:  # 写真が取れなくても動画は作る
+                print(f"  写真の取得に失敗: {c['q']} -> {e}")
+                path = None
+            if path:
+                name = "photo_" + os.path.basename(path)
+                shutil.copy(path, os.path.join(job, name))
+                c["src"] = name
+    out = []
+    for cr in ph.credits:
+        t = cr["title"].replace("File:", "").rsplit(".", 1)[0]
+        line = f"{t}" + (f" by {cr['artist']}" if cr.get("artist") else "") + f" ({cr['license']})"
+        if line not in out:
+            out.append(line)
+    return ["Photos: Wikimedia Commons — " + "; ".join(out)] if out else []
+
+
 def prepare_flags(script, job):
     """塗りに "flag:xx" を使う国旗の SVG (flag-icons, MIT) を job にコピーする。"""
     from geo_short.assets import Flags
@@ -392,6 +417,7 @@ def main():
     prepare_ghosts(script)
     shapes = prepare_shapes(script, tl)
     prepare_flags(script, job)
+    photo_credits = prepare_photos(script, job)
     fonts = os.path.join(os.path.dirname(__file__), "..", "fonts")
     for f in os.listdir(fonts):
         if f.startswith("Poppins"):
@@ -400,6 +426,7 @@ def main():
     # 熱帯など Sentinel-2 の継ぎ目 (斜めの縞) が目立つ地域は "imagery": "bluemarble" で Blue Marble だけにする
     use_tiles = not args.no_tiles and script.get("imagery", "sentinel") != "bluemarble"
     tex, credits = map_textures(tl, job, sorted(looks), use_tiles)
+    credits = credits + photo_credits
 
     fx = os.path.join(job, "sfx.wav")
     sfx.render_track(tl.sfx, total, fx)
