@@ -172,6 +172,7 @@ export type CityState = {
   sea: number; // 海面の高さ (単位。0 = 地面)
   cars: number; // 0..1 走っている車の割合
   people: number; // 0..1
+  night?: number; // 0..1 夜 (窓が光る)
 };
 
 /** ミニチュアの街 (ビル・道路・横断歩道・並木・車・人・浜辺)。 */
@@ -179,7 +180,23 @@ export const City: React.FC<{s: CityState}> = ({s}) => {
   const L = useMemo(layout, []);
   const tex = useMemo(windowTexture, []);
   const bGeo = useMemo(() => buildingGeometry(L.buildings), [L]);
-  const bMat = useMemo(() => new THREE.MeshStandardMaterial({map: tex, vertexColors: true, roughness: 0.9}), [tex]);
+  const glowTex = useMemo(() => {
+    // 夜の窓明かり (ところどころ消えている)
+    const c = document.createElement('canvas');
+    c.width = 64;
+    c.height = 64;
+    const g = c.getContext('2d')!;
+    g.fillStyle = '#000000';
+    g.fillRect(0, 0, 64, 64);
+    g.fillStyle = '#ffd98a';
+    g.fillRect(14, 16, 36, 30);
+    const tx = new THREE.CanvasTexture(c);
+    tx.wrapS = tx.wrapT = THREE.RepeatWrapping;
+    tx.colorSpace = THREE.SRGBColorSpace;
+    return tx;
+  }, []);
+  const bMat = useMemo(() => new THREE.MeshStandardMaterial({map: tex, vertexColors: true, roughness: 0.9, emissiveMap: glowTex, emissive: new THREE.Color('#ffffff')}), [tex, glowTex]);
+  bMat.emissiveIntensity = (s.night ?? 0) * 0.9;
 
   const W = COLS * CELL;
   const D = ROWS * CELL;

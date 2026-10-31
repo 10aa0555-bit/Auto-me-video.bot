@@ -62,6 +62,9 @@ def main():
         if i and s["spec"].get("cam"):
             ev.append((max(0, s["start"] - 0.1), "whoosh", {"seed": i}))
         prev = c
+        # 台本で場面ごとに指定した効果音 (秒は場面の頭から)
+        for st, kind, *kw in s["spec"].get("sfx", []):
+            ev.append((s["start"] + st, kind, kw[0] if kw else {}))
     scenes = [{"spec": sc, "start": s["start"], "dur": s["dur"]} for sc, s in zip(script["scenes"], tl.scenes)]
     # 最後の場面で街を最初の状態に巻き戻し、動画をループさせる (見終わった瞬間に頭とつながる)
     story = "hook" in script  # Rick 風の物語 (キャラクター + 海や街の舞台)

@@ -1,6 +1,6 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState} from 'react';
 import {ThreeCanvas} from '@remotion/three';
-import {AbsoluteFill, Audio, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import * as THREE from 'three';
 import {useThree} from '@react-three/fiber';
 import {Captions, outline} from '../Short';
@@ -8,11 +8,19 @@ import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut, popIn} from '../util';
 import {Character, Face} from './Character';
 import {City} from './City';
+import {Bubble, Core, Drone, Eye, Globe} from './AiProps';
 import {Blast, Bolt, Cabin, FishBoat, Forest, Iceberg, Island, Lifeboat, Liner, Mine, Pond, Tower, Truck, Warship} from './Props';
 
 type V3 = [number, number, number];
 export type Obj = {
-  type: 'liner' | 'warship' | 'fishboat' | 'lifeboat' | 'island' | 'mine' | 'iceberg' | 'tower' | 'truck' | 'cabin' | 'pond' | 'char';
+  type: 'liner' | 'warship' | 'fishboat' | 'lifeboat' | 'island' | 'mine' | 'iceberg' | 'tower' | 'truck' | 'cabin' | 'pond' | 'char' | 'eye' | 'drone' | 'globe' | 'core' | 'bubble';
+  text?: string; // 吹き出しの文字
+  red?: boolean; // 赤い吹き出し
+  delay?: number; // 吹き出し・地球の赤い点が出る秒
+  openAt?: number; // 目が開く秒
+  closeAt?: number; // 目が閉じる秒
+  look?: [number, number]; // 瞳の向き
+  bob?: boolean; // ふわふわ浮く
   fire?: boolean | number; // 髪が燃える (数字ならその秒から)
   face2?: Face; // at 秒から表情を変える (カミナリの後に驚く など)
   at?: number;
@@ -39,9 +47,19 @@ export type StoryScene = {
   dur: number;
   spec: {
     narration?: string;
-    set?: 'ocean' | 'city' | 'forest';
+    set?: 'ocean' | 'city' | 'forest' | 'space' | 'core';
+    night?: number; // 街の窓明かり (0..1)
+    fast?: boolean; // カメラを一気に動かす (クラッシュズーム)
+    cut?: boolean; // カメラを動かさずにパッと切り替える
+    seq?: [number, string][]; // カウンターの文字を秒ごとに切り替える (時計など)
+    count?: {to: number; dur?: number; delay?: number}; // カウンターの数字を 0 から回す
+    stamp?: {text: string; at: number}; // 画面の真ん中にドンと押すハンコ
+    alarm?: boolean; // 画面のふちが赤く点滅
+    scan?: boolean; // 赤いスキャン線が上下する
+    glitch?: [number, number]; // この区間 (秒) 画面が乱れる
+    sfx?: [number, string, Record<string, number>?][]; // 効果音 (whatif_prep が読む)
     strike?: {pos: V3; delay?: number}; // カミナリが落ちる場所
-    sky?: 'day' | 'sunset' | 'night' | 'storm';
+    sky?: 'day' | 'sunset' | 'night' | 'storm' | 'space' | 'core' | 'neon';
     waves?: number;
     cam?: {pos: V3; look: V3};
     objects?: Obj[];
@@ -67,6 +85,9 @@ const SKY: Record<string, {bg: string; fog: string; sea: string; hemi: number; d
   sunset: {bg: '#f2a46e', fog: '#f3b98a', sea: '#3a6896', hemi: 0.8, dir: 1.5, dirColor: '#ffc68a'},
   night: {bg: '#162a5c', fog: '#1c3166', sea: '#22548a', hemi: 0.75, dir: 1.0, dirColor: '#b9ccff'},
   storm: {bg: '#46515c', fog: '#525d68', sea: '#2b4859', hemi: 0.85, dir: 0.85, dirColor: '#d9e2ea'},
+  space: {bg: '#04050a', fog: '#04050a', sea: '#000000', hemi: 0.7, dir: 2.2, dirColor: '#ffffff'},
+  core: {bg: '#0a0b12', fog: '#0a0b12', sea: '#000000', hemi: 0.6, dir: 0.8, dirColor: '#ffd0d4'},
+  neon: {bg: '#0e1430', fog: '#141a3a', sea: '#22548a', hemi: 0.65, dir: 0.7, dirColor: '#9fb4ff'},
 };
 
 /** 海の高さ (波)。船もこの式で上下・傾く。 */
@@ -139,7 +160,7 @@ const Stars: React.FC = () => {
   return <points geometry={geo}><pointsMaterial color="#ffffff" size={2.2} sizeAttenuation={false} /></points>;
 };
 
-const Thing: React.FC<{o: Obj; lt: number; dur: number; t: number; amp: number; talk: number}> = ({o, lt, dur, t, amp, talk}) => {
+const Thing: React.FC<{o: Obj; lt: number; dur: number; t: number; amp: number; talk: number; glitchK?: number}> = ({o, lt, dur, t, amp, talk, glitchK = 0}) => {
   const u = o.to ? easeInOut(lt / dur) : 0;
   let x = o.pos[0] + ((o.to?.[0] ?? o.pos[0]) - o.pos[0]) * u;
   let y = o.pos[1] + ((o.to?.[1] ?? o.pos[1]) - o.pos[1]) * u;
@@ -186,6 +207,15 @@ const Thing: React.FC<{o: Obj; lt: number; dur: number; t: number; amp: number; 
   if (o.type === 'liner') body = <Liner hull={o.hull} band={o.band} />;
   if (o.type === 'iceberg') body = <Iceberg />;
   if (o.type === 'tower') body = <Tower />;
+  if (o.type === 'eye') {
+    const open = (o.openAt !== undefined ? easeOut((lt - o.openAt) / 0.8) : 1) * (o.closeAt !== undefined ? 1 - easeInOut((lt - o.closeAt) / 1.2) : 1);
+    body = <Eye t={t} open={open} glow={open} glitch={glitchK} look={o.look} />;
+  }
+  if (o.type === 'drone') body = <Drone t={t} seed={o.pos[0]} />;
+  if (o.type === 'globe') body = <Globe t={t} red={clamp01((lt - (o.delay ?? 0.2)) / 1.2)} />;
+  if (o.type === 'core') body = <Core t={t} />;
+  if (o.type === 'bubble') body = <Bubble text={o.text ?? ''} red={o.red} k={lt > (o.delay ?? 0) ? popIn(lt - (o.delay ?? 0), 0.35) : 0} />;
+  if (o.bob) y += Math.sin(t * 1.6 + o.pos[0]) * 0.6;
   if (o.type === 'truck') body = <Truck />;
   if (o.type === 'cabin') body = <Cabin />;
   if (o.type === 'pond') body = <Pond />;
@@ -206,7 +236,7 @@ const Cam: React.FC<{sc: StoryScene[]; t: number; shake: number}> = ({sc, t, sha
   };
   const a = i > 0 ? camOf(i - 1) : camOf(i);
   const b = camOf(i);
-  const u = easeInOut((t - sc[i].start) / Math.min(1.6, sc[i].dur * 0.6));
+  const u = sc[i].spec.cut ? 1 : sc[i].spec.fast ? Math.pow(clamp01((t - sc[i].start) / 0.55), 2.2) : easeInOut((t - sc[i].start) / Math.min(1.6, sc[i].dur * 0.6));
   const L = (p: V3, q: V3): V3 => [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u, p[2] + (q[2] - p[2]) * u];
   const p = L(a.pos, b.pos);
   const l = L(a.look, b.look);
@@ -223,14 +253,30 @@ const Cam: React.FC<{sc: StoryScene[]; t: number; shake: number}> = ({sc, t, sha
 const Counter: React.FC<{sc: StoryScene[]; t: number}> = ({sc, t}) => {
   const i = sceneAt(sc, t);
   const s = sc[i];
-  if (!s.spec.counter) return null;
-  const fresh = i === 0 || sc[i - 1].spec.counter !== s.spec.counter;
-  const k = fresh ? popIn(t - s.start, 0.45) : 1;
+  const lt = t - s.start;
+  let text = s.spec.counter;
+  let fresh = i === 0 || sc[i - 1].spec.counter !== s.spec.counter;
+  let since = lt;
+  if (s.spec.seq) {
+    const cur = s.spec.seq.filter(([at]) => lt >= at).pop();
+    if (cur) {
+      text = cur[1];
+      fresh = true;
+      since = lt - cur[0];
+    }
+  }
+  if (s.spec.count) {
+    const c = s.spec.count;
+    const u = clamp01((lt - (c.delay ?? 0.3)) / (c.dur ?? 3));
+    text = Math.round(c.to * (1 - Math.pow(1 - u, 3))).toLocaleString('en-US');
+  }
+  if (!text) return null;
+  const k = fresh ? popIn(since, 0.45) : 1;
   return (
     <div style={{position: 'absolute', top: H * 0.085, width: W, textAlign: 'center'}}>
       <div style={{display: 'inline-block', transform: `scale(${k}) rotate(-2deg)`, padding: '8px 34px', borderRadius: 16,
         background: '#ffffff', border: '6px solid #1b1b1f', boxShadow: '0 8px 0 #1b1b1f'}}>
-        <div style={{fontFamily: 'Poppins', fontWeight: 900, fontSize: 84, lineHeight: 1.0, color: '#1b1b1f'}}>{s.spec.counter}</div>
+        <div style={{fontFamily: 'Poppins', fontWeight: 900, fontSize: 84, lineHeight: 1.0, color: '#1b1b1f'}}>{text}</div>
         {s.spec.sub && <div style={{fontFamily: 'Poppins', fontWeight: 800, fontSize: 32, color: '#e8483f', marginTop: 2}}>{s.spec.sub}</div>}
       </div>
     </div>
@@ -282,13 +328,19 @@ export const Story: React.FC<StoryProps> = (props) => {
   const talk = lastWord ? Math.max(0, 1 - (t - lastWord[1]) * 5) : 0;
   const look = (s.spec.cam ?? sc.find((x) => x.spec.cam)?.spec.cam)?.look ?? [0, 0, 0];
   const set = s.spec.set ?? 'ocean';
+  const g = s.spec.glitch;
+  const glitchK = g && lt >= g[0] && lt < g[1] ? 0.6 + 0.4 * Math.abs(Math.sin(t * 37)) : 0;
+  const [fontHandle] = useState(() => delayRender('fonts'));
+  useMemo(() => {
+    Promise.all([document.fonts.load("900 100px Poppins"), document.fonts.load("800 100px Poppins")]).finally(() => continueRender(fontHandle));
+  }, [fontHandle]);
   return (
     <AbsoluteFill style={{background: bg}}>
       <style>{`@font-face { font-family: 'Poppins'; font-weight: 800; src: url('${staticFile('job/Poppins-ExtraBold.ttf')}'); }
         @font-face { font-family: 'Poppins'; font-weight: 900; src: url('${staticFile('job/Poppins-Black.ttf')}'); }`}</style>
       <ThreeCanvas width={W} height={H} camera={{fov: 40, near: 0.5, far: 1500}} gl={{antialias: true, preserveDrawingBuffer: true}} shadows
         style={{filter: 'saturate(1.22) contrast(1.06)'}}>
-        <Cam sc={sc} t={t} shake={shake} />
+        <Cam sc={sc} t={t} shake={shake + glitchK * 0.8} />
         <color attach="background" args={[bg]} />
         <fog attach="fog" args={[fog, 120, 600]} />
         <hemisphereLight args={['#eaf5ff', '#5d5a52', hemi + bolt * 1.5]} />
@@ -297,11 +349,12 @@ export const Story: React.FC<StoryProps> = (props) => {
           shadow-camera-top={70} shadow-camera-bottom={-70} shadow-camera-far={300} />
         {night > 0.05 && <Stars />}
         {set === 'ocean' && <Ocean t={t} amp={amp} color={sea} />}
-        {set === 'city' && <City s={{t, sea: -1.6, cars: 1, people: 1}} />}
+        {set === 'city' && <City s={{t, sea: -1.6, cars: 1, people: 1, night: s.spec.night ?? 0}} />}
         {set === 'forest' && <Forest />}
+        {(set === 'space' || set === 'core') && <Stars />}
         {s.spec.strike && <Bolt to={s.spec.strike.pos} k={(lt - (s.spec.strike.delay ?? 0.8)) / 0.5} seed={i + 1} />}
         {s.spec.sky === 'storm' && <Rain t={t} center={look} />}
-        {(s.spec.objects ?? []).map((o, j) => <Thing key={j} o={o} lt={lt} dur={s.dur} t={t} amp={amp} talk={talk} />)}
+        {(s.spec.objects ?? []).map((o, j) => <Thing key={j} o={o} lt={lt} dur={s.dur} t={t} amp={amp} talk={talk} glitchK={glitchK} />)}
         {s.spec.blast && (
           <group position={s.spec.blast.pos}><Blast k={(lt - (s.spec.blast.delay ?? 0.8)) / 1.4} /></group>
         )}
@@ -310,6 +363,27 @@ export const Story: React.FC<StoryProps> = (props) => {
       <AbsoluteFill style={{backdropFilter: 'blur(5px)', WebkitMaskImage: 'linear-gradient(#000 0%, #000 6%, transparent 30%, transparent 70%, #000 94%)'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 60%, rgba(0,0,0,0.3) 100%)'}} />
       {(bolt > 0 || (s.spec.flash && lt < 0.4)) && <AbsoluteFill style={{background: '#fff', opacity: Math.max(bolt * 0.55, s.spec.flash ? (1 - lt / 0.4) * 0.8 : 0)}} />}
+      {s.spec.alarm && <AbsoluteFill style={{boxShadow: `inset 0 0 ${180 + 80 * Math.sin(t * 9)}px rgba(255,30,50,${0.55 + 0.35 * Math.sin(t * 9)})`}} />}
+      {s.spec.scan && (
+        <div style={{position: 'absolute', left: 0, width: W, top: H * (0.5 + 0.42 * Math.sin(t * 2.4)), height: 10,
+          background: '#ff2a3d', boxShadow: '0 0 40px 14px rgba(255,42,61,0.7)', opacity: 0.85}} />
+      )}
+      {glitchK > 0 && (
+        <AbsoluteFill style={{mixBlendMode: 'screen'}}>
+          {Array.from({length: 7}).map((_, j) => {
+            const r = Math.abs(Math.sin(Math.floor(t * 20) * 12.9898 + j * 78.233) * 43758.5453) % 1;
+            return <div key={j} style={{position: 'absolute', left: (r - 0.5) * 120, top: H * ((j * 0.137 + r) % 1), width: W + 120, height: 18 + r * 70,
+              background: j % 3 === 0 ? 'rgba(255,0,60,0.55)' : j % 3 === 1 ? 'rgba(0,240,255,0.45)' : 'rgba(255,255,255,0.35)'}} />;
+          })}
+        </AbsoluteFill>
+      )}
+      {s.spec.stamp && lt >= s.spec.stamp.at && (
+        <div style={{position: 'absolute', top: H * 0.42, width: W, textAlign: 'center'}}>
+          <span style={{display: 'inline-block', transform: `rotate(-12deg) scale(${2.2 - 1.2 * easeOut((lt - s.spec.stamp.at) / 0.18)})`,
+            opacity: clamp01((lt - s.spec.stamp.at) / 0.08), fontFamily: 'Poppins', fontWeight: 900, fontSize: 150, color: '#ff2a3d',
+            border: '14px solid #ff2a3d', borderRadius: 28, padding: '0 40px', background: 'rgba(255,255,255,0.12)', letterSpacing: 6}}>{s.spec.stamp.text}</span>
+        </div>
+      )}
       <Hook lines={props.hook} t={t} />
       {t > 2.9 && <Counter sc={sc} t={t} />}
       <Captions caps={props.captions ?? []} t={t} top={H * 0.74} />
