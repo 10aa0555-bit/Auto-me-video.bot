@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Shorts Animation Studio
+node_modules/
+output/*
+!output/.gitkeep
+public/audio/narration.mp3
+input/story.synced.json

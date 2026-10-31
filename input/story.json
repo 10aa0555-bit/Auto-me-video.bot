@@ -1,0 +1,15 @@
+{
+  "title": "もし人類が1日だけ重力を失ったら",
+  "language": "ja",
+  "duration_seconds": 24,
+  "asset_ext": "svg",
+  "style": { "theme_color": "#FFD84D", "accent_color": "#FF3B5C", "mood": "dramatic", "music_mood": "tense" },
+  "audio": { "music_volume": 0.15 },
+  "scenes": [
+    { "start": 0, "end": 4, "narration": "もし明日、地球の重力が1日だけ消えたらどうなるでしょう。", "caption": "もし明日…\n「重力」が\n消えたら？", "emphasis_words": ["重力"], "background": "city_morning", "character": "hero", "expression": "surprised", "character_motion": "pop", "animation": "fast_zoom_in", "transition": "zoom", "sfx": "whoosh" },
+    { "start": 4, "end": 9, "narration": "最初に起きるのは、人も車も家具も空へ浮かび上がることです。", "caption": "すべてが\n浮く！", "emphasis_words": ["浮く"], "background": "city_chaos", "character": "hero", "expression": "scared", "character_motion": "bob", "animation": "shake", "transition": "shake", "sfx": "impact" },
+    { "start": 9, "end": 15, "narration": "空気も海も、そして地球そのものを回す力も失われます。", "caption": "空気も\n海も\n宇宙へ", "emphasis_words": ["宇宙"], "background": "space", "character": "hero", "expression": "scared", "character_motion": "slide_in", "animation": "slow_zoom_in", "transition": "swipe", "sfx": "whoosh" },
+    { "start": 15, "end": 20, "narration": "重力は、見えないけれど私たちを地面につなぎとめる大切な力なのです。", "caption": "見えない力が\n命を守っている", "emphasis_words": ["命"], "background": "city_morning", "character": "hero", "expression": "idle", "character_motion": "bob", "animation": "swipe_left", "transition": "blur" },
+    { "start": 20, "end": 24, "narration": "あなたは、今日どんな重力を感じましたか？", "caption": "あなたは\n何を感じた？", "emphasis_words": ["あなた"], "background": "space", "character": "hero", "expression": "idle", "character_motion": "bob", "animation": "slow_zoom_in", "transition": "fade" }
+  ]
+}

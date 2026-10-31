@@ -1,0 +1,31 @@
+{
+  "name": "shorts-animation-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "JSON台本から縦型ショートアニメ(1080x1920/30fps)をMP4で書き出すRemotionプロジェクト",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "validate": "tsx scripts/validate-script.ts",
+    "assets": "tsx scripts/generate-placeholder-assets.ts",
+    "voice": "tsx scripts/generate-voice.ts",
+    "render": "tsx scripts/render-video.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.539",
+    "@remotion/cli": "^4.0.539",
+    "@remotion/renderer": "^4.0.539",
+    "dotenv": "^18.0.9",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.539",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
