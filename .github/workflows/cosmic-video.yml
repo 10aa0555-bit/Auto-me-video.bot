@@ -1,0 +1,29 @@
+name: Cosmic Word-by-Word Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Script JSON to render"
+        default: "cosmic_script.json"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install numpy pillow requests
+      - name: Render video
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python cosmic_video.py "${{ github.event.inputs.script }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cosmic-video
+          path: cosmic_output.mp4

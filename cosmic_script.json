@@ -1,0 +1,20 @@
+{
+  "title": "Make It Yours",
+  "size": [1080, 1920],
+  "fps": 30,
+  "seed": 7,
+  "voice_id": "pNInz6obpgDQGcFmaJgB",
+  "model_id": "eleven_multilingual_v2",
+  "output": "cosmic_output.mp4",
+  "scenes": [
+    {"bg": "galaxy",   "palette": "violet",  "text": "Look up tonight. Every light you see is a sun, burning for billions of years."},
+    {"bg": "planet",   "palette": "ocean",   "text": "Around them spin worlds we will never visit, oceans no one will ever swim."},
+    {"bg": "void",     "palette": "violet",  "text": "And one day, every single one of those stars will burn out.", "fade_out": true},
+    {"bg": "creature", "palette": "magenta", "text": "So here you are. A tiny, temporary pattern of atoms that somehow learned to wonder."},
+    {"bg": "nebula",   "palette": "violet",  "text": "The universe never handed you a purpose. Nobody wrote your script."},
+    {"bg": "sun",      "palette": "ember",   "text": "That sounds terrifying. But it is actually the greatest freedom you will ever have."},
+    {"bg": "city",     "palette": "magenta", "text": "Your mistakes. Your embarrassment. The opinions of strangers. None of it is permanent."},
+    {"bg": "planet",   "palette": "mint",    "text": "You get to decide what matters. A sunrise. A good friend. This exact moment."},
+    {"bg": "galaxy",   "palette": "ocean",   "text": "Life is brief. So make it yours."}
+  ]
+}

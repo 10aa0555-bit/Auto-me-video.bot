@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# cosmic_video.py outputs
+build/
+cosmic_output*.mp4
