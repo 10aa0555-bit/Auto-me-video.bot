@@ -68,7 +68,8 @@ def main():
     scenes = [{"spec": sc, "start": s["start"], "dur": s["dur"]} for sc, s in zip(script["scenes"], tl.scenes)]
     # 最後の場面で街を最初の状態に巻き戻し、動画をループさせる (見終わった瞬間に頭とつながる)
     story = "hook" in script  # Rick 風の物語 (キャラクター + 海や街の舞台)
-    rewind = 0.0 if story else (REWIND if scenes[-1]["spec"].get("rewind", script.get("loop", True)) else 0.0)
+    cosmic = script.get("style") == "cosmic"  # フラットな宇宙アニメ + 1 語ずつの巨大テロップ
+    rewind = 0.0 if (story or cosmic) else (REWIND if scenes[-1]["spec"].get("rewind", script.get("loop", True)) else 0.0)
     if rewind:
         scenes[-1]["spec"]["rewind"] = rewind
         ev.append((tl.total - rewind - 0.05, "whoosh", {"dur": 0.9, "seed": 77}))
@@ -77,7 +78,8 @@ def main():
     # 効果音に環境音 (波・風・街・ヘリ) を重ねる
     with wave.open(fx, "rb") as w:
         fxs = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float64) / 32767
-    amb = ambient.render_story(scenes, tl.total) if story else ambient.render(scenes, tl.total, rewind)
+    amb = (ambient.render_space(scenes, tl.total) if cosmic else
+           ambient.render_story(scenes, tl.total) if story else ambient.render(scenes, tl.total, rewind))
     m = min(len(fxs), len(amb))
     both = np.clip(fxs[:m] + amb[:m] * 0.5, -1, 1)
     with wave.open(fx, "wb") as w:
@@ -93,7 +95,9 @@ def main():
                 for c in tl.captions]
     n = int(round(tl.total * FPS))
     props = {"frames": n, "fps": FPS, "scenes": scenes, "captions": captions, "audio": "audio.m4a"}
-    if story:
+    if cosmic:
+        pass
+    elif story:
         props["hook"] = script["hook"]
     else:
         props["title"] = script["whatif"]

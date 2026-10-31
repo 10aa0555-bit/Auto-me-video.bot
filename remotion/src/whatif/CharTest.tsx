@@ -24,8 +24,8 @@ export const CharTest: React.FC = () => {
         <hemisphereLight args={['#eaf5ff', '#5d5a52', 0.95]} />
         <directionalLight position={[20, 40, 25]} intensity={1.9} color="#fff4e0" castShadow />
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[80, 80]} /><meshToonMaterial color="#9cd27a" /></mesh>
-        <Character position={[0, 0, 0]} face={faces[Math.floor(t * 3) % 6]} talk={0} wave={Math.floor(t * 3) % 6 === 1 ? 1 : 0}
-          time={t} seed={2} spec={{shirt: colors[Math.floor(t * 3) % 6], hair: '#2a1f1a'}} rotation={0.25} />
+        <Character position={[0, 0, 0]} face={faces[Math.floor((useCurrentFrame() % 30) / 5)]} time={t} seed={2}
+          spec={{shirt: colors[Math.floor(useCurrentFrame() / 30) % 3], hair: '#2a1f1a', style: (['bean', 'classic', 'dot'] as const)[Math.floor(useCurrentFrame() / 30) % 3]}} rotation={0.15} />
       </ThreeCanvas>
     </AbsoluteFill>
   );

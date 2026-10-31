@@ -90,3 +90,15 @@ def render_story(scenes, total):
     out = 0.24 * waves + 0.14 * rain + 0.1 * wind + 0.35 * thunder
     fade = np.minimum(1, t / 0.6) * np.minimum(1, (total - t) / 0.4)
     return np.clip(out * fade, -1, 1)
+
+
+def render_space(scenes, total):
+    """宇宙アニメの環境音: 低くうなるパッド + きらきらしたノイズ (曲ではなく空気感だけ)。"""
+    n = int(total * SR)
+    t = np.arange(n) / SR
+    pad = sum(np.sin(2 * np.pi * f * t + p) * a for f, p, a in ((55, 0, 1.0), (55.4, 1.3, 0.8), (82.5, 0.4, 0.45), (110.2, 2.1, 0.25)))
+    pad *= 0.6 + 0.4 * np.sin(2 * np.pi * 0.05 * t) ** 2
+    air = _shaped_noise(n, 3000, 9000, 41) * (0.4 + 0.6 * np.sin(2 * np.pi * 0.11 * t + 1) ** 2)
+    out = 0.2 * pad / 2.5 + 0.05 * air
+    fade = np.minimum(1, t / 1.5) * np.minimum(1, (total - t) / 1.0)
+    return np.clip(out * fade, -1, 1)

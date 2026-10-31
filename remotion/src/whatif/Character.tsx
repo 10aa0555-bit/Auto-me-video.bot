@@ -10,6 +10,7 @@ export type CharSpec = {
   hair?: string;
   skin?: string;
   shoes?: string;
+  style?: FaceStyle;
 };
 
 const INK = '#1b1b1f';
@@ -206,6 +207,136 @@ const faceTexture = (face: Face, talk: number, blink: boolean, hair: string) => 
   return tex;
 };
 
+
+export type FaceStyle = 'bean' | 'classic' | 'dot';
+
+/** シンプルな顔 (余計な線を描かない)。style で目の描き方を変える。 */
+const simpleFace = (face: Face, talk: number, blink: boolean, style: FaceStyle) => {
+  const c = document.createElement('canvas');
+  c.width = c.height = 512;
+  const g = c.getContext('2d')!;
+  g.clearRect(0, 0, 512, 512);
+  g.lineCap = 'round';
+  g.lineJoin = 'round';
+  g.strokeStyle = INK;
+  g.fillStyle = INK;
+  const big = face === 'shock' || face === 'scream';
+  const ey = 246;
+  // パーツを少し大きく (頭の丸みに貼ると小さく見えるため)
+  g.setTransform(1.5, 0, 0, 1.5, 256 - 384, 256 - 384 + 4);
+  for (const x of [200, 312]) {
+    if (blink) {
+      g.lineWidth = 9;
+      g.beginPath();
+      g.moveTo(x - 16, ey + 4);
+      g.lineTo(x + 16, ey + 4);
+      g.stroke();
+      continue;
+    }
+    // smug: 目の上半分を切って、まぶたの線を引く
+    g.save();
+    if (face === 'smug') {
+      g.beginPath();
+      g.rect(x - 60, ey - 4, 120, 90);
+      g.clip();
+    }
+    if (style === 'classic') {
+      const r = big ? 36 : 31;
+      g.fillStyle = '#ffffff';
+      g.lineWidth = 7;
+      g.beginPath();
+      g.arc(x, ey, r, 0, Math.PI * 2);
+      g.fill();
+      g.stroke();
+      g.fillStyle = INK;
+      g.beginPath();
+      g.arc(x + (face === 'smug' ? 9 : 2), ey + 4, big ? 9 : 12, 0, Math.PI * 2);
+      g.fill();
+    } else if (style === 'dot') {
+      g.beginPath();
+      g.arc(x, ey, big ? 15 : 12, 0, Math.PI * 2);
+      g.fill();
+    } else {
+      const rx = big ? 21 : 17;
+      const ry = big ? 32 : 27;
+      g.beginPath();
+      g.ellipse(x, ey, rx, ry, 0, 0, Math.PI * 2);
+      g.fill();
+      g.fillStyle = '#ffffff';
+      g.beginPath();
+      g.arc(x - 6, ey - 10, 6.5, 0, Math.PI * 2);
+      g.fill();
+      g.fillStyle = INK;
+    }
+    g.restore();
+    g.fillStyle = INK;
+    if (face === 'smug') {
+      g.lineWidth = 8;
+      g.beginPath();
+      g.moveTo(x - 22, ey - 4);
+      g.lineTo(x + 22, ey - 4);
+      g.stroke();
+    }
+  }
+  // まゆは困ったとき・叫ぶときだけ (細く)
+  if (face === 'worried' || face === 'scream') {
+    g.lineWidth = 8;
+    for (const [x, d] of [[200, 1], [312, -1]] as const) {
+      g.beginPath();
+      g.moveTo(x - 20, 196 + d * 9);
+      g.lineTo(x + 20, 196 - d * 9);
+      g.stroke();
+    }
+  }
+  // 口
+  const open = Math.max(talk, face === 'scream' ? 1 : face === 'shock' ? 0.5 : 0);
+  g.lineWidth = 8;
+  if (open > 0.15) {
+    g.fillStyle = '#3a1518';
+    g.beginPath();
+    if (face === 'happy') {
+      g.moveTo(226, 318);
+      g.lineTo(286, 318);
+      g.quadraticCurveTo(286, 318 + 30 + open * 18, 256, 318 + 30 + open * 18);
+      g.quadraticCurveTo(226, 318 + 30 + open * 18, 226, 318);
+    } else {
+      g.ellipse(256, 334, 14 + open * 10, 8 + open * 24, 0, 0, Math.PI * 2);
+    }
+    g.fill();
+  } else {
+    g.beginPath();
+    if (face === 'happy') {
+      g.moveTo(228, 318);
+      g.quadraticCurveTo(256, 346, 284, 318);
+    } else if (face === 'smug') {
+      g.moveTo(236, 330);
+      g.quadraticCurveTo(262, 340, 284, 318);
+    } else if (face === 'worried') {
+      g.moveTo(234, 334);
+      g.quadraticCurveTo(256, 322, 278, 334);
+    } else {
+      g.moveTo(238, 326);
+      g.quadraticCurveTo(256, 336, 274, 326);
+    }
+    g.stroke();
+  }
+  // 汗 (困った・驚いたとき)
+  if (face === 'worried' || face === 'shock') {
+    g.fillStyle = '#8fd3ff';
+    g.lineWidth = 6;
+    g.beginPath();
+    g.moveTo(372, 176);
+    g.quadraticCurveTo(394, 214, 372, 224);
+    g.quadraticCurveTo(350, 214, 372, 176);
+    g.fill();
+    g.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  return tex;
+};
+
 const outlineMat = new THREE.MeshBasicMaterial({color: INK, side: THREE.BackSide});
 
 /** 太い黒フチ付きのアニメ塗り (裏面を少し大きく描く)。 */
@@ -267,7 +398,8 @@ export const Character: React.FC<{
   const blink = (time + seed * 0.71) % period < 0.12;
   const talkQ = Math.round(talk * 3) / 3;
   const hair = spec.hair ?? '#3a2a20';
-  const tex = useMemo(() => faceTexture(face, talkQ, blink, hair), [face, talkQ, blink, hair]);
+  const style = spec.style ?? 'bean';
+  const tex = useMemo(() => simpleFace(face, talkQ, blink, style), [face, talkQ, blink, style]);
   const skin = spec.skin ?? '#f7f3ea';
   const shirt = spec.shirt ?? '#e8483f';
   const pants = spec.pants ?? '#2f3440';
@@ -311,7 +443,7 @@ export const Character: React.FC<{
       ))}
       {/* 頭 */}
       <group position={[0, 3.35, 0]} rotation={[0, 0, tilt]} scale={[1.04, 0.98, 1]}>
-        <Toon geo={g.head} color={skin} w={1.045} glow={0.28} />
+        <Toon geo={g.head} color={skin} w={1.045} glow={0.45} />
         <mesh geometry={g.face}>
           <meshBasicMaterial map={tex} transparent depthWrite={false} />
         </mesh>
