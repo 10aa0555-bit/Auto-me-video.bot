@@ -430,6 +430,70 @@ const Galaxy: React.FC<{t: number; small?: boolean}> = ({t, small}) => {
   );
 };
 
+
+/** ブラックホール (降着円盤 + 光の輪 + 真っ黒な影)。z: 大きさの倍率。 */
+const Hole: React.FC<{t: number; z?: number; cx?: number; cy?: number}> = ({t, z = 1, cx = W / 2, cy = H * 0.45}) => {
+  const R = 150 * z;
+  const band = (rx: number, ry: number, w: number, c: string, sp: number, back: boolean) => (
+    <path d={back ? `M ${-rx} 0 A ${rx} ${ry} 0 0 1 ${rx} 0` : `M ${-rx} 0 A ${rx} ${ry} 0 0 0 ${rx} 0`}
+      fill="none" stroke={c} strokeWidth={w} strokeDasharray={`${w * 3} ${w * 1.4}`} strokeDashoffset={-t * sp * 60} strokeLinecap="round" />
+  );
+  const rings: [number, string, number][] = [[2.0, C.yellow, 1.3], [2.5, C.orange, 1.0], [3.1, C.magenta, 0.8], [3.7, C.violet, 0.6]];
+  return (
+    <g transform={`translate(${cx} ${cy})`}>
+      <circle r={R * 4.2} fill={C.orange} opacity={0.12} filter="url(#blur40)" />
+      {/* 奥側の円盤 */}
+      {rings.map(([k, c, sp], i) => <g key={'b' + i}>{band(R * k, R * k * 0.28, R * 0.32, c, sp, true)}</g>)}
+      {/* 重力で曲がって上に見える円盤 */}
+      {rings.slice(0, 2).map(([k, c], i) => (
+        <path key={'l' + i} d={`M ${-R * (1.15 + i * 0.25)} 0 A ${R * (1.15 + i * 0.25)} ${R * (1.15 + i * 0.25)} 0 0 1 ${R * (1.15 + i * 0.25)} 0`} fill="none" stroke={c} strokeWidth={R * 0.16} opacity={0.85} />
+      ))}
+      <circle r={R * 1.06} fill="none" stroke="#fff6d8" strokeWidth={R * 0.07} />
+      <circle r={R * 1.06} fill="none" stroke={C.yellow} strokeWidth={R * 0.2} opacity={0.4} filter="url(#glowS)" />
+      <circle r={R} fill="#000" />
+      {/* 手前側の円盤 */}
+      {rings.map(([k, c, sp], i) => <g key={'f' + i}>{band(R * k, R * k * 0.28, R * 0.32, c, sp, false)}</g>)}
+    </g>
+  );
+};
+
+/** 宇宙飛行士。stretch で縦に伸びる、tint で赤くなる、fade で消える。 */
+const Astronaut: React.FC<{x: number; y: number; s?: number; rot?: number; stretch?: number; tint?: number; fade?: number}> = ({x, y, s = 1, rot = 0, stretch = 1, tint = 0, fade = 0}) => {
+  const suit = tint ? `rgb(${255}, ${Math.round(250 - 170 * tint)}, ${Math.round(250 - 190 * tint)})` : '#f4f2fb';
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s / Math.sqrt(stretch)} ${s * stretch})`} opacity={1 - fade}>
+      <g stroke={C.ink} strokeWidth={8} strokeLinejoin="round">
+        <rect x={-62} y={-40} width={30} height={90} rx={12} fill="#b9b4d6" />
+        <rect x={-48} y={-50} width={96} height={120} rx={40} fill={suit} />
+        <rect x={-44} y={60} width={36} height={80} rx={16} fill={suit} />
+        <rect x={8} y={60} width={36} height={80} rx={16} fill={suit} />
+        <rect x={-80} y={-30} width={34} height={90} rx={16} fill={suit} transform="rotate(25 -63 -30)" />
+        <rect x={46} y={-30} width={34} height={90} rx={16} fill={suit} transform="rotate(-35 63 -30)" />
+        <circle cx={0} cy={-100} r={62} fill={suit} />
+        <rect x={-42} y={-128} width={84} height={56} rx={26} fill={tint ? '#ff7a5a' : C.cyan} />
+        <rect x={-30} y={-120} width={22} height={14} rx={7} fill="#fff" stroke="none" opacity={0.85} />
+      </g>
+    </g>
+  );
+};
+
+const Clock: React.FC<{x: number; y: number; r: number; speed: number; t: number; label: string; color: string}> = ({x, y, r, speed, t, label, color}) => {
+  const a = t * speed;
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <circle r={r * 1.08} fill={color} opacity={0.25} filter="url(#glow)" />
+      <circle r={r} fill="#fdf6ff" stroke={C.ink} strokeWidth={12} />
+      {Array.from({length: 12}).map((_, i) => (
+        <line key={i} x1={Math.sin(i * Math.PI / 6) * r * 0.78} y1={-Math.cos(i * Math.PI / 6) * r * 0.78} x2={Math.sin(i * Math.PI / 6) * r * 0.9} y2={-Math.cos(i * Math.PI / 6) * r * 0.9} stroke={C.ink} strokeWidth={8} strokeLinecap="round" />
+      ))}
+      <line x1={0} y1={0} x2={Math.sin(a / 12) * r * 0.5} y2={-Math.cos(a / 12) * r * 0.5} stroke={C.ink} strokeWidth={14} strokeLinecap="round" />
+      <line x1={0} y1={0} x2={Math.sin(a) * r * 0.75} y2={-Math.cos(a) * r * 0.75} stroke={color} strokeWidth={10} strokeLinecap="round" />
+      <circle r={14} fill={C.ink} />
+      <text y={r + 90} textAnchor="middle" fontFamily="Anton" fontSize={64} fill="#fdf6ff">{label}</text>
+    </g>
+  );
+};
+
 const SCENES: Record<string, React.FC<{t: number; lt: number}>> = {
   hill: ({t, lt}) => <Hill t={t} lt={lt} />,
   end: ({t, lt}) => <Hill t={t} lt={lt} end />,
@@ -443,6 +507,32 @@ const SCENES: Record<string, React.FC<{t: number; lt: number}>> = {
   city: ({t}) => <City t={t} />,
   blood: ({t}) => <Blood t={t} />,
   galaxy: ({t}) => <Galaxy t={t} />,
+  blackhole: ({t}) => <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={51} /><Hole t={t} z={1.6} /></g>,
+  fall: ({t, lt}) => (
+    <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={52} /><Hole t={t} z={0.9} cy={H * 0.3} />
+      <Astronaut x={W * 0.55 - lt * 20} y={H * 0.72 - lt * 40} s={1.3} rot={-20 + lt * 8} /></g>
+  ),
+  clocks: ({t}) => (
+    <g><Sky t={t} top="#0a0626" bottom="#24104d" seed={53} />
+      <Clock x={W * 0.5} y={H * 0.3} r={190} speed={6} t={t} label="FRIENDS" color={C.cyan} />
+      <Clock x={W * 0.5} y={H * 0.72} r={190} speed={0.6} t={t} label="YOU" color={C.orange} /></g>
+  ),
+  freeze: ({t, lt}) => (
+    <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={54} /><Hole t={t} z={2.2} cy={H * 0.42} />
+      <Astronaut x={W * 0.5} y={H * 0.28} s={0.55 - Math.min(0.2, lt * 0.03)} rot={10} tint={clamp01(lt / 3)} fade={clamp01((lt - 3) / 3) * 0.8} /></g>
+  ),
+  stretch: ({t, lt}) => (
+    <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={55} /><Hole t={t} z={1.2} cy={H * 0.82} />
+      <Astronaut x={W * 0.5} y={H * 0.4 + lt * 30} s={1.0} stretch={1 + clamp01(lt / 5) * 2.2} rot={0} /></g>
+  ),
+  bighole: ({t, lt}) => <g><Sky t={t} top="#05031a" bottom="#1a0a3f" seed={56} /><Hole t={t} z={3.2 + lt * 0.15} cy={H * 0.55} />
+    <Astronaut x={W * 0.5} y={H * 0.25 + lt * 20} s={0.5} rot={15} /></g>,
+  abyss: ({t, lt}) => (
+    <g><rect width={W} height={H} fill="#000" />
+      <circle cx={W / 2} cy={H * 0.15} r={260 - Math.min(200, lt * 30)} fill="none" stroke={C.yellow} strokeWidth={14} opacity={0.8} />
+      <circle cx={W / 2} cy={H * 0.15} r={260 - Math.min(200, lt * 30)} fill={C.cyan} opacity={0.12} />
+      <Astronaut x={W / 2} y={H * 0.62 + lt * 10} s={0.9} rot={180} /></g>
+  ),
 };
 
 /** 読み上げ中の単語を 1 語だけ大きく出す (GEMRIL 風の縦長の極太文字)。 */
