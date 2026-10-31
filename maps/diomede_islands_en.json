@@ -1,0 +1,325 @@
+{
+  "title": "Russia and the US Are 4 km Apart",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Russia and the US are less than four kilometers apart, and they live on different days.",
+      "camera": {
+        "center": [
+          -164.5,
+          64.5
+        ],
+        "span": 30
+      },
+      "fill": {
+        "RUS@-175,66": "flag:ru",
+        "USA@-150,64": "flag:us"
+      },
+      "banner": {
+        "lines": [
+          "RUSSIA AND THE US",
+          "4 KM APART?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Between Siberia and Alaska lies the Bering Strait. And right in the middle sit two little islands.",
+      "camera": {
+        "center": [
+          -169.4,
+          65.8
+        ],
+        "span": 7
+      },
+      "fill": {
+        "RUS@-175,66": null,
+        "USA@-150,64": null
+      },
+      "markers": [
+        {
+          "at": [
+            -169.0,
+            65.77
+          ],
+          "type": "pin",
+          "label": "Diomede Islands",
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "Big Diomede belongs to Russia. Little Diomede belongs to the United States.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "markers": [
+        {
+          "at": [
+            -169.06,
+            65.78
+          ],
+          "type": "pin",
+          "label": "Big Diomede (Russia)",
+          "delay": 0.6
+        },
+        {
+          "at": [
+            -168.93,
+            65.76
+          ],
+          "type": "pin",
+          "label": "Little Diomede (USA)",
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "The water between them is only about three point eight kilometers wide.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -169.02,
+              65.775
+            ],
+            [
+              -168.97,
+              65.765
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 0.6,
+          "draw_time": 1.2,
+          "label": "3.8 KM"
+        }
+      ]
+    },
+    {
+      "narration": "But the International Date Line runs right through that gap.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -168.98,
+              66.3
+            ],
+            [
+              -168.98,
+              65.25
+            ]
+          ],
+          "style": "glow",
+          "color": "#ff5a4f",
+          "width": 8,
+          "delay": 0.6,
+          "draw_time": 1.4,
+          "label": "DATE LINE"
+        }
+      ]
+    },
+    {
+      "narration": "So Big Diomede is almost a full day ahead. People call them Tomorrow Island and Yesterday Isle.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -168.98,
+              66.3
+            ],
+            [
+              -168.98,
+              65.25
+            ]
+          ],
+          "style": "glow",
+          "color": "#ff5a4f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ],
+      "texts": [
+        {
+          "text": "TOMORROW | YESTERDAY",
+          "accent": [
+            "TOMORROW"
+          ],
+          "y": 0.22,
+          "size": 80,
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "Little Diomede has under a hundred people. Big Diomede has no town, just Russian border guards.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "markers": [
+        {
+          "at": [
+            -168.93,
+            65.76
+          ],
+          "type": "pin",
+          "label": "~80 people",
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "In 1948, the Soviet Union closed the border. Families living a few kilometers apart could no longer visit each other.",
+      "tts": "In nineteen forty-eight, the Soviet Union closed the border. Families living a few kilometers apart could no longer visit each other.",
+      "camera": {
+        "center": [
+          -169.4,
+          65.8
+        ],
+        "span": 7
+      },
+      "year": "1948"
+    },
+    {
+      "narration": "In winter the sea can freeze solid, so you could almost walk across. But crossing is illegal.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "texts": [
+        {
+          "text": "DON'T WALK",
+          "accent": [
+            "WALK"
+          ],
+          "y": 0.22,
+          "size": 100,
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "Then in 1987, an American swimmer named Lynne Cox swam across, in water just a few degrees above freezing.",
+      "tts": "Then in nineteen eighty-seven, an American swimmer named Lynne Cox swam across, in water just a few degrees above freezing.",
+      "camera": {
+        "center": [
+          -169.0,
+          65.77
+        ],
+        "span": 0.8
+      },
+      "year": "1987",
+      "icons": [
+        {
+          "ai": "a cute cartoon woman swimmer in a swim cap and goggles swimming in icy water",
+          "name": "person swimming",
+          "at": [
+            -168.95,
+            65.765
+          ],
+          "to": [
+            -169.04,
+            65.778
+          ],
+          "travel_time": 2.6,
+          "size": 220,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "Reagan and Gorbachev both praised her. One swim across the Cold War border.",
+      "camera": {
+        "center": [
+          -169.4,
+          65.8
+        ],
+        "span": 7
+      }
+    },
+    {
+      "narration": "Would you swim from yesterday to tomorrow? Yes or no?",
+      "camera": {
+        "center": [
+          -169.4,
+          65.8
+        ],
+        "span": 7
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Russia and the US are 4 km apart 🇷🇺🇺🇸 #geography #maps",
+    "description": "The Diomede Islands sit in the Bering Strait: one Russian, one American, 3.8 km apart, with the International Date Line in between.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#russia",
+      "#alaska",
+      "#beringstrait",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you swim from yesterday to tomorrow? 👇"
+  }
+}
