@@ -13,12 +13,17 @@ import shutil
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from geo_short import sfx, tts  # noqa: E402
+import wave  # noqa: E402
+
+import numpy as np  # noqa: E402
+
+from geo_short import ambient, sfx, tts  # noqa: E402
 from geo_short.build import mix_audio, scene_durations, write_post  # noqa: E402
 from geo_short.render import Timeline  # noqa: E402
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "remotion")
 FPS = 30
+REWIND = 1.3  # 最後の巻き戻しの秒数
 
 
 def main():
@@ -57,13 +62,29 @@ def main():
         if i and s["spec"].get("cam"):
             ev.append((max(0, s["start"] - 0.1), "whoosh", {"seed": i}))
         prev = c
+    scenes = [{"spec": sc, "start": s["start"], "dur": s["dur"]} for sc, s in zip(script["scenes"], tl.scenes)]
+    # 最後の場面で街を最初の状態に巻き戻し、動画をループさせる (見終わった瞬間に頭とつながる)
+    rewind = REWIND if scenes[-1]["spec"].get("rewind", script.get("loop", True)) else 0.0
+    if rewind:
+        scenes[-1]["spec"]["rewind"] = rewind
+        ev.append((tl.total - rewind - 0.05, "whoosh", {"dur": 0.9, "seed": 77}))
     fx = os.path.join(job, "sfx.wav")
     sfx.render_track(ev, tl.total, fx)
+    # 効果音に環境音 (波・風・街・ヘリ) を重ねる
+    with wave.open(fx, "rb") as w:
+        fxs = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float64) / 32767
+    amb = ambient.render(scenes, tl.total, rewind)
+    m = min(len(fxs), len(amb))
+    both = np.clip(fxs[:m] + amb[:m] * 0.5, -1, 1)
+    with wave.open(fx, "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(ambient.SR)
+        w.writeframes((both * 32767).astype(np.int16).tobytes())
     audio = os.path.join(job, "audio.m4a")
     mix_audio(workdir, durations, audio, fx, have_audio)
     os.remove(fx)
 
-    scenes = [{"spec": sc, "start": s["start"], "dur": s["dur"]} for sc, s in zip(script["scenes"], tl.scenes)]
     captions = [{"text": c[0], "start": c[1], "end": c[2], "words": [[w, t] for w, t in (c[3] or [])]}
                 for c in tl.captions]
     n = int(round(tl.total * FPS))

@@ -239,8 +239,8 @@
     }
   ],
   "post": {
-    "title": "What if the sea rose 1 meter every day? 🌊 #whatif #science",
-    "description": "Day 1: the beach is gone. Day 30: only towers are left. And there's a twist: all the ice on Earth could only raise the sea about 70 meters.",
+    "title": "What if the sea rose 1 meter every day? 🌊",
+    "description": "Send this to someone who lives by the beach 🏖️\n\nFun fact: even if ALL the ice on Earth melted, the sea would only rise about 70 meters. So where would the rest of this water come from? 👀",
     "hashtags": [
       "#whatif",
       "#science",
@@ -249,6 +249,7 @@
       "#didyouknow",
       "#shorts"
     ],
-    "pinned_comment": "How many days would YOUR city survive? 🌊👇"
-  }
+    "pinned_comment": "Which would you choose: stay on the roof 🏢 or climb the mountain 🏔️? 👇"
+  },
+  "loop": true
 }

@@ -20,6 +20,7 @@ export type WIScene = {
     people?: number;
     counter?: string; // 上に出す "DAY 7" など
     sub?: string; // カウンターの下の小さな説明 ("+7 METERS")
+    rewind?: number; // 最後の何秒で最初の状態に巻き戻すか (ループ用)
   };
 };
 export type WIProps = {
@@ -54,6 +55,15 @@ const track = (scenes: WIScene[], t: number, key: 'sea' | 'cars' | 'people', ini
   return prev;
 };
 
+/** 最後の場面で最初の状態へ巻き戻す割合 (0..1)。動画の終わりと頭がつながってループする。 */
+export const rewindK = (scenes: WIScene[], t: number) => {
+  const last = scenes[scenes.length - 1];
+  const r = last?.spec.rewind;
+  if (!r) return 0;
+  const end = last.start + last.dur;
+  return easeInOut((t - (end - r)) / r);
+};
+
 const CameraRig: React.FC<{scenes: WIScene[]; t: number}> = ({scenes, t}) => {
   const {camera} = useThree();
   let i = scenes.findIndex((s) => t < s.start + s.dur);
@@ -67,8 +77,11 @@ const CameraRig: React.FC<{scenes: WIScene[]; t: number}> = ({scenes, t}) => {
   const s = scenes[i];
   const u = easeInOut((t - s.start) / Math.min(2.0, s.dur * 0.7));
   const lerp = (p: V3, q: V3, k: number): V3 => [p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k, p[2] + (q[2] - p[2]) * k];
-  const pos = lerp(a.pos, b.pos, u);
-  const look = lerp(a.look, b.look, u);
+  // 巻き戻しのときは最初の場面のカメラへ戻る
+  const k = rewindK(scenes, t);
+  const first = camOf(0);
+  const pos = lerp(lerp(a.pos, b.pos, u), first.pos, k);
+  const look = lerp(lerp(a.look, b.look, u), first.look, k);
   // ゆっくり回り込むドリー (止まって見えないように)
   const drift = Math.sin(t * 0.12) * 1.5;
   camera.position.set(pos[0] + drift, pos[1], pos[2]);
@@ -121,9 +134,10 @@ export const WhatIf: React.FC<WIProps> = (props) => {
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const sc = props.scenes;
-  const sea = track(sc, t, 'sea', -1.0, 2.4);
-  const cars = track(sc, t, 'cars', 1);
-  const people = track(sc, t, 'people', 1);
+  const k = rewindK(sc, t);
+  const sea = track(sc, t, 'sea', -1.6, 2.4) * (1 - k) - 1.6 * k;
+  const cars = track(sc, t, 'cars', 1) * (1 - k) + k;
+  const people = track(sc, t, 'people', 1) * (1 - k) + k;
   return (
     <AbsoluteFill style={{background: 'linear-gradient(#9fd0f0, #dceefa)'}}>
       <Fonts />
@@ -143,7 +157,7 @@ export const WhatIf: React.FC<WIProps> = (props) => {
       <AbsoluteFill style={{backdropFilter: 'blur(7px)', WebkitMaskImage: 'linear-gradient(#000 0%, #000 8%, transparent 34%, transparent 66%, #000 92%)'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 60%, rgba(0,0,0,0.28) 100%)'}} />
       <Title title={props.title} t={t} />
-      {t > 3.8 && <Counter scenes={sc} t={t} />}
+      {t > 3.8 && k < 0.3 && <Counter scenes={sc} t={t} />}
       <Captions caps={props.captions ?? []} t={t} />
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>
