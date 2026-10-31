@@ -201,6 +201,24 @@
    ]
   },
   {
+   "scene": "street",
+   "narration": "Every scar you carry is proof that something tried to stop you, and failed.",
+   "hot": [
+    "SCAR",
+    "FAILED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 31
+     }
+    ]
+   ]
+  },
+  {
    "scene": "smile",
    "narration": "So, what is your pain trying to teach you?",
    "hot": [

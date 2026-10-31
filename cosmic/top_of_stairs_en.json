@@ -202,6 +202,24 @@
    ]
   },
   {
+   "scene": "street",
+   "narration": "One day someone will look at you and say, you are so lucky. Just smile.",
+   "hot": [
+    "LUCKY",
+    "SMILE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 31
+     }
+    ]
+   ]
+  },
+  {
    "scene": "smile",
    "narration": "So, which step are you on today?",
    "hot": [

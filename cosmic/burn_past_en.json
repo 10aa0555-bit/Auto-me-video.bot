@@ -202,6 +202,24 @@
    ]
   },
   {
+   "scene": "bridge",
+   "narration": "Walk away from everything that no longer fits you, and don't look back.",
+   "hot": [
+    "WALK",
+    "BACK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 31
+     }
+    ]
+   ]
+  },
+  {
    "scene": "face",
    "narration": "So, what will you burn tonight?",
    "hot": [
