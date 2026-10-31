@@ -24,7 +24,7 @@
         "span": 18
       },
       "fill": {
-        "FRA": "flag:fr"
+        "FRA@2,47": "flag:fr"
       },
       "banner": {
         "lines": [
@@ -47,7 +47,7 @@
         "span": 1.0
       },
       "fill": {
-        "FRA": null
+        "FRA@2,47": null
       },
       "year": "1518",
       "markers": [

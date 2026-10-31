@@ -114,6 +114,18 @@
           "delay": 0.6,
           "size": 620
         }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon cobblestone street with a white painted line and small white crosses on the ground marking a border",
+          "name": "construction",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 300,
+          "delay": 1.6
+        }
       ]
     },
     {
@@ -162,14 +174,14 @@
       ],
       "icons": [
         {
-          "ai": "a cute cartoon wooden front door with a doormat",
-          "name": "door",
+          "ai": "a cute cartoon two-story brick house split in half by a white line, the left half has a black yellow red striped awning and the right half has a red white blue striped awning",
+          "name": "house",
           "pos": [
-            0.78,
-            0.5
+            0.5,
+            0.42
           ],
-          "size": 180,
-          "delay": 3.2
+          "size": 320,
+          "delay": 0.6
         }
       ]
     },
@@ -204,6 +216,18 @@
           "delay": 1.8,
           "size": 580
         }
+      ],
+      "icons": [
+        {
+          "ai": "two cute cartoon small town hall buildings side by side, one with a black yellow red flag and one with a red white blue flag",
+          "name": "classical building",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 300,
+          "delay": 1.4
+        }
       ]
     },
     {
@@ -214,7 +238,19 @@
           51.44
         ],
         "span": 0.8
-      }
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon cafe table with two beer glasses and a clock on the wall",
+          "name": "beer mug",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 240,
+          "delay": 0.8
+        }
+      ]
     },
     {
       "narration": "The very last piece of the border was only settled in 1995.",
