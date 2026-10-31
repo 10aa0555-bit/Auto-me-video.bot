@@ -1,36 +1,31 @@
 import React from 'react';
 import {ThreeCanvas} from '@remotion/three';
-import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, useCurrentFrame} from 'remotion';
 import {useThree} from '@react-three/fiber';
-import {City} from './City';
-import {Character} from './Character';
+import {H, W} from '../util';
+import {Character, Face} from './Character';
 
 const Cam: React.FC = () => {
   const {camera} = useThree();
-  camera.position.set(-6, 9, 22);
-  camera.lookAt(-6, 3, 6);
+  camera.position.set(0, 3.0, 11);
+  camera.lookAt(0, 2.3, 0);
   return null;
 };
 
-/** キャラクターの見た目を確かめるための試作 (本番では使わない)。 */
+/** キャラの見た目確認用 (6 つの表情を並べる)。 */
 export const CharTest: React.FC = () => {
-  const f = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const t = f / fps;
+  const t = useCurrentFrame() / 30;
+  const faces: Face[] = ['normal', 'happy', 'shock', 'scream', 'worried', 'smug'];
+  const colors = ['#e0a83a', '#7aa6d9', '#8fbf6a', '#e8483f', '#c9b07a', '#b58ad6'];
   return (
-    <AbsoluteFill style={{background: '#a9d6f2'}}>
-      <ThreeCanvas width={1080} height={1920} camera={{fov: 40, near: 0.5, far: 900}} gl={{antialias: true, preserveDrawingBuffer: true}} shadows
-        style={{filter: 'saturate(1.25) contrast(1.06)'}}>
+    <AbsoluteFill style={{background: '#9fd0f0'}}>
+      <ThreeCanvas width={W} height={H} camera={{fov: 40, near: 0.5, far: 200}} gl={{antialias: true, preserveDrawingBuffer: true}} shadows>
         <Cam />
-        <color attach="background" args={['#a9d6f2']} />
-        <fog attach="fog" args={['#bfe0f5', 120, 500]} />
-        <hemisphereLight args={['#eaf5ff', '#8a7d6a', 1.0]} />
-        <directionalLight position={[30, 60, 40]} intensity={1.8} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048}
-          shadow-camera-left={-60} shadow-camera-right={60} shadow-camera-top={60} shadow-camera-bottom={-60} />
-        <City s={{t, sea: -1.6, cars: 1, people: 0.6}} />
-        <Character position={[-8.5, 0.3, 10]} face="happy" talk={Math.abs(Math.sin(t * 9))} wave={1} walk={t} spec={{shirt: '#e8483f'}} />
-        <Character position={[-5, 0.3, 9]} face="shock" spec={{shirt: '#3d7fd8', hair: '#2b2b2b'}} rotation={-0.4} />
-        <Character position={[-2, 0.3, 11]} face="worried" spec={{shirt: '#57b36a', hair: '#d9a441'}} rotation={-0.8} hop={Math.abs(Math.sin(t * 6)) * 0.6} />
+        <hemisphereLight args={['#eaf5ff', '#5d5a52', 0.95]} />
+        <directionalLight position={[20, 40, 25]} intensity={1.9} color="#fff4e0" castShadow />
+        <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow><planeGeometry args={[80, 80]} /><meshToonMaterial color="#9cd27a" /></mesh>
+        <Character position={[0, 0, 0]} face={faces[Math.floor(t * 3) % 6]} talk={0} wave={Math.floor(t * 3) % 6 === 1 ? 1 : 0}
+          time={t} seed={2} spec={{shirt: colors[Math.floor(t * 3) % 6], hair: '#2a1f1a'}} rotation={0.25} />
       </ThreeCanvas>
     </AbsoluteFill>
   );

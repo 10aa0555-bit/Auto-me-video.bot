@@ -184,7 +184,8 @@ const Thing: React.FC<{o: Obj; lt: number; dur: number; t: number; amp: number; 
     return (
       <group position={[x, y, z]} rotation={[rx, 0, rz]}>
         <Character spec={{shirt: o.shirt, hair: o.hair, pants: o.pants}} face={o.face2 && lt > (o.at ?? 1) ? o.face2 : o.face ?? 'normal'} talk={o.talk ? talk : 0}
-          wave={o.wave ?? 0} walk={o.walk ? t : 0} hop={o.hop ? Math.abs(Math.sin(t * 6)) * 0.5 : 0} rotation={ry} scale={s} />
+          wave={o.wave ?? 0} walk={o.walk ? t : 0} hop={o.hop ? Math.abs(Math.sin(t * 6)) * 0.5 : 0} rotation={ry} scale={s}
+          time={t} seed={Math.abs(Math.round(o.pos[0] * 3 + o.pos[2] * 7))} />
         {o.hat && (
           <group position={[0, 4.35 * s, 0]} scale={s}>
             <mesh position={[0, 0.1, 0]}><cylinderGeometry args={[1.5, 1.5, 0.12, 20]} /><meshToonMaterial color="#8a6240" /></mesh>
