@@ -55,13 +55,13 @@
       "cam": {
         "pos": [
           -6,
-          30,
-          48
+          60,
+          42
         ],
         "look": [
           -6,
           0,
-          -45
+          -48
         ]
       },
       "sea": -0.15,
@@ -72,14 +72,14 @@
       "narration": "Day seven. Ground floors are underwater, and cars are floating down the avenue.",
       "cam": {
         "pos": [
-          -6,
-          30,
-          48
+          12,
+          52,
+          30
         ],
         "look": [
-          -6,
           0,
-          -45
+          0,
+          -50
         ]
       },
       "sea": 0.9,
@@ -169,13 +169,13 @@
       "cam": {
         "pos": [
           0,
-          150,
-          90
+          95,
+          70
         ],
         "look": [
           0,
-          0,
-          -25
+          45,
+          -260
         ]
       },
       "sea": 24,
@@ -187,16 +187,16 @@
       "cam": {
         "pos": [
           0,
-          150,
-          90
+          95,
+          70
         ],
         "look": [
           0,
-          0,
-          -25
+          45,
+          -260
         ]
       },
-      "sea": 40,
+      "sea": 45,
       "counter": "DAY 365",
       "sub": "+365 METERS"
     },
@@ -206,15 +206,15 @@
         "pos": [
           0,
           150,
-          90
+          -120
         ],
         "look": [
           0,
-          0,
-          -25
+          80,
+          -330
         ]
       },
-      "sea": 60,
+      "sea": 128,
       "counter": "DAY 8,849",
       "sub": "EVEREST IS GONE"
     },
@@ -223,16 +223,16 @@
       "cam": {
         "pos": [
           0,
-          80,
-          105
+          170,
+          40
         ],
         "look": [
           0,
-          0,
-          -20
+          60,
+          -200
         ]
       },
-      "sea": 60,
+      "sea": 128,
       "min_duration": 3.4,
       "counter": "YOUR CITY?",
       "sub": "COMMENT BELOW"

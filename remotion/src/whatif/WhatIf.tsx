@@ -70,7 +70,7 @@ const CameraRig: React.FC<{scenes: WIScene[]; t: number}> = ({scenes, t}) => {
   const pos = lerp(a.pos, b.pos, u);
   const look = lerp(a.look, b.look, u);
   // ゆっくり回り込むドリー (止まって見えないように)
-  const drift = Math.sin(t * 0.12) * 4;
+  const drift = Math.sin(t * 0.12) * 1.5;
   camera.position.set(pos[0] + drift, pos[1], pos[2]);
   camera.lookAt(look[0], look[1], look[2]);
   return null;
@@ -127,17 +127,20 @@ export const WhatIf: React.FC<WIProps> = (props) => {
   return (
     <AbsoluteFill style={{background: 'linear-gradient(#9fd0f0, #dceefa)'}}>
       <Fonts />
-      <ThreeCanvas width={W} height={H} camera={{fov: 38, near: 1, far: 900, position: [0, 60, 70]}}
-        gl={{antialias: true, preserveDrawingBuffer: true}} shadows>
+      <ThreeCanvas width={W} height={H} camera={{fov: 38, near: 1, far: 1400, position: [0, 60, 70]}}
+        gl={{antialias: true, preserveDrawingBuffer: true}} shadows
+        style={{filter: 'saturate(1.28) contrast(1.07) brightness(1.03)'}}>
         <CameraRig scenes={sc} t={t} />
         <color attach="background" args={['#a9d6f2']} />
-        <fog attach="fog" args={['#bfe0f5', 160, 420]} />
+        <fog attach="fog" args={['#bfe0f5', 220, 700]} />
         <hemisphereLight args={['#eaf5ff', '#8a7d6a', 0.9]} />
         <directionalLight position={[60, 110, 40]} intensity={1.9} color="#fff4e0" castShadow
           shadow-mapSize-width={2048} shadow-mapSize-height={2048} shadow-camera-left={-120} shadow-camera-right={120}
           shadow-camera-top={120} shadow-camera-bottom={-120} shadow-camera-far={400} shadow-bias={-0.0004} />
         <City s={{t, sea, cars, people}} />
       </ThreeCanvas>
+      {/* ティルトシフト: 上と下をぼかして、真ん中だけピントが合った模型の写真に見せる */}
+      <AbsoluteFill style={{backdropFilter: 'blur(7px)', WebkitMaskImage: 'linear-gradient(#000 0%, #000 8%, transparent 34%, transparent 66%, #000 92%)'}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 60%, rgba(0,0,0,0.28) 100%)'}} />
       <Title title={props.title} t={t} />
       {t > 3.8 && <Counter scenes={sc} t={t} />}

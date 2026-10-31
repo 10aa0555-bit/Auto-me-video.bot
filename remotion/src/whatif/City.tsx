@@ -22,7 +22,8 @@ export const Z0 = -(ROWS * CELL) / 2;
 export const BEACH = 14; // 街の奥の浜辺の奥行き
 export const SHORE_Z = Z0 - BEACH;
 
-const PALETTE = ['#e9dcc4', '#d9c3a5', '#c9d6df', '#f1e3d3', '#b7c9b5', '#e4c9b6', '#d4d4d4', '#c2b6a3', '#f3efe6', '#a9bccd'];
+// おもちゃの模型のような明るいパステル (ミニチュアに見せるため彩度を少し高めに)
+const PALETTE = ['#f6d6a8', '#f2b8a2', '#a8d5e2', '#cfe8c4', '#f7e3b5', '#e7c3d9', '#bcd4f0', '#ffe9c7', '#d8f0e8', '#f4c7a1', '#fafafa', '#c9e3f6'];
 
 /** 窓の柄 (壁は白、窓は暗い青)。頂点色を掛けて建物ごとの色にする。 */
 const windowTexture = () => {
@@ -32,9 +33,9 @@ const windowTexture = () => {
   const g = c.getContext('2d')!;
   g.fillStyle = '#ffffff';
   g.fillRect(0, 0, 64, 64);
-  g.fillStyle = '#5d7184';
+  g.fillStyle = '#6f9cc4';
   g.fillRect(14, 16, 36, 30);
-  g.fillStyle = '#8fa6bb';
+  g.fillStyle = '#a9d0ee';
   g.fillRect(14, 16, 36, 8);
   const tex = new THREE.CanvasTexture(c);
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
@@ -157,6 +158,15 @@ const Instanced: React.FC<{
 const M = (x: number, y: number, z: number, sx = 1, sy = 1, sz = 1, ry = 0) =>
   new THREE.Matrix4().compose(new THREE.Vector3(x, y, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, ry, 0)), new THREE.Vector3(sx, sy, sz));
 
+// 遠くの山 (いちばん奥の高い山が「エベレスト」役)
+export const MOUNTAINS = [
+  {x: -165, z: -150, h: 70, r: 60, color: '#7f9a72'},
+  {x: 170, z: -170, h: 80, r: 65, color: '#86a07a'},
+  {x: -90, z: -250, h: 85, r: 70, color: '#8aa184'},
+  {x: 80, z: -270, h: 95, r: 72, color: '#7c9478'},
+  {x: 0, z: -330, h: 125, r: 90, color: '#8f9c8c'},
+];
+
 export type CityState = {
   t: number; // 秒
   sea: number; // 海面の高さ (単位。0 = 地面)
@@ -173,6 +183,41 @@ export const City: React.FC<{s: CityState}> = ({s}) => {
 
   const W = COLS * CELL;
   const D = ROWS * CELL;
+  const waves = useMemo(() => {
+    // 細かいさざ波の模様 (時間でゆっくり流す)
+    const c = document.createElement('canvas');
+    c.width = c.height = 256;
+    const g = c.getContext('2d')!;
+    g.fillStyle = '#ffffff';
+    g.fillRect(0, 0, 256, 256);
+    const r = rng(5);
+    for (let k = 0; k < 260; k++) {
+      g.strokeStyle = `rgba(${200 + r() * 55},${230 + r() * 25},255,${0.25 + r() * 0.35})`;
+      g.lineWidth = 1 + r() * 2;
+      const x = r() * 256;
+      const y = r() * 256;
+      const w = 10 + r() * 26;
+      g.beginPath();
+      g.moveTo(x, y);
+      g.quadraticCurveTo(x + w / 2, y - 3, x + w, y);
+      g.stroke();
+    }
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.repeat.set(30, 26);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }, []);
+  waves.offset.set(s.t * 0.004, s.t * 0.012);
+  const roofMats = useMemo(() => {
+    const r = rng(31);
+    const out: THREE.Matrix4[] = [];
+    L.buildings.forEach((b) => {
+      const n = Math.floor(r() * 3);
+      for (let k = 0; k < n; k++) out.push(M(b.x + (r() - 0.5) * b.w * 0.6, b.h + 0.35, b.z + (r() - 0.5) * b.d * 0.6, 0.9 + r(), 0.7, 0.9 + r()));
+    });
+    return out;
+  }, [L]);
   // 歩道の区画 (少し高い)、横断歩道、白線
   const blockMats = useMemo(() => {
     const out: THREE.Matrix4[] = [];
@@ -203,6 +248,8 @@ export const City: React.FC<{s: CityState}> = ({s}) => {
     car: new THREE.BoxGeometry(1.1, 0.6, 2.0),
     cab: new THREE.BoxGeometry(0.95, 0.45, 1.0),
     person: new THREE.CapsuleGeometry(0.16, 0.42, 2, 6),
+    hull: new THREE.BoxGeometry(1.6, 0.7, 4.0),
+    boatCab: new THREE.BoxGeometry(1.2, 0.9, 1.4),
   }), []);
 
   // 車: 車線に沿って一定の速さで走る (時刻から位置が決まるので毎回同じ)
@@ -266,6 +313,19 @@ export const City: React.FC<{s: CityState}> = ({s}) => {
     pCols.push(p.color);
   }
 
+  const boatMats: THREE.Matrix4[] = [];
+  const boatCabMats: THREE.Matrix4[] = [];
+  if (s.sea > 0.6) {
+    const r = rng(41);
+    for (let k = 0; k < 14; k++) {
+      const bx = X0 + 10 + r() * (COLS * CELL - 20) + Math.sin(s.t * 0.2 + k) * 6;
+      const bz = Z0 + r() * (ROWS * CELL) + s.t * (0.6 + r());
+      const ry = r() * 6.28;
+      const y = s.sea + 0.3 + Math.sin(s.t * 1.7 + k) * 0.12;
+      boatMats.push(M(bx, y, bz, 1, 1, 1, ry));
+      boatCabMats.push(M(bx - Math.sin(ry) * 0.4, y + 0.75, bz - Math.cos(ry) * 0.4, 1, 1, 1, ry));
+    }
+  }
   // 浜辺: 街の端 (高さ 0) から海へゆるく下がる
   const beach = useMemo(() => {
     const g = new THREE.PlaneGeometry(W + 80, BEACH + 30, 1, 8);
@@ -274,7 +334,7 @@ export const City: React.FC<{s: CityState}> = ({s}) => {
     for (let k = 0; k < pos.count; k++) {
       const z = pos.getZ(k); // -(BEACH+30)/2 .. +
       const zz = z + (BEACH + 30) / 2; // 0 = 海側, BEACH+30 = 街側
-      pos.setY(k, Math.min(0, -2.4 + (zz / (BEACH + 4)) * 2.4));
+      pos.setY(k, Math.min(-0.04, -2.4 + (zz / (BEACH + 4)) * 2.4));
     }
     g.translate(0, 0, Z0 - (BEACH + 30) / 2 + 4);
     g.computeVertexNormals();
@@ -300,18 +360,38 @@ export const City: React.FC<{s: CityState}> = ({s}) => {
       {nCars > 0 && <Instanced geo={geos.car} color="#ffffff" mats={carMats} colors={carCols} shadow />}
       {nCars > 0 && <Instanced geo={geos.cab} color="#cfe3f5" mats={cabMats} />}
       {nPeople > 0 && <Instanced geo={geos.person} color="#ffffff" mats={pMats} colors={pCols} />}
-      {/* 海 */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, s.sea, Z0 - 60]}>
-        <planeGeometry args={[W + 400, 400]} />
-        <meshStandardMaterial color="#3f9bd6" roughness={0.25} metalness={0.1} transparent opacity={0.88} />
+      {/* 海は 1 枚だけ (2 枚重ねると同じ高さで奪い合ってチカチカする) */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, s.sea, Z0 - 100]} renderOrder={2}>
+        <planeGeometry args={[W + 600, 700]} />
+        <meshStandardMaterial map={waves} color="#4aa8e0" roughness={0.18} metalness={0.05} transparent opacity={0.9} />
       </mesh>
-      {/* 街の上にあふれた水 (海面が地面より上のとき) */}
-      {s.sea > 0.02 && (
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, s.sea, Z0 + D / 2 + 20]}>
-          <planeGeometry args={[W + 80, D + 40]} />
-          <meshStandardMaterial color="#3f9bd6" roughness={0.25} metalness={0.1} transparent opacity={0.82} />
-        </mesh>
+      {/* 遠くの山 (雪の帽子つき)。海が上がると山も沈んでいく */}
+      {MOUNTAINS.map((m, i) => (
+        <group key={i} position={[m.x, 0, m.z]}>
+          <mesh position={[0, m.h / 2 - 4, 0]} castShadow receiveShadow>
+            <coneGeometry args={[m.r, m.h + 8, 9]} />
+            <meshStandardMaterial color={m.color} roughness={1} flatShading />
+          </mesh>
+          <mesh position={[0, m.h - m.h * 0.14, 0]}>
+            <coneGeometry args={[m.r * 0.3, m.h * 0.3, 9]} />
+            <meshStandardMaterial color="#ffffff" roughness={0.9} flatShading />
+          </mesh>
+        </group>
+      ))}
+      {/* 水があふれたら出てくるボートと救助ヘリ */}
+      {s.sea > 0.6 && boatMats.length > 0 && <Instanced geo={geos.hull} color="#ffffff" mats={boatMats} shadow />}
+      {s.sea > 0.6 && boatMats.length > 0 && <Instanced geo={geos.boatCab} color="#e8483f" mats={boatCabMats} />}
+      {s.sea > 0.3 && s.sea < 45 && (
+        <group position={[Math.cos(s.t * 0.35) * 45, Math.max(s.sea + 22, 30), -20 + Math.sin(s.t * 0.35) * 30]}
+          rotation={[0, -s.t * 0.35, 0]}>
+          <mesh castShadow><boxGeometry args={[2.2, 1.6, 4.2]} /><meshStandardMaterial color="#f2c230" /></mesh>
+          <mesh position={[0, 0.2, -3.2]}><boxGeometry args={[0.5, 0.5, 3]} /><meshStandardMaterial color="#f2c230" /></mesh>
+          <mesh position={[0, 1.05, 0]} rotation={[0, s.t * 25, 0]}><boxGeometry args={[9, 0.08, 0.35]} /><meshStandardMaterial color="#333" /></mesh>
+          <mesh position={[0, 0.25, 1.4]}><boxGeometry args={[2.0, 1.0, 1.4]} /><meshStandardMaterial color="#9fd3f5" /></mesh>
+        </group>
       )}
+      {/* 屋上の室外機・給水塔 */}
+      <Instanced geo={geos.box} color="#9aa3ad" mats={roofMats} />
     </group>
   );
 };
