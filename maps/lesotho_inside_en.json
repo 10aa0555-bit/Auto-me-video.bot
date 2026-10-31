@@ -1,0 +1,291 @@
+{
+  "title": "The Country Inside a Country",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This whole country is completely surrounded by another country. And all of it sits above a thousand meters.",
+      "camera": {
+        "center": [
+          25,
+          -29
+        ],
+        "span": 20
+      },
+      "fill": {
+        "LSO": "flag:ls"
+      },
+      "banner": {
+        "lines": [
+          "A COUNTRY INSIDE",
+          "A COUNTRY?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "This is Lesotho, an island of mountains in the middle of South Africa.",
+      "camera": {
+        "center": [
+          25,
+          -29
+        ],
+        "span": 20
+      },
+      "fill": {
+        "LSO": null
+      },
+      "outline": [
+        "LSO"
+      ]
+    },
+    {
+      "narration": "Only three countries on Earth are fully inside another one: San Marino, Vatican City and Lesotho.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "texts": [
+        {
+          "text": "ONLY 3 ON EARTH",
+          "accent": [
+            "3"
+          ],
+          "y": 0.22,
+          "size": 96,
+          "delay": 1.8
+        }
+      ]
+    },
+    {
+      "narration": "And Lesotho is by far the biggest of them, with over two million people.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Even its lowest point is one thousand four hundred meters high. No other country has a lowest point that high.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "texts": [
+        {
+          "text": "LOWEST POINT {n} M",
+          "count": 1400,
+          "accent": [
+            "1400",
+            "M"
+          ],
+          "y": 0.22,
+          "size": 80,
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "That's why it's called the Kingdom in the Sky.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Lesotho highlands mountains",
+          "caption": "KINGDOM IN THE SKY",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.4,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "So why didn't South Africa swallow it? In the 1860s, King Moshoeshoe asked Britain for protection against Boer settlers.",
+      "tts": "So why didn't South Africa swallow it? In the eighteen-sixties, King Moshoeshoe asked Britain for protection against Boer settlers.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "year": "1868"
+    },
+    {
+      "narration": "Britain ran it separately as Basutoland. So when South Africa formed, Lesotho stayed out, and became independent in 1966.",
+      "tts": "Britain ran it separately as Basutoland. So when South Africa formed, Lesotho stayed out, and became independent in nineteen sixty-six.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "year": "1966"
+    },
+    {
+      "narration": "Up here, people still ride ponies through the mountains, wrapped in colorful wool blankets.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Basotho blanket horse Lesotho",
+          "caption": "BASOTHO BLANKETS",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.4,
+          "size": 620
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon man wrapped in a colorful patterned wool blanket riding a small pony",
+          "name": "horse",
+          "pos": [
+            0.25,
+            0.55
+          ],
+          "size": 210,
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "And yes, Lesotho has a ski resort. In Africa.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 4
+      },
+      "texts": [
+        {
+          "text": "SKIING IN AFRICA",
+          "accent": [
+            "AFRICA"
+          ],
+          "y": 0.22,
+          "size": 90,
+          "delay": 0.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Afriski Lesotho snow",
+          "caption": "AFRISKI",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.4,
+          "size": 600
+        }
+      ]
+    },
+    {
+      "narration": "Its rivers even supply water to South Africa's biggest city.",
+      "camera": {
+        "center": [
+          27.5,
+          -27.5
+        ],
+        "span": 9
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              28.4,
+              -29.3
+            ],
+            [
+              28.1,
+              -27.5
+            ],
+            [
+              28.04,
+              -26.2
+            ]
+          ],
+          "style": "arrow",
+          "color": "#5ee7ff",
+          "width": 7,
+          "delay": 0.6,
+          "draw_time": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "Would you live in the Kingdom in the Sky? Yes or no?",
+      "camera": {
+        "center": [
+          25,
+          -29
+        ],
+        "span": 20
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The country inside a country 🇱🇸 #geography #africa",
+    "description": "Lesotho is completely surrounded by South Africa, and its lowest point is 1,400 m above sea level, the highest lowest point of any country.",
+    "hashtags": [
+      "#geography",
+      "#lesotho",
+      "#africa",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Kingdom in the Sky: would you live there? 👇"
+  }
+}

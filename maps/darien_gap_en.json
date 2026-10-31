@@ -1,0 +1,545 @@
+{
+  "title": "The 100 km Gap in the Longest Road on Earth",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "You can drive from Alaska almost all the way to the bottom of South America. Almost.",
+      "camera": {
+        "center": [
+          -95,
+          10
+        ],
+        "span": 120
+      },
+      "fill": {
+        "PAN": "flag:pa",
+        "COL": "flag:co"
+      },
+      "banner": {
+        "lines": [
+          "THE ROAD THAT",
+          "NEVER CONNECTS"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -148.4,
+              70.25
+            ],
+            [
+              -147.7,
+              64.8
+            ],
+            [
+              -135.0,
+              60.7
+            ],
+            [
+              -123.1,
+              49.3
+            ],
+            [
+              -118.2,
+              34.05
+            ],
+            [
+              -106.4,
+              31.7
+            ],
+            [
+              -99.1,
+              19.4
+            ],
+            [
+              -90.5,
+              14.6
+            ],
+            [
+              -84.1,
+              9.93
+            ],
+            [
+              -79.5,
+              9.0
+            ],
+            [
+              -77.69,
+              8.16
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 1.0,
+          "draw_time": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "The Pan-American Highway runs about thirty thousand kilometers. But it's broken in one place.",
+      "camera": {
+        "center": [
+          -95,
+          10
+        ],
+        "span": 120
+      },
+      "fill": {
+        "PAN": null,
+        "COL": null
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -148.4,
+              70.25
+            ],
+            [
+              -147.7,
+              64.8
+            ],
+            [
+              -135.0,
+              60.7
+            ],
+            [
+              -123.1,
+              49.3
+            ],
+            [
+              -118.2,
+              34.05
+            ],
+            [
+              -106.4,
+              31.7
+            ],
+            [
+              -99.1,
+              19.4
+            ],
+            [
+              -90.5,
+              14.6
+            ],
+            [
+              -84.1,
+              9.93
+            ],
+            [
+              -79.5,
+              9.0
+            ],
+            [
+              -77.69,
+              8.16
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 0,
+          "draw_time": 0.01
+        },
+        {
+          "path": [
+            [
+              -76.73,
+              8.09
+            ],
+            [
+              -75.56,
+              6.25
+            ],
+            [
+              -74.07,
+              4.71
+            ],
+            [
+              -78.47,
+              -0.18
+            ],
+            [
+              -77.03,
+              -12.05
+            ],
+            [
+              -70.65,
+              -33.45
+            ],
+            [
+              -58.38,
+              -34.6
+            ],
+            [
+              -68.3,
+              -54.8
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 0.4,
+          "draw_time": 2.0
+        }
+      ],
+      "photos": [
+        {
+          "q": "Pan-American Highway sign",
+          "caption": "PAN-AMERICAN HIGHWAY",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 2.6,
+          "size": 560
+        }
+      ]
+    },
+    {
+      "narration": "Right here, between Panama and Colombia: the Darién Gap.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      },
+      "markers": [
+        {
+          "at": [
+            -77.69,
+            8.16
+          ],
+          "type": "pin",
+          "label": "Yaviza, Panama",
+          "delay": 0.8
+        },
+        {
+          "at": [
+            -76.73,
+            8.09
+          ],
+          "type": "pin",
+          "label": "Turbo, Colombia",
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "About a hundred kilometers of rainforest, swamp and mountains, with no road at all.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -77.69,
+              8.16
+            ],
+            [
+              -76.73,
+              8.09
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ff5a4f",
+          "width": 6,
+          "delay": 0.6,
+          "draw_time": 1.2,
+          "label": "NO ROAD"
+        }
+      ],
+      "photos": [
+        {
+          "q": "Darien National Park Panama rainforest",
+          "caption": "DARIÉN JUNGLE",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.4,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Why not just build it? First, it's one of the wettest, thickest jungles in the Americas, and much of it is swamp.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Second, it's a protected national park, and home to Indigenous communities who don't want a highway.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Third, cows. The US worried a road would let foot-and-mouth disease walk north.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon cow looking worried",
+          "name": "cow",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 230,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "So drivers put their cars on a ship to get around it.",
+      "camera": {
+        "center": [
+          -78,
+          9.5
+        ],
+        "span": 8
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -79.9,
+              9.35
+            ],
+            [
+              -78.5,
+              10.4
+            ],
+            [
+              -76.9,
+              10.9
+            ],
+            [
+              -75.5,
+              10.4
+            ]
+          ],
+          "style": "arrow_dashed",
+          "color": "#5ee7ff",
+          "width": 6,
+          "delay": 0.4,
+          "draw_time": 1.8,
+          "label": "BY SHIP"
+        }
+      ]
+    },
+    {
+      "narration": "Crossing it on foot is extremely dangerous. Rivers flood, trails vanish, and help is days away.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Darien Gap river Panama",
+          "caption": "NO WAY THROUGH",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "So the longest road on Earth has a hundred kilometers of jungle in the middle.",
+      "camera": {
+        "center": [
+          -95,
+          10
+        ],
+        "span": 120
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -148.4,
+              70.25
+            ],
+            [
+              -147.7,
+              64.8
+            ],
+            [
+              -135.0,
+              60.7
+            ],
+            [
+              -123.1,
+              49.3
+            ],
+            [
+              -118.2,
+              34.05
+            ],
+            [
+              -106.4,
+              31.7
+            ],
+            [
+              -99.1,
+              19.4
+            ],
+            [
+              -90.5,
+              14.6
+            ],
+            [
+              -84.1,
+              9.93
+            ],
+            [
+              -79.5,
+              9.0
+            ],
+            [
+              -77.69,
+              8.16
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 0,
+          "draw_time": 0.01
+        },
+        {
+          "path": [
+            [
+              -76.73,
+              8.09
+            ],
+            [
+              -75.56,
+              6.25
+            ],
+            [
+              -74.07,
+              4.71
+            ],
+            [
+              -78.47,
+              -0.18
+            ],
+            [
+              -77.03,
+              -12.05
+            ],
+            [
+              -70.65,
+              -33.45
+            ],
+            [
+              -58.38,
+              -34.6
+            ],
+            [
+              -68.3,
+              -54.8
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "Some people say it should stay that way forever, to protect one of the wildest forests left in the Americas.",
+      "camera": {
+        "center": [
+          -77.2,
+          8.1
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Should they finish the road, or leave the jungle alone?",
+      "camera": {
+        "center": [
+          -95,
+          10
+        ],
+        "span": 120
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "ROAD OR JUNGLE?",
+          "accent": [
+            "JUNGLE?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The 100 km gap in the longest road on Earth 🌴 #geography #maps",
+    "description": "The Pan-American Highway runs ~30,000 km from Alaska to Argentina, except for the Darién Gap between Panama and Colombia.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#panama",
+      "#colombia",
+      "#roadtrip",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Finish the road or leave the jungle? 👇"
+  },
+  "imagery": "bluemarble"
+}
