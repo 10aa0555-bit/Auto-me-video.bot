@@ -16,7 +16,7 @@ def secs(mp4):
     return None
 GEO_POSTED = [("baarle_border_en", "A Border Through Your House?", 348, "18時間"), ("darien_gap_en", "The Road That Never Connects", 397, "2日前"),
               ("diomede_islands_en", "Russia and the US 4 km apart", 205, "2日前"), ("pig_war_en", "The Pig War", 295, "4日前"), ("emu_war_v2_en", "The Great Emu War", 302, "4日前")]
-GEO_QUEUE = [("lesotho_inside_en", "国の中の国（地球ズーム付き）"),
+GEO_QUEUE = [("lesotho_inside_en", "国の中の国（地球ズーム付きの最初の1本。バールレと伸びを比べる）"),
              ("point_nemo_en", "地球で一番孤独な場所"), ("amazon_border_en", "車で行けない大都市"), ("border_slash_en", "世界一長い国境の“散髪”"),
              ("ordos_ghost_en", "100万人用に作った無人の街"), ("alaska_purchase_en", "アラスカはなぜアメリカ？"), ("dingo_fence_en", "5,600 km のフェンス"),
              ("zanzibar_war_en", "Ridiculous Wars #3 として（38分の戦争）"), ("chile_thin_en", "チリはなぜ細い？"), ("saudi_no_rivers_en", "川が1本もない大国"),
