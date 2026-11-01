@@ -114,4 +114,5 @@ export type Props = {
   credits?: string[];
   audio: string;
   captionStyle: string;
+  globe?: {img: string; lon: number; lat: number} | null;
 };

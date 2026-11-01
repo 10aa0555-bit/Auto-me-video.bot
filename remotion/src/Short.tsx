@@ -1,3 +1,4 @@
+import {GLOBE_DUR, GlobeIntro} from './Globe';
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Fills, Ghost, Line, Outlines, SwarmDots} from './Geo';
@@ -466,6 +467,7 @@ export const Short: React.FC<Props> = (props) => {
       <Fills scenes={props.scenes} shapes={props.shapes ?? {}} bboxes={props.bboxes} cam={cam} t={t} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.32) 100%)'}} />
       <Blueprint scenes={props.scenes} t={t} />
+      {props.globe && t < GLOBE_DUR && <GlobeIntro img={props.globe.img} lon={props.globe.lon} lat={props.globe.lat} t={t} />}
       {props.scenes.map((s, i) => (
         <Sequence key={i} from={Math.round(s.start * fps)} durationInFrames={Math.max(1, Math.round(s.dur * fps))} layout="none">
           <SceneLayer s={s} prevYear={i > 0 ? props.scenes[i - 1].spec.year : undefined} props={props} />

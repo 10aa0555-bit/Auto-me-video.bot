@@ -433,6 +433,18 @@ def main():
     tex, credits = map_textures(tl, job, sorted(looks), use_tiles)
     credits = credits + photo_credits
 
+    # 冒頭の「地球が回って、その場所へズーム」用の地球の画像と、ズームの風切り音
+    globe = None
+    cam0 = script["scenes"][0].get("camera") or {}
+    if script.get("globe", True) and cam0.get("center"):
+        try:
+            src = cv2.imread(find_texture())
+            gtex = _grade(cv2.resize(src, (4096, 2048), interpolation=cv2.INTER_AREA))
+            cv2.imwrite(os.path.join(job, "globe.jpg"), gtex, [cv2.IMWRITE_JPEG_QUALITY, 88])
+            globe = {"img": "globe.jpg", "lon": cam0["center"][0], "lat": cam0["center"][1]}
+            tl.sfx = list(tl.sfx) + [(0.45, "whoosh", {"dur": 1.0, "seed": 91})]
+        except Exception as e:  # 地球が作れなくても動画は作る
+            print(f"地球の画像を作れませんでした: {e}")
     fx = os.path.join(job, "sfx.wav")
     sfx.render_track(tl.sfx, total, fx)
     audio = os.path.join(job, "audio.m4a")
@@ -452,7 +464,7 @@ def main():
                 for c in tl.captions]
     props = {"name": name, "fps": FPS, "frames": n, "scenes": scenes, "captions": captions,
              "camera": cams, "shapes": shapes, "bboxes": shapes_bbox, "maps": tex or [], "credits": credits, "audio": "audio.m4a",
-             "captionStyle": script.get("captions", "plain"),
+             "captionStyle": script.get("captions", "plain"), "globe": globe,
              "version": hashlib.sha1(str(os.path.getmtime(audio)).encode()).hexdigest()[:8]}
     os.makedirs(os.path.join(ROOT, "out"), exist_ok=True)
     post = os.path.join(ROOT, "out", f"{name}_post.txt")
