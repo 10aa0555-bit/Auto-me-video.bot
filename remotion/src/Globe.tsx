@@ -7,7 +7,10 @@ import {H, W, clamp01, easeInOut} from './util';
  * 地球の画像 (正距円筒) を正射図法でキャンバスに描く。最後は下の地図にフェードしてつながる。
  */
 
-export const GLOBE_DUR = 1.55;
+export const GLOBE_DUR = 2.0;
+
+/** 地球ズームの最後に、下の地図も少し引いた所から寄ってくる (地球→地図をつなげる)。 */
+export const mapIntroScale = (t: number) => (t >= GLOBE_DUR ? 1 : 0.62 + 0.38 * easeInOut(clamp01((t - 1.25) / (GLOBE_DUR - 1.25))));
 
 let cache: {w: number; h: number; px: Uint8ClampedArray} | null = null;
 
@@ -39,32 +42,33 @@ const D2R = Math.PI / 180;
 export const GlobeIntro: React.FC<{img: string; lon: number; lat: number; t: number}> = ({img, lon, lat, t}) => {
   const tex = useTexture(staticFile(`job/${img}`));
   const ref = useRef<HTMLCanvasElement>(null);
-  // 回転: 西から 80 度ぶん回ってきて、少しずつ目的の緯度へ。ズームは 0.55 秒から一気に
-  const spin = easeInOut(clamp01(t / 1.05));
-  const lon0 = lon - 80 * (1 - spin);
-  const lat0 = lat * (0.35 + 0.65 * spin);
-  const zk = clamp01((t - 0.55) / (GLOBE_DUR - 0.55));
-  const R = 430 * Math.pow(9, zk * zk);
-  const fade = 1 - clamp01((t - (GLOBE_DUR - 0.4)) / 0.4);
+  // 回転とズームを同時に、ゆっくり始めてゆっくり終わる (ぬるっと)
+  const spin = easeInOut(clamp01(t / 1.5));
+  const lon0 = lon - 70 * (1 - spin);
+  const lat0 = lat * (0.3 + 0.7 * spin);
+  const zk = easeInOut(clamp01((t - 0.3) / (GLOBE_DUR - 0.3)));
+  const R = 430 * Math.exp(Math.log(2600 / 430) * zk);
+  const fade = 1 - easeInOut(clamp01((t - 1.35) / (GLOBE_DUR - 1.35)));
   useLayoutEffect(() => {
     const cv = ref.current;
     if (!cv || !tex) return;
     const g = cv.getContext('2d')!;
-    // 半分の解像度で描いて拡大 (速さのため。動きが速いので見た目は変わらない)
-    const S = 2;
-    const w = W / S;
-    const h = H / S;
+    const w = W;
+    const h = H;
     const out = g.createImageData(w, h);
     const d = out.data;
     const cx = w / 2;
     const cy = h * 0.46;
-    const r = R / S;
+    const r = R;
     const sl = Math.sin(lat0 * D2R);
     const cl = Math.cos(lat0 * D2R);
     const x0 = Math.max(0, Math.floor(cx - r));
     const x1 = Math.min(w, Math.ceil(cx + r));
     const y0 = Math.max(0, Math.floor(cy - r));
     const y1 = Math.min(h, Math.ceil(cy + r));
+    const tw = tex.w;
+    const th = tex.h;
+    const px = tex.px;
     for (let y = y0; y < y1; y++) {
       const py = (cy - y) / r;
       for (let x = x0; x < x1; x++) {
@@ -75,16 +79,30 @@ export const GlobeIntro: React.FC<{img: string; lon: number; lat: number; t: num
         const la = Math.asin(z * sl + py * cl) * R2D;
         let lo = lon0 + Math.atan2(qx, z * cl - py * sl) * R2D;
         lo = ((lo + 540) % 360) - 180;
-        const u = Math.min(tex.w - 1, Math.max(0, Math.floor(((lo + 180) / 360) * tex.w)));
-        const v = Math.min(tex.h - 1, Math.max(0, Math.floor(((90 - la) / 180) * tex.h)));
-        const si = (v * tex.w + u) * 4;
-        // ふちほど暗く (丸みの陰影)、少しだけ青く
-        const shade = 0.5 + 0.5 * Math.pow(z, 0.6);
+        // バイリニア補間 (4 つの画素を混ぜて、拡大してもガビガビにしない)
+        const fu = ((lo + 180) / 360) * tw - 0.5;
+        const fv = Math.min(th - 1.001, Math.max(0, ((90 - la) / 180) * th - 0.5));
+        const u0 = Math.floor(fu);
+        const v0 = Math.floor(fv);
+        const au = fu - u0;
+        const av = fv - v0;
+        const ua = ((u0 % tw) + tw) % tw;
+        const ub = (ua + 1) % tw;
+        const i00 = (v0 * tw + ua) * 4;
+        const i01 = (v0 * tw + ub) * 4;
+        const i10 = ((v0 + 1) * tw + ua) * 4;
+        const i11 = ((v0 + 1) * tw + ub) * 4;
+        // ふちほど暗く (丸みの陰影)、ふちは少し青く (大気)
+        const shade = 0.55 + 0.45 * Math.pow(z, 0.55);
         const o = (y * w + x) * 4;
-        d[o] = tex.px[si] * shade;
-        d[o + 1] = tex.px[si + 1] * shade;
-        d[o + 2] = Math.min(255, tex.px[si + 2] * shade + 10 * (1 - z));
-        d[o + 3] = 255;
+        for (let c = 0; c < 3; c++) {
+          const top = px[i00 + c] * (1 - au) + px[i01 + c] * au;
+          const bot = px[i10 + c] * (1 - au) + px[i11 + c] * au;
+          d[o + c] = (top * (1 - av) + bot * av) * shade + (c === 2 ? 18 : c === 1 ? 6 : 0) * (1 - z);
+        }
+        // 円のふちをなめらかに (アンチエイリアス)
+        const edge = (1 - Math.sqrt(rho2)) * r;
+        d[o + 3] = edge < 1.5 ? 255 * Math.max(0, edge / 1.5) : 255;
       }
     }
     g.putImageData(out, 0, 0);
@@ -102,10 +120,10 @@ export const GlobeIntro: React.FC<{img: string; lon: number; lat: number; t: num
       {/* 大気の光 */}
       <div style={{position: 'absolute', left: W / 2 - R * 1.12, top: H * 0.46 - R * 1.12, width: R * 2.24, height: R * 2.24, borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(120,190,255,0) 86%, rgba(120,190,255,0.55) 90%, rgba(120,190,255,0) 100%)'}} />
-      <canvas ref={ref} width={W / 2} height={H / 2} style={{position: 'absolute', left: 0, top: 0, width: W, height: H}} />
+      <canvas ref={ref} width={W} height={H} style={{position: 'absolute', left: 0, top: 0, width: W, height: H}} />
       {/* 着地点のピンの光 */}
       <div style={{position: 'absolute', left: W / 2 - 18, top: H * 0.46 - 18, width: 36, height: 36, borderRadius: '50%',
-        background: '#ffd23f', boxShadow: '0 0 30px 12px rgba(255,210,63,0.7)', opacity: clamp01((t - 0.9) / 0.25) * (1 - zk * 0.6)}} />
+        background: '#ffd23f', boxShadow: '0 0 30px 12px rgba(255,210,63,0.7)', opacity: clamp01((t - 1.0) / 0.3) * (1 - zk * 0.7)}} />
     </AbsoluteFill>
   );
 };

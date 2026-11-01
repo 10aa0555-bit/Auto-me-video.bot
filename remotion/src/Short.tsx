@@ -1,4 +1,4 @@
-import {GLOBE_DUR, GlobeIntro} from './Globe';
+import {GLOBE_DUR, GlobeIntro, mapIntroScale} from './Globe';
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Fills, Ghost, Line, Outlines, SwarmDots} from './Geo';
@@ -463,8 +463,10 @@ export const Short: React.FC<Props> = (props) => {
   return (
     <AbsoluteFill style={{backgroundColor: '#0d2238', overflow: 'hidden'}}>
       <FontFaces />
-      {props.maps.length > 0 && <MapLayer maps={props.maps} cam={cam} scenes={props.scenes} t={t} />}
-      <Fills scenes={props.scenes} shapes={props.shapes ?? {}} bboxes={props.bboxes} cam={cam} t={t} />
+      <AbsoluteFill style={props.globe && t < GLOBE_DUR ? {transform: `scale(${mapIntroScale(t)})`, transformOrigin: '50% 46%'} : undefined}>
+        {props.maps.length > 0 && <MapLayer maps={props.maps} cam={cam} scenes={props.scenes} t={t} />}
+        <Fills scenes={props.scenes} shapes={props.shapes ?? {}} bboxes={props.bboxes} cam={cam} t={t} />
+      </AbsoluteFill>
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.32) 100%)'}} />
       <Blueprint scenes={props.scenes} t={t} />
       {props.globe && t < GLOBE_DUR && <GlobeIntro img={props.globe.img} lon={props.globe.lon} lat={props.globe.lat} t={t} />}

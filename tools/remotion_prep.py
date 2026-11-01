@@ -439,10 +439,10 @@ def main():
     if script.get("globe", True) and cam0.get("center"):
         try:
             src = cv2.imread(find_texture())
-            gtex = _grade(cv2.resize(src, (4096, 2048), interpolation=cv2.INTER_AREA))
-            cv2.imwrite(os.path.join(job, "globe.jpg"), gtex, [cv2.IMWRITE_JPEG_QUALITY, 88])
+            gtex = _grade(cv2.resize(src, (6144, 3072), interpolation=cv2.INTER_AREA))
+            cv2.imwrite(os.path.join(job, "globe.jpg"), gtex, [cv2.IMWRITE_JPEG_QUALITY, 92])
             globe = {"img": "globe.jpg", "lon": cam0["center"][0], "lat": cam0["center"][1]}
-            tl.sfx = list(tl.sfx) + [(0.45, "whoosh", {"dur": 1.0, "seed": 91})]
+            tl.sfx = list(tl.sfx) + [(0.5, "whoosh", {"dur": 1.4, "seed": 91})]
         except Exception as e:  # 地球が作れなくても動画は作る
             print(f"地球の画像を作れませんでした: {e}")
     fx = os.path.join(job, "sfx.wav")
