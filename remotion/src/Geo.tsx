@@ -137,6 +137,37 @@ export const Line: React.FC<{ln: LineSpec; cam: Cam; lt: number; dur: number}> =
   if (label && ln.count !== undefined) label = label.replace('{n}', Math.round(ln.count * prog).toLocaleString('en-US'));
   const labelK = label ? popIn(lt - delay - (ln.draw_time ?? 1.2) * 0.6) * fade : 0;
   const mid = pts[Math.floor(pts.length / 2)];
+  if (style === 'ruler' && out.length >= 2) {
+    // 距離のものさし: 黄色い線 + 両端の目盛り + 途中の小さな目盛り + 真ん中の上に数字の札
+    const st = out[0];
+    const nx = -Math.sin(ang);
+    const ny = Math.cos(ang);
+    const tick = (p: number[], len: number, key: string) => (
+      <line key={key} x1={p[0] - nx * len} y1={p[1] - ny * len} x2={p[0] + nx * len} y2={p[1] + ny * len} stroke="#ffd23f" strokeWidth={6} strokeLinecap="round" />
+    );
+    const ticks = out.filter((_, i) => i > 0 && i < out.length - 1 && i % Math.max(1, Math.floor(out.length / 8)) === 0);
+    const cmid = out[Math.floor(out.length / 2)];
+    const rc = color === '#ffffff' ? '#ffd23f' : color;
+    return (
+      <>
+        <svg width={W} height={H} style={{position: 'absolute', left: 0, top: 0, opacity: fade}}>
+          <g fill="none" strokeLinecap="round">
+            <path d={d} stroke="rgba(0,0,0,0.45)" strokeWidth={14} />
+            <path d={d} stroke={rc} strokeWidth={7} />
+            <g>{[tick(st, 26, 's'), tick(end, 26, 'e'), ...ticks.map((p, i) => tick(p, 12, `m${i}`))]}</g>
+            <circle cx={end[0]} cy={end[1]} r={11} fill={rc} stroke="rgba(0,0,0,0.5)" strokeWidth={3} />
+          </g>
+        </svg>
+        {label && (
+          <div style={{
+            position: 'absolute', left: cmid[0] - nx * 70, top: cmid[1] - ny * 70, transform: `translate(-50%, -50%) scale(${Math.max(0.6, labelK || prog)})`,
+            background: rc, color: '#1d2433', fontFamily: FONT, fontWeight: 900, fontSize: 56, padding: '4px 24px',
+            borderRadius: 14, whiteSpace: 'nowrap', boxShadow: '0 8px 18px rgba(0,0,0,0.35)', opacity: fade,
+          }}>{label}</div>
+        )}
+      </>
+    );
+  }
   return (
     <>
       <svg width={W} height={H} style={{position: 'absolute', left: 0, top: 0, opacity: fade}}>

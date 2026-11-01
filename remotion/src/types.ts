@@ -30,7 +30,7 @@ export type TextSpec = {
 
 export type LineSpec = {
   path: LonLat[];
-  style?: 'solid' | 'dashed' | 'glow' | 'arrow' | 'arrow_dashed';
+  style?: 'solid' | 'dashed' | 'glow' | 'arrow' | 'arrow_dashed' | 'ruler';
   color?: string;
   width?: number;
   delay?: number;

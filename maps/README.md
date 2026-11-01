@@ -97,3 +97,9 @@ scripts/zanzibar_war_en.json (Ridiculous Wars #4)
 | 35 | Why does Russia own a piece of the EU? | カリーニングラード: ロシア本土とつながっていない飛び地。1945 年までドイツ領 (今の戦争には触れない) |
 | 36 | Why does the Panama Canal need a lake? | 船を持ち上げる水門の水はガトゥン湖から。1 回の通航で大量の淡水を使う。干ばつで通航制限 |
 | 37 | Why do almost all Icelanders live in one corner? | 人口の約 3 分の 2 が首都圏。内陸は氷河と溶岩原。夏も寒い |
+
+
+## 新しい演出 (2026-11-01〜)
+- **地球ズーム (自動)**: 1 シーン目に camera.center があると、冒頭 1.5 秒で宇宙の地球が回ってその場所へズームする。止めたいときは台本に `"globe": false`
+- **ものさし線**: 距離を見せるときは lines に `"style": "ruler"` (黄色い線 + 両端の目盛り + 札)。`"label": "{n} KM", "count": 100` で数字が数え上がる
+- 伸びたのは「つながらない道」「4 km の国境」= 距離・ありえない場所。こういうネタを優先し、距離が出るなら ruler を必ず使う
