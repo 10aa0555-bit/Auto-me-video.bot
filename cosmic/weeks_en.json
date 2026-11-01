@@ -1,0 +1,237 @@
+{
+ "title": "You Only Get 4000 Weeks",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "You only get about 4,000 weeks. ⏳",
+  "description": "Send this to someone who keeps saying 'someday'.\n\nIf you live to 80, that is roughly 4,170 weeks in total.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "How will you spend this week? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "face",
+   "narration": "If you live to eighty, you get about four thousand weeks. That's it. Four thousand.",
+   "hot": [
+    "FOUR",
+    "THOUSAND"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "It sounds like a lot, until you realize you have already spent a big part of them.",
+   "hot": [
+    "SPENT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 2
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "At twenty, about a quarter is gone. At forty, half.",
+   "hot": [
+    "QUARTER",
+    "HALF"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 11
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Most people spend their weeks waiting. Waiting for Friday. Waiting for summer. Waiting for someday.",
+   "hot": [
+    "WAITING",
+    "SOMEDAY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 19
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "But someday is not on the calendar. It never was.",
+   "hot": [
+    "CALENDAR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 9
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "Every week you spend doing something you hate, out of fear, is a week you will never get back.",
+   "hot": [
+    "FEAR",
+    "BACK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 14
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "Every week you spend scrolling through other people's lives is one less week of your own.",
+   "hot": [
+    "SCROLLING",
+    "YOUR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 9
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "This is not meant to scare you. It's meant to wake you up.",
+   "hot": [
+    "WAKE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 18
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "Time is the only thing you can never earn back. Not with money. Not with luck.",
+   "hot": [
+    "TIME",
+    "NEVER"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "So spend your weeks like they are rare. Because they are.",
+   "hot": [
+    "RARE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 17
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "Call the person. Start the project. Take the trip. This week, not someday.",
+   "hot": [
+    "THIS",
+    "WEEK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 34
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So tell me. How will you spend this week?",
+   "hot": [
+    "THIS",
+    "WEEK"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

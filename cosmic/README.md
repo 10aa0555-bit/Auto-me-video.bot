@@ -3,6 +3,13 @@
 フラットなベクター調のアニメに、読み上げ中の単語を 1 語ずつ極太で重ねる英語ショート。前向きな哲学・人生・心理の話。
 見た目と構成は GEMRIL に寄せる。絵は `remotion/src/cosmic/Cosmic.tsx` の中で図形から描く (他人の映像・音声・台本は使わない。転載は著作権と収益化の両方で NG)。
 
+## 今の見た目: ヨハン風ノワール (`"theme": "noir"`)
+ユーザーが気に入っている見た目。雨のヨーロッパの夜、金髪で色白・黒いロングコートの静かな青年 (オリジナル。実在作品の画像は使わない)、
+手描き風の線とフィルムの粒子、赤い強調語、声は Kokoro `bm_george` 速さ 0.9、環境音は雨。
+使える noir の `scene`: street / bridge / face / smile / chess / mirror / window / stairs / fire / crowd / moon。
+台本は 150〜170 語 (速さ 0.9 で 61〜70 秒)。140 語未満だと 1 分に届かないので注意。
+済み: nobody_coming, quiet_one, mirror_enemy, discipline, burn_past, one_of_crowd, three_am, pain_teacher, top_of_stairs, cold_mind
+
 ## 台本の形 (`cosmic/<slug>_en.json`)
 - `"style": "cosmic"`、声は Kokoro `am_michael` 速さ 1.0 (落ち着いた語り)
 - 約 160〜190 語 (61〜75 秒)。1 シーン = 1〜2 文、10〜12 シーン
@@ -18,7 +25,7 @@
 
 ## ネタ帳 (上から順に)
 1. ✅ stardust_en — You are 13.8 billion years old (小さく感じたら、自分は宇宙のかけら)
-2. weeks_en — You only get about 4,000 weeks (80 年 ≒ 4,160 週)
+2. ✅ weeks_en — You only get about 4,000 weeks (80 年 ≒ 4,160 週)
 3. spotlight_en — Nobody is watching you as much as you think (スポットライト効果)
 4. one_percent_en — 1% better every day = 37 times better in a year (1.01^365 ≒ 37.8)
 5. free_en — If nothing matters, you are free to do anything
