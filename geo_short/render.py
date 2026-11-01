@@ -197,6 +197,9 @@ class Timeline:
             cam = sp.get("camera")
             if cam:
                 x, y = merc(*cam["center"])
+                # 画面の端が日付変更線 (地図の左右の端) を越えないように、中心を内側へずらす
+                half = cam["span"] / 360.0 / 2 * 1.08
+                x = min(max(x, half), 1 - half)
                 target = (x, y, math.log(cam["span"] / 360.0))
             else:
                 target = prev_cam
