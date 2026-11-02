@@ -1,0 +1,351 @@
+{
+  "title": "The Town Where You Can't Die",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "post": {
+    "title": "The Arctic town where you're not allowed to die ❄️ #geography #maps",
+    "description": "In Longyearbyen, Svalbard, the permafrost keeps bodies from decaying, so the town stopped burials around 1950. The very sick are usually flown to mainland Norway.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#svalbard",
+      "#norway",
+      "#arctic",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you move there? Yes or no 👇"
+  },
+  "scenes": [
+    {
+      "narration": "There is a town in the Arctic where, people say, you are not allowed to die.",
+      "camera": {
+        "center": [
+          17,
+          77.2
+        ],
+        "span": 30
+      },
+      "fill": {
+        "NOR@17,78": "flag:no"
+      },
+      "banner": {
+        "lines": [
+          "THE TOWN WHERE",
+          "YOU CAN'T DIE?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "It's on Svalbard, a group of islands about nine hundred kilometers north of mainland Norway.",
+      "camera": {
+        "center": [
+          17,
+          74
+        ],
+        "span": 26
+      },
+      "fill": {
+        "NOR@17,78": null
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              18.96,
+              69.65
+            ],
+            [
+              17.6,
+              73.9
+            ],
+            [
+              15.63,
+              78.22
+            ]
+          ],
+          "style": "ruler",
+          "delay": 0.8,
+          "draw_time": 1.6,
+          "label": "{n} KM",
+          "count": 960
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            17.5,
+            78.7
+          ],
+          "type": "pin",
+          "label": "Svalbard",
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "Its main town, Longyearbyen, has about two thousand five hundred people.",
+      "camera": {
+        "center": [
+          15.63,
+          78.22
+        ],
+        "span": 0.9
+      },
+      "markers": [
+        {
+          "at": [
+            15.63,
+            78.22
+          ],
+          "type": "pin",
+          "label": "Longyearbyen",
+          "delay": 0.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Longyearbyen town Svalbard",
+          "caption": "LONGYEARBYEN",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.2,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "In 1918, a deadly flu reached the town, and several young miners were buried in its little cemetery.",
+      "tts": "In nineteen eighteen, a deadly flu reached the town, and several young miners were buried in its little cemetery.",
+      "camera": {
+        "center": [
+          15.63,
+          78.22
+        ],
+        "span": 0.9
+      },
+      "year": "1918",
+      "photos": [
+        {
+          "q": "Longyearbyen cemetery",
+          "caption": "THE OLD CEMETERY",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.4,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "But the ground here is permafrost. It never thaws. Decades later, the bodies had barely decayed.",
+      "camera": {
+        "center": [
+          15.63,
+          78.22
+        ],
+        "span": 0.9
+      },
+      "texts": [
+        {
+          "text": "FROZEN FOREVER",
+          "accent": [
+            "FOREVER"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "So around 1950, the town stopped burying people in its cemetery.",
+      "tts": "So around nineteen fifty, the town stopped burying people in its cemetery.",
+      "camera": {
+        "center": [
+          15.63,
+          78.22
+        ],
+        "span": 0.9
+      },
+      "year": "1950",
+      "texts": [
+        {
+          "text": "NO MORE BURIALS",
+          "accent": [
+            "NO"
+          ],
+          "y": 0.3,
+          "size": 88,
+          "delay": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "Today, very sick people are usually flown to mainland Norway. So dying isn't illegal. You just can't stay.",
+      "camera": {
+        "center": [
+          17.5,
+          78.6
+        ],
+        "span": 14
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon small propeller airplane flying, side view",
+          "name": "airplane",
+          "at": [
+            15.6,
+            78.2
+          ],
+          "to": [
+            19.5,
+            75.5
+          ],
+          "travel_time": 3.0,
+          "size": 220,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "There's another danger too. Svalbard has thousands of polar bears, so people carry rifles when they leave town.",
+      "camera": {
+        "center": [
+          15.63,
+          78.22
+        ],
+        "span": 0.9
+      },
+      "photos": [
+        {
+          "q": "polar bear Svalbard",
+          "caption": "POLAR BEAR",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.8,
+          "size": 620
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon polar bear standing, friendly face",
+          "name": "polar bear",
+          "at": [
+            15.75,
+            78.15
+          ],
+          "size": 240,
+          "delay": 2.8
+        }
+      ]
+    },
+    {
+      "narration": "Outside town, a vault inside a mountain stores over a million seeds from around the world, just in case.",
+      "camera": {
+        "center": [
+          15.63,
+          78.22
+        ],
+        "span": 0.9
+      },
+      "markers": [
+        {
+          "at": [
+            15.49,
+            78.24
+          ],
+          "type": "pin",
+          "label": "Seed Vault",
+          "delay": 0.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Svalbard Global Seed Vault entrance",
+          "caption": "DOOMSDAY SEED VAULT",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Thanks to a 1920 treaty, people from many countries can live here without a visa, if they support themselves.",
+      "tts": "Thanks to a nineteen twenty treaty, people from many countries can live here without a visa, if they support themselves.",
+      "camera": {
+        "center": [
+          17.5,
+          78.6
+        ],
+        "span": 14
+      },
+      "year": "1920",
+      "texts": [
+        {
+          "text": "NO VISA NEEDED",
+          "accent": [
+            "NO"
+          ],
+          "y": 0.22,
+          "size": 88,
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "No graves, lots of polar bears, and almost four months of darkness every winter.",
+      "camera": {
+        "center": [
+          17.5,
+          78.6
+        ],
+        "span": 14
+      }
+    },
+    {
+      "narration": "Would you move to the town where you can't die? Yes or no?",
+      "camera": {
+        "center": [
+          17.5,
+          78.6
+        ],
+        "span": 14
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ]
+}
