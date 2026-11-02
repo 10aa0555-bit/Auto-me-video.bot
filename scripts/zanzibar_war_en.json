@@ -1,0 +1,428 @@
+{
+  "title": "The Shortest War in History",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "scenes": [
+    {
+      "narration": "This war was over faster than your lunch break.",
+      "camera": {
+        "center": [
+          38,
+          -4
+        ],
+        "span": 40
+      },
+      "icons": [
+        {
+          "ai": "a cartoon stopwatch with a nervous face and little arms",
+          "name": "stopwatch",
+          "pos": [
+            0.5,
+            0.42
+          ],
+          "size": 240,
+          "delay": 0.9
+        }
+      ],
+      "banner": {
+        "lines": [
+          "THE SHORTEST WAR",
+          "RIDICULOUS WARS #4"
+        ],
+        "y": 0.18,
+        "delay": 0.15,
+        "size": 80
+      },
+      "fill": {
+        "TZA": "flag:tz"
+      }
+    },
+    {
+      "narration": "Look at this tiny island off the coast of East Africa. That's Zanzibar.",
+      "camera": {
+        "center": [
+          39.3,
+          -6.1
+        ],
+        "span": 7
+      },
+      "markers": [
+        {
+          "at": [
+            39.19,
+            -6.16
+          ],
+          "type": "pin",
+          "label": "Zanzibar",
+          "delay": 2.6
+        }
+      ],
+      "fill": {
+        "TZA": null
+      }
+    },
+    {
+      "narration": "In 1896 it had its own sultan. But Britain wanted a say in who got the job.",
+      "tts": "In eighteen ninety-six it had its own sultan. But Britain wanted a say in who got the job.",
+      "year": "1896",
+      "camera": {
+        "center": [
+          39.3,
+          -6.1
+        ],
+        "span": 4.5
+      },
+      "icons": [
+        {
+          "ai": "a sultan in white robes and a white turban sitting on a small golden throne",
+          "name": "crown",
+          "at": [
+            38.75,
+            -5.7
+          ],
+          "size": 200,
+          "delay": 0.5
+        },
+        {
+          "ai": "a victorian british naval officer in a dark blue uniform and bicorne hat holding a telescope",
+          "name": "man police officer",
+          "at": [
+            39.85,
+            -6.5
+          ],
+          "size": 190,
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "Then the sultan died, and a rival named Khalid grabbed the throne without asking Britain first.",
+      "camera": {
+        "center": [
+          39.15,
+          -6.12
+        ],
+        "span": 3.2
+      },
+      "icons": [
+        {
+          "ai": "a cheeky young man in a turban and robes running while holding a golden crown",
+          "name": "person running",
+          "at": [
+            38.85,
+            -5.85
+          ],
+          "to": [
+            39.2,
+            -6.16
+          ],
+          "travel_time": 1.6,
+          "size": 190,
+          "delay": 1.0
+        }
+      ],
+      "base": "relief"
+    },
+    {
+      "narration": "Britain was not amused. Warships showed up, with a deadline: leave the palace by nine a.m.",
+      "tts": "Britain was not amused. Warships showed up, with a deadline: leave the palace by nine A M.",
+      "camera": {
+        "center": [
+          39.15,
+          -6.12
+        ],
+        "span": 3.2
+      },
+      "icons": [
+        {
+          "ai": "a small grey victorian steam warship with a british flag, side view",
+          "name": "ship",
+          "at": [
+            38.95,
+            -6.25
+          ],
+          "count": 5,
+          "spread": 80,
+          "size": 130,
+          "delay": 0.8
+        },
+        {
+          "name": "alarm clock",
+          "at": [
+            39.6,
+            -5.75
+          ],
+          "size": 200,
+          "anim": "shake",
+          "delay": 3.4,
+          "label": "9:00 AM",
+          "ai": "a cartoon red alarm clock ringing and shaking, with motion lines"
+        }
+      ],
+      "base": "relief"
+    },
+    {
+      "narration": "Khalid locked himself inside with around two thousand eight hundred defenders.",
+      "camera": {
+        "center": [
+          39.15,
+          -6.12
+        ],
+        "span": 3.2
+      },
+      "icons": [
+        {
+          "ai": "a small arabian palace with white walls and a red flag on top",
+          "name": "classical building",
+          "at": [
+            39.19,
+            -6.16
+          ],
+          "size": 230,
+          "delay": 0.4
+        },
+        {
+          "ai": "an arab palace guard in robes holding an old rifle",
+          "name": "guard",
+          "at": [
+            39.19,
+            -6.16
+          ],
+          "count": 9,
+          "spread": 60,
+          "size": 90,
+          "delay": 1.4
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n} DEFENDERS",
+          "count": 2800,
+          "accent": [
+            "DEFENDERS"
+          ],
+          "y": 0.3,
+          "size": 84,
+          "delay": 1.6
+        }
+      ],
+      "base": "relief"
+    },
+    {
+      "narration": "Nine o'clock came. Nobody left. At two minutes past nine, the ships opened fire.",
+      "icons": [
+        {
+          "name": "alarm clock",
+          "pos": [
+            0.5,
+            0.36
+          ],
+          "size": 300,
+          "anim": "shake",
+          "delay": 0.4,
+          "ai": "a cartoon red alarm clock ringing and shaking, with motion lines"
+        },
+        {
+          "ai": "a small grey victorian steam warship firing its cannon with a puff of smoke, side view",
+          "name": "ship",
+          "pos": [
+            0.32,
+            0.5
+          ],
+          "size": 240,
+          "delay": 2.6
+        },
+        {
+          "name": "collision",
+          "pos": [
+            0.7,
+            0.46
+          ],
+          "size": 200,
+          "delay": 3.4,
+          "ai": "a cartoon explosion burst with orange and yellow smoke puff"
+        }
+      ],
+      "texts": [
+        {
+          "text": "9:02 AM",
+          "y": 0.22,
+          "size": 110,
+          "delay": 2.4
+        }
+      ],
+      "dim": true
+    },
+    {
+      "narration": "The palace caught fire. The sultan's only warship, a royal yacht, was sunk.",
+      "icons": [
+        {
+          "name": "fire",
+          "pos": [
+            0.35,
+            0.42
+          ],
+          "size": 280,
+          "delay": 0.4,
+          "ai": "a cartoon orange fire flame with a little smoke"
+        },
+        {
+          "ai": "a small white royal steam yacht sinking with bubbles",
+          "name": "sailboat",
+          "pos": [
+            0.66,
+            0.46
+          ],
+          "size": 240,
+          "anim": "shake",
+          "delay": 2.4
+        }
+      ],
+      "dim": true
+    },
+    {
+      "narration": "At nine forty, the flag came down. The whole war lasted about thirty-eight minutes.",
+      "camera": {
+        "center": [
+          39.15,
+          -6.12
+        ],
+        "span": 3.2
+      },
+      "flash": true,
+      "texts": [
+        {
+          "text": "{n} MINUTES",
+          "count": 38,
+          "accent": [
+            "MINUTES"
+          ],
+          "y": 0.3,
+          "size": 110,
+          "delay": 2.2
+        }
+      ],
+      "icons": [
+        {
+          "name": "white flag",
+          "at": [
+            39.19,
+            -6.16
+          ],
+          "size": 220,
+          "delay": 0.6,
+          "ai": "a small white surrender flag on a wooden pole"
+        }
+      ],
+      "base": "relief"
+    },
+    {
+      "narration": "Around five hundred people on the sultan's side were killed or wounded. On the British side, one sailor was hurt.",
+      "texts": [
+        {
+          "text": "~500",
+          "y": 0.3,
+          "size": 120,
+          "delay": 0.6
+        },
+        {
+          "text": "VS 1",
+          "accent": [
+            "1"
+          ],
+          "y": 0.48,
+          "size": 120,
+          "delay": 3.6
+        }
+      ],
+      "dim": true
+    },
+    {
+      "narration": "Khalid escaped through the German consulate. And his supporters were reportedly billed for the shells.",
+      "camera": {
+        "center": [
+          39.15,
+          -6.12
+        ],
+        "span": 3.2
+      },
+      "icons": [
+        {
+          "ai": "a young man in a turban and robes sneaking on tiptoe",
+          "name": "person running",
+          "at": [
+            39.2,
+            -6.16
+          ],
+          "to": [
+            39.5,
+            -5.9
+          ],
+          "travel_time": 1.8,
+          "size": 180,
+          "delay": 0.5
+        },
+        {
+          "name": "receipt",
+          "at": [
+            38.85,
+            -6.4
+          ],
+          "size": 170,
+          "anim": "shake",
+          "delay": 3.8,
+          "label": "THE BILL",
+          "ai": "a long paper bill receipt with a big red total"
+        }
+      ],
+      "base": "relief"
+    },
+    {
+      "narration": "So what took longer today: this war, or your morning coffee?",
+      "camera": {
+        "center": [
+          38,
+          -4
+        ],
+        "span": 30
+      },
+      "min_duration": 3.2,
+      "icons": [
+        {
+          "name": "hot beverage",
+          "pos": [
+            0.5,
+            0.42
+          ],
+          "size": 280,
+          "delay": 0.5,
+          "ai": "a cartoon cup of hot tea with steam"
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The shortest war in history lasted 38 minutes ⏱️",
+    "description": "Ridiculous Wars #4 — In 1896 Britain and Zanzibar fought a war that was over in about 38 minutes.\n\nSource: Anglo-Zanzibar War (27 August 1896)",
+    "hashtags": [
+      "#history",
+      "#ridiculouswars",
+      "#zanzibar",
+      "#funnyhistory",
+      "#didyouknow",
+      "#shortestwar",
+      "#shorts"
+    ],
+    "pinned_comment": "What's the shortest thing you've ever quit? 😂👇"
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions with big head and small body, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text"
+}

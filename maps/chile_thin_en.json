@@ -1,0 +1,425 @@
+{
+  "title": "Why Is Chile So Thin?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Chile is over four thousand kilometers long, but on average less than two hundred kilometers wide.",
+      "camera": {
+        "center": [
+          -71,
+          -37
+        ],
+        "span": 40
+      },
+      "fill": {
+        "CHL": "flag:cl"
+      },
+      "banner": {
+        "lines": [
+          "WHY IS CHILE",
+          "SO THIN?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Lay it over Europe, and it would reach from the top of Norway all the way down to North Africa.",
+      "camera": {
+        "center": [
+          -25,
+          15
+        ],
+        "span": 125
+      },
+      "fill": {
+        "CHL": null
+      },
+      "ghosts": [
+        {
+          "of": "CHL@-71,-35",
+          "to": [
+            14,
+            52
+          ],
+          "delay": 0.8,
+          "move_time": 2.4,
+          "fill": "#ff5a4f",
+          "label": "CHILE"
+        }
+      ]
+    },
+    {
+      "narration": "So why is it shaped like this? Look east.",
+      "camera": {
+        "center": [
+          -70,
+          -32
+        ],
+        "span": 14
+      }
+    },
+    {
+      "narration": "The Andes run along the whole country like a wall. In 1881, Chile and Argentina agreed the border would follow the highest peaks.",
+      "tts": "The Andes run along the whole country like a wall. In eighteen eighty-one, Chile and Argentina agreed the border would follow the highest peaks.",
+      "camera": {
+        "center": [
+          -71,
+          -37
+        ],
+        "span": 40
+      },
+      "year": "1881",
+      "lines": [
+        {
+          "path": [
+            [
+              -68.7,
+              -18
+            ],
+            [
+              -68.2,
+              -22
+            ],
+            [
+              -67.8,
+              -24.5
+            ],
+            [
+              -68.6,
+              -27
+            ],
+            [
+              -69.8,
+              -30
+            ],
+            [
+              -70.0,
+              -33
+            ],
+            [
+              -70.2,
+              -35
+            ],
+            [
+              -70.9,
+              -38
+            ],
+            [
+              -71.4,
+              -41
+            ],
+            [
+              -71.8,
+              -45
+            ],
+            [
+              -72.8,
+              -49
+            ],
+            [
+              -73.2,
+              -51
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffffff",
+          "width": 8,
+          "delay": 0.4,
+          "draw_time": 3.0
+        }
+      ],
+      "photos": [
+        {
+          "q": "Andes mountains Chile Argentina border aerial",
+          "caption": "THE ANDES",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 3.2,
+          "size": 600
+        }
+      ]
+    },
+    {
+      "narration": "On the other side is the Pacific. So Chile is squeezed between a wall and an ocean.",
+      "camera": {
+        "center": [
+          -71,
+          -37
+        ],
+        "span": 40
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -68.7,
+              -18
+            ],
+            [
+              -68.2,
+              -22
+            ],
+            [
+              -67.8,
+              -24.5
+            ],
+            [
+              -68.6,
+              -27
+            ],
+            [
+              -69.8,
+              -30
+            ],
+            [
+              -70.0,
+              -33
+            ],
+            [
+              -70.2,
+              -35
+            ],
+            [
+              -70.9,
+              -38
+            ],
+            [
+              -71.4,
+              -41
+            ],
+            [
+              -71.8,
+              -45
+            ],
+            [
+              -72.8,
+              -49
+            ],
+            [
+              -73.2,
+              -51
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffffff",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "In places it's less than a hundred kilometers wide. You could cross it before lunch.",
+      "camera": {
+        "center": [
+          -71.0,
+          -31.6
+        ],
+        "span": 3
+      }
+    },
+    {
+      "narration": "The north wasn't even Chilean at first. After a war in the 1870s, Chile took the coast from Peru and Bolivia.",
+      "camera": {
+        "center": [
+          -69.8,
+          -21
+        ],
+        "span": 10
+      },
+      "year": "1879",
+      "markers": [
+        {
+          "at": [
+            -70.4,
+            -23.65
+          ],
+          "type": "pin",
+          "label": "Antofagasta",
+          "delay": 2.4
+        }
+      ],
+      "tts": "The north wasn't even Chilean at first. After a war in the eighteen-seventies, Chile took the coast from Peru and Bolivia."
+    },
+    {
+      "narration": "Bolivia lost its only coastline, and it still wants it back today.",
+      "camera": {
+        "center": [
+          -66,
+          -19
+        ],
+        "span": 16
+      },
+      "fill": {
+        "BOL": "flag:bo"
+      }
+    },
+    {
+      "narration": "Up there is the Atacama, the driest non-polar desert on Earth. Some stations have never recorded rain.",
+      "camera": {
+        "center": [
+          -69.5,
+          -24
+        ],
+        "span": 6
+      },
+      "base": "relief",
+      "fill": {
+        "BOL": null
+      },
+      "photos": [
+        {
+          "q": "Atacama Desert landscape",
+          "caption": "ATACAMA",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Down south, the land breaks apart into fjords, islands and glaciers.",
+      "camera": {
+        "center": [
+          -73.5,
+          -50
+        ],
+        "span": 8
+      },
+      "photos": [
+        {
+          "q": "Patagonia glacier Chile",
+          "caption": "PATAGONIA",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "And in the middle, about four in ten Chileans live in one city: Santiago.",
+      "camera": {
+        "center": [
+          -70.65,
+          -33.45
+        ],
+        "span": 3
+      },
+      "markers": [
+        {
+          "at": [
+            -70.65,
+            -33.45
+          ],
+          "type": "pin",
+          "label": "Santiago",
+          "delay": 0.8
+        }
+      ],
+      "swarms": [
+        {
+          "path": [
+            [
+              -70.8,
+              -33.3
+            ],
+            [
+              -70.65,
+              -33.45
+            ],
+            [
+              -70.55,
+              -33.6
+            ]
+          ],
+          "count": 220,
+          "spread_km": 10,
+          "delay": 1.4,
+          "duration": 1.4
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon llama with a colorful woven blanket",
+          "name": "llama",
+          "pos": [
+            0.28,
+            0.44
+          ],
+          "size": 200,
+          "delay": 2.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Santiago de Chile skyline Andes",
+          "caption": "SANTIAGO",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.4,
+          "size": 600
+        }
+      ]
+    },
+    {
+      "narration": "Would you rather live in the driest desert, or among the glaciers?",
+      "camera": {
+        "center": [
+          -71,
+          -37
+        ],
+        "span": 40
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "DESERT OR ICE?",
+          "accent": [
+            "ICE?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Chile so thin? 🇨🇱 #geography #chile",
+    "description": "Chile is over 4,000 km long and on average under 200 km wide. The Andes, the Pacific and a 19th-century war drew its shape.",
+    "hashtags": [
+      "#geography",
+      "#chile",
+      "#maps",
+      "#andes",
+      "#southamerica",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Atacama or Patagonia? 👇"
+  }
+}

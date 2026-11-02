@@ -1,0 +1,82 @@
+{
+  "title": "France's longest border is with Brazil",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {"id": "pNInz6obpgDQGcFmaJgB", "model": "eleven_multilingual_v2", "settings": {"speed": 1.1, "stability": 0.4, "style": 0.35}},
+  "music": {"prompt": "Upbeat curious documentary background music for a geography short video, light drums, playful plucks, no vocals", "volume": 0.22},
+  "post": {
+    "title": "France's longest border is with… Brazil?! 🇫🇷🇧🇷",
+    "description": "French Guiana is a full part of France and the EU — in South America. It's also where Europe launches its rockets.",
+    "hashtags": ["#geography", "#maps", "#france", "#brazil", "#frenchguiana", "#didyouknow", "#shorts"],
+    "pinned_comment": "Which country should I map next? 👇"
+  },
+  "scenes": [
+    {
+      "narration": "France's longest land border isn't with Spain... or Germany...",
+      "camera": {"center": [4, 46.5], "span": 22},
+      "fill": {"FRA": "flag:fr", "ESP": "flag:es", "DEU": "flag:de"},
+      "icons": [{"name": "thinking face", "at": [-4.5, 50.5], "size": 160, "delay": 1.6}],
+      "banner": {"lines": ["FRANCE'S LONGEST", "BORDER?"], "y": 0.2, "delay": 0.15, "size": 80}
+    },
+    {
+      "narration": "It's with... Brazil.",
+      "flash": true,
+      "camera": {"center": [-53.5, 2.5], "span": 14},
+      "fill": {"BRA": "flag:br", "ESP": null, "DEU": null},
+      "outline": ["FRA@-53,4"],
+      "icons": [{"name": "exploding head", "at": [-50.0, 6.5], "size": 170, "delay": 1.0}]
+    },
+    {
+      "narration": "Because this piece of South America, French Guiana, is officially part of France.",
+      "camera": {"center": [-53.2, 3.8], "span": 9},
+      "labels": [{"text": "FRENCH GUIANA", "at": [-53.2, 3.6], "size": 56, "delay": 1.8}],
+      "markers": [{"at": [-52.33, 4.94], "type": "pin", "label": "Cayenne", "delay": 3.2}]
+    },
+    {
+      "narration": "Not a colony. It's a full part of France and the European Union. People here even pay in euros.",
+      "camera": {"center": [-53.2, 3.8], "span": 9},
+      "fill": {"FRA@-53,4": "flag:eu"},
+      "icons": [{"name": "euro banknote", "at": [-53.2, 3.6], "size": 170, "count": 3, "spread": 90, "delay": 3.6}]
+    },
+    {
+      "narration": "It's about the size of Austria, but home to only around 300,000 people.",
+      "tts": "It's about the size of Austria, but home to only around three hundred thousand people.",
+      "camera": {"center": [-53.2, 3.8], "span": 9},
+      "fill": {"FRA@-53,4": "flag:fr"},
+      "texts": [{"text": "{n} PEOPLE", "count": 300000, "accent": ["PEOPLE"], "y": 0.24, "size": 84, "delay": 2.2}],
+      "icons": [{"name": "person walking", "at": [-53.0, 4.2], "size": 90, "count": 4, "spread": 70, "delay": 2.6}]
+    },
+    {
+      "narration": "And it's where Europe launches its rockets. Being so close to the equator gives every launch a free speed boost.",
+      "camera": {"center": [-52.8, 3.0], "span": 12},
+      "markers": [{"at": [-52.65, 5.16], "type": "pin", "label": "Kourou", "delay": 0.4}],
+      "icons": [{"name": "rocket", "at": [-52.65, 5.6], "to": [-52.0, 10.5], "size": 170, "delay": 1.2, "travel_time": 2.4, "anim": "shake"}],
+      "lines": [{"path": [[-62, 0], [-44, 0]], "color": "#ffe14d", "style": "dashed", "width": 7, "delay": 3.6, "draw_time": 1.2}],
+      "labels": [{"text": "EQUATOR", "at": [-55.5, 0.7], "size": 50, "color": "#ffe14d", "delay": 4.2}]
+    },
+    {
+      "narration": "Thanks to places like this all over the world, France has 12 time zones. More than any other country.",
+      "tts": "Thanks to places like this all over the world, France has twelve time zones. More than any other country.",
+      "camera": {"center": [0, 8], "span": 340},
+      "fill": {"BRA": null, "FRA": "flag:fr", "PYF": "flag:fr", "NCL": "flag:fr", "WLF": "flag:fr", "SPM": "flag:fr"},
+      "markers": [
+        {"at": [-149.4, -17.6], "type": "pulse", "color": "#ffd54f", "delay": 0.6},
+        {"at": [165.6, -21.3], "type": "pulse", "color": "#ffd54f", "delay": 0.8},
+        {"at": [55.5, -21.1], "type": "pulse", "color": "#ffd54f", "delay": 1.0},
+        {"at": [-61.3, 15.4], "type": "pulse", "color": "#ffd54f", "delay": 1.2},
+        {"at": [45.15, -12.8], "type": "pulse", "color": "#ffd54f", "delay": 1.4},
+        {"at": [-56.3, 46.9], "type": "pulse", "color": "#ffd54f", "delay": 1.6},
+        {"at": [-53.2, 3.9], "type": "pulse", "color": "#ffd54f", "delay": 1.8},
+        {"at": [-176.2, -13.3], "type": "pulse", "color": "#ffd54f", "delay": 2.0}
+      ],
+      "texts": [{"text": "12 TIME ZONES", "accent": ["12"], "y": 0.24, "size": 96, "delay": 3.0}],
+      "icons": [{"name": "alarm clock", "at": [2.5, 47], "size": 150, "anim": "shake", "delay": 3.4}]
+    },
+    {
+      "narration": "Which country should I map next? Tell me in the comments, and follow for more.",
+      "camera": {"center": [-25, 25], "span": 110},
+      "fill": {"BRA": "flag:br"},
+      "cta": {"text": "FOLLOW FOR MORE", "delay": 1.6, "y": 0.8}
+    }
+  ]
+}

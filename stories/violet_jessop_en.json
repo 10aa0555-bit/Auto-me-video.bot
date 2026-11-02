@@ -1,0 +1,578 @@
+{
+  "title": "She Survived Three Sinking Ships",
+  "lang": "en",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "am_michael",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "hook": [
+    "SHE SURVIVED",
+    "THE TITANIC…",
+    "AND TWO OTHER SHIPS"
+  ],
+  "scenes": [
+    {
+      "narration": "In 1911, a young stewardess named Violet Jessop worked on the biggest ship in the world, the Olympic.",
+      "sky": "day",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          30,
+          14,
+          34
+        ],
+        "look": [
+          0,
+          4,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": 0
+        },
+        {
+          "type": "char",
+          "scale": 0.3,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            1.2,
+            4.3,
+            9
+          ],
+          "face": "happy",
+          "wave": 1,
+          "rot": 40
+        }
+      ],
+      "counter": "1911",
+      "sub": "SHIP #1: OLYMPIC"
+    },
+    {
+      "narration": "On one trip, a navy warship smashed straight into its side.",
+      "sky": "day",
+      "waves": 0.4,
+      "cam": {
+        "pos": [
+          38,
+          16,
+          10
+        ],
+        "look": [
+          0,
+          3,
+          0
+        ]
+      },
+      "shake": 0.8,
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": 0
+        },
+        {
+          "type": "warship",
+          "pos": [
+            30,
+            0,
+            8
+          ],
+          "to": [
+            5.5,
+            0,
+            4
+          ],
+          "rot": -70
+        }
+      ]
+    },
+    {
+      "narration": "Somehow, nobody died, and the Olympic limped back to port. Violet thought nothing could ever be scarier.",
+      "sky": "sunset",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          6,
+          6.5,
+          16
+        ],
+        "look": [
+          1,
+          4.6,
+          9
+        ]
+      },
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": 0
+        },
+        {
+          "type": "char",
+          "scale": 0.3,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            1.2,
+            4.3,
+            9
+          ],
+          "face": "worried",
+          "rot": 30
+        }
+      ]
+    },
+    {
+      "narration": "Seven months later, she joined its brand-new sister ship. You might know its name. The Titanic.",
+      "sky": "day",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          -34,
+          12,
+          30
+        ],
+        "look": [
+          0,
+          4,
+          0
+        ]
+      },
+      "flash": true,
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": 0
+        },
+        {
+          "type": "char",
+          "scale": 0.3,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            -1.2,
+            4.3,
+            8
+          ],
+          "face": "happy",
+          "rot": -30
+        }
+      ],
+      "counter": "1912",
+      "sub": "SHIP #2: TITANIC"
+    },
+    {
+      "narration": "Four days in, late at night, the Titanic hit an iceberg.",
+      "sky": "night",
+      "waves": 0.2,
+      "cam": {
+        "pos": [
+          -24,
+          10,
+          46
+        ],
+        "look": [
+          0,
+          3,
+          12
+        ]
+      },
+      "shake": 0.6,
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "to": [
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "type": "iceberg",
+          "pos": [
+            -6,
+            0,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "narration": "Violet was ordered into a lifeboat. She later wrote that an officer dropped a baby into her arms.",
+      "sky": "night",
+      "waves": 0.2,
+      "cam": {
+        "pos": [
+          16,
+          4,
+          6
+        ],
+        "look": [
+          13,
+          1.4,
+          -3
+        ]
+      },
+      "objects": [
+        {
+          "type": "lifeboat",
+          "pos": [
+            13,
+            0,
+            -3
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "scale": 0.32,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            13,
+            0.85,
+            -3
+          ],
+          "face": "worried",
+          "float": true,
+          "wave": 0.5
+        }
+      ]
+    },
+    {
+      "narration": "From that tiny boat, she watched the unsinkable ship slide under the water.",
+      "sky": "night",
+      "waves": 0.2,
+      "cam": {
+        "pos": [
+          26,
+          9,
+          24
+        ],
+        "look": [
+          0,
+          3,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "sink": {
+            "delay": 0.4,
+            "dur": 6,
+            "tilt": -24,
+            "depth": 13
+          }
+        },
+        {
+          "type": "lifeboat",
+          "pos": [
+            18,
+            0,
+            10
+          ],
+          "float": true
+        }
+      ]
+    },
+    {
+      "narration": "Most people would never go to sea again. In 1916, Violet joined the third sister, the Britannic, now a hospital ship in the war.",
+      "tts": "Most people would never go to sea again. In nineteen sixteen, Violet joined the third sister, the Britannic, now a hospital ship in the war.",
+      "sky": "day",
+      "waves": 0.4,
+      "cam": {
+        "pos": [
+          32,
+          12,
+          32
+        ],
+        "look": [
+          0,
+          4,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "hull": "#f4f1ea",
+          "band": "#3fa35a"
+        },
+        {
+          "type": "char",
+          "scale": 0.3,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            1.2,
+            4.3,
+            9
+          ],
+          "face": "smug",
+          "rot": 40
+        }
+      ],
+      "counter": "1916",
+      "sub": "SHIP #3: BRITANNIC"
+    },
+    {
+      "narration": "Then it hit a mine.",
+      "sky": "day",
+      "waves": 0.5,
+      "cam": {
+        "pos": [
+          20,
+          7,
+          22
+        ],
+        "look": [
+          1,
+          2,
+          8
+        ]
+      },
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "hull": "#f4f1ea",
+          "band": "#3fa35a"
+        },
+        {
+          "type": "mine",
+          "pos": [
+            2.6,
+            0.2,
+            9
+          ]
+        }
+      ],
+      "blast": {
+        "pos": [
+          2.4,
+          1,
+          9
+        ],
+        "delay": 0.4
+      }
+    },
+    {
+      "narration": "Her lifeboat was dragged toward the ship's giant propellers, so she jumped into the sea and hit her head.",
+      "sky": "day",
+      "waves": 0.8,
+      "cam": {
+        "pos": [
+          12,
+          6,
+          -30
+        ],
+        "look": [
+          4,
+          1.5,
+          -18
+        ]
+      },
+      "shake": 0.5,
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "hull": "#f4f1ea",
+          "band": "#3fa35a",
+          "sink": {
+            "delay": 0,
+            "dur": 6,
+            "tilt": 18,
+            "depth": 6
+          }
+        },
+        {
+          "type": "lifeboat",
+          "pos": [
+            6,
+            0,
+            -24
+          ],
+          "to": [
+            3,
+            0,
+            -17
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "scale": 0.32,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            7,
+            0.3,
+            -22
+          ],
+          "face": "scream",
+          "float": true
+        }
+      ]
+    },
+    {
+      "narration": "She survived. Again. People started calling her Miss Unsinkable.",
+      "sky": "sunset",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          3,
+          3,
+          6
+        ],
+        "look": [
+          0,
+          1.6,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "lifeboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "scale": 0.32,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            0,
+            0.85,
+            0
+          ],
+          "face": "smug",
+          "float": true,
+          "wave": 1
+        }
+      ],
+      "counter": "3 FOR 3",
+      "sub": "MISS UNSINKABLE"
+    },
+    {
+      "narration": "Three sister ships, three disasters, one survivor. Would you have boarded a fourth?",
+      "sky": "sunset",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          30,
+          14,
+          34
+        ],
+        "look": [
+          0,
+          4,
+          0
+        ]
+      },
+      "min_duration": 3.4,
+      "objects": [
+        {
+          "type": "liner",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "rot": 0
+        },
+        {
+          "type": "char",
+          "scale": 0.3,
+          "shirt": "#ffffff",
+          "hair": "#5a3a22",
+          "pants": "#1f2229",
+          "pos": [
+            1.2,
+            4.3,
+            9
+          ],
+          "face": "happy",
+          "rot": 40,
+          "wave": 1
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "She survived the Titanic… and two other ships 🚢",
+    "description": "Send this to your friend who's scared of boats 🛟\n\nTrue story: Violet Jessop was on the Olympic (1911), the Titanic (1912) and the Britannic (1916). All three disasters. She survived every one.",
+    "hashtags": [
+      "#truestory",
+      "#titanic",
+      "#history",
+      "#animation",
+      "#storytime",
+      "#shorts"
+    ],
+    "pinned_comment": "Lucky or the unluckiest person ever? 🍀💀 👇"
+  }
+}

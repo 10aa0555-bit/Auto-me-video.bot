@@ -1,0 +1,391 @@
+{
+  "title": "Australia went to war against birds and lost",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Mock-epic comedic war documentary music, light snare drum march, playful brass, no vocals",
+    "volume": 0.22,
+    "bpm": 108
+  },
+  "post": {
+    "title": "Australia declared war on birds… and LOST 🐦",
+    "description": "The Great Emu War of 1932: soldiers, two machine guns and 10,000 rounds of ammo against around 20,000 emus. Guess who won.",
+    "hashtags": [
+      "#history",
+      "#australia",
+      "#emuwar",
+      "#funnyhistory",
+      "#didyouknow",
+      "#maps",
+      "#shorts"
+    ],
+    "pinned_comment": "Team Emu or Team Army? 🐦👇"
+  },
+  "scenes": [
+    {
+      "narration": "In 1932, Australia went to war... against birds. And lost.",
+      "tts": "In nineteen thirty-two, Australia went to war... against birds. And lost.",
+      "camera": {
+        "center": [
+          134,
+          -26
+        ],
+        "span": 48
+      },
+      "fill": {
+        "AUS": "flag:au"
+      },
+      "icons": [
+        {
+          "name": "dodo",
+          "at": [
+            122,
+            -29
+          ],
+          "size": 280,
+          "delay": 1.2,
+          "label": "EMU"
+        }
+      ],
+      "banner": {
+        "lines": [
+          "THE GREAT",
+          "EMU WAR"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 90
+      }
+    },
+    {
+      "narration": "After World War One, many veterans were given farmland in Western Australia.",
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 14
+      },
+      "fill": {
+        "AUS": null
+      },
+      "icons": [
+        {
+          "name": "military medal",
+          "at": [
+            117.3,
+            -30.2
+          ],
+          "size": 182,
+          "delay": 0.8
+        },
+        {
+          "name": "tractor",
+          "at": [
+            118.8,
+            -31.3
+          ],
+          "size": 224,
+          "delay": 2.0
+        },
+        {
+          "name": "house",
+          "at": [
+            120.0,
+            -30.6
+          ],
+          "size": 182,
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "But around 20,000 emus moved onto their wheat fields, eating and trampling the crops.",
+      "tts": "But around twenty thousand emus moved onto their wheat fields, eating and trampling the crops.",
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 14
+      },
+      "icons": [
+        {
+          "name": "dodo",
+          "at": [
+            122.5,
+            -30.0
+          ],
+          "to": [
+            119.0,
+            -31.0
+          ],
+          "size": 154,
+          "count": 7,
+          "spread": 91,
+          "delay": 0.4,
+          "travel_time": 3.0
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n} EMUS",
+          "count": 20000,
+          "accent": [
+            "EMUS"
+          ],
+          "y": 0.25,
+          "size": 92,
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "So the army was sent in: soldiers with two machine guns and 10,000 rounds of ammo.",
+      "tts": "So the army was sent in: soldiers with two machine guns and ten thousand rounds of ammo.",
+      "year": "1932",
+      "flash": true,
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 10
+      },
+      "icons": [
+        {
+          "name": "military helmet",
+          "at": [
+            116.6,
+            -31.4
+          ],
+          "to": [
+            117.8,
+            -31.1
+          ],
+          "size": 168,
+          "count": 3,
+          "spread": 91,
+          "delay": 0.6,
+          "travel_time": 2.0
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n} ROUNDS",
+          "count": 10000,
+          "accent": [
+            "ROUNDS"
+          ],
+          "y": 0.25,
+          "size": 92,
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "But the emus split into small groups... and ran at up to 50 kilometers per hour.",
+      "tts": "But the emus split into small groups... and ran at up to fifty kilometers per hour.",
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 10
+      },
+      "icons": [
+        {
+          "name": "dodo",
+          "at": [
+            118.6,
+            -31.0
+          ],
+          "to": [
+            121.5,
+            -30.0
+          ],
+          "size": 154,
+          "count": 4,
+          "spread": 156,
+          "delay": 0.6,
+          "travel_time": 2.0,
+          "anim": "shake"
+        },
+        {
+          "name": "dashing away",
+          "at": [
+            119.4,
+            -31.4
+          ],
+          "size": 154,
+          "delay": 1.2
+        }
+      ],
+      "texts": [
+        {
+          "text": "50 KM/H",
+          "accent": [
+            "50"
+          ],
+          "y": 0.25,
+          "size": 100,
+          "delay": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "One of the guns even jammed during their very first ambush.",
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 8
+      },
+      "icons": [
+        {
+          "name": "military helmet",
+          "at": [
+            118.2,
+            -31.0
+          ],
+          "size": 196,
+          "delay": 0.4
+        },
+        {
+          "name": "anxious face with sweat",
+          "at": [
+            119.0,
+            -30.6
+          ],
+          "size": 196,
+          "anim": "shake",
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "After about a month, the official count was 986 emus killed... using 9,860 bullets. That's ten bullets per bird.",
+      "tts": "After about a month, the official count was nine hundred eighty-six emus killed... using nine thousand eight hundred sixty bullets. That's ten bullets per bird.",
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 12
+      },
+      "texts": [
+        {
+          "text": "{n} BULLETS",
+          "count": 9860,
+          "accent": [
+            "BULLETS"
+          ],
+          "y": 0.24,
+          "size": 90,
+          "delay": 3.2
+        },
+        {
+          "text": "10 PER EMU",
+          "accent": [
+            "10"
+          ],
+          "y": 0.31,
+          "size": 76,
+          "delay": 6.2
+        }
+      ],
+      "icons": [
+        {
+          "name": "face with tears of joy",
+          "at": [
+            120.0,
+            -30.4
+          ],
+          "size": 210,
+          "delay": 6.6
+        }
+      ]
+    },
+    {
+      "narration": "The army pulled out. Their commander said the emus could face machine guns with the invulnerability of tanks.",
+      "camera": {
+        "center": [
+          118.5,
+          -31.0
+        ],
+        "span": 12
+      },
+      "icons": [
+        {
+          "name": "white flag",
+          "at": [
+            117.4,
+            -31.4
+          ],
+          "size": 210,
+          "anim": "shake",
+          "delay": 0.6
+        },
+        {
+          "name": "dodo",
+          "at": [
+            119.6,
+            -30.8
+          ],
+          "size": 238,
+          "delay": 2.4
+        },
+        {
+          "name": "trophy",
+          "at": [
+            119.6,
+            -29.9
+          ],
+          "size": 168,
+          "delay": 3.2
+        }
+      ]
+    },
+    {
+      "narration": "So who really won the Emu War? Tell me in the comments, and follow for more.",
+      "camera": {
+        "center": [
+          134,
+          -26
+        ],
+        "span": 48
+      },
+      "fill": {
+        "AUS": "flag:au"
+      },
+      "icons": [
+        {
+          "name": "dodo",
+          "at": [
+            122,
+            -29
+          ],
+          "size": 280,
+          "delay": 0.4,
+          "label": "WINNER"
+        }
+      ],
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 2.4,
+        "y": 0.8
+      },
+      "min_duration": 5.5
+    }
+  ]
+}

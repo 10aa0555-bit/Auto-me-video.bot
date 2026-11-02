@@ -1,0 +1,217 @@
+{
+ "title": "Stop Blending In",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Stop blending in. ⚪⚫",
+  "description": "Send this to someone who was born to stand out.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What makes you different? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "crowd",
+   "narration": "Look around you. Everyone is walking in the same direction. Nobody asks why.",
+   "hot": [
+    "DIRECTION",
+    "WHY"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Same school. Same job. Same dreams they were told to have.",
+   "hot": [
+    "SAME"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 48
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Blending in feels safe. That is exactly why it is dangerous.",
+   "hot": [
+    "SAFE",
+    "DANGEROUS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 37
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "One day you look up, and twenty years are gone, spent living someone else's plan.",
+   "hot": [
+    "YEARS",
+    "PLAN"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 40
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "The world rewards the few who stop, think, and choose their own move.",
+   "hot": [
+    "CHOOSE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 4
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Standing still in a moving crowd is hard. People push. People stare.",
+   "hot": [
+    "STARE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 17
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "But the moment you stop needing their approval, you become impossible to control.",
+   "hot": [
+    "APPROVAL",
+    "CONTROL"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 0
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "Walk alone if you have to. The best views are never on the crowded road.",
+   "hot": [
+    "ALONE",
+    "VIEWS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 3
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "Different is not wrong. Different is how anything new ever began.",
+   "hot": [
+    "DIFFERENT"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "You were not born to be a copy.",
+   "hot": [
+    "COPY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 24
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So, which way are you walking now?",
+   "hot": [
+    "WALKING"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

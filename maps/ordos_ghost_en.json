@@ -1,0 +1,260 @@
+{
+  "title": "China's City in the Desert",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "In the dry north of China, a city was built for up to a million people. Then almost nobody came.",
+      "camera": {
+        "center": [
+          104,
+          36
+        ],
+        "span": 62
+      },
+      "banner": {
+        "lines": [
+          "CHINA'S EMPTY",
+          "DESERT CITY?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "markers": [
+        {
+          "at": [
+            109.78,
+            39.61
+          ],
+          "type": "pin",
+          "label": "Ordos",
+          "delay": 2.2
+        }
+      ],
+      "fill": {
+        "CHN": "flag:cn"
+      }
+    },
+    {
+      "narration": "This is Kangbashi, a brand new district of the city of Ordos, in Inner Mongolia.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      },
+      "markers": [
+        {
+          "at": [
+            109.78,
+            39.61
+          ],
+          "type": "pin",
+          "label": "Kangbashi",
+          "delay": 0.8
+        }
+      ],
+      "fill": {
+        "CHN": null
+      }
+    },
+    {
+      "narration": "Why build here? Coal. Ordos sits on a huge share of China's coal, and the boom made it rich, fast.",
+      "camera": {
+        "center": [
+          109.9,
+          39.7
+        ],
+        "span": 3
+      }
+    },
+    {
+      "narration": "So the city built big: wide avenues, a giant museum, and a library shaped like a row of books.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      },
+      "texts": [
+        {
+          "text": "BUILT 2005 – 2010",
+          "accent": [
+            "BUILT"
+          ],
+          "y": 0.22,
+          "size": 80,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "But a few years later, only about a tenth of the people it was planned for had moved in.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      },
+      "dim": true,
+      "bars": {
+        "title": "PEOPLE",
+        "y": 0.24,
+        "delay": 1.0,
+        "items": [
+          {
+            "label": "PLANNED",
+            "value": 1000000,
+            "color": "#5ea8ff"
+          },
+          {
+            "label": "ACTUALLY THERE",
+            "value": 100000,
+            "color": "#ff7b2e"
+          }
+        ]
+      }
+    },
+    {
+      "narration": "Photos of its empty streets went viral, and Ordos became the most famous ghost city in the world.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon tumbleweed rolling",
+          "name": "wind face",
+          "at": [
+            109.72,
+            39.6
+          ],
+          "to": [
+            109.86,
+            39.63
+          ],
+          "travel_time": 2.4,
+          "size": 160,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "But here's the twist. It didn't stay empty.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      }
+    },
+    {
+      "narration": "Schools and government offices moved in, and the 2020 census counted almost a hundred and twenty thousand people.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      },
+      "texts": [
+        {
+          "text": "{n} PEOPLE",
+          "count": 118796,
+          "accent": [
+            "PEOPLE"
+          ],
+          "y": 0.22,
+          "size": 90,
+          "delay": 1.8
+        }
+      ],
+      "year": "2020"
+    },
+    {
+      "narration": "Some experts say cities like this are a bet on the future: build first, and the people come later.",
+      "camera": {
+        "center": [
+          109.9,
+          39.7
+        ],
+        "span": 3
+      }
+    },
+    {
+      "narration": "Others say it's what happens when a boom ends faster than the buildings do.",
+      "camera": {
+        "center": [
+          109.9,
+          39.7
+        ],
+        "span": 3
+      }
+    },
+    {
+      "narration": "Either way, there's now a real city standing in the sand.",
+      "camera": {
+        "center": [
+          109.79,
+          39.62
+        ],
+        "span": 0.9
+      }
+    },
+    {
+      "narration": "Would you move into an almost empty city for cheap rent? Yes or no?",
+      "camera": {
+        "center": [
+          110,
+          40.5
+        ],
+        "span": 22
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "China built a city for a million people. Then... 🏙️ #china #geography",
+    "description": "Kangbashi in Ordos, Inner Mongolia, became the world's most famous ghost city. A coal boom built it, and slowly, people did come.",
+    "hashtags": [
+      "#geography",
+      "#china",
+      "#ghostcity",
+      "#ordos",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Almost empty city + cheap rent: would you move in? 👇"
+  }
+}

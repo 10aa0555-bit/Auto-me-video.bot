@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# geo_short の出力
+out/
+
+# Remotion
+remotion/node_modules/
+remotion/public/job/
+remotion/out/
+remotion/props.json
+deliver/

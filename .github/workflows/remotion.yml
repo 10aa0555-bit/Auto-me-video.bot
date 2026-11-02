@@ -1,0 +1,154 @@
+name: Remotion Short
+
+# geo_short の台本を Remotion (動きのなめらかなアニメーション) で書き出す
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "台本 JSON のパス (空白区切りで複数可)"
+        required: true
+        default: "scripts/zanzibar_war_en.json"
+      options:
+        description: "tools/remotion_prep.py に渡すオプション (例: --scenes 4 / --no-tiles)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: renders-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SCRIPTS: ${{ inputs.script || 'scripts/zanzibar_war_en.json' }}
+      PREP_OPTIONS: ${{ inputs.options }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: remotion/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk libcairo2-dev pkg-config espeak-ng
+          python -m pip install --upgrade pip
+          pip install -r geo_short/requirements.txt
+          # 無料の音声合成 Kokoro (ElevenLabs のクレジットが足りないときに使う)。CPU 版 PyTorch で軽く
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install "kokoro>=0.9" soundfile
+          # AI イラストの背景をきれいに消す (無ければ簡易な背景除去で代用)
+          pip install "rembg[cpu]" || true
+          cd remotion && npm ci
+
+      # 衛星画像・アイコン・国旗・音声モデル・作ったナレーションを次回に持ち越す
+      # (毎回新しいキーで保存し、前回分から復元する)
+      - name: Restore assets and narration
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/geo_short
+          key: geo-short-assets-v3-${{ github.run_id }}
+          restore-keys: |
+            geo-short-assets-v3-
+            geo-short-assets-v2
+
+      - name: Restore drawn art
+        run: python tools/art_cache.py restore
+
+      - name: Build videos
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CF_ACCOUNT_ID: 4c5c855831c1a7f3ce3d0fa80b9c0d0d  # Cloudflare のアカウント ID (秘密の値ではない)
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          export HF_HOME="$HOME/.cache/geo_short/hf"
+          export U2NET_HOME="$HOME/.cache/geo_short/u2net"
+          mkdir -p out
+          for s in $SCRIPTS; do
+            case "$s" in scripts/*.json|maps/*.json|whatif/*.json|stories/*.json|cosmic/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
+            name=$(basename "$s" .json)
+            if [ "${s%%/*}" = "cosmic" ]; then
+              # フラットな宇宙アニメ (2D の SVG なので WebGL いらず、速い)
+              python tools/whatif_prep.py "$s" $PREP_OPTIONS
+              (cd remotion && npx remotion render src/index.ts Cosmic "../out/${name}_raw.mp4" --props=props.json --concurrency=100% --log=info)
+            elif [ "${s%%/*}" = "stories" ]; then
+              # Rick 風の物語: 丸顔のキャラクターと 3D の舞台 (海・街)
+              python tools/whatif_prep.py "$s" $PREP_OPTIONS
+              (cd remotion && npx remotion render src/index.ts Story "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --log=info)
+            elif [ "${s%%/*}" = "whatif" ]; then
+              # What if シリーズ: 3D のミニチュアの街 (WebGL はソフトウェアで描く)
+              python tools/whatif_prep.py "$s" $PREP_OPTIONS
+              (cd remotion && npx remotion render src/index.ts WhatIf "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --log=info)
+            else
+              python tools/remotion_prep.py "$s" $PREP_OPTIONS
+              (cd remotion && npx remotion render src/index.ts Short "../out/${name}_raw.mp4" --props=props.json --log=info)
+            fi
+            # 衛星写真は細かくてファイルが大きくなるので、画質を保ったまま 80MB 以下に収める
+            # (GitHub は 100MB を超えるファイルを置けない。TikTok / YouTube にも十分な画質)
+            ffmpeg -y -v error -i "out/${name}_raw.mp4" -c:v libx264 -preset slow -crf 19 \
+              -maxrate 9M -bufsize 18M -pix_fmt yuv420p -movflags +faststart -c:a copy "out/${name}_hq.mp4"
+            rm "out/${name}_raw.mp4"
+            cp "remotion/out/${name}_post.txt" "out/${name}_hq_post.txt" 2>/dev/null || true
+            python tools/qa.py "out/${name}_hq.mp4" --grid "out/${name}_hq_grid.jpg" || true
+          done
+
+      # 失敗しても、描いた AI イラストやナレーションは次回に持ち越す (無料枠を無駄にしない)
+      - name: Save assets and narration
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/geo_short
+          key: geo-short-assets-v3-${{ github.run_id }}
+
+      - name: Save drawn art
+        if: always()
+        run: python tools/art_cache.py save
+
+      - name: Upload videos
+        uses: actions/upload-artifact@v4
+        with:
+          name: remotion-videos
+          path: |
+            out/*.mp4
+            out/*_post.txt
+            out/*_grid.jpg
+
+      # 完成した動画を renders ブランチにも置く (ブラウザや別の環境から取り出しやすいように)
+      - name: Publish to renders branch
+        run: |
+          mkdir -p /tmp/renders && cp out/*.mp4 /tmp/renders/
+          cp out/*_post.txt out/*_grid.jpg /tmp/renders/ 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch -q origin renders; then
+            git checkout -q -B renders FETCH_HEAD
+          else
+            git checkout -q --orphan renders
+            git rm -rfq .
+          fi
+          git clean -fdxq
+          cp /tmp/renders/* .
+          git add -f -- *.mp4 $(ls *_post.txt *_grid.jpg 2>/dev/null)
+          git commit -qm "render (remotion): $SCRIPTS (${GITHUB_SHA::7})" || exit 0
+          # 何本も同時に書き出すと push がぶつかるので、取り込み直して何度か再挑戦する
+          for i in 1 2 3 4 5 6 7 8; do
+            git push -q origin renders && break
+            sleep $((RANDOM % 20 + 5))
+            git fetch -q origin renders && git rebase -q FETCH_HEAD
+          done

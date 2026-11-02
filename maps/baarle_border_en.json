@@ -1,0 +1,314 @@
+{
+  "title": "The Town Where Borders Go Through Houses",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "In this town, the border between two countries runs right through houses, cafés and shops.",
+      "camera": {
+        "center": [
+          5.0,
+          51.0
+        ],
+        "span": 5
+      },
+      "fill": {
+        "BEL": "flag:be",
+        "NLD": "flag:nl"
+      },
+      "banner": {
+        "lines": [
+          "A BORDER THROUGH",
+          "YOUR HOUSE?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Belgium is here. The Netherlands is here. And this little town is called Baarle.",
+      "camera": {
+        "center": [
+          5.0,
+          51.0
+        ],
+        "span": 5
+      },
+      "fill": {
+        "BEL": null,
+        "NLD": null
+      },
+      "markers": [
+        {
+          "at": [
+            4.93,
+            51.44
+          ],
+          "type": "pin",
+          "label": "Baarle",
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "Baarle is a patchwork. Belgian pieces sit inside the Netherlands, and Dutch pieces sit inside those Belgian pieces.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "texts": [
+        {
+          "text": "{n} BELGIAN ENCLAVES",
+          "count": 22,
+          "accent": [
+            "ENCLAVES"
+          ],
+          "y": 0.2,
+          "size": 76,
+          "delay": 2.0
+        },
+        {
+          "text": "{n} DUTCH INSIDE THEM",
+          "count": 7,
+          "accent": [
+            "DUTCH"
+          ],
+          "y": 0.29,
+          "size": 76,
+          "delay": 4.0
+        }
+      ]
+    },
+    {
+      "narration": "The border is painted on the ground, with little crosses, so you can see which country you're standing in.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "photos": [
+        {
+          "q": "Baarle-Hertog border marking street",
+          "caption": "THE BORDER",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon cobblestone street with a white painted line and small white crosses on the ground marking a border",
+          "name": "construction",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 300,
+          "delay": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "Why so messy? It goes back to the Middle Ages, when local lords swapped and sold tiny plots of farmland.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "year": "1100s"
+    },
+    {
+      "narration": "When Belgium and the Netherlands split in 1830, nobody could agree how to divide it. So they kept every plot as it was.",
+      "tts": "When Belgium and the Netherlands split in eighteen thirty, nobody could agree how to divide it. So they kept every plot as it was.",
+      "camera": {
+        "center": [
+          5.0,
+          51.0
+        ],
+        "span": 5
+      },
+      "year": "1830"
+    },
+    {
+      "narration": "Some buildings are cut in half. And your address can depend on which side your front door is on.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "photos": [
+        {
+          "q": "Baarle-Nassau house border",
+          "caption": "ONE HOUSE, TWO COUNTRIES",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon two-story brick house split in half by a white line, the left half has a black yellow red striped awning and the right half has a red white blue striped awning",
+          "name": "house",
+          "pos": [
+            0.5,
+            0.42
+          ],
+          "size": 320,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "There are two town halls, two police forces, and two sets of rules.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "texts": [
+        {
+          "text": "2 TOWN HALLS",
+          "accent": [
+            "2"
+          ],
+          "y": 0.22,
+          "size": 96,
+          "delay": 1.0
+        }
+      ],
+      "photos": [
+        {
+          "q": "Baarle-Nassau town hall",
+          "caption": "BAARLE",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.8,
+          "size": 580
+        }
+      ],
+      "icons": [
+        {
+          "ai": "two cute cartoon small town hall buildings side by side, one with a black yellow red flag and one with a red white blue flag",
+          "name": "classical building",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 300,
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "When closing times were different, people would just walk to the other side of a café to keep drinking.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon cafe table with two beer glasses and a clock on the wall",
+          "name": "beer mug",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 240,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "The very last piece of the border was only settled in 1995.",
+      "tts": "The very last piece of the border was only settled in nineteen ninety-five.",
+      "camera": {
+        "center": [
+          4.93,
+          51.44
+        ],
+        "span": 0.8
+      },
+      "year": "1995"
+    },
+    {
+      "narration": "So Baarle is one town, two countries, and about thirty borders.",
+      "camera": {
+        "center": [
+          5.0,
+          51.0
+        ],
+        "span": 5
+      }
+    },
+    {
+      "narration": "Would you live in a house that's in two countries? Yes or no?",
+      "camera": {
+        "center": [
+          5.0,
+          51.0
+        ],
+        "span": 5
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The town where the border goes through houses 🇧🇪🇳🇱 #geography #maps",
+    "description": "Baarle is a patchwork of Belgian and Dutch enclaves, some inside each other, with the border painted on the street.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#belgium",
+      "#netherlands",
+      "#borders",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "One house, two countries: would you live there? 👇"
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "title": "Try Not To Yawn",
+  "lang": "en",
+  "palette": "night",
+  "pill": [
+    "TRY NOT",
+    "TO YAWN"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": false,
+  "scenes": [
+    {
+      "narration": "Try not to yawn while watching this. Good luck.",
+      "art": "a cute round cartoon character doing an enormous dramatic yawn with eyes squeezed shut, cozy night sky background"
+    },
+    {
+      "narration": "Yawning is contagious. Seeing a yawn, hearing one, even reading about one can set you off.",
+      "art": "a chain reaction of cartoon people on a bus yawning one after another like dominoes, funny",
+      "points": [
+        {
+          "text": "SEE",
+          "at": [
+            0.2,
+            0.86
+          ],
+          "delay": 1.8,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "HEAR",
+          "at": [
+            0.5,
+            0.86
+          ],
+          "delay": 2.3,
+          "color": "#2ee6c5"
+        },
+        {
+          "text": "READ",
+          "at": [
+            0.8,
+            0.86
+          ],
+          "delay": 2.8,
+          "color": "#2ee6c5"
+        }
+      ]
+    },
+    {
+      "narration": "Feeling it yet? Your jaw is probably getting ready right now.",
+      "art": "a young adult trying very hard to suppress a yawn, jaw trembling, eyes watering, comedic close up",
+      "stat": {
+        "text": "FEELING IT?",
+        "delay": 0.6
+      }
+    },
+    {
+      "narration": "One old idea says you yawn to get more oxygen. But when people breathed extra oxygen in an experiment, they yawned just as much.",
+      "art": "a young adult wearing a funny oversized oxygen mask still yawning hugely, a scientist with a clipboard shrugging",
+      "points": [
+        {
+          "text": "MYTH",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 3.8,
+          "color": "#ff6b6b"
+        }
+      ],
+      "cite": "Provine, Tate & Geldmacher, 1987"
+    },
+    {
+      "narration": "Nobody knows for sure why yawns spread. But one clue points to how close we are to each other.",
+      "art": "a cartoon magnifying glass hovering over a group of friends yawning together on a couch at night"
+    },
+    {
+      "narration": "In one study, yawns spread most between family, then friends, then acquaintances, and least between strangers.",
+      "art": "four groups of cartoon people in a row from a close family hugging to friends to coworkers to strangers, yawning less and less from left to right",
+      "points": [
+        {
+          "text": "FAMILY",
+          "at": [
+            0.22,
+            0.12
+          ],
+          "delay": 2.0,
+          "color": "#ffd23f"
+        },
+        {
+          "text": "STRANGERS",
+          "at": [
+            0.76,
+            0.12
+          ],
+          "delay": 4.6,
+          "color": "#ffd23f"
+        }
+      ],
+      "cite": "Norscia & Palagi, PLoS ONE 2011"
+    },
+    {
+      "narration": "And it doesn't stop with humans. In one experiment, twenty-one out of twenty-nine dogs yawned after watching a person yawn.",
+      "art": "a cute fluffy dog sitting in front of a person, both yawning at the same time, warm living room",
+      "stat": {
+        "text": "21 / 29 DOGS",
+        "delay": 4.4
+      },
+      "cite": "Joly-Mascheroni et al., Biology Letters 2008"
+    },
+    {
+      "narration": "When the person just opened their mouth without yawning, none of the dogs yawned.",
+      "art": "the same cute dog staring unimpressed at a person making a silly open mouth face, comedic deadpan dog",
+      "stat": {
+        "text": "0 DOGS",
+        "delay": 2.4
+      }
+    },
+    {
+      "narration": "So if your dog yawns back at you, it might be more than just being sleepy.",
+      "art": "a sleepy happy dog yawning while snuggled next to its owner on a couch, little hearts floating"
+    },
+    {
+      "narration": "Fun fact: even thinking about yawning can trigger one. And you've been thinking about it this whole time.",
+      "art": "a cartoon brain wearing a nightcap yawning, thought bubbles full of tiny yawning faces"
+    },
+    {
+      "narration": "Okay, be honest. How many times did you yawn?",
+      "min_duration": 3.0,
+      "stat": {
+        "text": "HOW MANY?",
+        "delay": 0.4
+      }
+    }
+  ],
+  "post": {
+    "title": "Try not to yawn (you will) 🥱",
+    "description": "Why yawns are contagious, who catches them most, and why your dog might yawn back at you.\n\nSources:\nNorscia & Palagi (2011) PLoS ONE\nJoly-Mascheroni, Senju & Shepherd (2008) Biology Letters",
+    "hashtags": [
+      "#yawn",
+      "#trynottoyawn",
+      "#psychology",
+      "#dogs",
+      "#science",
+      "#funny",
+      "#shorts"
+    ],
+    "pinned_comment": "Comment how many times you yawned 🥱👇"
+  }
+}

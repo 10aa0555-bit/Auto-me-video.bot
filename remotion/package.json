@@ -1,0 +1,26 @@
+{
+  "name": "odd-atlas-remotion",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts"
+  },
+  "dependencies": {
+    "@fontsource/playfair-display": "^5.1.0",
+    "@react-three/fiber": "^8.18.0",
+    "@remotion/cli": "4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "@remotion/media-utils": "4.0.539",
+    "@remotion/three": "^4.0.539",
+    "@types/three": "^0.170.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.539",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}
