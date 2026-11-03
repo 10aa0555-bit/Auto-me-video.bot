@@ -1,0 +1,258 @@
+{
+ "title": "Frozen But Still Alive",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "nature",
+ "silent": true,
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "am_michael",
+  "settings": {
+   "speed": 1.0
+  }
+ },
+ "animal": {
+  "name": "wood frog",
+  "look": "small North American wood frog, warm brown skin, a dark mask stripe through its golden eyes, cream belly"
+ },
+ "post": {
+  "title": "This frog freezes solid… and survives 🐸❄️",
+  "description": "Send this to someone who needs a reminder that winter ends.\n\nThe wood frog lets up to about two-thirds of its body water freeze. Its heart stops, and glucose from its liver protects its cells until spring.",
+  "hashtags": [
+   "#nature",
+   "#animals",
+   "#science",
+   "#woodfrog",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "Would you rather freeze like this frog or hibernate like a bear? 👇"
+ },
+ "scenes": [
+  {
+   "duration": 6.0,
+   "habitat": "snow_forest",
+   "pose": "lying motionless under fallen leaves, eyes closed, covered in ice crystals",
+   "motion": "still",
+   "frost": 0.85,
+   "fx": [
+    "snow",
+    "frost"
+   ],
+   "cam": "push",
+   "ay": 0.64,
+   "size": 0.85,
+   "subs": [
+    "THIS FROG CAN FREEZE SOLID…",
+    "AND STILL SURVIVE."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "thud"
+    ],
+    [
+     0.4,
+     "riser",
+     {
+      "dur": 1.2
+     }
+    ]
+   ],
+   "scene": "nature",
+   "narration": "THIS FROG CAN FREEZE SOLID… AND STILL SURVIVE."
+  },
+  {
+   "duration": 10.0,
+   "habitat": "snow_forest",
+   "pose": "sitting on the ground, eyes half closed",
+   "motion": "breathe",
+   "frost": 0.3,
+   "fx": [
+    "snow"
+   ],
+   "cam": "pan",
+   "ay": 0.66,
+   "size": 0.6,
+   "subs": [
+    "When winter arrives, most animals escape the cold.",
+    "But this frog has a different strategy."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 1.0,
+      "seed": 3
+     }
+    ]
+   ],
+   "scene": "nature",
+   "narration": "When winter arrives, most animals escape the cold. But this frog has a different strategy."
+  },
+  {
+   "scene": "frog_inside",
+   "duration": 13.0,
+   "subs": [
+    "Its liver releases huge amounts of glucose.",
+    "A natural antifreeze that protects its vital cells."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.8,
+      "seed": 5
+     }
+    ]
+   ],
+   "narration": "Its liver releases huge amounts of glucose. A natural antifreeze that protects its vital cells."
+  },
+  {
+   "duration": 12.0,
+   "habitat": "snow_forest",
+   "pose": "frozen solid, eyes closed, lying flat",
+   "motion": "still",
+   "frost": 1.0,
+   "fx": [
+    "heartbeat_stop",
+    "frost"
+   ],
+   "cam": "push",
+   "ay": 0.66,
+   "size": 0.75,
+   "subs": [
+    "Its heart stops.",
+    "It stops breathing.",
+    "Up to two-thirds of its body water can freeze."
+   ],
+   "sfx": [
+    [
+     0.5,
+     "heartbeat",
+     {
+      "dur": 4.5,
+      "bpm": 70,
+      "bpm2": 30
+     }
+    ],
+    [
+     6.0,
+     "ding"
+    ]
+   ],
+   "scene": "nature",
+   "narration": "Its heart stops. It stops breathing. Up to two-thirds of its body water can freeze."
+  },
+  {
+   "duration": 13.0,
+   "habitat": "snow_forest",
+   "pose": "frozen solid, eyes closed, lying flat",
+   "motion": "still",
+   "frost": 0.9,
+   "fx": [
+    "snow",
+    "timelapse",
+    "sunrays"
+   ],
+   "cam": "pull",
+   "ay": 0.66,
+   "size": 0.6,
+   "subs": [
+    "For weeks… it waits.",
+    "Not dead.",
+    "Just waiting for spring."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 1.2,
+      "seed": 7
+     }
+    ],
+    [
+     8.0,
+     "birds",
+     {
+      "dur": 5
+     }
+    ]
+   ],
+   "scene": "nature",
+   "narration": "For weeks… it waits. Not dead. Just waiting for spring."
+  },
+  {
+   "duration": 10.0,
+   "habitat": "spring",
+   "season": "spring",
+   "pose": "sitting up, eyes open, alert",
+   "motion": "wake",
+   "frost": 0.0,
+   "fx": [
+    "sunrays"
+   ],
+   "cam": "push",
+   "ay": 0.64,
+   "size": 0.75,
+   "subs": [
+    "As temperatures rise, its body thaws.",
+    "And life begins again."
+   ],
+   "sfx": [
+    [
+     1.0,
+     "birds",
+     {
+      "dur": 6
+     }
+    ],
+    [
+     4.0,
+     "pop",
+     {
+      "pitch": 0.8
+     }
+    ]
+   ],
+   "scene": "nature",
+   "narration": "As temperatures rise, its body thaws. And life begins again."
+  },
+  {
+   "duration": 6.5,
+   "habitat": "pond",
+   "season": "spring",
+   "pose": "leaping with legs stretched out",
+   "motion": "jump",
+   "frost": 0.0,
+   "fx": [
+    "splash"
+   ],
+   "cam": "still",
+   "ax": 0.25,
+   "ay": 0.6,
+   "size": 0.5,
+   "subs": [
+    "Nature doesn't always escape the impossible.",
+    "Sometimes… it survives it."
+   ],
+   "sfx": [
+    [
+     0.5,
+     "slide"
+    ],
+    [
+     2.2,
+     "thud"
+    ]
+   ],
+   "scene": "nature",
+   "narration": "Nature doesn't always escape the impossible. Sometimes… it survives it."
+  }
+ ]
+}

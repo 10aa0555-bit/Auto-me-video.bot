@@ -18,12 +18,16 @@ import wave  # noqa: E402
 import numpy as np  # noqa: E402
 
 from geo_short import ambient, sfx, tts  # noqa: E402
+from geo_short.assets import AIArt  # noqa: E402
 from geo_short.build import mix_audio, scene_durations, write_post  # noqa: E402
 from geo_short.render import Timeline  # noqa: E402
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "remotion")
 FPS = 30
 REWIND = 1.3  # 最後の巻き戻しの秒数
+# 動物ドキュメンタリーの動物の絵柄 (台本の "art_style" で上書きできる)
+NATURE_STYLE = ("storybook 2D wildlife illustration, soft painterly shading, natural realistic colors, detailed but clean shapes, "
+                "gentle rim light, side view, no text, no frame")
 
 
 def main():
@@ -42,6 +46,26 @@ def main():
     for f in os.listdir(fonts):
         if f.startswith("Poppins"):
             shutil.copy(os.path.join(fonts, f), job)
+
+    # 動物ドキュメンタリー: 場面の "pose" ごとに、同じ絵柄の動物を AI で描いて切り抜く (結果は保存して再利用)
+    animal = script.get("animal")
+    if animal:
+        art = AIArt(script.get("art_style") or NATURE_STYLE)
+        for sc in script["scenes"]:
+            pose = sc.get("pose")
+            if sc.get("scene") != "nature" or not pose:
+                continue
+            prompt = f"{animal.get('look', '')} {animal['name']}, {pose}, full body, the same character design in every picture"
+            try:
+                path = art.prepare(prompt, "cutout")
+            except Exception as e:  # 無料枠切れなど。動物なしで背景だけにする
+                print(f"  動物の絵を描けませんでした ({e}): {pose}")
+                path = None
+            if path:
+                shutil.copy(path, os.path.join(job, os.path.basename(path)))
+                sc["animal"] = os.path.basename(path)
+            else:
+                print(f"  ⚠ 動物の絵がありません: {pose}")
 
     workdir = os.path.join("out", f"{name}_audio")
     # "silent": ナレーションなし (字幕と効果音だけ)。場面の長さは各シーンの "duration" で決める

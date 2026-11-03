@@ -3,6 +3,7 @@ import {AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrent
 import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
 import {YouthDefs} from './Youth';
+import {NatureScene, NatureSpec} from './Nature';
 import {FrogDefs, FrogFrozen, FrogHook, FrogInside, FrogLeap, FrogThaw, FrogWait, FrogWinter} from './Frog';
 import {Bridge, Chess, Crowd, Face, Fire, Mirror, Moon, Stairs, Street, Window} from './Noir';
 
@@ -16,8 +17,9 @@ export type CosmicScene = {
   dur: number;
   spec: {
     narration?: string;
-    scene: string; // hill / atoms / bigbang / nebula / supernova / disk / earth / ocean / city / blood / galaxy / end
+    scene: string; // nature (動物ドキュメンタリーの汎用場面) / hill / atoms / bigbang / nebula / supernova / disk / earth / ocean / city / blood / galaxy / end
     hot?: string[]; // オレンジで強調する単語
+  } & NatureSpec & {
   };
 };
 export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean};
@@ -647,11 +649,11 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
         <FrogDefs />
         {Prev && fin < 1 && (
           <g transform={cam((1 + 0.07) * (1 + 0.25 * fin))} opacity={1}>
-            <Prev t={t} lt={t - prev!.start} />
+            {prev!.spec.scene === 'nature' ? <NatureScene spec={prev!.spec} t={t} lt={t - prev!.start} dur={prev!.dur} /> : <Prev t={t} lt={t - prev!.start} />}
           </g>
         )}
         <g transform={cam(push * zoomIn)} opacity={fin}>
-          <Cur t={t} lt={lt} />
+          {s.spec.scene === 'nature' ? <NatureScene spec={s.spec} t={t} lt={lt} dur={s.dur} /> : <Cur t={t} lt={lt} />}
         </g>
         <rect width={W} height={H} fill="url(#vign)" />
         {props.theme === 'noir' && (

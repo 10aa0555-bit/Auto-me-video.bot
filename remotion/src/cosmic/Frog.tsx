@@ -106,7 +106,7 @@ export const WoodFrog: React.FC<{x: number; y: number; s?: number; frost?: numbe
 };
 
 /** 落ち葉の地面 (snow: 雪の量 0..1)。 */
-const Leaves: React.FC<{y: number; snow?: number; seed?: number; n?: number}> = ({y, snow = 0, seed = 3, n = 160}) => {
+export const Leaves: React.FC<{y: number; snow?: number; seed?: number; n?: number}> = ({y, snow = 0, seed = 3, n = 160}) => {
   const lv = useMemo(() => {
     const r = rng(seed);
     return Array.from({length: n}).map(() => ({x: r() * W, y: y + r() * (H - y), a: r() * 360, s: 18 + r() * 30, c: ['#a4552a', '#c2793a', '#7d3f1e', '#d39a4a', '#8a6a3a'][Math.floor(r() * 5)]}));
@@ -126,7 +126,7 @@ const Leaves: React.FC<{y: number; snow?: number; seed?: number; n?: number}> = 
 };
 
 /** 降る雪。 */
-const Snow: React.FC<{t: number; n?: number; o?: number}> = ({t, n = 140, o = 0.9}) => {
+export const Snow: React.FC<{t: number; n?: number; o?: number}> = ({t, n = 140, o = 0.9}) => {
   const f = useMemo(() => {
     const r = rng(17);
     return Array.from({length: n}).map(() => ({x: r() * W, y: r() * H, s: 2 + r() * 6, sp: 60 + r() * 120, w: r() * 6}));
@@ -139,7 +139,7 @@ const Snow: React.FC<{t: number; n?: number; o?: number}> = ({t, n = 140, o = 0.
 };
 
 /** 北の森 (木のシルエットを重ねる)。 */
-const Forest: React.FC<{base: number; tone: string; seed?: number; snowy?: number}> = ({base, tone, seed = 2, snowy = 0}) => {
+export const Forest: React.FC<{base: number; tone: string; seed?: number; snowy?: number}> = ({base, tone, seed = 2, snowy = 0}) => {
   const trees = useMemo(() => {
     const r = rng(seed);
     return Array.from({length: 18}).map(() => ({x: r() * W, h: 380 + r() * 520, w: 60 + r() * 70}));
