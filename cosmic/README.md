@@ -26,7 +26,7 @@
 ## ネタ帳 (上から順に)
 1. ✅ stardust_en — You are 13.8 billion years old (小さく感じたら、自分は宇宙のかけら)
 2. ✅ weeks_en — You only get about 4,000 weeks (80 年 ≒ 4,160 週)
-3. spotlight_en — Nobody is watching you as much as you think (スポットライト効果)
+3. ✅ spotlight_en — Nobody is watching you as much as you think (スポットライト効果)
 4. one_percent_en — 1% better every day = 37 times better in a year (1.01^365 ≒ 37.8)
 5. free_en — If nothing matters, you are free to do anything
 6. fear_en — Your brain is still afraid of lions that are not there

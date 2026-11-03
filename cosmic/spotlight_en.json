@@ -1,0 +1,231 @@
+{
+ "title": "Nobody Is Watching You",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Nobody is watching you as much as you think. 👁️",
+  "description": "Send this to someone who overthinks what others think.\n\nIn a 2000 Cornell study, students wearing an embarrassing T-shirt guessed about half the room noticed. Only about a quarter did.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#psychology",
+   "#shorts"
+  ],
+  "pinned_comment": "What would you do if nobody was watching? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "crowd",
+   "narration": "Nobody is watching you. Not the way you think they are.",
+   "hot": [
+    "NOBODY",
+    "WATCHING"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "In the year 2000, researchers at Cornell asked students to walk into a room wearing an embarrassing T-shirt.",
+   "hot": [
+    "EMBARRASSING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 28
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "The students guessed that about half the people in the room would notice it.",
+   "hot": [
+    "HALF"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 36
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "The real number? Only about one in four.",
+   "hot": [
+    "FOUR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 0
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "Psychologists call it the spotlight effect. We feel like a bright light follows us everywhere.",
+   "hot": [
+    "SPOTLIGHT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 14
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "But everyone else is standing in their own spotlight, too busy worrying about themselves.",
+   "hot": [
+    "THEMSELVES"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 9
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "That awkward thing you said last week? Most people forgot it the same day.",
+   "hot": [
+    "FORGOT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 34
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "So stop letting imaginary eyes make your decisions.",
+   "hot": [
+    "IMAGINARY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 11
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "Start the channel. Go to the gym. Ask the question. Wear the shirt.",
+   "hot": [
+    "START"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 27
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "The fear of being seen is louder than the people actually looking.",
+   "hot": [
+    "FEAR",
+    "LOUDER"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "Nobody is watching closely. That is not lonely. That is freedom.",
+   "hot": [
+    "FREEDOM"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 24
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So what would you do today, if nobody was watching?",
+   "hot": [
+    "TODAY"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}
