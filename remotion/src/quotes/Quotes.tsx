@@ -98,12 +98,13 @@ const Quote: React.FC<{s: QuoteScene; lt: number}> = ({s, lt}) => {
   const done = 0.5 + chars.length * per;
   const lines = text.split('\n');
   const longest = Math.max(...lines.map((l) => Array.from(l).length));
-  const size = Math.min(96, Math.floor((H * 0.62) / Math.max(6, longest)));
+  // 列の長さを画面の約半分 (上 0.13H〜下 0.63H) に収め、出典 (下 0.2H) と重ならないようにする
+  const size = Math.min(92, Math.floor((H * 0.5) / (Math.max(6, longest) * 1.12)));
   let idx = 0;
   return (
-    <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: out}}>
+    <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: H * 0.13, opacity: out}}>
       <div style={{writingMode: 'vertical-rl', fontFamily: FONT, fontWeight: 800, fontSize: size, lineHeight: 1.7, letterSpacing: size * 0.12,
-        color: '#ffffff', textShadow: glow, marginTop: -H * 0.04}}>
+        color: '#ffffff', textShadow: glow}}>
         {lines.map((line, li) => (
           <div key={li}>
             {Array.from(line).map((ch) => {
