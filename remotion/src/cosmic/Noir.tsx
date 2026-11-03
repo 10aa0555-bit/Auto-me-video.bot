@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
-import {Figure, Portrait} from './Youth';
+import {Figure, Portrait, blinkAt} from './Youth';
 
 /**
  * ダークなモチベーション動画用の舞台 (雨のヨーロッパの夜、金髪で黒いコートの静かな青年)。
@@ -114,11 +114,11 @@ const Facades: React.FC<{t: number; base: number; seed?: number; tone?: string}>
  * 金髪で黒いロングコートの青年 (オリジナル)。
  * view: 'front' (正面) / 'back' (後ろ姿)。walk で歩く、smile で口元が少し上がる。
  */
-export const Man: React.FC<{x: number; y: number; s?: number; view?: 'front' | 'back'; walk?: number; smile?: number; glint?: number}> = ({
-  x, y, s = 1, view = 'front', walk = 0, smile = 0, glint = 0,
+export const Man: React.FC<{x: number; y: number; s?: number; view?: 'front' | 'back'; walk?: number; smile?: number; glint?: number; t?: number}> = ({
+  x, y, s = 1, view = 'front', walk = 0, smile = 0, glint = 0, t = 0,
 }) => (
   <g transform={`translate(${x} ${y}) scale(${s * 0.95})`}>
-    <Figure view={view} walk={walk} smile={smile} glint={glint} />
+    <Figure view={view} walk={walk} smile={smile} glint={glint} t={t} />
   </g>
 );
 
@@ -138,7 +138,7 @@ export const Street: React.FC<{t: number; lt: number}> = ({t, lt}) => (
     <ellipse cx={W * 0.82} cy={H * 0.9} rx={140} ry={22} fill={N.lamp} opacity={0.15} />
     <Lamp x={W * 0.15} y={H * 0.74} t={t} />
     <Lamp x={W * 0.88} y={H * 0.76} t={t} s={1.05} />
-    <Man x={W * 0.5} y={H * 0.83 - lt * 4} s={1.15 + lt * 0.01} walk={t} />
+    <Man x={W * 0.5} y={H * 0.8 + lt * 7} s={1.08 + lt * 0.018} walk={t} t={t} />
     <Rain t={t} />
   </g>
 );
@@ -162,7 +162,7 @@ export const Bridge: React.FC<{t: number}> = ({t}) => (
     <rect y={H * 0.625} width={W} height={14} fill={N.ink} />
     <Lamp x={W * 0.12} y={H * 0.66} t={t} s={0.8} />
     <Lamp x={W * 0.9} y={H * 0.66} t={t} s={0.8} />
-    <Man x={W * 0.58} y={H * 0.665} s={0.75} view="back" />
+    <Man x={W * 0.58} y={H * 0.665} s={0.75} view="back" t={t} />
     <Rain t={t} o={0.25} />
   </g>
 );
@@ -173,7 +173,7 @@ export const Face: React.FC<{t: number; lt: number; smile?: boolean}> = ({t, lt,
     <NightSky id="ns3" top="#060d11" bottom="#152a31" />
     <circle cx={W * 0.25} cy={H * 0.3} r={500} fill={N.lamp} opacity={0.1} filter="url(#blur40)" />
     <g transform={`translate(${W / 2} ${H * 0.71}) scale(${1.38 + lt * 0.012})`}>
-      <Portrait smile={smile ? easeOut(clamp01((lt - 1) / 1.2)) : 0.15} glint={smile ? clamp01((lt - 2.2) / 0.8) : 0} look={Math.sin(lt * 0.6) * 0.5} />
+      <Portrait smile={smile ? easeOut(clamp01((lt - 1) / 1.2)) : 0.15} glint={smile ? clamp01((lt - 2.2) / 0.8) : 0} look={Math.sin(lt * 0.6) * 0.5} blink={blinkAt(t)} breath={Math.sin(t * 1.6)} />
     </g>
     <Rain t={t} o={0.22} />
   </g>
@@ -227,7 +227,7 @@ export const Mirror: React.FC<{t: number; lt: number}> = ({t, lt}) => (
     <rect x={W * 0.12} y={H * 0.14} width={W * 0.76} height={H * 0.62} rx={30} fill="#2a4148" stroke="#b99a52" strokeWidth={22} />
     <clipPath id="mirClip"><rect x={W * 0.12} y={H * 0.14} width={W * 0.76} height={H * 0.62} rx={30} /></clipPath>
     <g clipPath="url(#mirClip)">
-      <g transform={`translate(${W * 0.56} ${H * 0.36}) scale(1.05)`}><Portrait smile={easeOut(clamp01((lt - 1.5) / 1.5))} glint={clamp01((lt - 2) / 1)} shade={0.6} /></g>
+      <g transform={`translate(${W * 0.56} ${H * 0.36}) scale(1.05)`}><Portrait smile={easeOut(clamp01((lt - 1.5) / 1.5))} glint={clamp01((lt - 2) / 1)} shade={0.6} blink={blinkAt(t + 1.3)} /></g>
       <rect x={W * 0.1} y={H * 0.1} width={60} height={H * 0.7} fill="#fff" opacity={0.08} transform={`skewX(-20)`} />
     </g>
     <g transform={`translate(${W * 0.3} ${H * 0.86}) scale(1.2)`}><Portrait back /></g>
@@ -253,7 +253,7 @@ export const Window: React.FC<{t: number}> = ({t}) => (
       <line x1={W * 0.5} y1={H * 0.12} x2={W * 0.5} y2={H * 0.7} stroke="#1a1410" strokeWidth={26} />
       <line x1={W * 0.14} y1={H * 0.41} x2={W * 0.86} y2={H * 0.41} stroke="#1a1410" strokeWidth={26} />
     </g>
-    <Man x={W * 0.32} y={H * 1.12} s={1.35} view="back" />
+    <Man x={W * 0.32} y={H * 1.12} s={1.35} view="back" t={t} />
   </g>
 );
 
@@ -271,7 +271,7 @@ export const Stairs: React.FC<{t: number; lt: number}> = ({t, lt}) => {
         const y = H * 0.95 - Math.pow(k, 0.85) * H * 0.82;
         return <rect key={i} x={W / 2 - w / 2} y={y} width={w} height={60 - k * 40} fill={i % 2 ? '#1f3338' : '#2a4247'} stroke={N.ink} strokeWidth={4} />;
       })}
-      <Man x={W / 2} y={H * 0.66 - easeInOut(clamp01(lt / 6)) * H * 0.12} s={0.5 - easeInOut(clamp01(lt / 6)) * 0.12} view="back" walk={t} />
+      <Man x={W / 2} y={H * 0.66 - easeInOut(clamp01(lt / 6)) * H * 0.12} s={0.5 - easeInOut(clamp01(lt / 6)) * 0.12} view="back" walk={t} t={t} />
     </g>
   );
 };
@@ -325,7 +325,7 @@ export const Crowd: React.FC<{t: number}> = ({t}) => {
           </g>
         );
       })}
-      <Man x={W / 2} y={H * 0.9} s={0.95} />
+      <Man x={W / 2} y={H * 0.9} s={0.95} t={t} />
     </g>
   );
 };
