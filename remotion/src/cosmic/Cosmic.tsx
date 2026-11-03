@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react';
-import {AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, OffthreadVideo, Sequence, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
 import {YouthDefs} from './Youth';
@@ -26,6 +26,7 @@ export type CosmicScene = {
   };
 };
 export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean; lang?: 'en' | 'ja';
+  clips?: {src: string; start: number; dur: number; from: number; zoom?: number}[]; // 手元で用意した映像の切り抜き (job/ の動画)
   animalCard?: {name: string; latin?: string}};
 
 const C = {
@@ -640,6 +641,26 @@ const NumberTag: React.FC<{n: number; of: number; lt: number; dur: number}> = ({
   );
 };
 
+/** 手元で用意した映像の切り抜きを順に流す (白黒寄りの暗い色 + ゆっくり寄る)。 */
+const ClipTrack: React.FC<{clips: NonNullable<CosmicProps['clips']>; fps: number; frame: number}> = ({clips, fps, frame}) => (
+  <AbsoluteFill style={{background: '#000'}}>
+    {clips.map((c, j) => {
+      const from = Math.round(c.start * fps);
+      const len = Math.max(1, Math.round((c.start + c.dur) * fps) - from);
+      const lt = clamp01((frame - from) / len);
+      const z = (c.zoom ?? 1.0) + 0.08 * lt;
+      return (
+        <Sequence key={j} from={from} durationInFrames={len}>
+          <AbsoluteFill style={{transform: `scale(${z})`, filter: 'grayscale(0.85) contrast(1.18) brightness(0.82)'}}>
+            <OffthreadVideo src={staticFile(`job/${c.src}`)} startFrom={Math.round(c.from * fps)} muted
+              style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+          </AbsoluteFill>
+        </Sequence>
+      );
+    })}
+  </AbsoluteFill>
+);
+
 /** 1 場面目の大きなつかみの一言 (黄色・黒フチ、1 行ずつポンと出る)。 */
 const HookTitle: React.FC<{lines: string[]; lt: number; dur: number; ja?: boolean}> = ({lines, lt, dur, ja}) => {
   const out = clamp01((dur - lt) / 0.4);
@@ -733,18 +754,19 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
   const cam = (z: number) => `translate(${W / 2} ${H / 2}) scale(${z}) translate(${-W / 2} ${-H / 2})`;
   return (
     <AbsoluteFill style={{background: C.ink}}>
+      {props.clips && <ClipTrack clips={props.clips} fps={fps} frame={frame} />}
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={props.theme === 'noir' ? {filter: 'saturate(0.8) contrast(1.08)'} : undefined}>
         <Defs />
         <YouthDefs />
         <FrogDefs />
-        {Prev && fin < 1 && (
+        {!props.clips && Prev && fin < 1 && (
           <g transform={cam((1 + 0.07) * (1 + 0.25 * fin))} opacity={1}>
             {renderScene(prev!, t, t - prev!.start)}
           </g>
         )}
-        <g transform={cam(push * zoomIn)} opacity={fin}>
+        {!props.clips && <g transform={cam(push * zoomIn)} opacity={fin}>
           {renderScene(s, t, lt)}
-        </g>
+        </g>}
         <rect width={W} height={H} fill="url(#vign)" />
         {props.theme === 'nature' && (
           <g>

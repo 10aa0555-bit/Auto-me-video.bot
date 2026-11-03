@@ -7,3 +7,8 @@
 - `hot` に入れたかたまりは赤、`number` を入れた場面は上に「1 /5」と出る。`hook` は 1 場面目の上の黄色いタイトル
 - 尺は 61〜75 秒。ナレーションの速さは `voice.speed` (1.2 前後) で調整
 - 中身は役に立つ・前向きな心理学や雑学にする (人をだます・傷つける使い方は勧めない)
+
+## 手元の映像で仕上げる (アニメの切り抜きなど、リポジトリに置けない映像)
+1. CI で声と字幕の時刻だけ作る: `script=jp/<名前>.json`, `options=--voice-only` → renders に `<名前>_voice.m4a` と `<名前>_props.json`
+2. このコンテナで: `python tools/ja_clips.py deliver/jp/<名前>_props.json deliver/jp/<名前>_voice.m4a <映像>... -o deliver/jp/<名前>_hq.mp4`
+   (映像は 2〜3 秒ごとに切り替え、白黒寄りの色 + ゆっくりズーム。映像は remotion/public/job と deliver/ だけに置く = git に入らない)
