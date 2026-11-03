@@ -124,6 +124,19 @@ def main():
 
     captions = [{"text": c[0], "start": c[1], "end": c[2], "words": [[w, t] for w, t in (c[3] or [])]}
                 for c in tl.captions]
+    if not silent and script.get("theme") == "nature":
+        # ナレーションの字幕は 2〜3 語ずつだと細かすぎるので、6〜8 語の 1 行にまとめる (場面をまたがない)
+        merged = []
+        for c in captions:
+            last = merged[-1] if merged else None
+            same_scene = last and any(s["start"] <= last["start"] < s["start"] + s["dur"] and s["start"] <= c["start"] < s["start"] + s["dur"] for s in tl.scenes)
+            if last and same_scene and len(last["text"].split()) + len(c["text"].split()) <= 8 and not last["text"].rstrip().endswith((".", "?", "!")):
+                last["text"] += " " + c["text"]
+                last["end"] = c["end"]
+                last["words"] += c["words"]
+            else:
+                merged.append(dict(c, words=list(c["words"])))
+        captions = merged
     if silent:
         # 字幕は各シーンの "subs" (行のリスト) を、シーンの中で均等に出す
         captions = []

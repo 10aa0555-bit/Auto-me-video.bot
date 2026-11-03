@@ -640,7 +640,7 @@ const SpeciesCard: React.FC<{card: {name: string; latin?: string}; lt: number}> 
 const Subtitle: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   const c = caps.find((x) => t >= x.start && t < x.end);
   if (!c) return null;
-  const k = Math.min(clamp01((t - c.start) / 0.35), clamp01((c.end - t) / 0.3));
+  const k = Math.min(clamp01((t - c.start) / 0.12), clamp01((c.end - t) / 0.08));
   const big = c.text === c.text.toUpperCase();
   return (
     <div style={{position: 'absolute', top: big ? H * 0.12 : H * 0.76, width: W, padding: '0 70px', boxSizing: 'border-box', textAlign: 'center', opacity: k,
