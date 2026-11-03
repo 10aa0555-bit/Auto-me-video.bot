@@ -4,6 +4,7 @@ import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
 import {YouthDefs} from './Youth';
 import {NatureScene, NatureSpec} from './Nature';
+import {ArtScene, ArtSpec} from './ArtScene';
 import {FrogDefs, FrogFrozen, FrogHook, FrogInside, FrogLeap, FrogThaw, FrogWait, FrogWinter} from './Frog';
 import {Bridge, Chess, Crowd, Face, Fire, Mirror, Moon, Stairs, Street, Window} from './Noir';
 
@@ -19,7 +20,8 @@ export type CosmicScene = {
     narration?: string;
     scene: string; // nature (動物ドキュメンタリーの汎用場面) / hill / atoms / bigbang / nebula / supernova / disk / earth / ocean / city / blood / galaxy / end
     hot?: string[]; // オレンジで強調する単語
-  } & NatureSpec & {
+  } & NatureSpec & Omit<ArtSpec, 'cam' | 'fx'> & {
+    fallback?: string; // AI の絵が無いときに使うコードの場面
   };
 };
 export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean;
@@ -651,6 +653,19 @@ const Subtitle: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   );
 };
 
+/** 1 場面を描く (nature は動物の汎用場面、art は AI の 1 枚絵、それ以外はコードの場面)。 */
+const renderScene = (sc: CosmicScene, t: number, lt: number) => {
+  const sp = sc.spec;
+  if (sp.scene === 'nature') return <NatureScene spec={sp} t={t} lt={lt} dur={sc.dur} />;
+  if (sp.scene === 'art') {
+    if (sp.img) return <ArtScene spec={sp as unknown as ArtSpec} t={t} lt={lt} dur={sc.dur} />;
+    const F = SCENES[sp.fallback ?? 'street'] ?? SCENES.street;
+    return <F t={t} lt={lt} />;
+  }
+  const C2 = SCENES[sp.scene] ?? SCENES.hill;
+  return <C2 t={t} lt={lt} />;
+};
+
 export const Cosmic: React.FC<CosmicProps> = (props) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -682,11 +697,11 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
         <FrogDefs />
         {Prev && fin < 1 && (
           <g transform={cam((1 + 0.07) * (1 + 0.25 * fin))} opacity={1}>
-            {prev!.spec.scene === 'nature' ? <NatureScene spec={prev!.spec} t={t} lt={t - prev!.start} dur={prev!.dur} /> : <Prev t={t} lt={t - prev!.start} />}
+            {renderScene(prev!, t, t - prev!.start)}
           </g>
         )}
         <g transform={cam(push * zoomIn)} opacity={fin}>
-          {s.spec.scene === 'nature' ? <NatureScene spec={s.spec} t={t} lt={lt} dur={s.dur} /> : <Cur t={t} lt={lt} />}
+          {renderScene(s, t, lt)}
         </g>
         <rect width={W} height={H} fill="url(#vign)" />
         {props.theme === 'nature' && (

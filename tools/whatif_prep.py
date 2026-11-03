@@ -28,6 +28,9 @@ REWIND = 1.3  # 最後の巻き戻しの秒数
 # 動物ドキュメンタリーの動物の絵柄 (台本の "art_style" で上書きできる)
 NATURE_STYLE = ("storybook 2D wildlife illustration, soft painterly shading, natural realistic colors, detailed but clean shapes, "
                 "gentle rim light, side view, no text, no frame")
+# ダークなモチベーション (noir) の 1 枚絵: 同じ男性を、雨の夜の街の 2D イラストで描く
+NOIR_STYLE = ("high quality 2D digital illustration, anime-inspired cel shading, cinematic moody lighting, "
+              "muted teal shadows and warm amber lights, detailed background, painterly atmosphere, no text, no watermark, no logo")
 
 
 def main():
@@ -67,6 +70,27 @@ def main():
                 sc["animal"] = os.path.basename(path)
             else:
                 print(f"  ⚠ 動物の絵がありません: {pose}")
+
+    # noir の 1 枚絵: "character" (同じ人物の見た目) + 場面ごとの "art" (構図) を AI で描く。描けなければ "fallback" のコードの場面
+    character = script.get("character")
+    if character:
+        art = AIArt(script.get("art_style") or NOIR_STYLE, seed=character.get("seed", 4242))
+        for sc in script["scenes"]:
+            if not sc.get("art"):
+                continue
+            who = f" The man: {character['look']}." if sc.get("man", True) else ""
+            try:
+                path = art.prepare(f"{sc['art']}.{who}", "card")
+            except Exception as e:  # 無料枠切れなど
+                print(f"  絵を描けませんでした ({e}): {sc['art'][:50]}")
+                path = None
+            sc["fallback"] = sc.get("fallback") or (sc.get("scene") if sc.get("scene") not in (None, "art") else "street")
+            sc["scene"] = "art"
+            if path:
+                shutil.copy(path, os.path.join(job, os.path.basename(path)))
+                sc["img"] = os.path.basename(path)
+            else:
+                print(f"  ⚠ 絵がありません (コードの場面 {sc['fallback']} で代用): {sc['art'][:50]}")
 
     workdir = os.path.join("out", f"{name}_audio")
     # "silent": ナレーションなし (字幕と効果音だけ)。場面の長さは各シーンの "duration" で決める
