@@ -107,11 +107,12 @@
      }
     ]
    ],
-   "art": "side profile of a calm man gazing through a rain-streaked glass at distant city lights at night, cozy dim apartment",
-   "cam": "left",
+   "art": "a quiet wooden desk at night with an open notebook full of handwritten plans, a warm desk lamp, a cup of coffee, rain on the glass and blurry city lights outside",
+   "cam": "in",
    "fx": [
     "dust"
-   ]
+   ],
+   "man": false
   },
   {
    "scene": "street",
