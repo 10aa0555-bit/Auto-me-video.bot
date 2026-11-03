@@ -3,6 +3,7 @@ import {AbsoluteFill, Audio, continueRender, delayRender, staticFile, useCurrent
 import type {Caption} from '../types';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
 import {YouthDefs} from './Youth';
+import {FrogDefs, FrogFrozen, FrogHook, FrogInside, FrogLeap, FrogThaw, FrogWait, FrogWinter} from './Frog';
 import {Bridge, Chess, Crowd, Face, Fire, Mirror, Moon, Stairs, Street, Window} from './Noir';
 
 /**
@@ -19,7 +20,7 @@ export type CosmicScene = {
     hot?: string[]; // オレンジで強調する単語
   };
 };
-export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir'};
+export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean};
 
 const C = {
   ink: '#0b0826',
@@ -510,6 +511,13 @@ const SCENES: Record<string, React.FC<{t: number; lt: number}>> = {
   blood: ({t}) => <Blood t={t} />,
   galaxy: ({t}) => <Galaxy t={t} />,
   street: ({t, lt}) => <Street t={t} lt={lt} />,
+  frog_hook: ({t, lt}) => <FrogHook t={t} lt={lt} />,
+  frog_winter: ({t, lt}) => <FrogWinter t={t} lt={lt} />,
+  frog_inside: ({t, lt}) => <FrogInside t={t} lt={lt} />,
+  frog_frozen: ({t, lt}) => <FrogFrozen t={t} lt={lt} />,
+  frog_wait: ({t, lt}) => <FrogWait t={t} lt={lt} />,
+  frog_thaw: ({t, lt}) => <FrogThaw t={t} lt={lt} />,
+  frog_leap: ({t, lt}) => <FrogLeap t={t} lt={lt} />,
   bridge: ({t}) => <Bridge t={t} />,
   face: ({t, lt}) => <Face t={t} lt={lt} />,
   smile: ({t, lt}) => <Face t={t} lt={lt} smile />,
@@ -593,13 +601,29 @@ const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]; theme?: stri
   );
 };
 
+/** ナレーションなしの動画の字幕 (白い文字 + うすい影、1 行ずつフェード)。 */
+const Subtitle: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
+  const c = caps.find((x) => t >= x.start && t < x.end);
+  if (!c) return null;
+  const k = Math.min(clamp01((t - c.start) / 0.35), clamp01((c.end - t) / 0.3));
+  const big = c.text === c.text.toUpperCase();
+  return (
+    <div style={{position: 'absolute', top: big ? H * 0.12 : H * 0.76, width: W, padding: '0 70px', boxSizing: 'border-box', textAlign: 'center', opacity: k,
+      transform: `translateY(${(1 - k) * 12}px)`}}>
+      <span style={{fontFamily: big ? 'Anton' : 'Poppins', fontWeight: big ? 400 : 700, fontSize: big ? 104 : 58, lineHeight: 1.2, color: '#ffffff', letterSpacing: big ? 2 : 0,
+        textShadow: '0 3px 12px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9)'}}>{c.text}</span>
+    </div>
+  );
+};
+
 export const Cosmic: React.FC<CosmicProps> = (props) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const [handle] = useState(() => delayRender('anton'));
   useMemo(() => {
     const f = new FontFace('Anton', `url(${staticFile('fonts/anton-latin-400-normal.woff2')})`);
-    f.load().then((ff) => document.fonts.add(ff)).finally(() => continueRender(handle));
+    const p = new FontFace('Poppins', `url(${staticFile('job/Poppins-ExtraBold.ttf')})`, {weight: '700'});
+    Promise.allSettled([f.load().then((ff) => document.fonts.add(ff)), p.load().then((pp) => document.fonts.add(pp))]).finally(() => continueRender(handle));
   }, [handle]);
   const t = frame / fps;
   const sc = props.scenes;
@@ -620,6 +644,7 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={props.theme === 'noir' ? {filter: 'saturate(0.8) contrast(1.08)'} : undefined}>
         <Defs />
         <YouthDefs />
+        <FrogDefs />
         {Prev && fin < 1 && (
           <g transform={cam((1 + 0.07) * (1 + 0.25 * fin))} opacity={1}>
             <Prev t={t} lt={t - prev!.start} />
@@ -641,7 +666,7 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
           </g>
         )}
       </svg>
-      <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />
+      {props.subs ? <Subtitle caps={props.captions ?? []} t={t} /> : <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />}
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>
   );

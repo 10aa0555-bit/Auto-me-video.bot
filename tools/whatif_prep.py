@@ -44,7 +44,9 @@ def main():
             shutil.copy(os.path.join(fonts, f), job)
 
     workdir = os.path.join("out", f"{name}_audio")
-    alignments = None if args.no_tts else tts.synthesize(script, workdir)
+    # "silent": ナレーションなし (字幕と効果音だけ)。場面の長さは各シーンの "duration" で決める
+    silent = bool(script.get("silent"))
+    alignments = None if (args.no_tts or silent) else tts.synthesize(script, workdir)
     have_audio = alignments is not None
     durations = scene_durations(script, workdir, have_audio)
     # Timeline は地図のカメラを前提にしているので、字幕の時刻を出すためだけに仮のカメラを入れる
@@ -78,7 +80,8 @@ def main():
     # 効果音に環境音 (波・風・街・ヘリ) を重ねる
     with wave.open(fx, "rb") as w:
         fxs = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float64) / 32767
-    amb = (ambient.render_noir(scenes, tl.total) if cosmic and script.get("theme") == "noir" else
+    amb = (ambient.render_nature(scenes, tl.total) if cosmic and script.get("theme") == "nature" else
+           ambient.render_noir(scenes, tl.total) if cosmic and script.get("theme") == "noir" else
            ambient.render_space(scenes, tl.total) if cosmic else
            ambient.render_story(scenes, tl.total) if story else ambient.render(scenes, tl.total, rewind))
     m = min(len(fxs), len(amb))
@@ -94,10 +97,20 @@ def main():
 
     captions = [{"text": c[0], "start": c[1], "end": c[2], "words": [[w, t] for w, t in (c[3] or [])]}
                 for c in tl.captions]
+    if silent:
+        # 字幕は各シーンの "subs" (行のリスト) を、シーンの中で均等に出す
+        captions = []
+        for sc, s in zip(script["scenes"], tl.scenes):
+            subs = sc.get("subs", [])
+            for k, line in enumerate(subs):
+                a = s["start"] + 0.3 + (s["dur"] - 0.6) * k / max(1, len(subs))
+                b = s["start"] + 0.3 + (s["dur"] - 0.6) * (k + 1) / max(1, len(subs))
+                captions.append({"text": line, "start": round(a, 3), "end": round(b, 3), "words": []})
     n = int(round(tl.total * FPS))
     props = {"frames": n, "fps": FPS, "scenes": scenes, "captions": captions, "audio": "audio.m4a"}
     if cosmic:
         props["theme"] = script.get("theme", "cosmic")
+        props["subs"] = silent
     elif story:
         props["hook"] = script["hook"]
     else:

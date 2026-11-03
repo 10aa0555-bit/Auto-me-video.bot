@@ -120,3 +120,20 @@ def render_noir(scenes, total):
     out = 0.09 * rain + 0.07 * drone / 1.75 + 0.25 * thunder
     fade = np.minimum(1, t / 1.5) * np.minimum(1, (total - t) / 1.0)
     return np.clip(out * fade, -1, 1)
+
+
+def render_nature(scenes, total):
+    """自然ドキュメンタリーの環境音: 冬は冷たい風、春 (spec.season == "spring") は弱い風と小川。"""
+    n = int(total * SR)
+    t = np.arange(n) / SR
+    spring = np.zeros(n)
+    for s in scenes:
+        if s["spec"].get("season") == "spring":
+            m = (t >= s["start"]) & (t < s["start"] + s["dur"])
+            spring[m] = 1
+    spring = np.convolve(spring, np.ones(SR) / SR, mode="same")
+    wind = _shaped_noise(n, 150, 900, 71) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.09 * t) ** 2)
+    brook = _shaped_noise(n, 1500, 6000, 72) * (0.6 + 0.4 * np.sin(2 * np.pi * 3.1 * t) ** 2)
+    out = 0.16 * wind * (1 - 0.7 * spring) + 0.07 * brook * spring
+    fade = np.minimum(1, t / 1.0) * np.minimum(1, (total - t) / 0.8)
+    return np.clip(out * fade, -1, 1)
