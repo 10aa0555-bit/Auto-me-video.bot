@@ -135,25 +135,7 @@ jobs:
 
       # 完成した動画を renders ブランチにも置く (ブラウザや別の環境から取り出しやすいように)
       - name: Publish to renders branch
-        timeout-minutes: 10  # GitHub 側で push が固まっても 1 時間以上待たない
+        timeout-minutes: 15  # GitHub 側で固まっても長く待たない
         run: |
-          mkdir -p /tmp/renders && cp out/*.mp4 /tmp/renders/
-          cp out/*_post.txt out/*_grid.jpg /tmp/renders/ 2>/dev/null || true
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git fetch -q origin renders; then
-            git checkout -q -B renders FETCH_HEAD
-          else
-            git checkout -q --orphan renders
-            git rm -rfq .
-          fi
-          git clean -fdxq
-          cp /tmp/renders/* .
-          git add -f -- *.mp4 $(ls *_post.txt *_grid.jpg 2>/dev/null)
-          git commit -qm "render (remotion): $SCRIPTS (${GITHUB_SHA::7})" || exit 0
-          # 何本も同時に書き出すと push がぶつかるので、取り込み直して何度か再挑戦する
-          for i in 1 2 3 4 5 6 7 8; do
-            git push -q origin renders && break
-            sleep $((RANDOM % 20 + 5))
-            git fetch -q origin renders && git rebase -q FETCH_HEAD
-          done
+          shopt -s nullglob
+          bash tools/publish_renders.sh "render (remotion): $SCRIPTS (${GITHUB_SHA::7})" out/*.mp4 out/*_post.txt out/*_grid.jpg
