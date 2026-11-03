@@ -1,6 +1,6 @@
 ---
 name: animal-doc
-description: Turn a pasted 2D wildlife documentary script (the ChatGPT format in docs/chatgpt_animal_doc_prompt.md, or a free-form brief like "FROZEN… BUT STILL ALIVE") into a finished 60–75 s vertical short with the Cosmic engine (nature theme, silent, English subtitles), render it on GitHub Actions, QA it and send it. Use whenever the user pastes an animal / nature documentary script or brief.
+description: Turn a pasted 2D wildlife documentary script (with narration by default) (the ChatGPT format in docs/chatgpt_animal_doc_prompt.md, or a free-form brief like "FROZEN… BUT STILL ALIVE") into a finished 60–75 s vertical short with the Cosmic engine (nature theme, silent, English subtitles), render it on GitHub Actions, QA it and send it. Use whenever the user pastes an animal / nature documentary script or brief.
 ---
 
 # 動物ドキュメンタリー (2D・ナレーションなし) を台本から作る
@@ -14,20 +14,22 @@ description: Turn a pasted 2D wildlife documentary script (the ChatGPT format in
 ```json
 {
  "title": "...", "lang": "en", "captions": "plain", "music": false,
- "style": "cosmic", "theme": "nature", "silent": true,
- "voice": {"engine": "auto", "kokoro_voice": "am_michael", "settings": {"speed": 1.0}},
+ "style": "cosmic", "theme": "nature",
+ "voice": {"engine": "auto", "kokoro_voice": "bm_george", "settings": {"speed": 0.92}},
  "animal": {"name": "wood frog", "latin": "Lithobates sylvaticus", "look": "small brown frog with a dark mask stripe across its eyes, golden eyes"},
  "post": {"title": "...", "description": "...", "hashtags": ["#nature", "..."], "pinned_comment": "..."},
  "scenes": [
   {"scene": "nature", "duration": 6.0, "habitat": "snow_forest", "pose": "sitting under frozen leaves, eyes closed",
    "motion": "still", "frost": 0.8, "fx": ["snow", "frost"], "cam": "push",
-   "subs": ["THIS FROG CAN FREEZE SOLID…", "AND STILL SURVIVE."],
+   "narration": "This little frog can freeze solid… and still survive.", "hook": ["THIS FROG CAN", "FREEZE SOLID…"],
    "sfx": [[0.0, "thud"], [0.4, "riser", {"dur": 1.2}]],
    "ax": 0.5, "ay": 0.6, "size": 0.8}
  ]
 }
 ```
-- `narration` は書かなくてよい (prep が subs から作る)。各シーンに `"narration": " ".join(subs)` を入れておくと安全。
+- 既定はナレーションあり (落ち着いたイギリス英語の男性 bm_george、速さ 0.92)。字幕はナレーションと同じ言葉を黄色の行で出す。全体で 140〜160 語 (61〜75 秒)。場面の長さは声の長さで決まる
+- 1 場面目の `hook` は上に大きく出る大文字の一言
+- ユーザーが「ナレーションなし」と言ったときだけ `"silent": true` にして、各シーンの `subs` (行のリスト) と `duration` で作る
 - `habitat: "inside"` は体の中の断面図 (細胞・氷・光る粒)。`pose` は付けない。
 - 指し示し: `"callouts": [{"text": "HEART", "x": 0.5, "y": 0.55, "delay": 1.0}]` (1 場面 2 個まで。台本の CALLOUTS)
 - 2 場面目の頭に、名前テロップ (`animal.name` と `animal.latin`) が自動で出る。字幕は黄色。場面転換の効果音も自動

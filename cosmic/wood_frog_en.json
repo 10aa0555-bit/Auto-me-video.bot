@@ -5,12 +5,12 @@
  "music": false,
  "style": "cosmic",
  "theme": "nature",
- "silent": true,
+ "silent": false,
  "voice": {
   "engine": "auto",
-  "kokoro_voice": "am_michael",
+  "kokoro_voice": "bm_george",
   "settings": {
-   "speed": 1.0
+   "speed": 0.92
   }
  },
  "animal": {
@@ -46,10 +46,6 @@
    "cam": "push",
    "ay": 0.5,
    "size": 0.62,
-   "subs": [
-    "THIS FROG CAN FREEZE SOLID…",
-    "AND STILL SURVIVE."
-   ],
    "sfx": [
     [
      0.0,
@@ -64,7 +60,11 @@
     ]
    ],
    "scene": "nature",
-   "narration": "THIS FROG CAN FREEZE SOLID… AND STILL SURVIVE."
+   "narration": "This little frog can freeze solid… and still survive.",
+   "hook": [
+    "THIS FROG CAN",
+    "FREEZE SOLID…"
+   ]
   },
   {
    "duration": 10.0,
@@ -78,10 +78,6 @@
    "cam": "pan",
    "ay": 0.5,
    "size": 0.6,
-   "subs": [
-    "When winter arrives, most animals escape the cold.",
-    "But this frog has a different strategy."
-   ],
    "sfx": [
     [
      0.0,
@@ -93,7 +89,7 @@
     ]
    ],
    "scene": "nature",
-   "narration": "When winter arrives, most animals escape the cold. But this frog has a different strategy."
+   "narration": "When winter arrives in the northern forests, most animals run away, or hide deep underground. The wood frog does something else. It simply lets the cold take it."
   },
   {
    "scene": "nature",
@@ -101,10 +97,6 @@
    "duration": 13.0,
    "cam": "push",
    "fx": [],
-   "subs": [
-    "Its liver releases huge amounts of glucose.",
-    "A natural antifreeze that protects its vital cells."
-   ],
    "callouts": [
     {
      "text": "GLUCOSE",
@@ -129,7 +121,7 @@
      }
     ]
    ],
-   "narration": "Its liver releases huge amounts of glucose. A natural antifreeze that protects its vital cells."
+   "narration": "As ice begins to form, its liver floods its body with glucose. This sugar works like a natural antifreeze, protecting the cells that keep it alive."
   },
   {
    "duration": 12.0,
@@ -144,11 +136,6 @@
    "cam": "push",
    "ay": 0.5,
    "size": 0.62,
-   "subs": [
-    "Its heart stops.",
-    "It stops breathing.",
-    "Up to two-thirds of its body water can freeze."
-   ],
    "sfx": [
     [
      0.5,
@@ -165,7 +152,7 @@
     ]
    ],
    "scene": "nature",
-   "narration": "Its heart stops. It stops breathing. Up to two-thirds of its body water can freeze.",
+   "narration": "Then its heart stops. It stops breathing. Up to two-thirds of the water in its body turns to ice.",
    "callouts": [
     {
      "text": "HEART: 0 BPM",
@@ -189,11 +176,6 @@
    "cam": "pull",
    "ay": 0.5,
    "size": 0.6,
-   "subs": [
-    "For weeks… it waits.",
-    "Not dead.",
-    "Just waiting for spring."
-   ],
    "sfx": [
     [
      0.0,
@@ -212,7 +194,7 @@
     ]
    ],
    "scene": "nature",
-   "narration": "For weeks… it waits. Not dead. Just waiting for spring."
+   "narration": "For weeks, sometimes for months, it lies frozen under the snow. No heartbeat. No breath. Not dead. Just waiting for spring."
   },
   {
    "duration": 10.0,
@@ -227,10 +209,6 @@
    "cam": "push",
    "ay": 0.5,
    "size": 0.62,
-   "subs": [
-    "As temperatures rise, its body thaws.",
-    "And life begins again."
-   ],
    "sfx": [
     [
      1.0,
@@ -248,7 +226,7 @@
     ]
    ],
    "scene": "nature",
-   "narration": "As temperatures rise, its body thaws. And life begins again."
+   "narration": "And when the ground finally warms, the ice melts away. Its heart flickers back to life. It takes a breath. And it opens its eyes."
   },
   {
    "duration": 6.5,
@@ -264,10 +242,6 @@
    "ax": 0.25,
    "ay": 0.6,
    "size": 0.5,
-   "subs": [
-    "Nature doesn't always escape the impossible.",
-    "Sometimes… it survives it."
-   ],
    "sfx": [
     [
      0.5,

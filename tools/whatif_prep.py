@@ -137,7 +137,8 @@ def main():
     props = {"frames": n, "fps": FPS, "scenes": scenes, "captions": captions, "audio": "audio.m4a"}
     if cosmic:
         props["theme"] = script.get("theme", "cosmic")
-        props["subs"] = silent
+        # 自然ドキュメンタリーはナレーションがあっても、言葉を 1 語ずつではなく字幕の行で出す
+        props["subs"] = silent or script.get("theme") == "nature"
         if animal:
             props["animalCard"] = {"name": animal["name"], "latin": animal.get("latin", "")}
     elif story:

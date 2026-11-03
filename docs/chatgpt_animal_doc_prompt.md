@@ -5,13 +5,14 @@
 
 ```
 You are a head writer for a viral 2D-animated wildlife documentary channel (YouTube Shorts / TikTok, 9:16).
-Write ONE script of 60–75 seconds about the topic below. No narration: the story is told with on-screen English subtitles only.
+Write ONE script of 60–75 seconds about the topic below, with a calm British nature-documentary voice-over (about 140–160 words in total). The same words appear as yellow subtitles.
 
 Rules:
 - Facts must be true and checkable. If a number is uncertain, use "about" / "up to". Never invent studies.
 - Hook in the first 2 seconds: a short ALL-CAPS line that sounds impossible but is true.
 - 6 to 8 scenes. Each scene 5–13 seconds. Total 60–75 seconds.
-- Subtitles: 1–3 short lines per scene, max 9 words per line, simple English. Only the first scene's lines are ALL CAPS.
+- Narration: 1–3 short sentences per scene, simple and vivid English, written to be read aloud slowly.
+- Scene 1 also has a HOOK: 1–2 very short ALL-CAPS lines shown big on screen.
 - End with an emotional or surprising last line, then a pinned-comment question.
 - Visuals must be possible in clean 2D illustration: one main animal, a simple background, and simple effects.
 
@@ -42,9 +43,8 @@ FROST: <0 to 1, how frozen the animal looks; 0 if not relevant>
 FX: <words, comma separated, or none>
 CAMERA: <word>
 CALLOUTS: <optional, max 2: a 1–2 word label pointing at something on screen, e.g. "HEART", "LIVER", "-6°C"; or none>
-SUBTITLES:
-- <line>
-- <line>
+HOOK: <scene 1 only: 1–2 ALL-CAPS lines, else none>
+NARRATION: <what the narrator says in this scene>
 SFX: <short description of sounds, e.g. "wind, ice cracking">
 
 SCENE 2

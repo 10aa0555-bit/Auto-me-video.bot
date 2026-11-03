@@ -604,6 +604,22 @@ const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]; theme?: stri
   );
 };
 
+/** 1 場面目の大きなつかみの一言 (黄色・黒フチ、1 行ずつポンと出る)。 */
+const HookTitle: React.FC<{lines: string[]; lt: number; dur: number}> = ({lines, lt, dur}) => {
+  const out = clamp01((dur - lt) / 0.4);
+  return (
+    <div style={{position: 'absolute', top: H * 0.1, width: W, padding: '0 60px', boxSizing: 'border-box', textAlign: 'center', opacity: out}}>
+      {lines.map((l, j) => {
+        const k = easeOut(clamp01((lt - 0.15 - j * 0.9) / 0.3));
+        return (
+          <div key={j} style={{fontFamily: 'Anton', fontSize: 104, lineHeight: 1.12, color: '#ffd23f', opacity: k, transform: `scale(${1.2 - 0.2 * k})`,
+            textShadow: '0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 6px 18px rgba(0,0,0,0.85)'}}>{l}</div>
+        );
+      })}
+    </div>
+  );
+};
+
 /** ドキュメンタリー番組風の名前テロップ (左上、線がのびて名前と学名が出る)。 */
 const SpeciesCard: React.FC<{card: {name: string; latin?: string}; lt: number}> = ({card, lt}) => {
   const k = easeOut(clamp01((lt - 0.4) / 0.5));
@@ -698,6 +714,7 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
         )}
       </svg>
       {props.animalCard && i === 1 && <SpeciesCard card={props.animalCard} lt={lt} />}
+      {s.spec.hook && <HookTitle lines={s.spec.hook} lt={lt} dur={s.dur} />}
       {props.subs ? <Subtitle caps={props.captions ?? []} t={t} /> : <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />}
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>

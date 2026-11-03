@@ -20,6 +20,7 @@ export type NatureSpec = {
   fx?: string[]; // snow / rain / frost / glow / heartbeat_stop / timelapse / sunrays / splash / bubbles / heat / fireflies
   cam?: string; // push / pull / pan / still
   callouts?: {text: string; x: number; y: number; delay?: number}[]; // 体の部位などを丸と線で指す
+  hook?: string[]; // 1 場面目に上に大きく出す一言 (大文字)
 };
 
 const rng = (seed: number) => {
