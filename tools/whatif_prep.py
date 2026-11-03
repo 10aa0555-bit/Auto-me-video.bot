@@ -130,7 +130,9 @@ def main():
         for c in captions:
             last = merged[-1] if merged else None
             same_scene = last and any(s["start"] <= last["start"] < s["start"] + s["dur"] and s["start"] <= c["start"] < s["start"] + s["dur"] for s in tl.scenes)
-            if last and same_scene and len(last["text"].split()) + len(c["text"].split()) <= 8 and not last["text"].rstrip().endswith((".", "?", "!")):
+            # 文の切れ目 (声の間が 0.25 秒以上) では行を分ける
+            pause = c["start"] - last["end"] if last else 0
+            if last and same_scene and pause < 0.25 and len(last["text"].split()) + len(c["text"].split()) <= 8 and not last["text"].rstrip().endswith((".", "?", "!")):
                 last["text"] += " " + c["text"]
                 last["end"] = c["end"]
                 last["words"] += c["words"]
