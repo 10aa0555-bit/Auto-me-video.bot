@@ -16,7 +16,8 @@
  "animal": {
   "name": "wood frog",
   "look": "small North American wood frog, warm brown skin, a dark mask stripe through its golden eyes, cream belly",
-  "latin": "Lithobates sylvaticus"
+  "latin": "Lithobates sylvaticus",
+  "seed": null
  },
  "post": {
   "title": "This frog freezes solid… and survives 🐸❄️",
