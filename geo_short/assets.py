@@ -238,8 +238,8 @@ class AIArt:
             r = requests.post(
                 f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/@cf/black-forest-labs/flux-1-schnell",
                 headers={"Authorization": f"Bearer {token}"},
-                json={"prompt": prompt, "steps": 8, **({"seed": self.seed} if self.seed is not None else {})}, timeout=180)
-            if r.status_code == 400 and self.seed is not None:
+                json={"prompt": prompt, "steps": 8}, timeout=180)  # flux-1-schnell は seed を受け付けない (seed はキャッシュの名前にだけ使う)
+            if False:
                 # seed を受け付けないことがあるので、seed なしでもう一度 (キャッシュの名前は seed 込みのまま)
                 print(f"  seed 付きで断られたので seed なしで再試行: {r.text[:200]}")
                 r = requests.post(
