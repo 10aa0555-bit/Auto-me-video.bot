@@ -39,24 +39,31 @@ export const blinkAt = (t: number) => {
   return c < 0.13 ? Math.sin((c / 0.13) * Math.PI) : 0;
 };
 
-const FACE = 'M -140 -60 C -142 40 -122 112 -72 170 Q -24 222 0 226 Q 24 222 72 170 C 122 112 142 40 140 -60 C 140 -192 72 -238 0 -238 C -72 -238 -140 -192 -140 -60 Z';
+const FACE = 'M -128 -60 C -130 40 -114 108 -68 164 Q -24 212 0 216 Q 24 212 68 164 C 114 108 130 40 128 -60 C 128 -190 66 -236 0 -236 C -66 -236 -128 -190 -128 -60 Z';
 
-/** 前髪の下の縁 (毛先が尖ったギザギザ)。dy だけ下にずらすと額の影になる。 */
-const TIPS: [number, number][] = [
-  [174, -20], [150, 34], [132, -80], [110, -6], [92, -110], [66, -30], [40, -122], [16, -40], [-8, -126], [-34, -36], [-60, -118], [-86, -28], [-108, -104], [-126, -10], [-144, -80], [-152, 34], [-174, -20],
-];
-const bangs = (dy = 0) => {
-  let d = `M -174 ${-20 + dy} C -196 -200 -100 -300 0 -300 C 100 -300 196 -200 174 ${-20 + dy}`;
-  for (let i = 1; i < TIPS.length; i++) {
-    const [px, py] = TIPS[i - 1];
-    const [x, y] = TIPS[i];
-    const tip = i % 2 === 1; // 奇数番目が毛先
-    const cx = (px + x) / 2 + (tip ? -6 : 6);
-    const cy = (py + y) / 2 + (tip ? -10 : 0);
-    d += ` Q ${cx} ${cy + dy} ${x} ${y + dy}`;
-  }
-  return d + ' Z';
+/** 毛束 (根元 x0,y0 → 毛先 x1,y1、幅 w、反り bend)。fill は塗り、line は根元を閉じない輪郭線。 */
+type Blade = [number, number, number, number, number, number];
+const bladeFill = ([x0, y0, x1, y1, w, b]: Blade, dy = 0) => {
+  const mx = (x0 + x1) / 2 + b;
+  const my = (y0 + y1) / 2;
+  return `M ${x0 - w / 2} ${y0 + dy} Q ${mx - w * 0.4} ${my + dy} ${x1} ${y1 + dy} Q ${mx + w * 0.4} ${my + dy} ${x0 + w / 2} ${y0 + dy} Z`;
 };
+const bladeLine = (bl: Blade) => bladeFill(bl).replace(' Z', '');
+// 光は左上から。毛先は少し左へ流す (サイドに流した前髪)
+const BANGS: Blade[] = [
+  [-150, -200, -164, 6, 70, -8],
+  [-104, -250, -130, -64, 84, -6],
+  [-56, -268, -86, -40, 84, -4],
+  [-4, -276, -40, -86, 80, -4],
+  [44, -270, 16, -36, 84, 2],
+  [96, -252, 76, -78, 80, 6],
+  [146, -206, 142, -14, 72, 8],
+];
+const LOCKS: Blade[] = [
+  [-150, -120, -162, 116, 54, -10],
+  [150, -120, 160, 112, 54, 10],
+];
+const CAP = 'M -188 -30 C -204 -232 -100 -334 0 -334 C 100 -334 204 -232 188 -30 Q 130 -170 0 -186 Q -130 -170 -188 -30 Z';
 
 /** 目 1 つ (右目の向きで描き、左目は左右反転)。 */
 const Eye: React.FC<{x: number; side: number; blink: number; glint: number; look: number}> = ({x, side, blink, glint, look}) => {
@@ -64,7 +71,7 @@ const Eye: React.FC<{x: number; side: number; blink: number; glint: number; look
   const id = `yEye${side}`;
   const ix = 2 + look * 7 * side;
   return (
-    <g transform={`translate(${x} -8) scale(${side} 1)`}>
+    <g transform={`translate(${x} -2) scale(${side * 1.1} 1.1)`}>
       {open > 0.25 ? (
         <g transform={`translate(0 ${(1 - open) * -8}) scale(1 ${open})`}>
           <clipPath id={id}><path d="M -40 6 C -30 -30 20 -36 44 2 C 30 22 -20 26 -40 6 Z" /></clipPath>
@@ -113,45 +120,43 @@ export const Head: React.FC<{smile?: number; glint?: number; shade?: number; loo
   return (
     <g>
       {/* 後ろ髪 */}
-      <path d="M -182 0 C -202 -200 -92 -302 0 -302 C 92 -302 202 -200 182 0 L 172 92 L 146 44 L 128 108 L -128 108 L -146 44 L -172 92 Z" fill={HAIR_D} stroke={HLINE} strokeWidth={4.5} strokeLinejoin="round" />
+      <path d="M -178 10 C -210 -220 -96 -334 0 -334 C 96 -334 210 -220 178 10 Q 170 70 154 104 L 138 64 L 122 108 L -122 108 L -138 64 L -154 104 Q -170 70 -178 10 Z" fill={HAIR_D} stroke={HLINE} strokeWidth={4.5} strokeLinejoin="round" />
       {/* 耳 */}
-      <path d="M -138 -40 C -168 -54 -176 16 -134 34" fill={SKIN} stroke={LINE} strokeWidth={3.5} />
-      <path d="M 138 -40 C 168 -54 176 16 134 34" fill={SKIN_S} stroke={LINE} strokeWidth={3.5} />
+      <path d="M -126 -40 C -156 -54 -164 16 -122 34" fill={SKIN} stroke={LINE} strokeWidth={3.5} />
+      <path d="M 126 -40 C 156 -54 164 16 122 34" fill={SKIN_S} stroke={LINE} strokeWidth={3.5} />
       {/* 顔 */}
       <path d={FACE} fill={SKIN} />
       <clipPath id="yFace"><path d={FACE} /></clipPath>
       <g clipPath="url(#yFace)">
         {/* セル影: 右の頬と、前髪が額に落とす影 */}
         <path d="M 58 -240 C 130 -200 150 -100 142 -40 C 140 50 118 120 70 172 Q 40 204 14 222 C 84 150 106 60 100 -30 C 96 -120 84 -180 58 -240 Z" fill={SKIN_S} opacity={0.75 * shade} />
-        <path d={bangs(20)} fill={SKIN_S} />
+        {BANGS.map((bl, i) => <path key={i} d={bladeFill(bl, 22)} fill={SKIN_S} />)}
       </g>
       <path d={FACE} fill="none" stroke={LINE} strokeWidth={4.2} />
       {/* 頬の赤み */}
-      <ellipse cx={-82} cy={62} rx={28} ry={11} fill="#f4a3a0" opacity={0.25} />
-      <ellipse cx={82} cy={62} rx={28} ry={11} fill="#f4a3a0" opacity={0.2} />
-      <Eye x={-62} side={-1} blink={blink} glint={glint} look={look} />
-      <Eye x={62} side={1} blink={blink} glint={glint} look={look} />
+      <ellipse cx={-74} cy={64} rx={28} ry={11} fill="#f4a3a0" opacity={0.25} />
+      <ellipse cx={74} cy={64} rx={28} ry={11} fill="#f4a3a0" opacity={0.2} />
+      <Eye x={-56} side={-1} blink={blink} glint={glint} look={look} />
+      <Eye x={56} side={1} blink={blink} glint={glint} look={look} />
       {/* 鼻 (小さな影と線だけ) */}
-      <path d="M 8 44 Q 16 60 6 68 Q 14 58 8 44 Z" fill={SKIN_S} />
-      <Ln d="M 4 66 Q 10 69 14 64" w={2.6} c="#a57b66" />
+      <path d="M 8 50 Q 16 66 6 74 Q 14 64 8 50 Z" fill={SKIN_S} />
+      <Ln d="M 4 72 Q 10 75 14 70" w={2.6} c="#a57b66" />
       {/* 口 (やわらかく微笑む) */}
       <Ln d={`M ${-24 - s * 4} ${120 - s * 3} Q 0 ${126 + s * 9} ${24 + s * 4} ${120 - s * 3}`} w={3.4} c="#8a4f43" />
       {s > 0.4 && <Ln d={`M -10 ${134 + s * 6} Q 0 ${137 + s * 6} 10 ${134 + s * 6}`} w={2} c="#c58b7c" o={s} />}
-      {/* 横の髪 (耳の前に垂れる) */}
-      <path d="M -170 -120 Q -176 10 -150 118 L -136 72 L -122 126 Q -120 10 -112 -110 Z" fill={HAIR} stroke={HLINE} strokeWidth={4} strokeLinejoin="round" />
-      <path d="M 170 -120 Q 176 10 150 118 L 136 72 L 122 126 Q 120 10 112 -110 Z" fill={HAIR_D} stroke={HLINE} strokeWidth={4} strokeLinejoin="round" />
-      {/* 前髪 */}
-      <path d={bangs()} fill="url(#yHair)" stroke={HLINE} strokeWidth={4.5} strokeLinejoin="round" />
-      {/* 右側の髪の影 (光は左上から) */}
-      <clipPath id="yBangs"><path d={bangs()} /></clipPath>
-      <g clipPath="url(#yBangs)">
-        <path d="M 60 -300 C 150 -270 200 -150 180 0 L 60 0 C 100 -100 100 -200 60 -300 Z" fill={HAIR_D} opacity={0.7} />
-        {[[-100, -96], [-50, -110], [0, -116], [52, -108], [104, -96]].map(([x, y], i) => (
-          <path key={i} d={`M ${x - 10} ${y} Q ${x + 4} ${y - 60} ${x + 16} ${y - 110} Q ${x + 6} ${y - 50} ${x + 10} ${y}`} fill={HAIR_D} opacity={0.85} />
-        ))}
-      </g>
+      {/* 頭頂 (毛束の根元を隠す) */}
+      <path d={CAP} fill="url(#yHair)" stroke={HLINE} strokeWidth={4.5} strokeLinejoin="round" />
+      <path d="M 50 -326 C 150 -300 204 -210 188 -30 Q 160 -110 100 -150 C 120 -220 100 -290 50 -326 Z" fill={HAIR_D} opacity={0.55} />
+      {/* 横の髪と前髪の毛束 (外側から順に重ねる) */}
+      {[...LOCKS, BANGS[0], BANGS[6], BANGS[1], BANGS[5], BANGS[2], BANGS[4], BANGS[3]].map((bl, i) => (
+        <g key={i}>
+          <path d={bladeFill(bl)} fill={bl[0] > 60 ? HAIR_D : HAIR} />
+          <path d={bladeFill([bl[0] + bl[4] * 0.12, bl[1] + 30, bl[2] + 4, bl[3] - 10, bl[4] * 0.4, bl[5]])} fill={HAIR_D} opacity={bl[0] > 60 ? 0.5 : 0.55} />
+          <path d={bladeLine(bl)} fill="none" stroke={HLINE} strokeWidth={4} strokeLinejoin="round" strokeLinecap="round" />
+        </g>
+      ))}
       {/* 天使の輪 (髪のツヤ) */}
-      <path d="M -132 -196 L -110 -214 L -88 -198 L -62 -220 L -36 -204 L -8 -224 L 18 -206 L 44 -222 L 68 -200" stroke={HAIR_L} strokeWidth={13} fill="none" strokeLinejoin="round" />
+      <path d="M -150 -214 Q -60 -282 40 -268 Q 100 -256 140 -222" stroke={HAIR_L} strokeWidth={14} fill="none" strokeLinecap="round" strokeDasharray="58 16" />
       {/* 眉 (前髪の上に透けて見える、穏やかな形) */}
       <Ln d="M -104 -62 Q -64 -78 -26 -66" w={5} c="#a87a3a" o={0.85} />
       <Ln d="M 26 -66 Q 64 -78 104 -62" w={5} c="#a87a3a" o={0.85} />
@@ -174,7 +179,7 @@ export const Portrait: React.FC<{smile?: number; glint?: number; shade?: number;
       <path d="M 150 330 L 60 300 L 10 470 L 120 560 Z" fill={COAT_D} stroke={LINE} strokeWidth={4} />
       <path d="M -300 600 C -290 480 -250 400 -170 350 L -200 460 Z" fill={COAT_L} opacity={0.7} />
     </g>
-    <Head {...p} />
+    <g transform="translate(0 50)"><Head {...p} /></g>
   </g>
 );
 
@@ -225,9 +230,9 @@ export const Figure: React.FC<{view?: 'front' | 'back'; walk?: number; smile?: n
       </g>
       <g transform={`translate(${sway} ${bob}) rotate(${sn * 1.2} 0 -420)`}>
         {/* ロングコート (前は開いていて、脚が見える) */}
-        <path d={`M -112 -610 C -150 -460 -152 -300 -140 ${hem(-1)} L -34 ${hem(-1) - 14} L ${front ? 0 : -2} ${front ? -440 : -300} L 34 ${hem(1) - 14} L 140 ${hem(1)} C 152 -300 150 -460 112 -610 Q 0 -652 -112 -610 Z`}
+        <path d={`M -100 -612 C -130 -470 -132 -300 -122 ${hem(-1)} L -30 ${hem(-1) - 12} L ${front ? 0 : -2} ${front ? -430 : -300} L 30 ${hem(1) - 12} L 122 ${hem(1)} C 132 -300 130 -470 100 -612 Q 0 -650 -100 -612 Z`}
           fill="url(#yCoat)" stroke={LINE} strokeWidth={5} strokeLinejoin="round" />
-        <path d={`M -112 -600 C -140 -460 -142 -320 -132 ${hem(-1) - 6} L -100 ${hem(-1) - 10} C -112 -320 -112 -460 -92 -590 Z`} fill={COAT_L} opacity={0.6} />
+        <path d={`M -100 -600 C -124 -460 -126 -320 -116 ${hem(-1) - 6} L -90 ${hem(-1) - 10} C -100 -320 -100 -460 -84 -590 Z`} fill={COAT_L} opacity={0.6} />
         {!front && <Ln d={`M 0 -600 L 0 ${hem(0) - 8}`} w={3} c="#000" o={0.6} />}
         {front && (
           <g>
@@ -237,13 +242,13 @@ export const Figure: React.FC<{view?: 'front' | 'back'; walk?: number; smile?: n
           </g>
         )}
         {/* 腕 (手はコートのポケットの中) */}
-        <path d="M -106 -598 C -128 -520 -130 -430 -114 -350" stroke={COAT} strokeWidth={42} fill="none" strokeLinecap="round" />
-        <path d="M 106 -598 C 128 -520 130 -430 114 -350" stroke={COAT_D} strokeWidth={42} fill="none" strokeLinecap="round" />
-        <Ln d="M -126 -350 Q -110 -340 -94 -350" w={4} c="#000" o={0.8} />
-        <Ln d="M 94 -350 Q 110 -340 126 -350" w={4} c="#000" o={0.8} />
+        <path d="M -96 -600 C -114 -520 -116 -430 -104 -354" stroke={COAT} strokeWidth={34} fill="none" strokeLinecap="round" />
+        <path d="M 96 -600 C 114 -520 116 -430 104 -354" stroke={COAT_D} strokeWidth={34} fill="none" strokeLinecap="round" />
+        <Ln d="M -118 -354 Q -104 -344 -90 -354" w={4} c="#000" o={0.8} />
+        <Ln d="M 90 -354 Q 104 -344 118 -354" w={4} c="#000" o={0.8} />
         {/* 首と頭 */}
         <path d="M -20 -676 L -22 -628 L 22 -628 L 20 -676 Z" fill={SKIN_S} />
-        <g transform={`translate(0 -748) rotate(${-sn * 1.5}) scale(0.32)`}>
+        <g transform={`translate(0 -752) rotate(${-sn * 1.5}) scale(0.34)`}>
           <Head smile={smile} glint={glint} back={!front} blink={blinkAt(t)} />
         </g>
       </g>

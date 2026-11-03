@@ -172,7 +172,7 @@ export const Face: React.FC<{t: number; lt: number; smile?: boolean}> = ({t, lt,
   <g>
     <NightSky id="ns3" top="#060d11" bottom="#152a31" />
     <circle cx={W * 0.25} cy={H * 0.3} r={500} fill={N.lamp} opacity={0.1} filter="url(#blur40)" />
-    <g transform={`translate(${W / 2} ${H * 0.71}) scale(${1.38 + lt * 0.012})`}>
+    <g transform={`translate(${W / 2} ${H * 0.5}) scale(${1.5 + lt * 0.012})`}>
       <Portrait smile={smile ? easeOut(clamp01((lt - 1) / 1.2)) : 0.15} glint={smile ? clamp01((lt - 2.2) / 0.8) : 0} look={Math.sin(lt * 0.6) * 0.5} blink={blinkAt(t)} breath={Math.sin(t * 1.6)} />
     </g>
     <Rain t={t} o={0.22} />
