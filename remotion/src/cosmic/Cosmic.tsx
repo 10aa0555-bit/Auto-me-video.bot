@@ -22,7 +22,8 @@ export type CosmicScene = {
   } & NatureSpec & {
   };
 };
-export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean};
+export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean;
+  animalCard?: {name: string; latin?: string}};
 
 const C = {
   ink: '#0b0826',
@@ -603,6 +604,22 @@ const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]; theme?: stri
   );
 };
 
+/** ドキュメンタリー番組風の名前テロップ (左上、線がのびて名前と学名が出る)。 */
+const SpeciesCard: React.FC<{card: {name: string; latin?: string}; lt: number}> = ({card, lt}) => {
+  const k = easeOut(clamp01((lt - 0.4) / 0.5));
+  const out = clamp01((4.2 - lt) / 0.4);
+  if (k <= 0 || out <= 0) return null;
+  return (
+    <div style={{position: 'absolute', left: 70, top: H * 0.1, opacity: out}}>
+      <div style={{width: 340 * k, height: 6, background: '#ffd23f', marginBottom: 14}} />
+      <div style={{fontFamily: 'Anton', fontSize: 70, color: '#ffffff', letterSpacing: 4, lineHeight: 1, opacity: k,
+        textShadow: '0 2px 10px rgba(0,0,0,0.8)'}}>{card.name.toUpperCase()}</div>
+      {card.latin && <div style={{fontFamily: 'Poppins', fontStyle: 'italic', fontWeight: 700, fontSize: 36, color: '#ffd23f', marginTop: 8, opacity: k,
+        textShadow: '0 2px 8px rgba(0,0,0,0.8)'}}>{card.latin}</div>}
+    </div>
+  );
+};
+
 /** ナレーションなしの動画の字幕 (白い文字 + うすい影、1 行ずつフェード)。 */
 const Subtitle: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   const c = caps.find((x) => t >= x.start && t < x.end);
@@ -656,6 +673,18 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
           {s.spec.scene === 'nature' ? <NatureScene spec={s.spec} t={t} lt={lt} dur={s.dur} /> : <Cur t={t} lt={lt} />}
         </g>
         <rect width={W} height={H} fill="url(#vign)" />
+        {props.theme === 'nature' && (
+          <g>
+            {/* 映画っぽい色味 (暗部を少し青緑、明部を少し暖かく) + うすいフィルムの粒子 */}
+            <rect width={W} height={H} fill="#0a3a4a" opacity={0.08} style={{mixBlendMode: 'multiply'}} />
+            <rect width={W} height={H} fill="#ffb060" opacity={0.06} style={{mixBlendMode: 'overlay'}} />
+            <filter id="grainN" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves={2} seed={frame % 24} />
+              <feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.08 0" />
+            </filter>
+            <rect width={W} height={H} filter="url(#grainN)" />
+          </g>
+        )}
         {props.theme === 'noir' && (
           <g>
             {/* フィルムの粒子 (毎フレーム変わる) + 紙っぽい色むら */}
@@ -668,6 +697,7 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
           </g>
         )}
       </svg>
+      {props.animalCard && i === 1 && <SpeciesCard card={props.animalCard} lt={lt} />}
       {props.subs ? <Subtitle caps={props.captions ?? []} t={t} /> : <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />}
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>

@@ -16,7 +16,7 @@ description: Turn a pasted 2D wildlife documentary script (the ChatGPT format in
  "title": "...", "lang": "en", "captions": "plain", "music": false,
  "style": "cosmic", "theme": "nature", "silent": true,
  "voice": {"engine": "auto", "kokoro_voice": "am_michael", "settings": {"speed": 1.0}},
- "animal": {"name": "wood frog", "look": "small brown frog with a dark mask stripe across its eyes, golden eyes"},
+ "animal": {"name": "wood frog", "latin": "Lithobates sylvaticus", "look": "small brown frog with a dark mask stripe across its eyes, golden eyes"},
  "post": {"title": "...", "description": "...", "hashtags": ["#nature", "..."], "pinned_comment": "..."},
  "scenes": [
   {"scene": "nature", "duration": 6.0, "habitat": "snow_forest", "pose": "sitting under frozen leaves, eyes closed",
@@ -28,7 +28,10 @@ description: Turn a pasted 2D wildlife documentary script (the ChatGPT format in
 }
 ```
 - `narration` は書かなくてよい (prep が subs から作る)。各シーンに `"narration": " ".join(subs)` を入れておくと安全。
-- `habitat` が `inside` の場面は、カエル回の断面図 `"scene": "frog_inside"` (細胞・氷・光る粒) を使う。`pose` は付けない。
+- `habitat: "inside"` は体の中の断面図 (細胞・氷・光る粒)。`pose` は付けない。
+- 指し示し: `"callouts": [{"text": "HEART", "x": 0.5, "y": 0.55, "delay": 1.0}]` (1 場面 2 個まで。台本の CALLOUTS)
+- 2 場面目の頭に、名前テロップ (`animal.name` と `animal.latin`) が自動で出る。字幕は黄色。場面転換の効果音も自動
+- 動物の絵は `animal.name` から決まる乱数 (seed) で描くので、見た目がそろいやすい。そろわないときは `animal.seed` を変えて描き直す
 - 動物の位置: `ax` `ay` (0..1、既定 0.5 / 0.5)、大きさ `size` (画面の幅に対する割合、既定 0.6、0.65 まで)。字幕 (H×0.76) と重ねない。
 - AI のポーズ画像はポーズごとに少しずつ見た目がずれる。`look` に色・模様・目の色・体形を具体的に書くとそろいやすい
 - 効果音 `sfx` は台本の SFX から選ぶ: wind は環境音に入っているので不要。使えるのは thud, riser, whoosh, pop, tick, ding, glitch, heartbeat(bpm,bpm2), lock, slide, powerdown, birds, siren。

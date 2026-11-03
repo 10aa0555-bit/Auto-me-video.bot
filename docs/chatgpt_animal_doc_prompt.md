@@ -26,6 +26,7 @@ Output EXACTLY this format and nothing else:
 
 TITLE: <short title>
 ANIMAL: <common name>
+LATIN: <scientific name>
 LOOK: <one detailed sentence so every picture shows the SAME animal: species, size, main body color, markings and where they are, eye color, skin/fur/feather texture, body shape. Example: "small North American wood frog, warm reddish-brown skin, a black mask stripe from the nose through the eye, golden eyes, cream belly, smooth moist skin, stocky body">
 POST_TITLE: <one line + 1 emoji>
 POST_DESCRIPTION: <"Send this to ..." line, then 1–2 lines of the real facts>
@@ -40,6 +41,7 @@ MOTION: <word>
 FROST: <0 to 1, how frozen the animal looks; 0 if not relevant>
 FX: <words, comma separated, or none>
 CAMERA: <word>
+CALLOUTS: <optional, max 2: a 1–2 word label pointing at something on screen, e.g. "HEART", "LIVER", "-6°C"; or none>
 SUBTITLES:
 - <line>
 - <line>

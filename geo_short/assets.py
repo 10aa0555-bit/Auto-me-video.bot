@@ -193,7 +193,8 @@ class AIArt:
     どちらも無ければ None を返し、呼び出し側は 3D アイコンで代用する。
     """
 
-    def __init__(self, style=None):
+    def __init__(self, style=None, seed=None):
+        self.seed = seed  # 同じ乱数で描くと、同じキャラクターの見た目がそろいやすい
         self.dir = os.path.join(CACHE, "art")
         os.makedirs(self.dir, exist_ok=True)
         self.style = style or ART_STYLE
@@ -210,7 +211,8 @@ class AIArt:
 
     def _path(self, prompt, kind):
         import hashlib
-        h = hashlib.sha256(f"{self.style}|{kind}|{prompt}".encode()).hexdigest()[:20]
+        key = f"{self.style}|{kind}|{prompt}" + (f"|seed={self.seed}" if self.seed is not None else "")
+        h = hashlib.sha256(key.encode()).hexdigest()[:20]
         return os.path.join(self.dir, f"{kind}_{h}.png")
 
     def _generate(self, prompt, aspect):
@@ -236,7 +238,7 @@ class AIArt:
             r = requests.post(
                 f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/@cf/black-forest-labs/flux-1-schnell",
                 headers={"Authorization": f"Bearer {token}"},
-                json={"prompt": prompt, "steps": 8}, timeout=180)
+                json={"prompt": prompt, "steps": 8, **({"seed": self.seed} if self.seed is not None else {})}, timeout=180)
             r.raise_for_status()
             return base64.b64decode(r.json()["result"]["image"])
         raise RuntimeError("AI イラストのサービスが設定されていません")

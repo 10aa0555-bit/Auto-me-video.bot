@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {staticFile} from 'remotion';
 import {H, W, clamp01, easeInOut, easeOut} from '../util';
-import {Forest, Leaves, Snow} from './Frog';
+import {Forest, FrogInside, Leaves, Snow} from './Frog';
 
 /**
  * どんな動物にも使える 2D の自然ドキュメンタリーの場面。
@@ -19,6 +19,7 @@ export type NatureSpec = {
   frost?: number; // 0..1 凍り具合
   fx?: string[]; // snow / rain / frost / glow / heartbeat_stop / timelapse / sunrays / splash / bubbles / heat / fireflies
   cam?: string; // push / pull / pan / still
+  callouts?: {text: string; x: number; y: number; delay?: number}[]; // 体の部位などを丸と線で指す
 };
 
 const rng = (seed: number) => {
@@ -153,6 +154,8 @@ export const Habitat: React.FC<{name: string; t: number; lt: number; frost: numb
           <rect y={H * 0.6} width={W} height={H * 0.4} fill={name === 'cave' ? '#1c1822' : '#0f1830'} />
         </g>
       );
+    case 'inside':
+      return <FrogInside t={t} lt={lt} />;
     default:
       return <rect width={W} height={H} fill="#1a2430" />;
   }
@@ -275,6 +278,47 @@ const Animal: React.FC<{spec: NatureSpec; t: number; lt: number; dur: number}> =
   );
 };
 
+/** 手前の大きくぼけた葉・雪・草 (カメラより速く動いて奥行きが出る)。 */
+const Foreground: React.FC<{habitat: string; t: number; u: number}> = ({habitat, t, u}) => {
+  const winter = habitat === 'snow_forest' || habitat === 'arctic';
+  const water = habitat === 'ocean' || habitat === 'deep_sea';
+  if (habitat === 'inside' || habitat === 'night' || habitat === 'cave') return null;
+  const col = winter ? '#eef5fb' : water ? '#bfe9f5' : habitat === 'desert' ? '#c9843e' : '#2f5a2a';
+  const shift = (u - 0.5) * 140;
+  return (
+    <g filter="url(#fgBlur)" opacity={water ? 0.35 : 0.85}>
+      <ellipse cx={-40 + shift} cy={H * 0.97} rx={300} ry={140} fill={col} />
+      <ellipse cx={W + 60 + shift * 1.3} cy={H * 0.93} rx={260} ry={170} fill={col} />
+      {!winter && !water && <path d={`M ${W - 80 + shift} ${H} q -40 -300 60 -520 q -10 260 20 520 Z`} fill={col} />}
+      {winter && <circle cx={W * 0.85 + shift} cy={H * 0.08 + Math.sin(t) * 10} r={70} fill="#ffffff" opacity={0.5} />}
+    </g>
+  );
+};
+
+/** 体の部位などを指す: 白い丸がふくらみ、線がのびて、黄色いラベルが出る。 */
+const Callout: React.FC<{c: {text: string; x: number; y: number; delay?: number}; lt: number; dur: number}> = ({c, lt, dur}) => {
+  const k = easeOut(clamp01((lt - (c.delay ?? 0.8)) / 0.4));
+  const out = clamp01((dur - lt) / 0.3);
+  if (k <= 0) return null;
+  const x = c.x * W;
+  const y = c.y * H;
+  const lx = x + (c.x < 0.5 ? 1 : -1) * 220;
+  const ly = y - 160;
+  return (
+    <g opacity={out}>
+      <circle cx={x} cy={y} r={46 * k} fill="none" stroke="#ffffff" strokeWidth={6} />
+      <circle cx={x} cy={y} r={8} fill="#ffd23f" />
+      <line x1={x} y1={y - 46} x2={x + (lx - x) * k} y2={y - 46 + (ly - y + 46) * k} stroke="#ffffff" strokeWidth={5} />
+      {k > 0.9 && (
+        <g transform={`translate(${lx} ${ly})`}>
+          <rect x={-150} y={-46} width={300} height={70} rx={14} fill="#111" opacity={0.75} />
+          <text y={2} textAnchor="middle" fontFamily="Anton" fontSize={52} fill="#ffd23f" letterSpacing={3}>{c.text}</text>
+        </g>
+      )}
+    </g>
+  );
+};
+
 /** 1 場面ぶん: 背景 → 動物 → 効果。カメラは寄る / 引く / 横に流す。 */
 export const NatureScene: React.FC<{spec: NatureSpec; t: number; lt: number; dur: number}> = ({spec, t, lt, dur}) => {
   const fx = spec.fx ?? [];
@@ -291,11 +335,18 @@ export const NatureScene: React.FC<{spec: NatureSpec; t: number; lt: number; dur
           <feColorMatrix type="matrix" values={`${1 - 0.5 * frost} ${0.2 * frost} ${0.3 * frost} 0 ${0.08 * frost}  ${0.1 * frost} ${1 - 0.3 * frost} ${0.3 * frost} 0 ${0.1 * frost}  ${0.1 * frost} ${0.2 * frost} ${1} 0 ${0.18 * frost}  0 0 0 1 0`} />
         </filter>
       </defs>
+      <defs>
+        <filter id="dof" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="3.2" /></filter>
+        <filter id="fgBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14" /></filter>
+      </defs>
       <g transform={`translate(${W / 2 + px} ${H / 2}) scale(${z}) translate(${-W / 2} ${-H / 2})`}>
-        <Habitat name={spec.habitat ?? 'forest'} t={t} lt={lt} frost={frost} />
+        {/* 背景は少しぼかして、動物にピントが合っているように見せる */}
+        <g filter={spec.habitat === 'inside' ? undefined : 'url(#dof)'}><Habitat name={spec.habitat ?? 'forest'} t={t} lt={lt} frost={frost} /></g>
         <Animal spec={spec} t={t} lt={lt} dur={dur} />
       </g>
+      <Foreground habitat={spec.habitat ?? 'forest'} t={t} u={u} />
       <Effects fx={fx} t={t} lt={lt} dur={dur} />
+      {(spec.callouts ?? []).map((c, i) => <Callout key={i} c={c} lt={lt} dur={dur} />)}
     </g>
   );
 };

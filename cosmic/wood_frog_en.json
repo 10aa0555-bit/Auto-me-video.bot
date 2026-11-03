@@ -15,7 +15,8 @@
  },
  "animal": {
   "name": "wood frog",
-  "look": "small North American wood frog, warm brown skin, a dark mask stripe through its golden eyes, cream belly"
+  "look": "small North American wood frog, warm brown skin, a dark mask stripe through its golden eyes, cream belly",
+  "latin": "Lithobates sylvaticus"
  },
  "post": {
   "title": "This frog freezes solid… and survives 🐸❄️",
@@ -94,11 +95,28 @@
    "narration": "When winter arrives, most animals escape the cold. But this frog has a different strategy."
   },
   {
-   "scene": "frog_inside",
+   "scene": "nature",
+   "habitat": "inside",
    "duration": 13.0,
+   "cam": "push",
+   "fx": [],
    "subs": [
     "Its liver releases huge amounts of glucose.",
     "A natural antifreeze that protects its vital cells."
+   ],
+   "callouts": [
+    {
+     "text": "GLUCOSE",
+     "x": 0.5,
+     "y": 0.33,
+     "delay": 1.2
+    },
+    {
+     "text": "ICE",
+     "x": 0.7,
+     "y": 0.62,
+     "delay": 6.5
+    }
    ],
    "sfx": [
     [
@@ -146,7 +164,15 @@
     ]
    ],
    "scene": "nature",
-   "narration": "Its heart stops. It stops breathing. Up to two-thirds of its body water can freeze."
+   "narration": "Its heart stops. It stops breathing. Up to two-thirds of its body water can freeze.",
+   "callouts": [
+    {
+     "text": "HEART: 0 BPM",
+     "x": 0.5,
+     "y": 0.55,
+     "delay": 5.0
+    }
+   ]
   },
   {
    "duration": 13.0,

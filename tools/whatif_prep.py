@@ -50,7 +50,8 @@ def main():
     # 動物ドキュメンタリー: 場面の "pose" ごとに、同じ絵柄の動物を AI で描いて切り抜く (結果は保存して再利用)
     animal = script.get("animal")
     if animal:
-        art = AIArt(script.get("art_style") or NATURE_STYLE)
+        import zlib
+        art = AIArt(script.get("art_style") or NATURE_STYLE, seed=animal.get("seed", zlib.crc32(animal["name"].encode()) % 100000))
         for sc in script["scenes"]:
             pose = sc.get("pose")
             if sc.get("scene") != "nature" or not pose:
@@ -88,6 +89,8 @@ def main():
         if i and s["spec"].get("cam"):
             ev.append((max(0, s["start"] - 0.1), "whoosh", {"seed": i}))
         prev = c
+        if script.get("theme") == "nature" and i:
+            ev.append((max(0, s["start"] - 0.15), "whoosh", {"dur": 0.5, "seed": 40 + i}))
         # 台本で場面ごとに指定した効果音 (秒は場面の頭から)
         for st, kind, *kw in s["spec"].get("sfx", []):
             ev.append((s["start"] + st, kind, kw[0] if kw else {}))
@@ -135,6 +138,8 @@ def main():
     if cosmic:
         props["theme"] = script.get("theme", "cosmic")
         props["subs"] = silent
+        if animal:
+            props["animalCard"] = {"name": animal["name"], "latin": animal.get("latin", "")}
     elif story:
         props["hook"] = script["hook"]
     else:
