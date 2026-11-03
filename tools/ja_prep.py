@@ -39,6 +39,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("script")
     ap.add_argument("--no-tts", action="store_true")
+    ap.add_argument("--no-art", action="store_true", help="AI の絵を描かない (映像は手元で別に用意するとき)")
     args = ap.parse_args()
     with open(args.script, encoding="utf-8") as f:
         script = json.load(f)
@@ -47,7 +48,8 @@ def main():
     shutil.rmtree(job, ignore_errors=True)
     os.makedirs(job)
 
-    draw_character_art(script, job)
+    if not args.no_art:
+        draw_character_art(script, job)
 
     voice = script.get("voice", {})
     speaker = None

@@ -91,6 +91,14 @@ jobs:
             name=$(basename "$s" .json)
             if [ "${s%%/*}" = "jp" ]; then
               # 日本語の雑学・心理学 (VOICEVOX の声 + AI の 1 枚絵 + 大きな日本語の字幕)
+              if [[ " $PREP_OPTIONS " == *" --voice-only "* ]]; then
+                # 声と字幕の時刻だけ作る (映像はアニメの切り抜きを手元で合わせる。公開リポジトリには置かない)
+                python tools/ja_prep.py "$s" --no-art
+                cp remotion/public/job/audio.m4a "out/${name}_voice.m4a"
+                cp remotion/props.json "out/${name}_props.json"
+                cp "remotion/out/${name}_post.txt" "out/${name}_post.txt" 2>/dev/null || true
+                continue
+              fi
               python tools/ja_prep.py "$s"
               (cd remotion && npx remotion render src/index.ts Cosmic "../out/${name}_raw.mp4" --props=props.json --concurrency=100% --log=info)
             elif [ "${s%%/*}" = "quotes" ]; then
@@ -148,4 +156,4 @@ jobs:
         timeout-minutes: 15  # GitHub 側で固まっても長く待たない
         run: |
           shopt -s nullglob
-          bash tools/publish_renders.sh "render (remotion): $SCRIPTS (${GITHUB_SHA::7})" out/*.mp4 out/*_post.txt out/*_grid.jpg
+          bash tools/publish_renders.sh "render (remotion): $SCRIPTS (${GITHUB_SHA::7})" out/*.mp4 out/*_post.txt out/*_grid.jpg out/*_voice.m4a out/*_props.json
