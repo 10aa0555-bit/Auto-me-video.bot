@@ -22,9 +22,10 @@ export type CosmicScene = {
     hot?: string[]; // オレンジで強調する単語
   } & NatureSpec & Omit<ArtSpec, 'cam' | 'fx'> & {
     fallback?: string; // AI の絵が無いときに使うコードの場面
+    number?: number; // 「1つ目」などの番号 (日本語版: 上に大きく出す)
   };
 };
-export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean;
+export type CosmicProps = {frames: number; fps: number; scenes: CosmicScene[]; captions: Caption[]; audio?: string; theme?: 'cosmic' | 'noir' | 'nature'; subs?: boolean; lang?: 'en' | 'ja';
   animalCard?: {name: string; latin?: string}};
 
 const C = {
@@ -606,15 +607,49 @@ const BigWord: React.FC<{caps: Caption[]; t: number; hot: string[]; theme?: stri
   );
 };
 
+/** 日本語版: 読み上げ中のかたまり (文節) を真ん中に大きく出す。強調 (hot) は赤、ほかは白。 */
+const JaWord: React.FC<{caps: Caption[]; t: number; hot: string[]}> = ({caps, t, hot}) => {
+  const c = caps.find((x) => t >= x.start - 0.03 && t < x.end);
+  if (!c || !c.text) return null;
+  const isHot = hot.includes(c.text.replace(/\|/g, ''));
+  const k = easeOut(clamp01((t - c.start) / 0.1));
+  // 台本で「|」を入れたところで 2 行に分ける (全角 1 文字 = 1 em)。短い言葉ほど大きく
+  const lines = c.text.split('|');
+  const n = Math.max(...lines.map((l) => [...l].length));
+  const size = Math.min(isHot ? 170 : 150, Math.floor(960 / Math.max(3, n)));
+  return (
+    <div style={{position: 'absolute', top: H * 0.5 - size * 0.6 * lines.length, width: W, textAlign: 'center', opacity: 0.3 + 0.7 * k,
+      transform: `scale(${1.16 - 0.16 * k})`}}>
+      <span style={{display: 'inline-block', fontFamily: 'DelaGothic', fontSize: size, lineHeight: 1.2, whiteSpace: 'nowrap',
+        color: isHot ? '#ff3b4a' : '#ffffff', WebkitTextStroke: `${Math.round(size * 0.14)}px #0b0b10`, paintOrder: 'stroke fill',
+        textShadow: `0 ${Math.round(size * 0.06)}px ${Math.round(size * 0.18)}px rgba(0,0,0,0.9)`}}>{lines.map((l, j) => <div key={j}>{l}</div>)}</span>
+    </div>
+  );
+};
+
+/** 日本語版: 「1」「2」… の番号を上に出す (いま何個目かがひと目で分かる)。 */
+const NumberTag: React.FC<{n: number; of: number; lt: number; dur: number}> = ({n, of, lt, dur}) => {
+  const k = easeOut(clamp01(lt / 0.3));
+  const out = clamp01((dur - lt) / 0.3);
+  return (
+    <div style={{position: 'absolute', top: H * 0.09, width: W, textAlign: 'center', opacity: k * out}}>
+      <span style={{fontFamily: 'DelaGothic', fontSize: 210, lineHeight: 1, color: '#ffd23f', WebkitTextStroke: '26px #0b0b10', paintOrder: 'stroke fill',
+        display: 'inline-block', transform: `scale(${1.3 - 0.3 * k})`, textShadow: '0 10px 30px rgba(0,0,0,0.9)'}}>{n}</span>
+      <span style={{fontFamily: 'DelaGothic', fontSize: 64, color: '#ffffff', WebkitTextStroke: '10px #0b0b10', paintOrder: 'stroke fill', marginLeft: 10}}>/{of}</span>
+    </div>
+  );
+};
+
 /** 1 場面目の大きなつかみの一言 (黄色・黒フチ、1 行ずつポンと出る)。 */
-const HookTitle: React.FC<{lines: string[]; lt: number; dur: number}> = ({lines, lt, dur}) => {
+const HookTitle: React.FC<{lines: string[]; lt: number; dur: number; ja?: boolean}> = ({lines, lt, dur, ja}) => {
   const out = clamp01((dur - lt) / 0.4);
   return (
     <div style={{position: 'absolute', top: H * 0.1, width: W, padding: '0 60px', boxSizing: 'border-box', textAlign: 'center', opacity: out}}>
       {lines.map((l, j) => {
         const k = easeOut(clamp01((lt - 0.15 - j * 0.9) / 0.3));
         return (
-          <div key={j} style={{fontFamily: 'Anton', fontSize: 104, lineHeight: 1.12, color: '#ffd23f', opacity: k, transform: `scale(${1.2 - 0.2 * k})`,
+          <div key={j} style={{fontFamily: ja ? 'DelaGothic' : 'Anton', fontSize: ja ? 112 : 104, lineHeight: 1.12, color: '#ffd23f', opacity: k, transform: `scale(${1.2 - 0.2 * k})`,
+            ...(ja ? {WebkitTextStroke: '16px #000', paintOrder: 'stroke fill'} : {}),
             textShadow: '0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 6px 18px rgba(0,0,0,0.85)'}}>{l}</div>
         );
       })}
@@ -673,7 +708,14 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
   useMemo(() => {
     const f = new FontFace('Anton', `url(${staticFile('fonts/anton-latin-400-normal.woff2')})`);
     const p = new FontFace('Poppins', `url(${staticFile('job/Poppins-ExtraBold.ttf')})`, {weight: '700'});
-    Promise.allSettled([f.load().then((ff) => document.fonts.add(ff)), p.load().then((pp) => document.fonts.add(pp))]).finally(() => continueRender(handle));
+    const loads = [f.load().then((ff) => document.fonts.add(ff)), p.load().then((pp) => document.fonts.add(pp))];
+    if (props.lang === 'ja') {
+      for (const sub of ['japanese', 'latin']) {
+        const d = new FontFace('DelaGothic', `url(${staticFile(`fonts/dela-gothic-one-${sub}-400-normal.woff2`)})`);
+        loads.push(d.load().then((dd) => document.fonts.add(dd)));
+      }
+    }
+    Promise.allSettled(loads).finally(() => continueRender(handle));
   }, [handle]);
   const t = frame / fps;
   const sc = props.scenes;
@@ -729,8 +771,9 @@ export const Cosmic: React.FC<CosmicProps> = (props) => {
         )}
       </svg>
       {props.animalCard && i === 1 && <SpeciesCard card={props.animalCard} lt={lt} />}
-      {s.spec.hook && <HookTitle lines={s.spec.hook} lt={lt} dur={s.dur} />}
-      {props.subs ? <Subtitle caps={props.captions ?? []} t={t} /> : <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />}
+      {s.spec.hook && <HookTitle lines={s.spec.hook} lt={lt} dur={s.dur} ja={props.lang === 'ja'} />}
+      {props.lang === 'ja' && s.spec.number ? <NumberTag n={s.spec.number} of={Math.max(...sc.map((x) => x.spec.number ?? 0))} lt={lt} dur={s.dur} /> : null}
+      {props.lang === 'ja' ? <JaWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} /> : props.subs ? <Subtitle caps={props.captions ?? []} t={t} /> : <BigWord caps={props.captions ?? []} t={t} hot={s.spec.hot ?? []} theme={props.theme} />}
       {props.audio && <Audio src={staticFile(`job/${props.audio}`)} />}
     </AbsoluteFill>
   );

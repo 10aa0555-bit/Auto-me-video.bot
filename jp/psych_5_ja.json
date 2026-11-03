@@ -1,0 +1,68 @@
+{
+ "title": "知らないと損するヤバい心理学5選",
+ "lang": "ja",
+ "theme": "noir",
+ "voice": {"engine": "voicevox", "name": "青山龍星", "style": "ノーマル", "speed": 1.2, "intonation": 1.1},
+ "art_style": "black and white anime illustration, manga style, high contrast dramatic shadows, grayscale with a faint cold blue tint, cinematic composition, clean line art, detailed, no text, no watermark, no logo",
+ "character": {
+  "look": "a slim young Japanese man around twenty with slightly messy black hair, sharp calm eyes and a faint knowing smile, wearing a black turtleneck under a dark long coat",
+  "seed": 5150
+ },
+ "post": {
+  "title": "知らないと損するヤバい心理学5選🧠",
+  "description": "学校・バイト・人間関係で使える心理学。保存して明日ためしてみて。\n\n音声: VOICEVOX:青山龍星",
+  "hashtags": ["#心理学", "#雑学", "#人間関係", "#勉強法", "#高校生", "#大学生", "#fyp", "#おすすめ"],
+  "pinned_comment": "1〜5でどれが一番使えそう？👇"
+ },
+ "scenes": [
+  {
+   "say": "知ってるだけで、/人間関係が/ガラッと変わる。/ヤバい心理学、/5選。",
+   "hook": ["ヤバい心理学", "5選"],
+   "hot": ["ヤバい心理学", "5選"],
+   "min_dur": 4.2,
+   "art": "close-up portrait of the man in darkness, half of his face in deep shadow, looking straight at the viewer",
+   "cam": "in", "fx": ["dust"]
+  },
+  {
+   "say": "1つ目。/騒がしい場所でも、/自分の名前だけは/なぜか聞き取れる。/カクテルパーティー|効果だ。/だから、/話しかけるときは/名前から呼べ。/相手の意識が/一瞬で/こっちを向く。",
+   "number": 1,
+   "hot": ["1つ目", "カクテルパーティー効果だ", "名前から呼べ"],
+   "art": "the man in a crowded noisy cafe at night, turning his head over his shoulder as if someone just called his name, blurry people around him",
+   "cam": "right", "fx": ["dust"]
+  },
+  {
+   "say": "2つ目。/勉強は、/キリの悪いところで/やめろ。/人は、/終わっていない|ことほど/強く覚えている。/ツァイガルニク|効果だ。/続きが気になって、/次の日、/すぐ机に向かえる。",
+   "number": 2,
+   "hot": ["2つ目", "やめろ", "ツァイガルニク効果だ"],
+   "art": "the man sitting at a desk late at night with an open textbook and a pen resting in the middle of the page, a small desk lamp, looking down calmly",
+   "cam": "in", "fx": ["glow"]
+  },
+  {
+   "say": "3つ目。/人は、/出来事を/一番の山場と、/最後だけで/判断する。/ピーク・エンドの|法則だ。/だから、/別れ際の/ありがとうが、/お前の印象を/決める。",
+   "number": 3,
+   "hot": ["3つ目", "ピーク・エンドの法則だ", "ありがとうが"],
+   "art": "the man standing on a train platform at night under bright station lights, raising one hand to wave goodbye with a gentle smile",
+   "cam": "left", "fx": ["dust"]
+  },
+  {
+   "say": "4つ目。/頼みごとは、/小さいことから。/一度いいよと/言った人は、/次のお願いも/断りにくくなる。/フット・イン・|ザ・ドアだ。/逆に、/小さなはいを/重ねられていたら、/気をつけろ。",
+   "number": 4,
+   "hot": ["4つ目", "フット・イン・ザ・ドアだ", "気をつけろ"],
+   "art": "the man standing in a dark hallway beside a door that is slightly open, warm light spilling through the gap, his hand on the door",
+   "cam": "up", "fx": ["glow"]
+  },
+  {
+   "say": "5つ目。/完璧な人より、/少しドジな人の方が/好かれる。/しくじり効果だ。/できる人が/小さな失敗を|見せると、/一気に/親しみやすくなる。/完璧を/演じなくていい。",
+   "number": 5,
+   "hot": ["5つ目", "しくじり効果だ", "好かれる"],
+   "art": "the man in a classroom after school laughing softly while picking up papers he dropped on the floor, sunset light through the windows",
+   "cam": "in", "fx": ["dust"]
+  },
+  {
+   "say": "全部、/知ってた？/一番使えそうなのを、/コメントで/教えて。/保存して、/明日から使え。",
+   "hot": ["コメントで", "明日から使え"],
+   "art": "the man walking away down a rainy street at night under a single streetlight, looking back over his shoulder at the viewer",
+   "cam": "out", "fx": ["rain"]
+  }
+ ]
+}

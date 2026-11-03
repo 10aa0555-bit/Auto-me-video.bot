@@ -80,10 +80,20 @@ jobs:
           export HF_HOME="$HOME/.cache/geo_short/hf"
           export U2NET_HOME="$HOME/.cache/geo_short/u2net"
           mkdir -p out
+          # 日本語の動画 (jp/) は VOICEVOX (無料の日本語音声合成) を Docker で立てて使う
+          case " $SCRIPTS" in *" jp/"*)
+            docker run -d --rm -p 50021:50021 voicevox/voicevox_engine:cpu-latest \
+              || docker run -d --rm -p 50021:50021 voicevox/voicevox_engine:cpu-ubuntu20.04-latest
+            for i in $(seq 1 100); do curl -sf http://127.0.0.1:50021/version && break; sleep 3; done; echo ;;
+          esac
           for s in $SCRIPTS; do
-            case "$s" in scripts/*.json|maps/*.json|whatif/*.json|stories/*.json|cosmic/*.json|quotes/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
+            case "$s" in scripts/*.json|maps/*.json|whatif/*.json|stories/*.json|cosmic/*.json|quotes/*.json|jp/*.json) [ -f "$s" ] || { echo "台本がありません: $s"; exit 1; } ;; *) exit 1 ;; esac
             name=$(basename "$s" .json)
-            if [ "${s%%/*}" = "quotes" ]; then
+            if [ "${s%%/*}" = "jp" ]; then
+              # 日本語の雑学・心理学 (VOICEVOX の声 + AI の 1 枚絵 + 大きな日本語の字幕)
+              python tools/ja_prep.py "$s"
+              (cd remotion && npx remotion render src/index.ts Cosmic "../out/${name}_raw.mp4" --props=props.json --concurrency=100% --log=info)
+            elif [ "${s%%/*}" = "quotes" ]; then
               # アニメの名言集 (日本語・縦書き・声なし)
               python tools/quotes_prep.py "$s"
               (cd remotion && npx remotion render src/index.ts Quotes "../out/${name}_raw.mp4" --props=props.json --concurrency=100% --log=info)

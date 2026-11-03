@@ -33,6 +33,31 @@ NOIR_STYLE = ("high quality 2D digital illustration, anime-inspired cel shading,
               "muted teal shadows and warm amber lights, detailed background, painterly atmosphere, no text, no watermark, no logo")
 
 
+def draw_character_art(script, job):
+    """noir の 1 枚絵: "character" (同じ人物の見た目) + 場面ごとの "art" (構図) を AI で描く。
+    描けなければ "fallback" のコードの場面にする。場面の dict を書きかえる。"""
+    character = script.get("character")
+    if not character:
+        return
+    art = AIArt(script.get("art_style") or NOIR_STYLE, seed=character.get("seed", 4242))
+    for sc in script["scenes"]:
+        if not sc.get("art"):
+            continue
+        who = f" The man: {character['look']}." if sc.get("man", True) else ""
+        try:
+            path = art.prepare(f"{sc['art']}.{who}", "card")
+        except Exception as e:  # 無料枠切れなど
+            print(f"  絵を描けませんでした ({e}): {sc['art'][:50]}")
+            path = None
+        sc["fallback"] = sc.get("fallback") or (sc.get("scene") if sc.get("scene") not in (None, "art") else "street")
+        sc["scene"] = "art"
+        if path:
+            shutil.copy(path, os.path.join(job, os.path.basename(path)))
+            sc["img"] = os.path.basename(path)
+        else:
+            print(f"  ⚠ 絵がありません (コードの場面 {sc['fallback']} で代用): {sc['art'][:50]}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("script")
@@ -71,26 +96,7 @@ def main():
             else:
                 print(f"  ⚠ 動物の絵がありません: {pose}")
 
-    # noir の 1 枚絵: "character" (同じ人物の見た目) + 場面ごとの "art" (構図) を AI で描く。描けなければ "fallback" のコードの場面
-    character = script.get("character")
-    if character:
-        art = AIArt(script.get("art_style") or NOIR_STYLE, seed=character.get("seed", 4242))
-        for sc in script["scenes"]:
-            if not sc.get("art"):
-                continue
-            who = f" The man: {character['look']}." if sc.get("man", True) else ""
-            try:
-                path = art.prepare(f"{sc['art']}.{who}", "card")
-            except Exception as e:  # 無料枠切れなど
-                print(f"  絵を描けませんでした ({e}): {sc['art'][:50]}")
-                path = None
-            sc["fallback"] = sc.get("fallback") or (sc.get("scene") if sc.get("scene") not in (None, "art") else "street")
-            sc["scene"] = "art"
-            if path:
-                shutil.copy(path, os.path.join(job, os.path.basename(path)))
-                sc["img"] = os.path.basename(path)
-            else:
-                print(f"  ⚠ 絵がありません (コードの場面 {sc['fallback']} で代用): {sc['art'][:50]}")
+    draw_character_art(script, job)
 
     workdir = os.path.join("out", f"{name}_audio")
     # "silent": ナレーションなし (字幕と効果音だけ)。場面の長さは各シーンの "duration" で決める
