@@ -1,0 +1,32 @@
+{
+  "title": ["心に刺さる", "アニメの名言", "7選"],
+  "quotes": [
+    {"text": "あきらめたら\nそこで試合終了ですよ", "who": "安西先生", "work": "SLAM DUNK",
+     "bg": "an empty school gymnasium at sunset, a basketball hoop, warm golden light streaming through tall windows, dust in the air, polished wooden floor",
+     "particles": "light", "tint": "#6a3a1a"},
+    {"text": "人はいつ死ぬと思う…？\n人に忘れられた時さ…！", "who": "Dr.ヒルルク", "work": "ONE PIECE",
+     "bg": "a snowy mountain at night under a starry sky, soft pink glowing snow like cherry blossoms falling, a lonely old castle on the summit",
+     "particles": "sakura", "tint": "#3a2a5a"},
+    {"text": "まっすぐ自分の言葉は\n曲げねェ\nそれがオレの忍道だ", "who": "うずまきナルト", "work": "NARUTO -ナルト-",
+     "bg": "a quiet mountain village with old wooden rooftops at golden hour, green forest hills, a big orange sunset sky with clouds",
+     "particles": "light", "tint": "#7a4a1a"},
+    {"text": "逃げちゃダメだ\n逃げちゃダメだ\n逃げちゃダメだ", "who": "碇シンジ", "work": "新世紀エヴァンゲリオン",
+     "bg": "an empty train station platform on a rainy summer evening, power lines, distant city lights, puddles reflecting the dim sky",
+     "particles": "rain", "tint": "#1a2a3a"},
+    {"text": "立って歩け\n前へ進め\nあんたには\n立派な足が\nついてるじゃないか", "who": "エドワード・エルリック", "work": "鋼の錬金術師",
+     "bg": "a long straight desert road at sunrise, sand dunes, ruins of an old stone town in the distance, warm light and long shadows",
+     "particles": "light", "tint": "#7a5a2a"},
+    {"text": "生殺与奪の権を\n他人に握らせるな！！", "who": "冨岡義勇", "work": "鬼滅の刃",
+     "bg": "a deep snowy mountain forest in winter, tall dark cedar trees, heavy snow falling, cold blue light, a small path",
+     "particles": "snow", "tint": "#1a2a4a"},
+    {"text": "心を燃やせ", "who": "煉獄杏寿郎", "work": "鬼滅の刃",
+     "bg": "a dark forest at night beside old railway tracks, glowing orange flames and embers rising into the sky, dramatic warm light",
+     "particles": "embers", "tint": "#4a1a0a"}
+  ],
+  "post": {
+    "title": "心に刺さるアニメの名言7選",
+    "description": "何度でも思い出したい、アニメの名言を集めました。\n\n出典: SLAM DUNK / ONE PIECE / NARUTO -ナルト- / 新世紀エヴァンゲリオン / 鋼の錬金術師 / 鬼滅の刃\n※背景はオリジナルのイラストです。",
+    "hashtags": ["#アニメ", "#名言", "#アニメ名言", "#心に刺さる言葉", "#鬼滅の刃", "#ONEPIECE", "#shorts"],
+    "pinned_comment": "あなたの好きなアニメの名言は？コメントで教えて！"
+  }
+}
