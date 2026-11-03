@@ -215,9 +215,9 @@ const Effects: React.FC<{fx: string[]; t: number; lt: number; dur: number}> = ({
 /** 動物 (AI のポーズ画像) を動かす。 */
 const Animal: React.FC<{spec: NatureSpec; t: number; lt: number; dur: number}> = ({spec, t, lt, dur}) => {
   if (!spec.animal) return null;
-  const size = (spec.size ?? 0.7) * W;
+  const size = (spec.size ?? 0.6) * W;
   let x = (spec.ax ?? 0.5) * W;
-  let y = (spec.ay ?? 0.62) * H;
+  let y = (spec.ay ?? 0.5) * H;
   let sx = 1;
   let sy = 1;
   let rot = 0;

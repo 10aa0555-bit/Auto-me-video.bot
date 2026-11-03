@@ -29,7 +29,8 @@ description: Turn a pasted 2D wildlife documentary script (the ChatGPT format in
 ```
 - `narration` は書かなくてよい (prep が subs から作る)。各シーンに `"narration": " ".join(subs)` を入れておくと安全。
 - `habitat` が `inside` の場面は、カエル回の断面図 `"scene": "frog_inside"` (細胞・氷・光る粒) を使う。`pose` は付けない。
-- 動物の位置: `ax` `ay` (0..1、既定 0.5 / 0.62)、大きさ `size` (画面の幅に対する割合、既定 0.7)。字幕 (H×0.76) と重ねない。
+- 動物の位置: `ax` `ay` (0..1、既定 0.5 / 0.5)、大きさ `size` (画面の幅に対する割合、既定 0.6、0.65 まで)。字幕 (H×0.76) と重ねない。
+- AI のポーズ画像はポーズごとに少しずつ見た目がずれる。`look` に色・模様・目の色・体形を具体的に書くとそろいやすい
 - 効果音 `sfx` は台本の SFX から選ぶ: wind は環境音に入っているので不要。使えるのは thud, riser, whoosh, pop, tick, ding, glitch, heartbeat(bpm,bpm2), lock, slide, powerdown, birds, siren。
 - `season: "spring"` を付けた場面は環境音が小川になる。
 - 合計 61〜75 秒。各シーンの `duration` の合計で決まる。

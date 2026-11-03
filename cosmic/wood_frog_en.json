@@ -42,8 +42,8 @@
     "frost"
    ],
    "cam": "push",
-   "ay": 0.64,
-   "size": 0.85,
+   "ay": 0.5,
+   "size": 0.62,
    "subs": [
     "THIS FROG CAN FREEZE SOLID…",
     "AND STILL SURVIVE."
@@ -74,7 +74,7 @@
     "snow"
    ],
    "cam": "pan",
-   "ay": 0.66,
+   "ay": 0.5,
    "size": 0.6,
    "subs": [
     "When winter arrives, most animals escape the cold.",
@@ -123,8 +123,8 @@
     "frost"
    ],
    "cam": "push",
-   "ay": 0.66,
-   "size": 0.75,
+   "ay": 0.5,
+   "size": 0.62,
    "subs": [
     "Its heart stops.",
     "It stops breathing.",
@@ -160,7 +160,7 @@
     "sunrays"
    ],
    "cam": "pull",
-   "ay": 0.66,
+   "ay": 0.5,
    "size": 0.6,
    "subs": [
     "For weeks… it waits.",
@@ -198,8 +198,8 @@
     "sunrays"
    ],
    "cam": "push",
-   "ay": 0.64,
-   "size": 0.75,
+   "ay": 0.5,
+   "size": 0.62,
    "subs": [
     "As temperatures rise, its body thaws.",
     "And life begins again."

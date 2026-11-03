@@ -613,7 +613,7 @@ const Subtitle: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
     <div style={{position: 'absolute', top: big ? H * 0.12 : H * 0.76, width: W, padding: '0 70px', boxSizing: 'border-box', textAlign: 'center', opacity: k,
       transform: `translateY(${(1 - k) * 12}px)`}}>
       <span style={{fontFamily: big ? 'Anton' : 'Poppins', fontWeight: big ? 400 : 700, fontSize: big ? 104 : 58, lineHeight: 1.2, color: '#ffffff', letterSpacing: big ? 2 : 0,
-        textShadow: '0 3px 12px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9)'}}>{c.text}</span>
+        textShadow: big ? '0 0 4px #000, 0 0 4px #000, 0 4px 16px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6)' : '0 3px 12px rgba(0,0,0,0.75), 0 1px 3px rgba(0,0,0,0.9)'}}>{c.text}</span>
     </div>
   );
 };
