@@ -26,7 +26,7 @@ Output EXACTLY this format and nothing else:
 
 TITLE: <short title>
 ANIMAL: <common name>
-LOOK: <one sentence: colors, markings, body shape, so every picture looks like the same animal>
+LOOK: <one detailed sentence so every picture shows the SAME animal: species, size, main body color, markings and where they are, eye color, skin/fur/feather texture, body shape. Example: "small North American wood frog, warm reddish-brown skin, a black mask stripe from the nose through the eye, golden eyes, cream belly, smooth moist skin, stocky body">
 POST_TITLE: <one line + 1 emoji>
 POST_DESCRIPTION: <"Send this to ..." line, then 1–2 lines of the real facts>
 HASHTAGS: <6 hashtags>
@@ -35,7 +35,7 @@ PINNED_COMMENT: <a question for viewers>
 SCENE 1
 DURATION: <seconds>
 HABITAT: <word>
-POSE: <what the animal is doing, e.g. "sitting under frozen leaves, eyes closed"> (or NONE for "inside" scenes)
+POSE: <body position only, short and concrete, e.g. "sitting, side view, eyes closed" / "leaping, legs stretched". Do not describe the background here> (or NONE for "inside" scenes)
 MOTION: <word>
 FROST: <0 to 1, how frozen the animal looks; 0 if not relevant>
 FX: <words, comma separated, or none>
