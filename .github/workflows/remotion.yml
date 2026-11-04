@@ -106,7 +106,7 @@ jobs:
               python tools/whatif_prep.py "$s" $PREP_OPTIONS
               comp=Diorama
               grep -q '"style": "delta"' "$s" && comp=Delta
-              (cd remotion && npx remotion render src/index.ts "$comp" "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --log=info)
+              (cd remotion && npx remotion render src/index.ts "$comp" "../out/${name}_raw.mp4" --props=props.json --gl=swangle --concurrency=100% --timeout=900000 --log=info)
             elif [ "${s%%/*}" = "quotes" ]; then
               # アニメの名言集 (日本語・縦書き・声なし)
               python tools/quotes_prep.py "$s"
