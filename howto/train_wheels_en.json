@@ -1,0 +1,372 @@
+{
+ "title": "How Do Trains Turn?",
+ "lang": "en",
+ "style": "diorama",
+ "captions": "plain",
+ "music": false,
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 1.0
+  }
+ },
+ "plaque": "THE CONED WHEEL",
+ "post": {
+  "title": "Trains don't have steering wheels. So how do they turn? 🚂",
+  "description": "Train wheels are very slightly cone-shaped. On a curve the wheelset slides outward, the outer wheel rolls on a bigger circle than the inner one, and the solid axle steers itself around the bend. The flanges are mostly a backup.",
+  "hashtags": [
+   "#howitworks",
+   "#trains",
+   "#engineering",
+   "#physics",
+   "#didyouknow",
+   "#science",
+   "#shorts"
+  ],
+  "pinned_comment": "Did you know trains steer with cones? Yes or no 👇"
+ },
+ "scenes": [
+  {
+   "narration": "A train has no steering wheel. So how does it turn?",
+   "cam": {
+    "pos": [
+     0,
+     48,
+     110
+    ],
+    "look": [
+     0,
+     0,
+     0
+    ]
+   },
+   "to": {
+    "pos": [
+     14,
+     15,
+     42
+    ],
+    "look": [
+     6,
+     1,
+     4
+    ]
+   },
+   "hook": [
+    "NO STEERING",
+    "WHEEL?"
+   ]
+  },
+  {
+   "narration": "Most people think it's the flanges, these little lips on the inside of the wheels, pushing against the rails.",
+   "cut": true,
+   "cam": {
+    "pos": [
+     324,
+     11,
+     36
+    ],
+    "look": [
+     302.5,
+     4,
+     0
+    ]
+   },
+   "to": {
+    "pos": [
+     319,
+     9,
+     29
+    ],
+    "look": [
+     302.5,
+     3.6,
+     0
+    ]
+   },
+   "flange": true,
+   "labels": [
+    {
+     "text": "FLANGE",
+     "at": [
+      4.5,
+      11,
+      0
+     ],
+     "delay": 2.2
+    }
+   ]
+  },
+  {
+   "narration": "But if that were true, they'd grind against the steel on every curve and wear out fast.",
+   "cam": {
+    "pos": [
+     317,
+     7,
+     27
+    ],
+    "look": [
+     303,
+     2.6,
+     0
+    ]
+   },
+   "shift": 0.85,
+   "sparks": true
+  },
+  {
+   "narration": "The real trick is the shape of the wheel. It isn't a flat cylinder. It's a very slight cone.",
+   "cam": {
+    "pos": [
+     300,
+     15,
+     52
+    ],
+    "look": [
+     300,
+     8.5,
+     0
+    ]
+   },
+   "shift": 0,
+   "lift": 1,
+   "turn": true,
+   "labels": [
+    {
+     "text": "A CONE (EXAGGERATED)",
+     "at": [
+      0,
+      15.5,
+      0
+     ],
+     "delay": 3.0
+    }
+   ]
+  },
+  {
+   "narration": "Both wheels sit on one solid axle, so they always turn at exactly the same speed.",
+   "cam": {
+    "pos": [
+     274,
+     15,
+     40
+    ],
+    "look": [
+     300,
+     5,
+     0
+    ]
+   },
+   "lift": 0,
+   "axle": true,
+   "labels": [
+    {
+     "text": "ONE SOLID AXLE",
+     "at": [
+      0,
+      11.5,
+      0
+     ],
+     "delay": 1.2
+    }
+   ]
+  },
+  {
+   "narration": "On a straight track, each wheel rolls on the same size circle.",
+   "cam": {
+    "pos": [
+     300,
+     12,
+     52
+    ],
+    "look": [
+     300,
+     5,
+     0
+    ]
+   },
+   "rings": true,
+   "labels": [
+    {
+     "text": "SAME SIZE",
+     "at": [
+      0,
+      11.5,
+      0
+     ],
+     "delay": 1.4
+    }
+   ]
+  },
+  {
+   "narration": "But on a curve, the train slides a little toward the outside.",
+   "cam": {
+    "pos": [
+     300,
+     15,
+     60
+    ],
+    "look": [
+     300,
+     8,
+     0
+    ]
+   },
+   "shift": 0.55,
+   "push": true,
+   "rings": true,
+   "labels": [
+    {
+     "text": "OUTSIDE OF CURVE",
+     "at": [
+      1,
+      16.2,
+      0
+     ],
+     "delay": 0.4
+    }
+   ]
+  },
+  {
+   "narration": "Now the outer wheel rolls on its wide part, and the inner wheel rolls on its narrow part.",
+   "cam": {
+    "pos": [
+     300,
+     12,
+     52
+    ],
+    "look": [
+     300,
+     5,
+     0
+    ]
+   },
+   "rings": true,
+   "labels": [
+    {
+     "text": "BIGGER",
+     "at": [
+      4.2,
+      12.4,
+      1
+     ],
+     "delay": 1.0
+    },
+    {
+     "text": "SMALLER",
+     "at": [
+      -4.2,
+      9.4,
+      1
+     ],
+     "delay": 3.0
+    }
+   ]
+  },
+  {
+   "narration": "So with every turn, the outer wheel travels farther than the inner one, and the axle steers itself around the bend.",
+   "cam": {
+    "pos": [
+     314,
+     40,
+     48
+    ],
+    "look": [
+     300,
+     2,
+     6
+    ]
+   },
+   "rings": true,
+   "arrows": true,
+   "yaw": -0.22,
+   "labels": [
+    {
+     "text": "FARTHER",
+     "at": [
+      6,
+      4.5,
+      13
+     ],
+     "delay": 2.6
+    },
+    {
+     "text": "SHORTER",
+     "at": [
+      -5.2,
+      4.5,
+      9
+     ],
+     "delay": 3.0
+    }
+   ]
+  },
+  {
+   "narration": "If it drifts too far, the cones pull it back to the middle. On gentle curves, the flanges barely touch. They're mostly a safety net.",
+   "cam": {
+    "pos": [
+     300,
+     12,
+     52
+    ],
+    "look": [
+     300,
+     5,
+     0
+    ]
+   },
+   "shift": 0,
+   "yaw": 0,
+   "rings": true,
+   "flange": true,
+   "labels": [
+    {
+     "text": "SAFETY NET",
+     "at": [
+      3.5,
+      11.8,
+      1
+     ],
+     "delay": 3.6
+    }
+   ]
+  },
+  {
+   "narration": "No steering wheel needed, just two cones. Did you know that? Yes or no?",
+   "cut": true,
+   "cam": {
+    "pos": [
+     -20,
+     40,
+     100
+    ],
+    "look": [
+     0,
+     0,
+     0
+    ]
+   },
+   "to": {
+    "pos": [
+     20,
+     44,
+     104
+    ],
+    "look": [
+     0,
+     0,
+     0
+    ]
+   },
+   "texts": [
+    {
+     "text": "YES OR NO?",
+     "y": 0.13,
+     "delay": 2.6
+    }
+   ],
+   "min_duration": 3.4
+  }
+ ]
+}
