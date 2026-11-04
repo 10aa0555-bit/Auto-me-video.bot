@@ -34,6 +34,7 @@ Remotion 版だけの追加は下の表。
 
 - 地図: Sentinel-2 の衛星写真が主役。寄りは span 0.8〜1.0 度まで
 - 地形図 (`base: "relief"`) は砂漠・乾いた土地 (アフリカ、中東、オーストラリア内陸など) だけ。森や凍土・湖の多い所では迷彩柄のようにまだらになるので使わない
+- 大洋の真ん中の小さな島 (トリスタン・ダ・クーニャなど) も `"imagery": "bluemarble"`、寄りは span 4。Sentinel-2 だと島のまわりだけ灰色の海がまだらに四角く残る
 - 熱帯雨林 (アマゾン、コンゴ、東南アジア) は Sentinel-2 に斜めの縞が出るので、台本の一番上に `"imagery": "bluemarble"` を書き、寄りは span 4 度まで
 - 1 シーン目は、主役の国を国旗で塗る (`"fill": {"EGY": "flag:eg"}`、2 シーン目で `null` にして消す)。輪郭で囲むより国旗のほうが一目で分かる
 - 文字: 1 シーン目は 2 行の大きな問いのタイトル帯 (`banner.badge: false`)。字幕は Poppins の白文字 + 黒フチで、今読んでいる単語だけ黄色 (#ffd23f) にして少し弾ませる
@@ -80,7 +81,7 @@ Remotion 版だけの追加は下の表。
 
 egypt_empty (投稿しない), bir_tawil (投稿しない), australia_empty, dingo_fence, canada_border, siberia_empty, amazon_border,
 border_slash, greenland_name, ordos_ghost, diomede_islands, chile_thin, point_nemo, baarle_border, lesotho_inside,
-mongolia_empty, darien_gap, alaska_purchase, jakarta_sinking, japan_coast, saudi_no_rivers, dancing_plague (地理以外のお試し),
+mongolia_empty, darien_gap, alaska_purchase, jakarta_sinking, japan_coast, saudi_no_rivers, svalbard_die, tristan_remote, dancing_plague (地理以外のお試し),
 scripts/zanzibar_war_en.json (Ridiculous Wars #4)
 
 ### 次のネタ (2026-10-31 追加。上から順に作る)
