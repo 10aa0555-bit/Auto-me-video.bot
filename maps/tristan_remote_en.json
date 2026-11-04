@@ -1,5 +1,6 @@
 {
   "title": "The Loneliest Island on Earth",
+  "imagery": "bluemarble",
   "lang": "en",
   "style": "satellite",
   "captions": "plain",
@@ -66,7 +67,7 @@
           -12.28,
           -37.11
         ],
-        "span": 0.9
+        "span": 4
       },
       "photos": [
         {
@@ -78,6 +79,17 @@
           ],
           "delay": 1.4,
           "size": 620
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
         }
       ]
     },
@@ -241,7 +253,7 @@
           -12.28,
           -37.11
         ],
-        "span": 0.9
+        "span": 4
       },
       "icons": [
         {
@@ -254,6 +266,17 @@
           "size": 240,
           "delay": 1.0
         }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
+        }
       ]
     },
     {
@@ -263,7 +286,7 @@
           -12.311,
           -37.067
         ],
-        "span": 0.8
+        "span": 4
       },
       "markers": [
         {
@@ -272,7 +295,7 @@
             -37.067
           ],
           "type": "pin",
-          "label": "Edinburgh of the Seven Seas",
+          "label": "The only village",
           "delay": 0.5
         }
       ],
@@ -294,7 +317,7 @@
           "accent": [
             "8"
           ],
-          "y": 0.62,
+          "y": 0.8,
           "size": 84,
           "delay": 4.4
         }
@@ -308,7 +331,7 @@
           -12.311,
           -37.067
         ],
-        "span": 0.8
+        "span": 4
       },
       "year": "1961",
       "photos": [
@@ -322,6 +345,17 @@
           "delay": 1.6,
           "size": 620
         }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
+        }
       ]
     },
     {
@@ -331,7 +365,7 @@
           -12.28,
           -37.11
         ],
-        "span": 0.9
+        "span": 4
       },
       "texts": [
         {
@@ -342,6 +376,17 @@
           "y": 0.22,
           "size": 90,
           "delay": 2.6
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
         }
       ]
     },
