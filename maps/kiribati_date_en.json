@@ -1,0 +1,316 @@
+{
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "title": "The Day Kiribati Deleted",
+  "post": {
+    "title": "The country that deleted a whole day 📅 #geography #maps",
+    "description": "On 31 December 1994, Kiribati skipped a day. The eastern Line Islands were a day behind the capital, so the government moved the date line east and put the whole country on one calendar. Kiritimati now runs at UTC+14.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#kiribati",
+      "#timezone",
+      "#pacific",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you delete a day to fix your schedule? Yes or no 👇"
+  },
+  "scenes": [
+    {
+      "narration": "On the last day of 1994, one country erased an entire day from its calendar.",
+      "camera": {
+        "center": [
+          -165,
+          5
+        ],
+        "span": 60
+      },
+      "banner": {
+        "lines": [
+          "WHY DID KIRIBATI",
+          "DELETE A WHOLE DAY?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "markers": [
+        {
+          "at": [
+            -157.4,
+            1.9
+          ],
+          "type": "pin",
+          "label": "Kiritimati",
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "That country is Kiribati, a scatter of coral islands in the middle of the Pacific, home to about one hundred and twenty thousand people.",
+      "camera": {
+        "center": [
+          -160,
+          2
+        ],
+        "span": 24
+      },
+      "markers": [
+        {
+          "at": [
+            -157.4,
+            1.9
+          ],
+          "type": "pin",
+          "label": "Kiritimati",
+          "delay": 0.5
+        }
+      ],
+      "photos": [
+        {
+          "q": "Kiritimati Island beach",
+          "caption": "KIRITIMATI",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.2,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Its capital, Tarawa, is over three thousand kilometers west of the eastern Line Islands, and those islands were a full day behind it.",
+      "camera": {
+        "center": [
+          -160,
+          2
+        ],
+        "span": 24
+      },
+      "texts": [
+        {
+          "text": "TWO DAYS AT ONCE",
+          "accent": [
+            "TWO"
+          ],
+          "y": 0.2,
+          "size": 88,
+          "delay": 2.0
+        }
+      ],
+      "photos": [
+        {
+          "q": "Tarawa Kiribati",
+          "caption": "TARAWA, THE CAPITAL",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.4,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "So the government moved the international date line east, past the Line Islands, and put the whole country on one calendar.",
+      "camera": {
+        "center": [
+          -156,
+          0
+        ],
+        "span": 16
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -150,
+              -9
+            ],
+            [
+              -150,
+              9
+            ]
+          ],
+          "style": "dashed",
+          "delay": 0.6,
+          "draw_time": 1.4
+        }
+      ],
+      "texts": [
+        {
+          "text": "NEW DATE LINE",
+          "accent": [
+            "NEW"
+          ],
+          "y": 0.14,
+          "size": 84,
+          "delay": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "On New Year's Eve 1994, Friday the thirtieth went straight to Sunday the first.",
+      "camera": {
+        "center": [
+          -157.4,
+          1.9
+        ],
+        "span": 2.2
+      },
+      "texts": [
+        {
+          "text": "FRIDAY 30  >  SUNDAY 1",
+          "accent": [
+            "SUNDAY"
+          ],
+          "y": 0.2,
+          "size": 76,
+          "delay": 0.5
+        }
+      ],
+      "photos": [
+        {
+          "q": "Kiribati calendar date line",
+          "caption": "THE DATE LINE",
+          "pos": [
+            0.5,
+            0.32
+          ],
+          "delay": 1.0,
+          "size": 560
+        }
+      ]
+    },
+    {
+      "narration": "Saturday the thirty-first never happened.",
+      "camera": {
+        "center": [
+          -157.4,
+          1.9
+        ],
+        "span": 2.2
+      },
+      "texts": [
+        {
+          "text": "SATURDAY 31 IS GONE",
+          "accent": [
+            "GONE"
+          ],
+          "y": 0.22,
+          "size": 84,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "Imagine going to bed on Friday and waking up on Sunday.",
+      "camera": {
+        "center": [
+          -157.4,
+          1.9
+        ],
+        "span": 2.2
+      },
+      "texts": [
+        {
+          "text": "FRI  ->  SUN",
+          "accent": [
+            "SUN"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    },
+    {
+      "narration": "Why? Because Kiritimati now runs fourteen hours ahead of UTC, the earliest clock on Earth, so it sees each new day first.",
+      "camera": {
+        "center": [
+          -157.4,
+          1.9
+        ],
+        "span": 2.2
+      },
+      "markers": [
+        {
+          "at": [
+            -157.4,
+            1.9
+          ],
+          "type": "pin",
+          "label": "UTC+14",
+          "delay": 0.4
+        }
+      ],
+      "texts": [
+        {
+          "text": "FIRST TO SEE TOMORROW",
+          "accent": [
+            "FIRST"
+          ],
+          "y": 0.22,
+          "size": 76,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "The goal was simple: trade on the same calendar day as Australia and New Zealand.",
+      "camera": {
+        "center": [
+          -160,
+          2
+        ],
+        "span": 34
+      },
+      "texts": [
+        {
+          "text": "ONE CALENDAR",
+          "accent": [
+            "ONE"
+          ],
+          "y": 0.2,
+          "size": 92,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "Would you delete a whole day to fix your schedule? Yes or no?",
+      "camera": {
+        "center": [
+          -165,
+          5
+        ],
+        "span": 60
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 2.4
+        }
+      ]
+    }
+  ]
+}
