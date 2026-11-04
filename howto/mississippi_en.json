@@ -1,0 +1,451 @@
+{
+ "title": "What If the Mississippi Changed Course?",
+ "lang": "en",
+ "style": "delta",
+ "captions": "plain",
+ "music": false,
+ "ambience": "river",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "am_michael",
+  "settings": {
+   "speed": 0.98
+  }
+ },
+ "plaque": "OLD RIVER · LOUISIANA",
+ "post": {
+  "title": "One concrete wall is the only thing keeping the Mississippi from leaving 🌊",
+  "description": "The Old River Control Structure (1963) sends about 30% of the flow down the Atchafalaya and keeps 70% in the Mississippi. A 1973 flood nearly destroyed it. If the river switched, the lower Mississippi would starve, and New Orleans' ports, plants and drinking water would be at risk.",
+  "hashtags": [
+   "#whatif",
+   "#mississippi",
+   "#louisiana",
+   "#neworleans",
+   "#geography",
+   "#engineering",
+   "#didyouknow",
+   "#shorts"
+  ],
+  "pinned_comment": "Fight the river or let it go? 👇"
+ },
+ "scenes": [
+  {
+   "narration": "One concrete structure in Louisiana is all that's holding the Mississippi River in place.",
+   "cam": {
+    "pos": [
+     -6.6,
+     2.6,
+     -1.7
+    ],
+    "look": [
+     -0.1,
+     1.4,
+     -5.0
+    ]
+   },
+   "to": {
+    "pos": [
+     -10.5,
+     5.2,
+     1.6
+    ],
+    "look": [
+     -0.1,
+     1.2,
+     -5.0
+    ]
+   },
+   "hook": [
+    "ONE WALL IS",
+    "HOLDING BACK",
+    "THE MISSISSIPPI"
+   ],
+   "sfx": [
+    [
+     0.05,
+     "thud"
+    ],
+    [
+     0.2,
+     "riser"
+    ]
+   ],
+   "texts": [
+    {
+     "text": "WHAT IF IT BREAKS?",
+     "y": 0.31,
+     "delay": 3.6,
+     "color": "#ff5a4a",
+     "size": 84
+    }
+   ]
+  },
+  {
+   "narration": "Over the last seven thousand years, the river has moved its mouth again and again.",
+   "cut": true,
+   "cam": {
+    "pos": [
+     36,
+     32,
+     46
+    ],
+    "look": [
+     -1,
+     0,
+     2
+    ]
+   },
+   "to": {
+    "pos": [
+     22,
+     38,
+     40
+    ],
+    "look": [
+     -1,
+     0,
+     3
+    ]
+   },
+   "oldmouths": true,
+   "chip": "EVERY ~1,000 YEARS",
+   "labels": [
+    {
+     "text": "GULF OF MEXICO",
+     "key": "GULF",
+     "delay": 2.2
+    }
+   ]
+  },
+  {
+   "narration": "And it wants to move again. A path to the Gulf, about a hundred and fifty miles shorter, already exists: the Atchafalaya River.",
+   "cam": {
+    "pos": [
+     24,
+     27,
+     24
+    ],
+    "look": [
+     3,
+     0,
+     3
+    ]
+   },
+   "to": {
+    "pos": [
+     14,
+     23,
+     18
+    ],
+    "look": [
+     2,
+     0,
+     4
+    ]
+   },
+   "glow": "both",
+   "labels": [
+    {
+     "text": "SHORTCUT",
+     "key": "ATCH",
+     "delay": 1.4
+    },
+    {
+     "text": "LONG WAY",
+     "key": "NO",
+     "delay": 2.6
+    }
+   ]
+  },
+  {
+   "narration": "By the nineteen fifties, more and more water was slipping that way. The Mississippi was about to switch.",
+   "cam": {
+    "pos": [
+     10,
+     14,
+     9
+    ],
+    "look": [
+     -1,
+     0,
+     -3
+    ]
+   },
+   "to": {
+    "pos": [
+     6,
+     11,
+     5
+    ],
+    "look": [
+     -1,
+     0,
+     -4
+    ]
+   },
+   "div": 0.4,
+   "chip": "1950s"
+  },
+  {
+   "narration": "So in nineteen sixty three, engineers built the Old River Control Structure. Its job: seventy percent stays, thirty percent goes.",
+   "cam": {
+    "pos": [
+     -5.6,
+     2.6,
+     -1.2
+    ],
+    "look": [
+     -0.1,
+     1.2,
+     -5.0
+    ]
+   },
+   "to": {
+    "pos": [
+     -3.2,
+     2.2,
+     0.6
+    ],
+    "look": [
+     -0.1,
+     1.3,
+     -5.0
+    ]
+   },
+   "div": 0,
+   "chip": "1963",
+   "labels": [
+    {
+     "text": "OLD RIVER CONTROL STRUCTURE",
+     "key": "OR",
+     "delay": 0.8
+    }
+   ],
+   "texts": [
+    {
+     "text": "70% STAYS",
+     "y": 0.21,
+     "delay": 4.4,
+     "color": "#ffffff",
+     "size": 88
+    },
+    {
+     "text": "30% GOES",
+     "y": 0.29,
+     "delay": 5.6,
+     "color": "#ffd23f",
+     "size": 88
+    }
+   ]
+  },
+  {
+   "narration": "In nineteen seventy three, a flood nearly destroyed it.",
+   "cam": {
+    "pos": [
+     -3.2,
+     1.9,
+     -2.0
+    ],
+    "look": [
+     -0.1,
+     1.3,
+     -5.0
+    ]
+   },
+   "to": {
+    "pos": [
+     -2.3,
+     1.7,
+     -2.9
+    ],
+    "look": [
+     -0.1,
+     1.5,
+     -5.0
+    ]
+   },
+   "flood": 1,
+   "chip": "1973",
+   "sfx": [
+    [
+     0.4,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "narration": "Now imagine it fails. The river takes the shortcut, and the old channel starts to starve.",
+   "cam": {
+    "pos": [
+     -2.8,
+     2.2,
+     -2.3
+    ],
+    "look": [
+     -0.1,
+     1.3,
+     -5.0
+    ]
+   },
+   "to": {
+    "pos": [
+     14,
+     15,
+     8
+    ],
+    "look": [
+     2,
+     0,
+     0
+    ]
+   },
+   "fail": 1,
+   "div": 1,
+   "flood": 0.6,
+   "mood": 0.35,
+   "sfx": [
+    [
+     0.6,
+     "thud"
+    ],
+    [
+     0.7,
+     "powerdown"
+    ]
+   ],
+   "texts": [
+    {
+     "text": "IT BREAKS",
+     "y": 0.14,
+     "delay": 0.4,
+     "color": "#ff5a4a",
+     "size": 104
+    }
+   ]
+  },
+  {
+   "narration": "Ships can't reach the ports. The plants lose their water. And salt water creeps up from the Gulf.",
+   "cam": {
+    "pos": [
+     31,
+     16,
+     36
+    ],
+    "look": [
+     12,
+     0,
+     8
+    ]
+   },
+   "to": {
+    "pos": [
+     17,
+     13,
+     31
+    ],
+    "look": [
+     12,
+     0,
+     7
+    ]
+   },
+   "mood": 0.8,
+   "salt": 1,
+   "labels": [
+    {
+     "text": "PORTS STRANDED",
+     "at": [
+      9.5,
+      4.0,
+      9.5
+     ],
+     "delay": 0.6
+    },
+    {
+     "text": "NO WATER",
+     "key": "PLANTS",
+     "delay": 3.2
+    },
+    {
+     "text": "SALT WATER",
+     "key": "SALT",
+     "delay": 5.6
+    }
+   ]
+  },
+  {
+   "narration": "In recent droughts, salt water already crept upriver, and engineers built an underwater wall to stop it.",
+   "cam": {
+    "pos": [
+     26,
+     9,
+     34
+    ],
+    "look": [
+     16,
+     0,
+     14
+    ]
+   },
+   "to": {
+    "pos": [
+     19,
+     8,
+     28
+    ],
+    "look": [
+     16,
+     0,
+     13
+    ]
+   },
+   "mood": 0.8,
+   "salt": 0.7,
+   "texts": [
+    {
+     "text": "IT'S ALREADY STARTED",
+     "y": 0.14,
+     "delay": 0.8,
+     "size": 80
+    }
+   ]
+  },
+  {
+   "narration": "Sooner or later, the river will win. Would you keep fighting it, or let it go?",
+   "cam": {
+    "pos": [
+     44,
+     36,
+     48
+    ],
+    "look": [
+     0,
+     0,
+     2
+    ]
+   },
+   "to": {
+    "pos": [
+     -32,
+     36,
+     50
+    ],
+    "look": [
+     0,
+     0,
+     2
+    ]
+   },
+   "mood": 0.8,
+   "min_duration": 3.6,
+   "texts": [
+    {
+     "text": "FIGHT OR LET GO?",
+     "y": 0.14,
+     "delay": 3.0,
+     "size": 92
+    }
+   ]
+  }
+ ]
+}

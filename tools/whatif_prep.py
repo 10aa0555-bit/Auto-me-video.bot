@@ -116,7 +116,7 @@ def main():
         c = s["spec"].get("counter")
         if c and c != prev:
             ev.append((s["start"] + 0.02, "thud", {}))
-        if i and s["spec"].get("cam") and (script.get("style") != "diorama" or s["spec"].get("cut")):
+        if i and s["spec"].get("cam") and (script.get("style") not in ("diorama", "delta") or s["spec"].get("cut")):
             ev.append((max(0, s["start"] - 0.1), "whoosh", {"seed": i}))
         prev = c
         if script.get("theme") == "nature" and i:
@@ -128,7 +128,7 @@ def main():
     # 最後の場面で街を最初の状態に巻き戻し、動画をループさせる (見終わった瞬間に頭とつながる)
     story = "hook" in script  # Rick 風の物語 (キャラクター + 海や街の舞台)
     cosmic = script.get("style") == "cosmic"  # フラットな宇宙アニメ + 1 語ずつの巨大テロップ
-    diorama = script.get("style") == "diorama"  # しくみ解説のジオラマ (3D の模型)
+    diorama = script.get("style") in ("diorama", "delta")  # しくみ解説・What if のジオラマ (3D の模型)
     rewind = 0.0 if (story or cosmic or diorama) else (REWIND if scenes[-1]["spec"].get("rewind", script.get("loop", True)) else 0.0)
     if rewind:
         scenes[-1]["spec"]["rewind"] = rewind
@@ -138,7 +138,8 @@ def main():
     # 効果音に環境音 (波・風・街・ヘリ) を重ねる
     with wave.open(fx, "rb") as w:
         fxs = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float64) / 32767
-    amb = (ambient.render_nature(scenes, tl.total) if (cosmic and script.get("theme") == "nature") or diorama else
+    amb = (ambient.render_river(scenes, tl.total) if diorama and script.get("ambience") == "river" else
+           ambient.render_nature(scenes, tl.total) if (cosmic and script.get("theme") == "nature") or diorama else
            ambient.render_noir(scenes, tl.total) if cosmic and script.get("theme") == "noir" else
            ambient.render_space(scenes, tl.total) if cosmic else
            ambient.render_story(scenes, tl.total) if story else ambient.render(scenes, tl.total, rewind))

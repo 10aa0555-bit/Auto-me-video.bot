@@ -5,6 +5,7 @@ import {WhatIf, WIProps} from './whatif/WhatIf';
 import {CharTest} from './whatif/CharTest';
 import {Story, StoryProps} from './whatif/Story';
 import {Diorama, DProps} from './diorama/Diorama';
+import {Delta, DeltaProps} from './diorama/Delta';
 import {Cosmic, CosmicProps} from './cosmic/Cosmic';
 import {Quotes, QuotesProps} from './quotes/Quotes';
 import type {Props} from './types';
@@ -39,6 +40,16 @@ export const Root: React.FC = () => (
     fps={30}
     durationInFrames={30}
     defaultProps={{} as DProps}
+    calculateMetadata={({props}) => ({durationInFrames: Math.max(1, props.frames ?? 30), fps: props.fps ?? 30})}
+  />
+  <Composition
+    id="Delta"
+    component={Delta}
+    width={1080}
+    height={1920}
+    fps={30}
+    durationInFrames={30}
+    defaultProps={{} as DeltaProps}
     calculateMetadata={({props}) => ({durationInFrames: Math.max(1, props.frames ?? 30), fps: props.fps ?? 30})}
   />
   <Composition

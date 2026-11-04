@@ -46,7 +46,7 @@ const rAt = (u: number) => 3.4 - (0.45 / 1.65) * (Math.min(1.8, Math.max(0.15, u
 
 // ---------------------------------------------------------------- 文字の板 (Canvas のテクスチャ)
 
-const textTexture = (text: string, opts: {w?: number; h?: number; size?: number; color?: string; bg?: string; stroke?: string} = {}) => {
+export const textTexture = (text: string, opts: {w?: number; h?: number; size?: number; color?: string; bg?: string; stroke?: string} = {}) => {
   const c = document.createElement('canvas');
   c.width = opts.w ?? 1024;
   c.height = opts.h ?? 256;
@@ -83,7 +83,7 @@ const textTexture = (text: string, opts: {w?: number; h?: number; size?: number;
   return tex;
 };
 
-const Label: React.FC<{text: string; at: V3; k: number; scale?: number}> = ({text, at, k, scale = 1}) => {
+export const Label: React.FC<{text: string; at: V3; k: number; scale?: number}> = ({text, at, k, scale = 1}) => {
   const tex = useMemo(() => textTexture(text, {bg: 'rgba(20,22,28,0.82)', color: '#ffd23f', size: 96}), [text]);
   if (k <= 0) return null;
   const s = scale * (0.7 + 0.3 * k);
@@ -257,7 +257,7 @@ const Train: React.FC<{t: number}> = ({t}) => {
 
 // ---------------------------------------------------------------- 台座・草・木・柵・納屋
 
-const Base: React.FC<{w: number; d: number; x?: number; plaque?: string}> = ({w, d, x = 0, plaque}) => {
+export const Base: React.FC<{w: number; d: number; x?: number; plaque?: string}> = ({w, d, x = 0, plaque}) => {
   const tex = useMemo(() => (plaque ? textTexture(plaque, {w: 1024, h: 160, size: 84, color: '#3a2a12'}) : null), [plaque]);
   return (
     <group position={[x, 0, 0]}>
@@ -290,7 +290,7 @@ const Base: React.FC<{w: number; d: number; x?: number; plaque?: string}> = ({w,
   );
 };
 
-const rng = (seed: number) => {
+export const rng = (seed: number) => {
   let s = seed;
   return () => {
     s = (s * 16807) % 2147483647;
@@ -384,7 +384,7 @@ const Fence: React.FC<{z: number}> = ({z}) => (
   </group>
 );
 
-const Clouds: React.FC<{t: number}> = ({t}) => {
+export const Clouds: React.FC<{t: number}> = ({t}) => {
   const puffs = useMemo(() => {
     const r = rng(5);
     return Array.from({length: 9}).map(() => ({x: (r() - 0.5) * 420, y: 40 + r() * 70, z: -170 - r() * 60, s: 7 + r() * 9, n: 4 + Math.floor(r() * 3)}));
@@ -561,13 +561,13 @@ const Sparks: React.FC<{t: number; at: V3; k: number}> = ({t, at, k}) => {
 
 // ---------------------------------------------------------------- カメラ・数値の補間
 
-const sceneAt = (sc: DScene[], t: number) => {
+export const sceneAt = (sc: {start: number; dur: number}[], t: number) => {
   let i = sc.findIndex((s) => t < s.start + s.dur);
   if (i < 0) i = sc.length - 1;
   return i;
 };
 
-const lerp3 = (p: V3, q: V3, k: number): V3 => [p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k, p[2] + (q[2] - p[2]) * k];
+export const lerp3 = (p: V3, q: V3, k: number): V3 => [p[0] + (q[0] - p[0]) * k, p[1] + (q[1] - p[1]) * k, p[2] + (q[2] - p[2]) * k];
 
 const camAt = (sc: DScene[], t: number): Cam => {
   const i = sceneAt(sc, t);
@@ -617,7 +617,7 @@ const flag = (s: DScene, lt: number, key: keyof DScene['spec'], delay = 0.4) =>
 
 // ---------------------------------------------------------------- 文字 (字幕・つかみ・問い)
 
-const SubLine: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
+export const SubLine: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   const c = caps.find((x) => t >= x.start && t < x.end);
   if (!c) return null;
   const k = easeOut((t - c.start) / 0.12);
@@ -630,7 +630,7 @@ const SubLine: React.FC<{caps: Caption[]; t: number}> = ({caps, t}) => {
   );
 };
 
-const Hook: React.FC<{lines: string[]; lt: number; dur: number}> = ({lines, lt, dur}) => {
+export const Hook: React.FC<{lines: string[]; lt: number; dur: number}> = ({lines, lt, dur}) => {
   const out = clamp01((dur - lt) / 0.4);
   return (
     <div style={{position: 'absolute', top: H * 0.1, width: W, textAlign: 'center', opacity: out}}>

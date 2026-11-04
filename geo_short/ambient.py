@@ -137,3 +137,21 @@ def render_nature(scenes, total):
     out = 0.16 * wind * (1 - 0.7 * spring) + 0.07 * brook * spring
     fade = np.minimum(1, t / 1.0) * np.minimum(1, (total - t) / 0.8)
     return np.clip(out * fade, -1, 1)
+
+
+def render_river(scenes, total):
+    """川のジオラマの環境音: 流れる水の音 + 低いうなり。水門が壊れたあと (fail / div が大きい場面) は低音が増す。"""
+    n = int(total * SR)
+    t = np.arange(n) / SR
+    flow = _shaped_noise(n, 180, 2600, 91) * (0.6 + 0.4 * np.sin(2 * np.pi * 0.11 * t + 0.5) ** 2)
+    rumble = _shaped_noise(n, 25, 140, 92)
+    boost = np.zeros(n)
+    for s in scenes:
+        sp = s["spec"]
+        if sp.get("fail") or sp.get("div", 0) >= 0.5:
+            m = (t >= s["start"]) & (t < s["start"] + s["dur"])
+            boost[m] = 1
+    boost = np.convolve(boost, np.ones(SR) / SR, mode="same")
+    out = 0.15 * flow + (0.05 + 0.22 * boost) * rumble
+    fade = np.minimum(1, t / 1.0) * np.minimum(1, (total - t) / 1.0)
+    return np.clip(out * fade, -1, 1)
