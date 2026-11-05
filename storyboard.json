@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "title_en": "The Town Where Borders Go Through Your Living Room",
+    "title_ja": "国境がリビングを横切る町",
+    "topic": "Baarle-Hertog / Baarle-Nassau",
+    "aspect_ratio": "9:16",
+    "visual_style": "Style 4 Cozy Storytelling",
+    "clip_count": 6,
+    "clip_seconds": 10,
+    "end_card_seconds": 1,
+    "total_seconds": 61,
+    "narration_language": "en",
+    "prompt_language": "ja",
+    "approved": true,
+    "status": "draft_storyboard_only"
+  },
+  "voice_block": "One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.",
+  "global_continuity": {
+    "palette": "夕方の黄金色の光、煉瓦の赤、澄んだ空の青、石畳のクリームグレー",
+    "bgm": "ピッツィカートとアコースティックギターのワルツ調。全クリップでモチーフ・テンポ・楽器編成を共通にする",
+    "protagonist_anchor_ja": "白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口をもつ、ミニマルな2Dカートゥーンの主人公が1人。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。髪や服のアクセサリーはなし。全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。",
+    "lords_cast_ja": "このクリップに主人公は登場しない。登場するのは2人だけ。\n・ベルギー領主: 白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされ、煉瓦の赤色のマントを肩に着けている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。\n・オランダ領主: 白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされ、澄んだ空の青色のマントを肩に着けている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。\n両者とも、全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。"
+  },
+  "clips": [
+    {
+      "index": 1,
+      "start_sec": 0,
+      "end_sec": 10,
+      "role": "ゴールデンフック",
+      "location": "石畳の小道(夕方)",
+      "vo_en": "Step over this white line, and you've left Belgium for the Netherlands. Step again, and you're back. Welcome to one of the world's strangest borders.",
+      "vo_reference_ja": "この白い線をまたぐとベルギーを出てオランダへ。もう一歩で元に戻る。世界でも指折りの奇妙な国境へようこそ。",
+      "outgoing_transition": "歩行方向とカメラ上昇を継続。小道から屋根の上へ場所転換。",
+      "prompt_ja": "【出力仕様】約10秒、縦長 9:16、720p相当、24FPS、同期した音声付き。\n\n【スタイル】Style 4「Cozy Storytelling」。フルカラーの2Dカートゥーン。はっきりした輪郭と映画的なカメラワーク。フォトリアルや3D人物、手描き風・スケッチブック風・紙の質感は使わない。\n\n【場所】夕方の黄金色の光に包まれた、ヨーロッパの小さな町の石畳の小道。両側に煉瓦の家。路面を横切って一本の白い線が塗られている。\n\n【キャラクター固定】白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口をもつ、ミニマルな2Dカートゥーンの主人公が1人。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。髪や服のアクセサリーはなし。全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。\n【持ち物】小さな赤いリュック1つを常に背負っている。\n\n【パレットの役割】煉瓦の赤=ベルギー側、澄んだ空の青=オランダ側、黄金色=夕方の光、クリームグレー=石畳。\n\n【構図(9:16)】前景・中景・背景の奥行きを使い、縦方向のクレーン移動と、足元から頭上へのティルトで見せる。\n\n【最初のフレーム】俯瞰気味の縦構図。白い線の手前に主人公が立ち、リュックを背負っている。\n\n【映像の流れ】\n[0–3s] 俯瞰から主人公の足元へゆっくり下降。白い線が画面を横切り、前景を落ち葉が横切る。\n[3–7s] 主人公が片足で線をまたぐ。足元にオランダの旗(赤・白・青)のアイコンがポンと灯る。もう一歩で戻ると、ベルギーの旗(黒・黄・赤)のアイコンに入れ替わる。軽快なSFX。\n[7–10s] 主人公が正面に向き直り、驚いた表情でうなずく。画面奥へ歩き出し、カメラがゆっくり上昇し始める。\n\n【セリフ(音声のみ)】 \"Step over this white line, and you've left Belgium for the Netherlands. Step again, and you're back. Welcome to one of the world's strangest borders.\" ──このセリフを一度だけ、一語も追加・省略・言い換え・繰り返し・並べ替えをせずに話す。音声のみで、吹き出し・字幕・文字として映像に出さない。\n\n【ナレーションの声】One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.\n\n【音楽・SFX】ピッツィカートとアコースティックギターの軽やかなワルツで、このテーマを今回確立する。足音、旗アイコンの軽いポップ音、落ち葉のかすかな音。ナレーションを最優先にし、音楽は控えめに。ナレーションを最優先にし、音楽は控えめに。\n\n【最後のフレーム】主人公が画面奥へ歩いており、カメラが上昇を始めている。白い線は画面下に残る。\n\n【禁止事項】映像内の文字・数字・字幕・ロゴ・透かし・吹き出しは一切なし。フォトリアルな肌、3D人間、追加の人物、余分な手足、崩れた解剖学、線の太さの変化、頭の形の変化は禁止。セリフの追加・省略・言い換え・重複禁止。形が溶けて変わるような抽象的なモーフィングは使わない。(旗はアイコンのみで文字なし)"
+    },
+    {
+      "index": 2,
+      "start_sec": 10,
+      "end_sec": 20,
+      "role": "常識を壊す",
+      "location": "赤い瓦屋根の上・夕焼け空",
+      "vo_en": "Most people think a border is one simple line. Not here. This town is a patchwork of Belgian and Dutch pieces, stitched like a quilt.",
+      "vo_reference_ja": "国境は一本の線だと思われがち。でもここは違う。ベルギーとオランダのパッチをキルトのように縫い合わせた町。",
+      "outgoing_transition": "下向きの動きを継続。屋根の上からカフェテラスへ場所転換。",
+      "prompt_ja": "【出力仕様】約10秒、縦長 9:16、720p相当、24FPS、同期した音声付き。\n\n【スタイル】Style 4「Cozy Storytelling」。フルカラーの2Dカートゥーン。はっきりした輪郭と映画的なカメラワーク。フォトリアルや3D人物、手描き風・スケッチブック風・紙の質感は使わない。\n\n【場所】夕焼け空の下、赤い瓦屋根の上。眼下に小さな町が広がる(クリップ1とは別の場所へ転換)。\n\n【キャラクター固定】白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口をもつ、ミニマルな2Dカートゥーンの主人公が1人。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。髪や服のアクセサリーはなし。全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。\n【持ち物】小さな赤いリュック1つを常に背負っている。\n\n【パレットの役割】煉瓦の赤系=ベルギー側のパッチ、澄んだ空の青系=オランダ側のパッチ、黄金色=夕焼けの光。\n\n【構図(9:16)】屋根の傾斜と空の高低差で縦の奥行きを作る。垂直方向の俯瞰と、ゆっくりした回り込み。\n\n【最初のフレーム】前のクリップで上昇していたカメラが屋根の高さに到達。主人公は屋根の上に立ち、足元から町を見下ろしている。リュックを背負っている。\n\n【映像の流れ】\n[0–3s] 町全体を見下ろす。区画ごとに赤系と青系の色が淡く分かれて見える。\n[3–7s] 色の境目が光る縫い目としてスッと描かれ、町がキルトのように見える。主人公が屋根の縁から身を乗り出し、指で縫い目を一本なぞる。屋根瓦を踏む足音。\n[7–10s] 主人公が驚いた表情で下を覗き込み、屋根の縁から飛び降りる。体が画面下方向へ動いたところで終わる。\n\n【セリフ(音声のみ)】 \"Most people think a border is one simple line. Not here. This town is a patchwork of Belgian and Dutch pieces, stitched like a quilt.\" ──このセリフを一度だけ、一語も追加・省略・言い換え・繰り返し・並べ替えをせずに話す。音声のみで、吹き出し・字幕・文字として映像に出さない。\n\n【ナレーションの声】One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.\n\n【音楽・SFX】Audio: クリップ1と同じ、ピッツィカートとアコースティックギターの軽やかなワルツがシームレスに続く。テンポ・楽器編成・明るい前進感は同一。物理的な動きに合わせた鮮明なSFX(縫い目が描かれる「スッ」という音、瓦を踏む音、風の音)。ナレーションを最優先にし、音楽は控えめに。\n\n【最後のフレーム】主人公が屋根の縁から下方向へ飛び降りている。\n\n【禁止事項】映像内の文字・数字・字幕・ロゴ・透かし・吹き出しは一切なし。フォトリアルな肌、3D人間、追加の人物、余分な手足、崩れた解剖学、線の太さの変化、頭の形の変化は禁止。セリフの追加・省略・言い換え・重複禁止。形が溶けて変わるような抽象的なモーフィングは使わない。"
+    },
+    {
+      "index": 3,
+      "start_sec": 20,
+      "end_sec": 30,
+      "role": "内幕を暴く",
+      "location": "カフェのテラス席(窓越しにリビングへ一度カット)",
+      "vo_en": "Belgian pieces sit inside the Netherlands, and some Dutch pieces sit inside those. Some borders even run straight through houses, cafés, and living rooms.",
+      "vo_reference_ja": "ベルギーの飛び地がオランダの中にあり、その中にさらにオランダの飛び地がある。家やカフェ、リビングを横切る国境もある。",
+      "outgoing_transition": "玄関ドアへ向かう歩行方向を継続。カフェから別の通りの玄関先へ場所転換。",
+      "prompt_ja": "【出力仕様】約10秒、縦長 9:16、720p相当、24FPS、同期した音声付き。\n\n【スタイル】Style 4「Cozy Storytelling」。フルカラーの2Dカートゥーン。はっきりした輪郭と映画的なカメラワーク。フォトリアルや3D人物、手描き風・スケッチブック風・紙の質感は使わない。\n\n【場所】夕方の黄金色の光が差すカフェのテラス席(クリップ2の屋根の上とは別の場所へ転換)。テーブルの中央を一本の白い線が通る。クリップ内で一度、窓越しに隣のリビングへ切り替わる。\n\n【キャラクター固定】白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口をもつ、ミニマルな2Dカートゥーンの主人公が1人。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。髪や服のアクセサリーはなし。全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。\n【持ち物】小さな赤いリュック1つを背負っている。折りたたみの紙の地図1枚(文字なし、赤系と青系の色の区画が入れ子になった絵だけ)をこのクリップ内で使う。\n\n【パレットの役割】煉瓦の赤系=ベルギー側、澄んだ空の青系=オランダ側、黄金色=夕方の光。\n\n【構図(9:16)】テーブルと窓で前景・中景・背景を作り、縦の奥行きで見せる。前景を通過するカップでワイプ。\n\n【最初のフレーム】主人公がテラス席に着地した直後(クリップ2の下向きの動きを受ける)。リュックを背負っている。テーブルの中央を白い線が通り、片側にカップが置かれている。\n\n【映像の流れ】\n[0–3s] 主人公がテーブルの前に立つ。白い線が光ってテーブルを二分し、カップは線の片側にある。前景をカップが横切るワイプ。\n[3–7s] 窓の向こうのリビングへカットイン。床の中央を白い線が走り、線の左右で置物と家具の色が赤系と青系に分かれる。主人公が窓越しにのぞく。\n[7–10s] 席に戻った主人公が、テーブルの上に折りたたみの地図を広げる。地図の上で、赤系の小さな島の中に青系の小さな島、さらにその中に赤系の島が入れ子になって見える。主人公が地図を畳んでリュックにしまい、通りの奥の玄関ドアに向かって歩き出す。\n\n【セリフ(音声のみ)】 \"Belgian pieces sit inside the Netherlands, and some Dutch pieces sit inside those. Some borders even run straight through houses, cafés, and living rooms.\" ──このセリフを一度だけ、一語も追加・省略・言い換え・繰り返し・並べ替えをせずに話す。音声のみで、吹き出し・字幕・文字として映像に出さない。\n\n【ナレーションの声】One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.\n\n【音楽・SFX】Audio: クリップ1と同じ、ピッツィカートとアコースティックギターの軽やかなワルツがシームレスに続く。テンポ・楽器編成・明るい前進感は同一。物理的な動きに合わせた鮮明なSFX(食器の軽い音、遠くのざわめき、地図を広げる紙の音)。ナレーションを最優先にし、音楽は控えめに。\n\n【最後のフレーム】地図はリュックの中にある。主人公が通りの奥の玄関ドアに向かって歩いている。\n\n【禁止事項】映像内の文字・数字・字幕・ロゴ・透かし・吹き出しは一切なし。フォトリアルな肌、3D人間、追加の人物、余分な手足、崩れた解剖学、線の太さの変化、頭の形の変化は禁止。セリフの追加・省略・言い換え・重複禁止。形が溶けて変わるような抽象的なモーフィングは使わない。(地図にも文字は入れない)"
+    },
+    {
+      "index": 4,
+      "start_sec": 30,
+      "end_sec": 40,
+      "role": "真相(仕組み)",
+      "location": "住宅の玄関先",
+      "vo_en": "So which country is your house in? Since 1995, the front door decides. Step inside, and you're officially Belgian... or Dutch.",
+      "vo_reference_ja": "では家はどちらの国? 1995年以降は玄関ドアで決まる。中に入れば公式にベルギー人、またはオランダ人。",
+      "outgoing_transition": "玄関の暖かい光が暖炉の炎へ溶ける。現代から数百年前へ時間ジャンプ。",
+      "prompt_ja": "【出力仕様】約10秒、縦長 9:16、720p相当、24FPS、同期した音声付き。\n\n【スタイル】Style 4「Cozy Storytelling」。フルカラーの2Dカートゥーン。はっきりした輪郭と映画的なカメラワーク。フォトリアルや3D人物、手描き風・スケッチブック風・紙の質感は使わない。\n\n【場所】夕方の黄金色の光に包まれた住宅の玄関先(クリップ3のカフェとは別の通りへ転換)。木のドア、玄関マット、敷居の前を一本の白い線が通る。\n\n【キャラクター固定】白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口をもつ、ミニマルな2Dカートゥーンの主人公が1人。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。髪や服のアクセサリーはなし。全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。\n【持ち物】小さな赤いリュック1つを背負っている。\n\n【パレットの役割】煉瓦の赤系=ベルギー側、澄んだ空の青系=オランダ側、黄金色=ドアの内側の暖かい光。\n\n【構図(9:16)】玄関ドアを画面の縦軸に据え、足元から頭上へのティルトアップと、ドアへのプッシュ。\n\n【最初のフレーム】主人公が通りを歩いて玄関先に近づいている(クリップ3の歩行方向を受ける)。リュックを背負っている。\n\n【映像の流れ】\n[0–3s] 玄関ドアの前に到着。敷居の前を白い線が通る。ドアノブに手を伸ばす。\n[3–7s] ドアが開くと、ドアの内側にスポットライトが当たり、国旗のアイコンが光で示される。ドアの軋む音。\n[7–10s] 主人公が敷居をまたぎ、頭上に国旗のアイコン(オランダ旗の赤・白・青、またはベルギー旗の黒・黄・赤)がポンと灯る。主人公が満足そうにうなずく。玄関から溢れる暖かい光が画面を白く包む。\n\n【セリフ(音声のみ)】 \"So which country is your house in? Since 1995, the front door decides. Step inside, and you're officially Belgian... or Dutch.\" ──このセリフを一度だけ、一語も追加・省略・言い換え・繰り返し・並べ替えをせずに話す。音声のみで、吹き出し・字幕・文字として映像に出さない。\n\n【ナレーションの声】One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.\n\n【音楽・SFX】Audio: クリップ1と同じ、ピッツィカートとアコースティックギターの軽やかなワルツがシームレスに続く。テンポ・楽器編成・明るい前進感は同一。物理的な動きに合わせた鮮明なSFX(ドアの軋み、「ポン」という灯りの音、足音)。ナレーションを最優先にし、音楽は控えめに。\n\n【最後のフレーム】玄関から溢れる暖かい光が画面全体を白く包んでいる。\n\n【禁止事項】映像内の文字・数字・字幕・ロゴ・透かし・吹き出しは一切なし。フォトリアルな肌、3D人間、追加の人物、余分な手足、崩れた解剖学、線の太さの変化、頭の形の変化は禁止。セリフの追加・省略・言い換え・重複禁止。形が溶けて変わるような抽象的なモーフィングは使わない。(玄関に番号や表札の文字も入れない)"
+    },
+    {
+      "index": 5,
+      "start_sec": 40,
+      "end_sec": 50,
+      "role": "究極の真実",
+      "location": "中世の城の広間(数百年前・時間ジャンプ)",
+      "vo_en": "Why such a mess? Centuries ago, medieval lords traded and divided land like playing cards, and nobody ever tidied up the leftovers.",
+      "vo_reference_ja": "なぜこんなことに? 昔の領主たちが土地をトランプのように取引し、残りを誰も片付けなかったから。",
+      "outgoing_transition": "窓明かりのひとつへズームインして現代の夜の寝室へ。",
+      "prompt_ja": "【出力仕様】約10秒、縦長 9:16、720p相当、24FPS、同期した音声付き。\n\n【スタイル】Style 4「Cozy Storytelling」。フルカラーの2Dカートゥーン。はっきりした輪郭と映画的なカメラワーク。フォトリアルや3D人物、手描き風・スケッチブック風・紙の質感は使わない。\n\n【場所】数百年前の中世の城の広間(時間ジャンプ)。石の壁、暖炉の炎、木のテーブル。窓の外には昔の野原が見える。\n\n【キャラクター固定】このクリップに主人公は登場しない。登場するのは2人だけ。\n・ベルギー領主: 白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされ、煉瓦の赤色のマントを肩に着けている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。\n・オランダ領主: 白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされ、澄んだ空の青色のマントを肩に着けている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。\n両者とも、全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。\n【小道具】土地を表す、赤・青・クリーム色の小さな木のタイルを数枚。形はすべて同じ小さな四角。\n\n【パレットの役割】煉瓦の赤=ベルギー側、澄んだ空の青=オランダ側、暖炉の黄金色=古い時代の灯り。\n\n【構図(9:16)】テーブルを見下ろす縦の俯瞰と、領主たちの顔のクローズアップを交互に使う。奥行きのある石の広間。\n\n【最初のフレーム】前のクリップの暖かい光が暖炉の炎へ溶け、広間のテーブルの両端に2人の領主が向かい合って座っている。\n\n【映像の流れ】\n[0–3s] 暖炉のそばのテーブルで、2人が向かい合う。テーブルの上に色タイルが散らばっている。炎が揺れる。\n[3–7s] 領主たちがタイルをトランプのように配り、交換し、笑ったり首をかしげたりする。俯瞰のクローズアップでタイルが手札のように飛ぶ。\n[7–10s] 散らかったタイルを誰も片付けないまま2人が席を立つ。窓の外の景色が、昔の野原から、赤系と青系のパッチが並ぶ現代の町の俯瞰へマッチカットで切り替わる。窓の外が夕暮れの町になり、窓明かりが灯り始める。\n\n【セリフ(音声のみ)】 \"Why such a mess? Centuries ago, medieval lords traded and divided land like playing cards, and nobody ever tidied up the leftovers.\" ──このセリフを一度だけ、一語も追加・省略・言い換え・繰り返し・並べ替えをせずに話す。音声のみで、吹き出し・字幕・文字として映像に出さない。\n\n【ナレーションの声】One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.\n\n【音楽・SFX】Audio: クリップ1と同じ、ピッツィカートとアコースティックギターの軽やかなワルツがシームレスに続く。テンポ・楽器編成・明るい前進感は同一。(ここでは笛やリュートの音色を軽く足してもよいが、モチーフは変えない)。物理的な動きに合わせた鮮明なSFX(タイルを配る木の音、暖炉のパチパチ音)。ナレーションを最優先にし、音楽は控えめに。\n\n【最後のフレーム】窓の外に、窓明かりが灯り始めた夕暮れの現代の町の俯瞰が見えている。\n\n【禁止事項】映像内の文字・数字・字幕・ロゴ・透かし・吹き出しは一切なし。フォトリアルな肌、3D人間、領主2人以外の人物、余分な手足、崩れた解剖学、線の太さの変化、頭の形の変化は禁止。セリフの追加・省略・言い換え・重複禁止。形が溶けて変わるような抽象的なモーフィングは使わない。"
+    },
+    {
+      "index": 6,
+      "start_sec": 50,
+      "end_sec": 60,
+      "role": "昇華+コメント誘導",
+      "location": "現代の夜の寝室",
+      "vo_en": "One street, two countries, endless questions. So tell me: if the border crossed your bedroom, which country would you sleep in?",
+      "vo_reference_ja": "一本の通りに二つの国、尽きない疑問。もし国境が寝室を横切ったら、どちらの国で眠る?",
+      "outgoing_transition": "最終フレームを後処理で1秒延長してエンドカードにする。",
+      "prompt_ja": "【出力仕様】約10秒、縦長 9:16、720p相当、24FPS、同期した音声付き。\n\n【スタイル】Style 4「Cozy Storytelling」。フルカラーの2Dカートゥーン。はっきりした輪郭と映画的なカメラワーク。フォトリアルや3D人物、手描き風・スケッチブック風・紙の質感は使わない。\n\n【場所】現代の夜の寝室(時間は現代に戻る)。窓の外に町の夜景。ベッドの中央を一本の白い線が縦に横切る。\n\n【キャラクター固定】白く塗りつぶされた丸い頭、小さな黒い楕円の目、シンプルな眉の線、短い曲線の口をもつ、ミニマルな2Dカートゥーンの主人公が1人。胴体はスリムで先細りの閉じた形で、黒い輪郭の内側が白で塗りつぶされている。両腕と両脚は太さが一定(中程度)の黒い単線。手は小さな黒い丸みのある形、足は短い黒い丸みのある線。髪や服のアクセサリーはなし。全ショットで頭と胴体の比率、頭と胴体の白い塗り、輪郭の太さを同じに保つ。腕はちょうど2本、脚はちょうど2本。動く手足は前のポーズを置き換え、残像の手足を残さない。表情は顔の簡単なマークだけで変え、頭の形やデザインは変えない。\n【持ち物】小さな赤いリュック1つ。このクリップの冒頭で背負っていて、最初の数秒で椅子の上に置く。\n\n【パレットの役割】煉瓦の赤系=ベルギー側(ベッドの片側)、澄んだ空の青系=オランダ側(反対側)、黄金色=夜の窓明かりとランプの暖かい光。\n\n【構図(9:16)】窓の明かりのひとつへズームインして寝室に入り、その後は横からの寄りと、頭上へゆっくり上昇するカメラ。\n\n【最初のフレーム】クリップ5で灯り始めた窓明かりのひとつにズームインし、寝室の内側が見える。主人公がドアから入ってくる。リュックを背負っている。\n\n【映像の流れ】\n[0–3s] 主人公が寝室に入り、リュックを椅子の上に置く。ベッドを白い線が縦に横切っている。\n[3–7s] ベッドの片側にオランダ旗のアイコン、反対側にベルギー旗のアイコンが交互に点滅する。主人公が線の両側を見比べて、頭をかしげる。\n[7–10s] 主人公が窓辺に歩き、窓の外の夜景を見つめる。カメラが頭上へゆっくり上昇し、余韻の中で静止に近づく。最後のフレームは約1秒の静止に耐える構図にする。\n\n【セリフ(音声のみ)】 \"One street, two countries, endless questions. So tell me: if the border crossed your bedroom, which country would you sleep in?\" ──このセリフを一度だけ、一語も追加・省略・言い換え・繰り返し・並べ替えをせずに話す。音声のみで、吹き出し・字幕・文字として映像に出さない。\n\n【ナレーションの声】One off-screen adult male narrator throughout. General American accent, warm clean baritone, medium-low pitch, gentle chest resonance, no raspiness or breathiness. Calm conversational delivery, restrained pitch variation, steady speaking pace, and close, dry studio sound. Keep the same vocal timbre, register, accent, pace, and recording quality throughout. Emotional progression belongs to the visuals and music; do not change the narrator's voice or switch to character dialogue.\n\n【音楽・SFX】Audio: クリップ1と同じ、ピッツィカートとアコースティックギターの軽やかなワルツがシームレスに続き、最後は余韻を残して静かに終わる。テンポ・楽器編成・明るい前進感は同一。物理的な動きに合わせた鮮明なSFX(リュックを置く音、旗アイコンの軽い点滅音、夜の虫の声)。ナレーションを最優先にし、音楽は控えめに。\n\n【最後のフレーム】窓辺に立つ主人公と、白い線が縦に走るベッド。夜景と暖かいランプの光。約1秒静止しても成立する構図。\n\n【禁止事項】映像内の文字・数字・字幕・ロゴ・透かし・吹き出しは一切なし。フォトリアルな肌、3D人間、追加の人物、余分な手足、崩れた解剖学、線の太さの変化、頭の形の変化は禁止。セリフの追加・省略・言い換え・重複禁止。形が溶けて変わるような抽象的なモーフィングは使わない。前のクリップの圧迫感のあるグラフィックは穏やかな結末に持ち込まない。"
+    }
+  ],
+  "end_card": {
+    "start_sec": 60,
+    "end_sec": 61,
+    "method": "クリップ6の最終フレームを後処理で1秒延長。ナレーションなし、BGMは静かにフェードアウト",
+    "overlay_en": "Which country would you pick?"
+  },
+  "post_production_overlays": [
+    {
+      "target": "clip_1",
+      "text_en": "Which side are you on?",
+      "placement": "下部のセーフエリア"
+    },
+    {
+      "target": "end_card",
+      "text_en": "Which country would you pick?",
+      "placement": "中央下"
+    }
+  ],
+  "fact_check_notes": [
+    "1995年以降は玄関ドアで決まる、飛び地の入れ子構造、国境が家やカフェを横切る点は、公開前に最新情報で最終確認する",
+    "中世の領主2人は抽象的なキャラクターで、実在の人物・年号は含まない",
+    "飛び地の正確な数は含めていない"
+  ]
+}
