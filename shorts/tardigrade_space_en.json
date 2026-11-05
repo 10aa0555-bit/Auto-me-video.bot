@@ -1,0 +1,145 @@
+{
+  "title": "The Animal That Survived Space",
+  "lang": "en",
+  "palette": "ocean",
+  "pill": [
+    "THE TOUGHEST",
+    "ANIMAL ALIVE?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": false,
+  "scenes": [
+    {
+      "narration": "There's an animal that survived the vacuum of space. And it's smaller than a grain of sand.",
+      "art": "a chubby cute eight-legged tardigrade water bear floating in outer space next to planet Earth, tiny and adorable"
+    },
+    {
+      "narration": "Meet the tardigrade, also called the water bear. The biggest are about one and a half millimeters long.",
+      "art": "a cute chubby tardigrade water bear walking on a giant green moss leaf, magnified view with a big magnifying glass frame",
+      "stat": {
+        "text": "1.5 MM",
+        "label": "at the very biggest",
+        "delay": 2.6
+      }
+    },
+    {
+      "narration": "Their superpower? When things get bad, they dry out, curl into a little ball called a tun, and basically pause life.",
+      "art": "a cute tardigrade curling up and drying into a small wrinkled barrel shape, sleeping peacefully, a pause symbol glowing above it",
+      "points": [
+        {
+          "text": "THE TUN",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 3.4
+        }
+      ]
+    },
+    {
+      "narration": "In two thousand seven, scientists sent about three thousand of them into orbit, on the outside of a spacecraft.",
+      "art": "a small round satellite capsule orbiting Earth with a tiny box on the outside full of sleeping tardigrades",
+      "stat": {
+        "text": "{n}",
+        "count": 3000,
+        "label": "water bears in orbit",
+        "delay": 2.4
+      },
+      "cite": "ESA FOTON-M3; Jönsson et al., Current Biology 2008"
+    },
+    {
+      "narration": "Twelve days of vacuum and cosmic radiation. Most survived. Some even handled raw solar UV.",
+      "art": "tiny dried tardigrades in space being hit by bright beams of sunlight and cosmic rays, glowing shield around them",
+      "stat": {
+        "text": "12 DAYS",
+        "delay": 0.6
+      }
+    },
+    {
+      "narration": "And back on Earth, the survivors could still reproduce.",
+      "art": "a happy tardigrade mother with a cluster of tiny eggs and baby tardigrades on soft moss",
+      "points": [
+        {
+          "text": "STILL ALIVE",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.6,
+          "color": "#7cf29c"
+        }
+      ]
+    },
+    {
+      "narration": "One of their proteins, called Dsup, even cut X-ray damage in lab-grown human cells by about forty percent.",
+      "art": "a glowing protective protein shield wrapping around a twisted DNA strand while x-ray beams bounce off it, scientific lab style",
+      "stat": {
+        "text": "{n}%",
+        "count": 40,
+        "label": "less X-ray damage",
+        "delay": 3.0
+      },
+      "cite": "Hashimoto et al., Nature Communications 2016"
+    },
+    {
+      "narration": "In twenty nineteen, a lander carrying dried tardigrades crashed into the Moon. So, are there water bears up there now?",
+      "art": "a small spacecraft lander crashing onto the grey surface of the Moon with a puff of dust, Earth in the black sky",
+      "points": [
+        {
+          "text": "APRIL 2019",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "To find out, scientists fired them out of a gun.",
+      "art": "a cartoon lab gas gun shooting a tiny capsule with a sleeping tardigrade at a sand target, scientist in goggles watching",
+      "cite": "Traspas & Burchell, Astrobiology 2021"
+    },
+    {
+      "narration": "They survived hits at about eight hundred meters per second. But that crash was probably too much.",
+      "art": "a dramatic slow-motion impact crater on the Moon, a tiny worried tardigrade silhouette near the dust",
+      "stat": {
+        "text": "~800 M/S",
+        "delay": 1.2
+      }
+    },
+    {
+      "narration": "So probably no water bears on the Moon. Probably.",
+      "art": "the quiet Moon surface at night with a tiny tardigrade-shaped question mark in the dust, Earth glowing above",
+      "min_duration": 3.0
+    },
+    {
+      "narration": "Where should we send them next?",
+      "min_duration": 2.6,
+      "stat": {
+        "text": "MARS?",
+        "delay": 0.4
+      }
+    }
+  ],
+  "post": {
+    "title": "This tiny animal survived space 🐻🚀",
+    "description": "Tardigrades (water bears) survived 12 days of open space, inspired a protein that protects human cells, and crash-landed on the Moon.\n\nSources:\nJönsson et al. (2008) Current Biology\nHashimoto et al. (2016) Nature Communications\nTraspas & Burchell (2021) Astrobiology",
+    "hashtags": [
+      "#tardigrade",
+      "#waterbear",
+      "#space",
+      "#science",
+      "#animals",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Where should we send tardigrades next? 👇"
+  },
+  "art_style": "v1"
+}

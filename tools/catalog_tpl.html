@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>作品一覧と投稿順</title>
+<style>
+  :root {
+    --bg: #f6f4ef; --panel: #ffffff; --ink: #1c1b1f; --muted: #6b6870; --line: #e3dfd6;
+    --accent: #d8233a; --accent-ink: #ffffff; --ok: #2f8a57; --ok-bg: #e4f3ea; --hold: #8a8590; --hold-bg: #eeecef;
+    --next-bg: #fff1f2; --btn: #1c1b1f; --btn-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121214; --panel: #1c1c20; --ink: #f1eff4; --muted: #a29fa8; --line: #2e2d33;
+      --accent: #ff4d63; --accent-ink: #1a0b0e; --ok: #6fd39a; --ok-bg: #1b2b22; --hold: #8f8b96; --hold-bg: #242328;
+      --next-bg: #2a171b; --btn: #f1eff4; --btn-ink: #121214;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121214; --panel: #1c1c20; --ink: #f1eff4; --muted: #a29fa8; --line: #2e2d33;
+    --accent: #ff4d63; --accent-ink: #1a0b0e; --ok: #6fd39a; --ok-bg: #1b2b22; --hold: #8f8b96; --hold-bg: #242328;
+    --next-bg: #2a171b; --btn: #f1eff4; --btn-ink: #121214;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 60px; }
+  h1 { font-size: 24px; margin: 4px 0 2px; letter-spacing: 0.02em; }
+  .sub { color: var(--muted); margin: 0 0 18px; font-size: 13px; }
+  nav { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 8px 0 10px; display: flex; gap: 8px; overflow-x: auto; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+  nav a { flex: none; text-decoration: none; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; }
+  .today { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 22px; }
+  .today h2 { margin: 0 0 6px; font-size: 16px; }
+  .today ul { margin: 0; padding-left: 18px; }
+  .today li { margin: 4px 0; }
+  section { margin: 0 0 30px; scroll-margin-top: 60px; }
+  section > h2 { font-size: 18px; margin: 0 0 4px; }
+  section > p.lead { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+  .list { display: grid; gap: 10px; }
+  .card { display: flex; gap: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px; }
+  .card.next { border-color: var(--accent); background: var(--next-bg); }
+  .card.posted, .card.hold { opacity: 0.8; }
+  .card img, .noimg { flex: none; width: 72px; height: 128px; border-radius: 8px; object-fit: cover; background: var(--line); }
+  .info { min-width: 0; flex: 1; }
+  .info h3 { margin: 2px 0 4px; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; }
+  .num { display: inline-block; min-width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 999px; background: var(--ink); color: var(--bg); font-size: 12px; font-weight: 700; margin-right: 6px; }
+  .b { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; vertical-align: 2px; }
+  .b.posted { background: var(--ok-bg); color: var(--ok); }
+  .b.next { background: var(--accent); color: var(--accent-ink); }
+  .b.hold { background: var(--hold-bg); color: var(--hold); }
+  .note { margin: 0 0 4px; color: var(--muted); font-size: 13px; }
+  .stat { margin: 0 0 4px; font-weight: 700; color: var(--ok); font-size: 13px; }
+  .pin { margin: 0 0 6px; font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; }
+  .btns { display: flex; flex-wrap: wrap; gap: 6px; }
+  .btns button, .btns a { font: inherit; font-size: 12px; font-weight: 600; border: 0; border-radius: 8px; padding: 7px 10px; cursor: pointer; background: var(--btn); color: var(--btn-ink); text-decoration: none; }
+  .btns a { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btns button.done { background: var(--ok); color: #fff; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 30px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>作品一覧と投稿順</h1>
+  <p class="sub">{{COUNTS}}。上から順に 1 日 1 本ずつ出せば OK。</p>
+  <nav>
+    <a href="#geo">地理（Odd Atlas）</a>
+    <a href="#motiv">モチベーション（別アカ）</a>
+    <a href="#posted">投稿済み</a>
+    <a href="#hold">出さないもの</a>
+  </nav>
+
+  <div class="today">
+    <h2>今日はこれを出す</h2>
+    <ul>
+      <li><b>Odd Atlas（地理）:</b> 赤枠の 1 番「国の中の国（レソト）」</li>
+      <li><b>別アカ（モチベーション）:</b> 赤枠の 1 番「Nobody is coming to save you」</li>
+      <li>同じ時間帯（夜 21〜23 時）に。AI ラベルを付けて、固定コメントを貼る。</li>
+    </ul>
+  </div>
+
+  <section id="geo">
+    <h2>地理（Odd Atlas）の投稿順</h2>
+    <p class="lead">伸びている「ありえない場所・国境」系を先に。「なぜ空っぽ？」系は似ているので間をあける。</p>
+    <div class="list">{{GEO_QUEUE}}</div>
+  </section>
+
+  <section id="motiv">
+    <h2>モチベーション（ヨハン風）の投稿順</h2>
+    <p class="lead">地理のアカウントには混ぜず、別のアカウントで出すのがおすすめ。</p>
+    <div class="list">{{MOTIV}}</div>
+  </section>
+
+  <section id="posted">
+    <h2>投稿済み（Odd Atlas）</h2>
+    <p class="lead">バールレ（地球ズーム前の版）が 18 時間で 348 回と一番の勢い。「ありえない場所・国境」系が強い。地球ズーム付きはレソトが最初の 1 本。</p>
+    <div class="list">{{GEO_POSTED}}</div>
+  </section>
+
+  <section id="hold">
+    <h2>出さないもの</h2>
+    <p class="lead">好みじゃなかったもの・今の方針から外れたもの。</p>
+    <div class="list">{{HOLD}}</div>
+  </section>
+
+  <footer>動画を開くと GitHub の renders ブランチの mp4 が開きます。投稿したら Claude に「◯◯出した」と言えば、この一覧を更新します。</footer>
+</main>
+<script>
+  document.querySelectorAll('button[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      var label = b.textContent;
+      try {
+        navigator.clipboard.writeText(text).then(function () {
+          b.classList.add('done'); b.textContent = 'コピーしました';
+          setTimeout(function () { b.classList.remove('done'); b.textContent = label; }, 1500);
+        }, function () { b.textContent = 'コピーできませんでした'; });
+      } catch (e) { b.textContent = 'コピーできませんでした'; }
+    });
+  });
+</script>
+</body>
+</html>

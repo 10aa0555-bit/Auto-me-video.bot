@@ -1,0 +1,384 @@
+{
+  "title": "The Loneliest Place on Earth",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This is the loneliest place on Earth. And sometimes, the closest humans to it are in space.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "banner": {
+        "lines": [
+          "THE LONELIEST",
+          "PLACE ON EARTH?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "markers": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "type": "pin",
+          "label": "Point Nemo",
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "It's called Point Nemo, the spot in the ocean farthest from any land.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "markers": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "type": "pin",
+          "label": "Point Nemo",
+          "delay": 0
+        }
+      ]
+    },
+    {
+      "narration": "The nearest land is about two thousand seven hundred kilometers away, in three directions.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -124.79,
+              -24.67
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 0.3,
+          "draw_time": 1.4,
+          "label": "2,688 KM"
+        },
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -109.45,
+              -27.2
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 0.9,
+          "draw_time": 1.4
+        },
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -126.37,
+              -72.95
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 1.5,
+          "draw_time": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "One is a tiny atoll, one is a rock near Easter Island, and one is an island off Antarctica.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -124.79,
+              -24.67
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 0,
+          "draw_time": 1.4
+        },
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -109.45,
+              -27.2
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 0,
+          "draw_time": 1.4
+        },
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -126.37,
+              -72.95
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ffd23f",
+          "width": 5,
+          "delay": 0,
+          "draw_time": 1.4
+        }
+      ],
+      "photos": [
+        {
+          "q": "Ducie Island aerial",
+          "caption": "DUCIE ATOLL",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.0,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "But the space station flies about four hundred kilometers overhead. So when it passes by, astronauts are the nearest people.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon space station with big blue solar panels",
+          "name": "satellite",
+          "pos": [
+            0.15,
+            0.3
+          ],
+          "to": [
+            0.85,
+            0.3
+          ],
+          "travel_time": 3.4,
+          "size": 240,
+          "delay": 0.8
+        }
+      ],
+      "photos": [
+        {
+          "q": "International Space Station NASA",
+          "caption": "THE ISS",
+          "pos": [
+            0.5,
+            0.36
+          ],
+          "delay": 3.2,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Nobody lives here, so space agencies use it as a graveyard.",
+      "camera": {
+        "center": [
+          -123.4,
+          -48.9
+        ],
+        "span": 20
+      }
+    },
+    {
+      "narration": "Old satellites and cargo ships are steered down here to burn up and sink. Over a hundred and fifty have ended up here.",
+      "camera": {
+        "center": [
+          -123.4,
+          -48.9
+        ],
+        "span": 20
+      },
+      "texts": [
+        {
+          "text": "{n}+ SPACECRAFT",
+          "count": 150,
+          "accent": [
+            "SPACECRAFT"
+          ],
+          "y": 0.22,
+          "size": 90,
+          "delay": 1.8
+        }
+      ]
+    },
+    {
+      "narration": "The biggest was Mir, the Russian space station, brought down in 2001.",
+      "tts": "The biggest was Mir, the Russian space station, brought down in two thousand one.",
+      "camera": {
+        "center": [
+          -123.4,
+          -48.9
+        ],
+        "span": 20
+      },
+      "year": "2001",
+      "photos": [
+        {
+          "q": "Mir space station NASA",
+          "caption": "MIR",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Point Nemo was only found in 1992, by a computer, not a sailor.",
+      "tts": "Point Nemo was only found in nineteen ninety-two, by a computer, not a sailor.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "year": "1992"
+    },
+    {
+      "narration": "And here's a creepy bonus. A famous horror writer put his sunken monster city very close to this spot.",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "photos": [
+        {
+          "q": "H. P. Lovecraft 1934",
+          "caption": "H.P. LOVECRAFT",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Mud, cold water, and almost nothing alive on the seabed. Truly the middle of nowhere.",
+      "camera": {
+        "center": [
+          -123.4,
+          -48.9
+        ],
+        "span": 20
+      }
+    },
+    {
+      "narration": "Would you sail to Point Nemo alone? Yes or no?",
+      "camera": {
+        "center": [
+          -118,
+          -48
+        ],
+        "span": 62
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The loneliest place on Earth 🌊 #geography #space",
+    "description": "Point Nemo is the spot in the ocean farthest from any land, about 2,700 km. Sometimes the nearest humans are astronauts on the ISS. It's also a spacecraft graveyard.",
+    "hashtags": [
+      "#geography",
+      "#ocean",
+      "#space",
+      "#pointnemo",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you sail to Point Nemo alone? 👇"
+  },
+  "imagery": "bluemarble"
+}

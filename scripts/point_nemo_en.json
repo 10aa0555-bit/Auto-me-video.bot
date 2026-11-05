@@ -1,0 +1,391 @@
+{
+  "title": "The loneliest place on Earth is a spacecraft graveyard",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Eerie, mysterious deep ocean ambient documentary music with a slow pulse, for a science short video, no vocals",
+    "volume": 0.22,
+    "bpm": 88
+  },
+  "post": {
+    "title": "The closest humans to this spot are in SPACE 🚀🌊",
+    "description": "Point Nemo is the spot in the ocean farthest from any land — and where old spacecraft go to die.",
+    "hashtags": [
+      "#space",
+      "#ocean",
+      "#pointnemo",
+      "#geography",
+      "#didyouknow",
+      "#science",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you sail to Point Nemo? 🌊👇"
+  },
+  "scenes": [
+    {
+      "narration": "This is the loneliest place on Earth.",
+      "camera": {
+        "center": [
+          -118,
+          -42
+        ],
+        "span": 95
+      },
+      "markers": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.6
+        }
+      ],
+      "banner": {
+        "lines": [
+          "LONELIEST PLACE",
+          "ON EARTH"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 82
+      }
+    },
+    {
+      "narration": "It's called Point Nemo, the spot in the ocean that's farthest from any land.",
+      "camera": {
+        "center": [
+          -121,
+          -46
+        ],
+        "span": 70
+      },
+      "markers": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "type": "pin",
+          "label": "Point Nemo",
+          "delay": 0.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "compass",
+          "at": [
+            -110,
+            -38
+          ],
+          "size": 196,
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "The nearest land is about 2,700 kilometers away, in every direction.",
+      "tts": "The nearest land is about two thousand seven hundred kilometers away, in every direction.",
+      "camera": {
+        "center": [
+          -118,
+          -45
+        ],
+        "span": 90
+      },
+      "circles": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "radius_km": 2688,
+          "color": "#1e88e5",
+          "delay": 0.3
+        }
+      ],
+      "lines": [
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -124.79,
+              -24.67
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "dashed",
+          "width": 7,
+          "label": "auto",
+          "delay": 1.4,
+          "draw_time": 1.4
+        },
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -109.42,
+              -27.2
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "dashed",
+          "width": 7,
+          "delay": 1.8,
+          "draw_time": 1.4
+        },
+        {
+          "path": [
+            [
+              -123.39,
+              -48.88
+            ],
+            [
+              -123.0,
+              -72.5
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "dashed",
+          "width": 7,
+          "delay": 2.2,
+          "draw_time": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "So the closest humans are usually... astronauts on the International Space Station, about 400 kilometers above.",
+      "tts": "So the closest humans are usually... astronauts on the International Space Station, about four hundred kilometers above.",
+      "camera": {
+        "center": [
+          -123.39,
+          -46
+        ],
+        "span": 40
+      },
+      "icons": [
+        {
+          "name": "satellite",
+          "at": [
+            -140,
+            -36
+          ],
+          "to": [
+            -123.39,
+            -44.5
+          ],
+          "size": 238,
+          "delay": 1.6,
+          "travel_time": 2.6,
+          "label": "ISS"
+        },
+        {
+          "name": "astronaut",
+          "at": [
+            -112,
+            -40
+          ],
+          "size": 210,
+          "delay": 3.4
+        }
+      ],
+      "texts": [
+        {
+          "text": "400 KM UP",
+          "accent": [
+            "UP"
+          ],
+          "y": 0.25,
+          "size": 96,
+          "delay": 4.2
+        }
+      ]
+    },
+    {
+      "narration": "That's why space agencies use it as a graveyard for old spacecraft.",
+      "camera": {
+        "center": [
+          -123.39,
+          -48
+        ],
+        "span": 30
+      },
+      "icons": [
+        {
+          "name": "rocket",
+          "at": [
+            -130,
+            -38
+          ],
+          "to": [
+            -123.39,
+            -48.0
+          ],
+          "size": 210,
+          "delay": 0.6,
+          "travel_time": 1.8,
+          "anim": "shake"
+        },
+        {
+          "name": "skull",
+          "at": [
+            -123.39,
+            -50.5
+          ],
+          "size": 210,
+          "delay": 2.8
+        }
+      ]
+    },
+    {
+      "narration": "Hundreds of satellites and spacecraft rest on the seafloor here, including Russia's Mir space station.",
+      "year": "2001",
+      "camera": {
+        "center": [
+          -123.39,
+          -48
+        ],
+        "span": 30
+      },
+      "icons": [
+        {
+          "name": "satellite",
+          "at": [
+            -123.39,
+            -49.5
+          ],
+          "size": 140,
+          "count": 6,
+          "spread": 98,
+          "delay": 0.6
+        },
+        {
+          "name": "rocket",
+          "at": [
+            -118.5,
+            -45.5
+          ],
+          "size": 168,
+          "delay": 3.8,
+          "label": "MIR"
+        }
+      ]
+    },
+    {
+      "narration": "And around 2030, the space station itself is planned to come down here too.",
+      "tts": "And around twenty thirty, the space station itself is planned to come down here too.",
+      "year": "2030",
+      "camera": {
+        "center": [
+          -123.39,
+          -46
+        ],
+        "span": 40
+      },
+      "icons": [
+        {
+          "name": "satellite",
+          "at": [
+            -150,
+            -30
+          ],
+          "to": [
+            -123.39,
+            -48.0
+          ],
+          "size": 266,
+          "delay": 0.8,
+          "travel_time": 2.6,
+          "anim": "shake",
+          "label": "ISS"
+        },
+        {
+          "name": "water wave",
+          "at": [
+            -123.39,
+            -50.5
+          ],
+          "size": 210,
+          "delay": 3.6
+        }
+      ]
+    },
+    {
+      "narration": "Creepier still, the horror writer H. P. Lovecraft placed the sunken city of the monster Cthulhu very close to here.",
+      "tts": "Creepier still, the horror writer H P Lovecraft placed the sunken city of the monster Cthulhu very close to here.",
+      "camera": {
+        "center": [
+          -125,
+          -48
+        ],
+        "span": 22
+      },
+      "icons": [
+        {
+          "name": "octopus",
+          "at": [
+            -126.7,
+            -47.15
+          ],
+          "size": 280,
+          "delay": 3.4,
+          "anim": "bob"
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "Would you sail to the loneliest place on Earth? Follow for more.",
+      "camera": {
+        "center": [
+          -118,
+          -42
+        ],
+        "span": 95
+      },
+      "markers": [
+        {
+          "at": [
+            -123.39,
+            -48.88
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.4
+        }
+      ],
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 2.0,
+        "y": 0.8
+      },
+      "min_duration": 5.0
+    }
+  ]
+}

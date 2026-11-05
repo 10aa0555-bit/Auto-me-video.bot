@@ -1,0 +1,903 @@
+{
+  "title": "Why Does Australia Have a 5,600 km Fence?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This fence is longer than the flight from London to New York. And it was built to stop one animal.",
+      "camera": {
+        "center": [
+          141,
+          -29
+        ],
+        "span": 26
+      },
+      "banner": {
+        "lines": [
+          "WHY BUILD A",
+          "5,600 KM FENCE?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 1.0,
+          "draw_time": 3.6,
+          "label": "{n} KM",
+          "count": 5614
+        }
+      ],
+      "fill": {
+        "AUS": "flag:au"
+      }
+    },
+    {
+      "narration": "It's called the Dingo Fence: five thousand six hundred kilometers of wire across three states.",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ],
+      "outline": [
+        "AUS"
+      ],
+      "fill": {
+        "AUS": null
+      }
+    },
+    {
+      "narration": "It started as rabbit fences in the eighteen-eighties. By the nineteen-fifties, it had become one giant wall against wild dogs.",
+      "year": "1950s",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "Why? Sheep. South of the fence is sheep country, and dingoes were eating the profits.",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon fluffy white sheep",
+          "name": "ewe",
+          "at": [
+            143.5,
+            -32.5
+          ],
+          "count": 5,
+          "spread": 70,
+          "size": 120,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "North of the fence, dingoes still roam free. South of it, they're hunted, trapped and kept out.",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon australian dingo dog, orange fur, standing",
+          "name": "dog",
+          "at": [
+            139.5,
+            -26.0
+          ],
+          "size": 190,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "But removing a predator is never that simple.",
+      "camera": {
+        "center": [
+          140.6,
+          -29.0
+        ],
+        "span": 3.2
+      },
+      "base": "relief",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "In one study, scientists counted animals on both sides. Inside the fence, they found one dingo and over three thousand kangaroos.",
+      "camera": {
+        "center": [
+          140.6,
+          -29.0
+        ],
+        "span": 3.2
+      },
+      "base": "relief",
+      "dim": true,
+      "bars": {
+        "title": "KANGAROOS COUNTED",
+        "y": 0.24,
+        "delay": 2.6,
+        "items": [
+          {
+            "label": "INSIDE THE FENCE",
+            "value": 3245,
+            "color": "#ff7b2e"
+          },
+          {
+            "label": "OUTSIDE",
+            "value": 8,
+            "color": "#3ddc84"
+          }
+        ]
+      }
+    },
+    {
+      "narration": "Outside, there were eighty-five dingoes, and just eight kangaroos.",
+      "camera": {
+        "center": [
+          140.6,
+          -29.0
+        ],
+        "span": 3.2
+      },
+      "base": "relief",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ],
+      "texts": [
+        {
+          "text": "{n} DINGOES",
+          "count": 85,
+          "accent": [
+            "DINGOES"
+          ],
+          "y": 0.22,
+          "size": 96,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "With no dingoes, kangaroos graze much harder, and researchers found poorer soil on that side.",
+      "camera": {
+        "center": [
+          140.6,
+          -29.0
+        ],
+        "span": 3.2
+      },
+      "base": "relief",
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "So the fence didn't just split the animals. It split the land.",
+      "camera": {
+        "center": [
+          141,
+          -29
+        ],
+        "span": 26
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "Some scientists now think letting dingoes back in could help the outback heal.",
+      "camera": {
+        "center": [
+          141,
+          -29
+        ],
+        "span": 26
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ]
+    },
+    {
+      "narration": "So should Australia tear down the fence? Yes or no?",
+      "min_duration": 3.4,
+      "lines": [
+        {
+          "path": [
+            [
+              151.2,
+              -26.95
+            ],
+            [
+              149.6,
+              -26.6
+            ],
+            [
+              147.6,
+              -26.9
+            ],
+            [
+              145.6,
+              -27.8
+            ],
+            [
+              143.6,
+              -28.7
+            ],
+            [
+              141.0,
+              -29.0
+            ],
+            [
+              139.5,
+              -29.25
+            ],
+            [
+              137.6,
+              -29.55
+            ],
+            [
+              135.6,
+              -29.3
+            ],
+            [
+              134.75,
+              -29.05
+            ],
+            [
+              133.9,
+              -29.9
+            ],
+            [
+              133.1,
+              -30.8
+            ],
+            [
+              132.5,
+              -31.6
+            ]
+          ],
+          "style": "glow",
+          "color": "#ffd23f",
+          "width": 8,
+          "delay": 0,
+          "draw_time": 0.01
+        }
+      ],
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why does Australia have a 5,600 km fence? 🐕 #australia #geography",
+    "description": "The Dingo Fence is longer than a flight from London to New York. It protects sheep, but it also changed the land on each side.",
+    "hashtags": [
+      "#australia",
+      "#dingo",
+      "#geography",
+      "#maps",
+      "#nature",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Keep the fence or tear it down? 👇"
+  }
+}

@@ -1,0 +1,217 @@
+{
+ "title": "The Quiet One",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Be afraid of the quiet one. 🖤",
+  "description": "Send this to the quietest person you know.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "Are you the loud one or the quiet one? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "face",
+   "narration": "Be careful with the quiet ones. They are not weak. They are watching.",
+   "hot": [
+    "QUIET",
+    "WATCHING"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "While everyone else is talking, they are listening, learning, and remembering everything.",
+   "hot": [
+    "LISTENING",
+    "REMEMBERING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 7
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "Loud people show their cards. Quiet people plan their next three moves.",
+   "hot": [
+    "CARDS",
+    "MOVES"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 48
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "They don't announce their goals. They let the results arrive without a sound.",
+   "hot": [
+    "RESULTS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 37
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Silence is not empty. Silence is where real strength grows, far away from applause.",
+   "hot": [
+    "SILENCE",
+    "STRENGTH"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 22
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "The quiet one does not need you to believe in them. They already believe in themselves.",
+   "hot": [
+    "BELIEVE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 16
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "And one day, everyone who laughed at them will ask, how did that happen so fast?",
+   "hot": [
+    "FAST"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 36
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "It didn't happen fast. It happened quietly, every single night, while nobody was looking.",
+   "hot": [
+    "QUIETLY",
+    "NIGHT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 38
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "So talk less. Work more. Let your progress make the noise.",
+   "hot": [
+    "NOISE"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "The quiet one is not waiting for attention. They are waiting for the right moment.",
+   "hot": [
+    "MOMENT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 5
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Which one are you?",
+   "hot": [
+    "YOU"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,213 @@
+{
+ "title": "Frozen But Still Alive",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "nature",
+ "silent": true,
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "am_michael",
+  "settings": {
+   "speed": 1.0
+  }
+ },
+ "post": {
+  "title": "This frog freezes solid… and survives 🐸❄️",
+  "description": "Send this to someone who needs a reminder that winter ends.\n\nThe wood frog lets up to about two-thirds of its body water freeze. Its heart stops, and glucose from its liver protects its cells until spring.",
+  "hashtags": [
+   "#nature",
+   "#animals",
+   "#science",
+   "#woodfrog",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "Would you rather freeze like this frog or hibernate like a bear? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "frog_hook",
+   "duration": 6.0,
+   "subs": [
+    "THIS FROG CAN FREEZE SOLID…",
+    "AND STILL SURVIVE."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "thud"
+    ],
+    [
+     0.4,
+     "riser",
+     {
+      "dur": 1.2
+     }
+    ]
+   ],
+   "narration": "THIS FROG CAN FREEZE SOLID… AND STILL SURVIVE."
+  },
+  {
+   "scene": "frog_winter",
+   "duration": 10.0,
+   "subs": [
+    "When winter arrives, most animals escape the cold.",
+    "But this frog has a different strategy."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 1.0,
+      "seed": 3
+     }
+    ]
+   ],
+   "narration": "When winter arrives, most animals escape the cold. But this frog has a different strategy."
+  },
+  {
+   "scene": "frog_inside",
+   "duration": 13.0,
+   "subs": [
+    "Its liver releases huge amounts of glucose.",
+    "A natural antifreeze that protects its vital cells."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.8,
+      "seed": 5
+     }
+    ],
+    [
+     1.5,
+     "glitch",
+     {
+      "dur": 0.3
+     }
+    ]
+   ],
+   "narration": "Its liver releases huge amounts of glucose. A natural antifreeze that protects its vital cells."
+  },
+  {
+   "scene": "frog_frozen",
+   "duration": 12.0,
+   "subs": [
+    "Its heart stops.",
+    "It stops breathing.",
+    "Up to two-thirds of its body water can freeze."
+   ],
+   "sfx": [
+    [
+     0.5,
+     "heartbeat",
+     {
+      "dur": 4.5,
+      "bpm": 70,
+      "bpm2": 30
+     }
+    ],
+    [
+     6.0,
+     "ding"
+    ]
+   ],
+   "narration": "Its heart stops. It stops breathing. Up to two-thirds of its body water can freeze."
+  },
+  {
+   "scene": "frog_wait",
+   "duration": 13.0,
+   "subs": [
+    "For weeks… it waits.",
+    "Not dead.",
+    "Just waiting for spring."
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 1.2,
+      "seed": 7
+     }
+    ],
+    [
+     8.0,
+     "birds",
+     {
+      "dur": 5
+     }
+    ]
+   ],
+   "narration": "For weeks… it waits. Not dead. Just waiting for spring."
+  },
+  {
+   "scene": "frog_thaw",
+   "duration": 10.0,
+   "season": "spring",
+   "subs": [
+    "As temperatures rise, its body thaws.",
+    "And life begins again."
+   ],
+   "sfx": [
+    [
+     3.0,
+     "pop",
+     {
+      "pitch": 0.8
+     }
+    ],
+    [
+     5.6,
+     "heartbeat",
+     {
+      "dur": 3,
+      "bpm": 40,
+      "bpm2": 80
+     }
+    ],
+    [
+     1.0,
+     "birds",
+     {
+      "dur": 6
+     }
+    ]
+   ],
+   "narration": "As temperatures rise, its body thaws. And life begins again."
+  },
+  {
+   "scene": "frog_leap",
+   "duration": 6.5,
+   "season": "spring",
+   "subs": [
+    "Nature doesn't always escape the impossible.",
+    "Sometimes… it survives it."
+   ],
+   "sfx": [
+    [
+     0.6,
+     "slide"
+    ],
+    [
+     2.2,
+     "thud"
+    ],
+    [
+     2.3,
+     "whoosh",
+     {
+      "dur": 0.6,
+      "seed": 9
+     }
+    ]
+   ],
+   "narration": "Nature doesn't always escape the impossible. Sometimes… it survives it."
+  }
+ ]
+}

@@ -1,0 +1,416 @@
+{
+  "title": "The Loneliest Island on Earth",
+  "imagery": "bluemarble",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "post": {
+    "title": "The loneliest island on Earth 🌊 #geography #maps",
+    "description": "About 250 people live on Tristan da Cunha in the South Atlantic: about 2,400 km from Saint Helena, 2,800 km from South Africa, with no airport. In 1961 the whole island was evacuated after an eruption, and most islanders came back two years later.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#tristandacunha",
+      "#island",
+      "#remote",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you live there? Yes or no 👇"
+  },
+  "scenes": [
+    {
+      "narration": "About 250 people live on this tiny island. Their nearest neighbors are an ocean away.",
+      "camera": {
+        "center": [
+          -6,
+          -31
+        ],
+        "span": 48
+      },
+      "banner": {
+        "lines": [
+          "THE LONELIEST",
+          "ISLAND ON EARTH?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      },
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 2.0
+        }
+      ],
+      "tts": "About two hundred and fifty people live on this tiny island. Their nearest neighbors are an ocean away."
+    },
+    {
+      "narration": "This is Tristan da Cunha, a lonely volcano in the South Atlantic.",
+      "camera": {
+        "center": [
+          -12.28,
+          -37.11
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Tristan da Cunha island from the sea",
+          "caption": "TRISTAN DA CUNHA",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.4,
+          "size": 620
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
+        }
+      ]
+    },
+    {
+      "narration": "The nearest inhabited island, Saint Helena, is about 2,400 kilometers away.",
+      "camera": {
+        "center": [
+          -9,
+          -26.5
+        ],
+        "span": 24
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -12.28,
+              -37.11
+            ],
+            [
+              -5.72,
+              -15.92
+            ]
+          ],
+          "style": "ruler",
+          "delay": 0.8,
+          "draw_time": 1.8,
+          "label": "{n} KM",
+          "count": 2430
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -5.72,
+            -15.92
+          ],
+          "type": "pin",
+          "label": "Saint Helena",
+          "delay": 2.8
+        }
+      ],
+      "tts": "The nearest inhabited island, Saint Helena, is about two thousand four hundred kilometers away."
+    },
+    {
+      "narration": "Africa is about 2,800 kilometers away. And there's no airport.",
+      "camera": {
+        "center": [
+          3,
+          -34
+        ],
+        "span": 46
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              -12.28,
+              -37.11
+            ],
+            [
+              18.42,
+              -33.92
+            ]
+          ],
+          "style": "ruler",
+          "delay": 0.6,
+          "draw_time": 1.8,
+          "label": "{n} KM",
+          "count": 2800
+        }
+      ],
+      "texts": [
+        {
+          "text": "NO AIRPORT",
+          "accent": [
+            "NO"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 3.0
+        }
+      ],
+      "tts": "Africa is about two thousand eight hundred kilometers away. And there's no airport."
+    },
+    {
+      "narration": "The only way in is a week-long boat trip from Cape Town, if the weather even lets you land.",
+      "camera": {
+        "center": [
+          3,
+          -34
+        ],
+        "span": 46
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon small red and white ship sailing, side view",
+          "name": "ship",
+          "at": [
+            18.42,
+            -33.92
+          ],
+          "to": [
+            -12.28,
+            -37.11
+          ],
+          "travel_time": 4.0,
+          "size": 230,
+          "delay": 0.6
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            18.42,
+            -33.92
+          ],
+          "type": "pin",
+          "label": "Cape Town",
+          "delay": 0.2
+        },
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "In 1816, Britain put soldiers here, partly so the French couldn't use it to rescue Napoleon.",
+      "tts": "In eighteen sixteen, Britain put soldiers here, partly so the French couldn't use it to rescue Napoleon.",
+      "camera": {
+        "center": [
+          -9,
+          -26.5
+        ],
+        "span": 24
+      },
+      "year": "1816",
+      "photos": [
+        {
+          "q": "File:Jacques-Louis David - The Emperor Napoleon in His Study at the Tuileries - Google Art Project.jpg",
+          "caption": "NAPOLEON",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.4,
+          "size": 560
+        }
+      ]
+    },
+    {
+      "narration": "When they left, one soldier, William Glass, stayed. Settlers and shipwrecked sailors joined him.",
+      "camera": {
+        "center": [
+          -12.28,
+          -37.11
+        ],
+        "span": 4
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon old-fashioned British soldier from the 1800s in a red coat, standing, friendly face",
+          "name": "soldier",
+          "at": [
+            -13.4,
+            -36.4
+          ],
+          "size": 240,
+          "delay": 1.0
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
+        }
+      ]
+    },
+    {
+      "narration": "Today, everyone lives in one small village, and the whole island shares only about eight family names.",
+      "camera": {
+        "center": [
+          -12.311,
+          -37.067
+        ],
+        "span": 4
+      },
+      "markers": [
+        {
+          "at": [
+            -12.311,
+            -37.067
+          ],
+          "type": "pin",
+          "label": "The only village",
+          "delay": 0.5
+        }
+      ],
+      "photos": [
+        {
+          "q": "Edinburgh of the Seven Seas Tristan da Cunha",
+          "caption": "THE ONLY VILLAGE",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.8,
+          "size": 620
+        }
+      ],
+      "texts": [
+        {
+          "text": "~8 SURNAMES",
+          "accent": [
+            "8"
+          ],
+          "y": 0.8,
+          "size": 84,
+          "delay": 4.4
+        }
+      ]
+    },
+    {
+      "narration": "In 1961, the volcano behind the village erupted, and the whole island was evacuated to England.",
+      "tts": "In nineteen sixty one, the volcano behind the village erupted, and the whole island was evacuated to England.",
+      "camera": {
+        "center": [
+          -12.311,
+          -37.067
+        ],
+        "span": 4
+      },
+      "year": "1961",
+      "photos": [
+        {
+          "q": "Queen Mary's Peak Tristan da Cunha",
+          "caption": "QUEEN MARY'S PEAK",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
+        }
+      ]
+    },
+    {
+      "narration": "They could have stayed in England for good. But two years later, most of them came back.",
+      "camera": {
+        "center": [
+          -12.28,
+          -37.11
+        ],
+        "span": 4
+      },
+      "texts": [
+        {
+          "text": "THEY CAME BACK",
+          "accent": [
+            "BACK"
+          ],
+          "y": 0.22,
+          "size": 90,
+          "delay": 2.6
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            -12.28,
+            -37.11
+          ],
+          "type": "pin",
+          "label": "Tristan da Cunha",
+          "delay": 0.3
+        }
+      ]
+    },
+    {
+      "narration": "No airport, no neighbors, a week at sea. Would you live here? Yes or no?",
+      "camera": {
+        "center": [
+          -6,
+          -31
+        ],
+        "span": 48
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 2.4
+        }
+      ]
+    }
+  ]
+}

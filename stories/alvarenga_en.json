@@ -1,0 +1,684 @@
+{
+  "title": "He Went Fishing for 30 Hours and Came Back 438 Days Later",
+  "lang": "en",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "am_michael",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "hook": [
+    "HE WENT FISHING",
+    "FOR 30 HOURS…",
+    "AND CAME BACK 438 DAYS LATER"
+  ],
+  "scenes": [
+    {
+      "narration": "In 2012, a fisherman named Salvador left Mexico for a thirty-hour fishing trip.",
+      "sky": "day",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          14,
+          8,
+          16
+        ],
+        "look": [
+          0,
+          1,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "happy",
+          "wave": 1
+        },
+        {
+          "type": "char",
+          "pos": [
+            -0.5,
+            0.95,
+            -1.6
+          ],
+          "scale": 0.42,
+          "float": true,
+          "shirt": "#3d7fd8",
+          "hair": "#5a3a22",
+          "rot": -15,
+          "face": "happy"
+        }
+      ]
+    },
+    {
+      "narration": "Then a storm hit. Waves smashed the boat, the engine died, and the radio went dead.",
+      "sky": "storm",
+      "waves": 2.2,
+      "lightning": true,
+      "shake": 0.7,
+      "cam": {
+        "pos": [
+          7,
+          4.5,
+          9
+        ],
+        "look": [
+          0,
+          1.6,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "scream"
+        },
+        {
+          "type": "char",
+          "pos": [
+            -0.5,
+            0.95,
+            -1.6
+          ],
+          "scale": 0.42,
+          "float": true,
+          "shirt": "#3d7fd8",
+          "hair": "#5a3a22",
+          "rot": -15,
+          "face": "shock"
+        }
+      ],
+      "counter": "DAY 1"
+    },
+    {
+      "narration": "The wind pushed them into the open Pacific. No engine, no food, no way to call for help.",
+      "sky": "storm",
+      "waves": 1.6,
+      "cam": {
+        "pos": [
+          40,
+          26,
+          50
+        ],
+        "look": [
+          0,
+          0,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "worried"
+        },
+        {
+          "type": "char",
+          "pos": [
+            -0.5,
+            0.95,
+            -1.6
+          ],
+          "scale": 0.42,
+          "float": true,
+          "shirt": "#3d7fd8",
+          "hair": "#5a3a22",
+          "rot": -15,
+          "face": "worried"
+        }
+      ],
+      "counter": "DAY 3"
+    },
+    {
+      "narration": "They caught fish and sea turtles with their bare hands, and drank turtle blood when there was no rain.",
+      "sky": "day",
+      "waves": 0.4,
+      "cam": {
+        "pos": [
+          2.2,
+          2.6,
+          5.5
+        ],
+        "look": [
+          0.3,
+          2.1,
+          0.4
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "worried",
+          "wave": 0.6
+        },
+        {
+          "type": "char",
+          "pos": [
+            -0.5,
+            0.95,
+            -1.6
+          ],
+          "scale": 0.42,
+          "float": true,
+          "shirt": "#3d7fd8",
+          "hair": "#5a3a22",
+          "rot": -15,
+          "face": "worried"
+        }
+      ],
+      "counter": "DAY 30"
+    },
+    {
+      "narration": "At night the cold was brutal, so they curled up inside an old fish box.",
+      "sky": "night",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          14,
+          8,
+          16
+        ],
+        "look": [
+          0,
+          1,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "worried"
+        },
+        {
+          "type": "char",
+          "pos": [
+            -0.5,
+            0.95,
+            -1.6
+          ],
+          "scale": 0.42,
+          "float": true,
+          "shirt": "#3d7fd8",
+          "hair": "#5a3a22",
+          "rot": -15,
+          "face": "worried"
+        }
+      ],
+      "counter": "DAY 60"
+    },
+    {
+      "narration": "But after about four months, his young crewmate grew too weak to eat. He died on the boat.",
+      "sky": "sunset",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          7,
+          4.5,
+          9
+        ],
+        "look": [
+          0,
+          1.6,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "worried"
+        },
+        {
+          "type": "char",
+          "pos": [
+            -0.4,
+            0.6,
+            -1.6
+          ],
+          "scale": 0.42,
+          "float": true,
+          "shirt": "#3d7fd8",
+          "hair": "#5a3a22",
+          "rot": 90,
+          "face": "worried"
+        }
+      ],
+      "counter": "DAY 120"
+    },
+    {
+      "narration": "Now Salvador was alone, drifting across the biggest ocean on Earth.",
+      "sky": "day",
+      "waves": 0.5,
+      "cam": {
+        "pos": [
+          90,
+          60,
+          110
+        ],
+        "look": [
+          0,
+          0,
+          0
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "worried"
+        }
+      ],
+      "counter": "DAY 200"
+    },
+    {
+      "narration": "Giant cargo ships passed by. He screamed and waved, but nobody saw him.",
+      "sky": "day",
+      "waves": 0.5,
+      "cam": {
+        "pos": [
+          5,
+          4.2,
+          9
+        ],
+        "look": [
+          -5,
+          2.2,
+          -25
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": false,
+          "face": "scream",
+          "wave": 1,
+          "hop": true
+        },
+        {
+          "type": "liner",
+          "pos": [
+            -120,
+            0,
+            -110
+          ],
+          "to": [
+            40,
+            0,
+            -110
+          ],
+          "rot": 90,
+          "scale": 1.4
+        }
+      ],
+      "counter": "DAY 300"
+    },
+    {
+      "narration": "Day after day, he talked to the birds, counted the stars, and dreamed about tortillas.",
+      "sky": "sunset",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          2.2,
+          2.6,
+          5.5
+        ],
+        "look": [
+          0.3,
+          2.1,
+          0.4
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 20,
+          "talk": true,
+          "face": "smug"
+        }
+      ],
+      "counter": "DAY 400"
+    },
+    {
+      "narration": "Then, on day four hundred thirty-eight, he saw something on the horizon. Palm trees.",
+      "sky": "day",
+      "waves": 0.4,
+      "cam": {
+        "pos": [
+          3,
+          4,
+          10
+        ],
+        "look": [
+          0,
+          2,
+          -60
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            0,
+            0,
+            0
+          ],
+          "float": true
+        },
+        {
+          "type": "char",
+          "pos": [
+            0.4,
+            0.95,
+            0.6
+          ],
+          "scale": 0.45,
+          "float": true,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "rot": 180,
+          "talk": false,
+          "face": "shock"
+        },
+        {
+          "type": "island",
+          "pos": [
+            0,
+            0,
+            -70
+          ],
+          "scale": 1.6
+        }
+      ],
+      "counter": "DAY 438",
+      "flash": true
+    },
+    {
+      "narration": "He had drifted about ten thousand kilometers, to a tiny island in the Marshall Islands.",
+      "sky": "day",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          30,
+          22,
+          -20
+        ],
+        "look": [
+          0,
+          0,
+          -62
+        ]
+      },
+      "objects": [
+        {
+          "type": "fishboat",
+          "pos": [
+            3,
+            0,
+            -50
+          ],
+          "float": true
+        },
+        {
+          "type": "island",
+          "pos": [
+            0,
+            0,
+            -70
+          ],
+          "scale": 1.6
+        },
+        {
+          "type": "char",
+          "pos": [
+            2,
+            1.4,
+            -58
+          ],
+          "scale": 0.45,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "face": "happy",
+          "hop": true,
+          "rot": 30
+        }
+      ],
+      "counter": "10,000 KM",
+      "sub": "FROM MEXICO"
+    },
+    {
+      "narration": "Four hundred thirty-eight days lost at sea. Would you have lasted one week? Be honest.",
+      "sky": "sunset",
+      "waves": 0.3,
+      "cam": {
+        "pos": [
+          6,
+          4,
+          -48
+        ],
+        "look": [
+          2,
+          1.8,
+          -58
+        ]
+      },
+      "min_duration": 3.4,
+      "objects": [
+        {
+          "type": "island",
+          "pos": [
+            0,
+            0,
+            -70
+          ],
+          "scale": 1.6
+        },
+        {
+          "type": "char",
+          "pos": [
+            2,
+            1.4,
+            -58
+          ],
+          "scale": 0.45,
+          "shirt": "#e8483f",
+          "hair": "#2b2b2b",
+          "face": "happy",
+          "wave": 1,
+          "rot": 20
+        }
+      ],
+      "counter": "438 DAYS"
+    }
+  ],
+  "post": {
+    "title": "He went fishing for 30 hours… and came back 438 days later 🌊",
+    "description": "Send this to someone who gets seasick 🤢\n\nTrue story: in 2012, Salvador Alvarenga drifted about 10,000 km across the Pacific, from Mexico to the Marshall Islands.",
+    "hashtags": [
+      "#truestory",
+      "#survival",
+      "#ocean",
+      "#animation",
+      "#storytime",
+      "#shorts"
+    ],
+    "pinned_comment": "Which would be worse: the storm 🌩️ or the loneliness 🌊? 👇"
+  }
+}

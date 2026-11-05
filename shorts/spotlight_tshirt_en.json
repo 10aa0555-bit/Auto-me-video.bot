@@ -1,0 +1,115 @@
+{
+  "title": "The Most Embarrassing T-Shirt Experiment",
+  "lang": "en",
+  "palette": "dawn",
+  "pill": [
+    "NOBODY NOTICED",
+    "HIS SHIRT?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": false,
+  "scenes": [
+    {
+      "narration": "Scientists made students wear the most embarrassing T-shirt they could find. Then they counted who noticed.",
+      "art": "a nervous college student wearing a cringe t-shirt printed with a cheesy smiling 1970s singer face, sweating, walking into a classroom door"
+    },
+    {
+      "narration": "The shirt had a giant face of singer Barry Manilow on it. Students had rated it seriously embarrassing to wear.",
+      "art": "a close up of a hilariously cheesy t-shirt print of a generic smiling 1970s crooner with big hair and sparkles, comedic",
+      "points": [
+        {
+          "text": "MAXIMUM CRINGE",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 2.4,
+          "color": "#ff6b6b"
+        }
+      ]
+    },
+    {
+      "narration": "The wearer walked into a room full of other students, sat down for a moment, and left.",
+      "art": "a classroom full of students busy with their own work while one student in a silly t-shirt sits awkwardly in the corner"
+    },
+    {
+      "narration": "Then the researchers asked: how many people noticed your shirt? The wearers guessed about half the room.",
+      "art": "a worried student imagining a crowd of giant staring eyes pointing at their t-shirt, thought bubble",
+      "stat": {
+        "text": "{n}%",
+        "count": 46,
+        "label": "what they guessed",
+        "delay": 3.6
+      },
+      "cite": "Gilovich, Medvec & Savitsky, JPSP 2000"
+    },
+    {
+      "narration": "The real number? Only about one in four.",
+      "art": "the same classroom where almost nobody is looking up, one bored student barely glancing, comedic contrast",
+      "stat": {
+        "text": "~{n}%",
+        "count": 23,
+        "label": "actually noticed",
+        "delay": 0.8
+      }
+    },
+    {
+      "narration": "Psychologists call this the spotlight effect. You feel like you're on stage, under a giant spotlight.",
+      "art": "a young adult standing alone under a huge bright stage spotlight in a dark room, looking embarrassed",
+      "points": [
+        {
+          "text": "SPOTLIGHT EFFECT",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "But everyone else is standing under their own spotlight, worrying about themselves.",
+      "art": "many young adults each standing under their own small spotlight, all looking worried about themselves and ignoring each other, funny"
+    },
+    {
+      "narration": "It wasn't just about cringe, either. In another version, students wore a shirt they thought was cool. They still overestimated who noticed.",
+      "art": "a confident student in sunglasses wearing a cool t-shirt striking a pose while nobody in the room looks"
+    },
+    {
+      "narration": "So that awkward thing you said yesterday? Most people have probably already forgotten it.",
+      "art": "a young adult lying awake in bed cringing at a memory replaying in a thought bubble, while friends sleep peacefully"
+    },
+    {
+      "narration": "They were too busy worrying about their own awkward thing.",
+      "art": "a row of people each with a tiny embarrassing memory cloud above their own head, all cringing, comedic"
+    },
+    {
+      "narration": "So go ahead. Wear the shirt. What's the thing you think everyone still remembers?",
+      "min_duration": 3.0,
+      "stat": {
+        "text": "WEAR THE SHIRT",
+        "delay": 0.6
+      }
+    }
+  ],
+  "post": {
+    "title": "Scientists made students wear the most embarrassing shirt 😳",
+    "description": "The spotlight effect: we think everyone notices us way more than they actually do. Proven with a Barry Manilow T-shirt.\n\nSource: Gilovich, Medvec & Savitsky (2000) Journal of Personality and Social Psychology",
+    "hashtags": [
+      "#psychology",
+      "#spotlighteffect",
+      "#funny",
+      "#science",
+      "#didyouknow",
+      "#relatable",
+      "#shorts"
+    ],
+    "pinned_comment": "What's the cringe moment you think everyone still remembers? 😂👇"
+  },
+  "art_style": "v1"
+}

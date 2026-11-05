@@ -1,0 +1,342 @@
+{
+  "title": "The country trapped inside another country",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "id": "pNInz6obpgDQGcFmaJgB",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Curious upbeat documentary background music for a geography short video, light percussion, pizzicato and marimba, no vocals",
+    "volume": 0.22
+  },
+  "post": {
+    "title": "Only 3 countries are completely trapped inside another 🤯",
+    "description": "San Marino, Vatican City… and Lesotho, a whole kingdom surrounded by South Africa.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#lesotho",
+      "#southafrica",
+      "#countries",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Which country should I map next? 👇"
+  },
+  "scenes": [
+    {
+      "narration": "Only three countries on Earth are completely surrounded by just one other country.",
+      "camera": {
+        "center": [
+          15,
+          5
+        ],
+        "span": 95
+      },
+      "fill": {
+        "ITA": "flag:it",
+        "ZAF": "flag:za"
+      },
+      "markers": [
+        {
+          "at": [
+            12.45,
+            43.94
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 1.2
+        },
+        {
+          "at": [
+            28.2,
+            -29.6
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 1.5
+        }
+      ],
+      "banner": {
+        "lines": [
+          "TRAPPED INSIDE",
+          "ANOTHER COUNTRY"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 78
+      }
+    },
+    {
+      "narration": "Two of them are tiny: San Marino and Vatican City, both inside Italy.",
+      "camera": {
+        "center": [
+          12.6,
+          42.8
+        ],
+        "span": 9
+      },
+      "markers": [
+        {
+          "at": [
+            12.46,
+            43.94
+          ],
+          "type": "pin",
+          "label": "San Marino",
+          "delay": 1.4
+        },
+        {
+          "at": [
+            12.45,
+            41.9
+          ],
+          "type": "pin",
+          "label": "Vatican City",
+          "delay": 2.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "church",
+          "at": [
+            13.6,
+            41.6
+          ],
+          "size": 140,
+          "delay": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "But the third one is a real surprise. Lesotho, a whole kingdom inside South Africa.",
+      "flash": true,
+      "camera": {
+        "center": [
+          26.0,
+          -29.0
+        ],
+        "span": 16
+      },
+      "fill": {
+        "LSO": "flag:ls"
+      },
+      "outline": [
+        "LSO"
+      ],
+      "icons": [
+        {
+          "name": "crown",
+          "at": [
+            28.3,
+            -28.3
+          ],
+          "size": 150,
+          "delay": 3.0
+        }
+      ],
+      "labels": [
+        {
+          "text": "LESOTHO",
+          "of": "LSO",
+          "size": 56,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "It's about the size of Belgium, and home to over two million people.",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 7
+      },
+      "texts": [
+        {
+          "text": "{n} KM²",
+          "count": 30355,
+          "y": 0.24,
+          "size": 96,
+          "delay": 2.0
+        },
+        {
+          "text": "2 MILLION PEOPLE",
+          "accent": [
+            "PEOPLE"
+          ],
+          "y": 0.31,
+          "size": 70,
+          "delay": 4.0
+        }
+      ],
+      "icons": [
+        {
+          "name": "person walking",
+          "of": "LSO",
+          "size": 90,
+          "count": 6,
+          "spread": 60,
+          "delay": 4.2
+        }
+      ],
+      "ghosts": [
+        {
+          "of": "BEL",
+          "to": [
+            28.25,
+            -29.55
+          ],
+          "fill": "flag:be",
+          "delay": 0.3,
+          "move_time": 1.8
+        }
+      ]
+    },
+    {
+      "narration": "And it's the only country in the world that lies entirely above 1,000 meters.",
+      "tts": "And it's the only country in the world that lies entirely above one thousand meters.",
+      "camera": {
+        "center": [
+          28.3,
+          -29.6
+        ],
+        "span": 4.5
+      },
+      "icons": [
+        {
+          "name": "mountain",
+          "of": "LSO",
+          "size": 200,
+          "delay": 0.5
+        }
+      ],
+      "texts": [
+        {
+          "text": "1,000 M+",
+          "accent": [
+            "M+"
+          ],
+          "y": 0.24,
+          "size": 110,
+          "delay": 1.8
+        }
+      ]
+    },
+    {
+      "narration": "So how did it end up trapped? In 1868, King Moshoeshoe asked Britain for protection from Boer settlers.",
+      "tts": "So how did it end up trapped? In eighteen sixty-eight, King Moshoeshoe asked Britain for protection from Boer settlers.",
+      "year": "1868",
+      "camera": {
+        "center": [
+          27.0,
+          -29.3
+        ],
+        "span": 10
+      },
+      "icons": [
+        {
+          "name": "crown",
+          "of": "LSO",
+          "size": 160,
+          "delay": 1.4,
+          "label": "KING MOSHOESHOE"
+        },
+        {
+          "name": "shield",
+          "at": [
+            25.6,
+            -28.4
+          ],
+          "size": 150,
+          "delay": 3.6
+        }
+      ]
+    },
+    {
+      "narration": "Britain ruled it separately, so when South Africa was formed in 1910, Lesotho was left out.",
+      "tts": "Britain ruled it separately, so when South Africa was formed in nineteen ten, Lesotho was left out.",
+      "year": "1910",
+      "camera": {
+        "center": [
+          25.0,
+          -29.0
+        ],
+        "span": 20
+      },
+      "outline": [
+        "ZAF"
+      ],
+      "icons": [
+        {
+          "name": "no entry",
+          "of": "LSO",
+          "size": 130,
+          "delay": 3.4
+        }
+      ]
+    },
+    {
+      "narration": "In 1966 it became independent... a country completely surrounded by another.",
+      "tts": "In nineteen sixty-six it became independent... a country completely surrounded by another.",
+      "year": "1966",
+      "camera": {
+        "center": [
+          28.2,
+          -29.6
+        ],
+        "span": 8
+      },
+      "outline": [
+        "LSO"
+      ],
+      "markers": [
+        {
+          "of": "LSO",
+          "at": [
+            28.2,
+            -29.6
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "Today, every single border it has... is with South Africa.",
+      "camera": {
+        "center": [
+          26.5,
+          -29.0
+        ],
+        "span": 14
+      },
+      "outline": [
+        "LSO"
+      ],
+      "banner": {
+        "lines": [
+          "A COUNTRY INSIDE",
+          "A COUNTRY"
+        ],
+        "y": 0.2,
+        "delay": 1.6,
+        "size": 80
+      },
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 2.4,
+        "y": 0.8
+      },
+      "min_duration": 4.8
+    }
+  ]
+}

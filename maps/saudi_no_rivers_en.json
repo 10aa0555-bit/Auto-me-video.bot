@@ -1,0 +1,242 @@
+{
+  "title": "The Biggest Country With No Rivers",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This is one of the biggest countries on Earth. And it doesn't have a single permanent river.",
+      "camera": {
+        "center": [
+          45,
+          24
+        ],
+        "span": 22
+      },
+      "fill": {
+        "SAU": "flag:sa"
+      },
+      "banner": {
+        "lines": [
+          "A HUGE COUNTRY",
+          "WITH NO RIVERS?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Saudi Arabia is bigger than Western Europe, but there's no river flowing all year.",
+      "camera": {
+        "center": [
+          45,
+          24
+        ],
+        "span": 22
+      },
+      "fill": {
+        "SAU": null
+      }
+    },
+    {
+      "narration": "It has wadis instead: dry valleys that only fill with water after rare storms.",
+      "camera": {
+        "center": [
+          43.5,
+          20.5
+        ],
+        "span": 4
+      },
+      "base": "relief"
+    },
+    {
+      "narration": "In the south lies the Empty Quarter, the biggest continuous sand desert in the world.",
+      "camera": {
+        "center": [
+          50,
+          20
+        ],
+        "span": 12
+      },
+      "base": "relief",
+      "photos": [
+        {
+          "q": "Rub al Khali sand dunes",
+          "caption": "THE EMPTY QUARTER",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "So where does the water come from? Mostly, the sea.",
+      "camera": {
+        "center": [
+          45,
+          24
+        ],
+        "span": 22
+      }
+    },
+    {
+      "narration": "Saudi Arabia makes about a fifth of all the desalinated water in the world, turning seawater into drinking water.",
+      "camera": {
+        "center": [
+          49.6,
+          27.0
+        ],
+        "span": 3
+      },
+      "photos": [
+        {
+          "q": "desalination plant Saudi Arabia",
+          "caption": "DESALINATION",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.0,
+          "size": 620
+        }
+      ],
+      "texts": [
+        {
+          "text": "~{n}% OF THE WORLD'S",
+          "count": 20,
+          "accent": [
+            "WORLD'S"
+          ],
+          "y": 0.2,
+          "size": 76,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "The rest comes from deep under the desert: ancient water, stored there since the Ice Age.",
+      "camera": {
+        "center": [
+          45,
+          24
+        ],
+        "span": 22
+      }
+    },
+    {
+      "narration": "And here's the wild part. In the 1980s, Saudi Arabia used that water to grow wheat in the desert.",
+      "tts": "And here's the wild part. In the nineteen-eighties, Saudi Arabia used that water to grow wheat in the desert.",
+      "camera": {
+        "center": [
+          37.9,
+          29.9
+        ],
+        "span": 1.0
+      },
+      "year": "1980s"
+    },
+    {
+      "narration": "These green circles are farms, watered by giant rotating sprinklers. You can see them from space.",
+      "camera": {
+        "center": [
+          37.9,
+          29.9
+        ],
+        "span": 1.0
+      },
+      "photos": [
+        {
+          "q": "center pivot irrigation Saudi Arabia NASA",
+          "caption": "FROM SPACE",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.0,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "But that water doesn't refill. So the country stopped growing its own wheat.",
+      "camera": {
+        "center": [
+          37.9,
+          29.9
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "A desert kingdom, running on seawater and ancient groundwater.",
+      "camera": {
+        "center": [
+          45,
+          24
+        ],
+        "span": 22
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon water drop character wearing sunglasses in the desert sun",
+          "name": "droplet",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 220,
+          "delay": 0.6
+        }
+      ]
+    },
+    {
+      "narration": "Would you drink water that's been underground since the Ice Age? Yes or no?",
+      "camera": {
+        "center": [
+          45,
+          24
+        ],
+        "span": 22
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The biggest country with no rivers 🏜️ #geography #saudiarabia",
+    "description": "Saudi Arabia has no permanent rivers. It gets water from the sea (desalination) and from ancient groundwater, and once grew wheat in giant green circles in the desert.",
+    "hashtags": [
+      "#geography",
+      "#saudiarabia",
+      "#desert",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you drink Ice Age water? 👇"
+  }
+}

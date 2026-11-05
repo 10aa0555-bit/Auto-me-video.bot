@@ -1,0 +1,217 @@
+{
+ "title": "Your Biggest Enemy",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Your biggest enemy has your face. 🪞",
+  "description": "Send this to someone who keeps getting in their own way.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What does your inner voice tell you most? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "mirror",
+   "narration": "Your biggest enemy is not out there. It wakes up when you wake up, and it has your face.",
+   "hot": [
+    "ENEMY",
+    "FACE"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "It is the voice that says, start tomorrow. You are not ready. Who do you think you are?",
+   "hot": [
+    "TOMORROW",
+    "READY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 41
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "It knows every fear you have ever had, because it was there when you learned them.",
+   "hot": [
+    "FEAR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 35
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "It doesn't fight you openly. It just makes you comfortable, one small excuse at a time.",
+   "hot": [
+    "COMFORTABLE",
+    "EXCUSE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 40
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Every great person you know heard that same voice. The difference is, they stopped obeying it.",
+   "hot": [
+    "OBEYING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 33
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "You don't have to destroy it. You only have to stop letting it make your decisions.",
+   "hot": [
+    "DECISIONS"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "Do the thing while it is still talking. Do it scared. Do it badly. Just do it.",
+   "hot": [
+    "SCARED",
+    "DO"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 4
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "And slowly, the person in the mirror will start to look different.",
+   "hot": [
+    "DIFFERENT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 17
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "Not because the world changed, but because you finally did.",
+   "hot": [
+    "CHANGED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 19
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "Win the war inside, and the war outside becomes easy.",
+   "hot": [
+    "INSIDE",
+    "EASY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 9
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "So who wins today? You, or the voice?",
+   "hot": [
+    "WINS"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

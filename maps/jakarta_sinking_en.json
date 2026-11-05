@@ -1,0 +1,286 @@
+{
+  "title": "Why Is Indonesia Moving Its Capital?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Indonesia is moving its capital city. Because the old one is sinking.",
+      "camera": {
+        "center": [
+          113,
+          -2
+        ],
+        "span": 40
+      },
+      "fill": {
+        "IDN": "flag:id"
+      },
+      "banner": {
+        "lines": [
+          "WHY IS INDONESIA",
+          "MOVING ITS CAPITAL?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "This is Jakarta, home to over ten million people, and one of the fastest-sinking cities on Earth.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      },
+      "fill": {
+        "IDN": null
+      },
+      "markers": [
+        {
+          "at": [
+            106.85,
+            -6.2
+          ],
+          "type": "pin",
+          "label": "Jakarta",
+          "delay": 0.8
+        }
+      ],
+      "photos": [
+        {
+          "q": "Jakarta skyline",
+          "caption": "JAKARTA",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "In some northern parts, the ground drops more than ten centimeters a year.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      },
+      "texts": [
+        {
+          "text": "{n}+ CM A YEAR",
+          "count": 10,
+          "accent": [
+            "CM"
+          ],
+          "y": 0.22,
+          "size": 96,
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "Today, almost half of the city sits below sea level, held back only by walls and pumps.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Why? People and buildings pump water out from under the ground, because piped water doesn't reach everyone.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon water pump pulling water out of the ground",
+          "name": "droplet",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 220,
+          "delay": 1.6
+        }
+      ]
+    },
+    {
+      "narration": "Take out the water, and the soft ground slowly squashes down, like a sponge.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Add heavy skyscrapers and rising seas, and floods get worse every year.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Jakarta flood",
+          "caption": "FLOODS",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "The city built a giant sea wall. But it's racing against the ground itself.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "So in 2019, the president announced a new capital, far away on the island of Borneo.",
+      "tts": "So in twenty nineteen, the president announced a new capital, far away on the island of Borneo.",
+      "camera": {
+        "center": [
+          112,
+          -3
+        ],
+        "span": 22
+      },
+      "year": "2019",
+      "lines": [
+        {
+          "path": [
+            [
+              106.85,
+              -6.2
+            ],
+            [
+              111.0,
+              -4.6
+            ],
+            [
+              116.7,
+              -0.98
+            ]
+          ],
+          "style": "arrow_dashed",
+          "color": "#ffd23f",
+          "width": 6,
+          "delay": 1.4,
+          "draw_time": 1.8
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            116.7,
+            -0.98
+          ],
+          "type": "pin",
+          "label": "Nusantara",
+          "delay": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "It's called Nusantara, and it's being built almost from scratch in the forests of East Kalimantan.",
+      "camera": {
+        "center": [
+          116.7,
+          -0.98
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Nusantara capital Indonesia construction",
+          "caption": "NUSANTARA",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.2,
+          "size": 600
+        }
+      ]
+    },
+    {
+      "narration": "But Jakarta isn't going anywhere. Millions will still live there, on sinking ground.",
+      "camera": {
+        "center": [
+          106.85,
+          -6.2
+        ],
+        "span": 4
+      }
+    },
+    {
+      "narration": "Would you move to a brand-new capital in the jungle? Yes or no?",
+      "camera": {
+        "center": [
+          113,
+          -2
+        ],
+        "span": 40
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Indonesia moving its capital? 🇮🇩 #geography #indonesia",
+    "description": "Jakarta is one of the fastest-sinking cities on Earth, mostly from groundwater pumping. So Indonesia is building a new capital, Nusantara, on Borneo.",
+    "hashtags": [
+      "#geography",
+      "#indonesia",
+      "#jakarta",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you move to Nusantara? 👇"
+  },
+  "imagery": "bluemarble"
+}

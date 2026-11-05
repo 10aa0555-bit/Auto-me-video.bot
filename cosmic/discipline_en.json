@@ -1,0 +1,217 @@
+{
+ "title": "Motivation Leaves, Discipline Stays",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Motivation leaves. Discipline stays. ⛓️",
+  "description": "Send this to someone who keeps starting over.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What is one habit you will keep this week? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "street",
+   "narration": "Motivation is a guest. It visits, it makes you feel amazing, and then it leaves.",
+   "hot": [
+    "GUEST",
+    "LEAVES"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "And when it leaves, most people stop. They wait for it to come back.",
+   "hot": [
+    "STOP"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 36
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Discipline is different. Discipline doesn't care how you feel.",
+   "hot": [
+    "DISCIPLINE",
+    "FEEL"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 46
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "It shows up when it is raining, when you are tired, when nobody is watching.",
+   "hot": [
+    "RAINING",
+    "TIRED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 14
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "Motivation is a feeling. Discipline is a decision you make before the feeling arrives.",
+   "hot": [
+    "FEELING",
+    "DECISION"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 49
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Everyone wants the result. Almost nobody wants the boring days that build it.",
+   "hot": [
+    "BORING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 23
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "But the boring days are the secret. Small actions, repeated, until they become who you are.",
+   "hot": [
+    "SECRET",
+    "REPEATED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 36
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "So stop asking, am I in the mood? The mood is irrelevant.",
+   "hot": [
+    "MOOD"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "Be the person who keeps promises to themselves, even the small ones.",
+   "hot": [
+    "PROMISES"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 25
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "One year from now, you will be grateful you started today.",
+   "hot": [
+    "TODAY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 0
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So, what will you do today, even if you don't feel like it?",
+   "hot": [
+    "TODAY"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

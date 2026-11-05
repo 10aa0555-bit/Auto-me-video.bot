@@ -1,0 +1,113 @@
+[
+ {
+  "name": "schnell_scroll",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "params": {
+   "prompt": "a young adult lying in bed at night, face lit by a glowing phone, endless feed of colorful cards flowing out of the phone like a waterfall. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "steps": 8
+  }
+ },
+ {
+  "name": "flux2klein_scroll",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "multipart": true,
+  "params": {
+   "prompt": "a young adult lying in bed at night, face lit by a glowing phone, endless feed of colorful cards flowing out of the phone like a waterfall. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "flux2dev_scroll",
+  "model": "@cf/black-forest-labs/flux-2-dev",
+  "multipart": true,
+  "params": {
+   "prompt": "a young adult lying in bed at night, face lit by a glowing phone, endless feed of colorful cards flowing out of the phone like a waterfall. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "phoenix_scroll",
+  "model": "@cf/leonardo/phoenix-1.0",
+  "params": {
+   "prompt": "a young adult lying in bed at night, face lit by a glowing phone, endless feed of colorful cards flowing out of the phone like a waterfall. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "schnell_mirror",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "params": {
+   "prompt": "a young adult looking into a bathroom mirror, slightly tired, messy hair, warm morning light. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "steps": 8
+  }
+ },
+ {
+  "name": "flux2klein_mirror",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "multipart": true,
+  "params": {
+   "prompt": "a young adult looking into a bathroom mirror, slightly tired, messy hair, warm morning light. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "flux2dev_mirror",
+  "model": "@cf/black-forest-labs/flux-2-dev",
+  "multipart": true,
+  "params": {
+   "prompt": "a young adult looking into a bathroom mirror, slightly tired, messy hair, warm morning light. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "phoenix_mirror",
+  "model": "@cf/leonardo/phoenix-1.0",
+  "params": {
+   "prompt": "a young adult looking into a bathroom mirror, slightly tired, messy hair, warm morning light. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "schnell_brain",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "params": {
+   "prompt": "a cute glowing brain character holding a slot machine lever, notification bubbles floating around. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "steps": 8
+  }
+ },
+ {
+  "name": "flux2klein_brain",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "multipart": true,
+  "params": {
+   "prompt": "a cute glowing brain character holding a slot machine lever, notification bubbles floating around. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "flux2dev_brain",
+  "model": "@cf/black-forest-labs/flux-2-dev",
+  "multipart": true,
+  "params": {
+   "prompt": "a cute glowing brain character holding a slot machine lever, notification bubbles floating around. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ },
+ {
+  "name": "phoenix_brain",
+  "model": "@cf/leonardo/phoenix-1.0",
+  "params": {
+   "prompt": "a cute glowing brain character holding a slot machine lever, notification bubbles floating around. flat vector illustration, bold saturated colors, deep purple and teal background with warm orange accents, soft gradients, subtle grain texture, clean rounded geometric shapes, cute simple characters with big round eyes, educational science animation style, no text",
+   "width": 768,
+   "height": 1344
+  }
+ }
+]

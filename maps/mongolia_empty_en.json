@@ -1,0 +1,302 @@
+{
+  "title": "Why Is Mongolia So Empty?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "This country is four times the size of Germany. But it has fewer people than Berlin.",
+      "camera": {
+        "center": [
+          103.5,
+          46.8
+        ],
+        "span": 30
+      },
+      "fill": {
+        "MNG": "flag:mn"
+      },
+      "banner": {
+        "lines": [
+          "WHY IS MONGOLIA",
+          "SO EMPTY?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Mongolia has about two people per square kilometer, the emptiest country on Earth.",
+      "camera": {
+        "center": [
+          103.5,
+          46.8
+        ],
+        "span": 30
+      },
+      "fill": {
+        "MNG": null
+      },
+      "dim": true,
+      "bars": {
+        "title": "PEOPLE PER KM²",
+        "y": 0.24,
+        "delay": 0.8,
+        "items": [
+          {
+            "label": "MONGOLIA",
+            "value": 2,
+            "color": "#ff7b2e"
+          },
+          {
+            "label": "GERMANY",
+            "value": 240,
+            "color": "#5ea8ff"
+          }
+        ]
+      }
+    },
+    {
+      "narration": "And about half of them live in just one city: Ulaanbaatar.",
+      "camera": {
+        "center": [
+          103.5,
+          46.8
+        ],
+        "span": 30
+      },
+      "markers": [
+        {
+          "at": [
+            106.92,
+            47.92
+          ],
+          "type": "pin",
+          "label": "Ulaanbaatar",
+          "delay": 0.8
+        }
+      ],
+      "swarms": [
+        {
+          "path": [
+            [
+              106.75,
+              47.9
+            ],
+            [
+              106.92,
+              47.92
+            ],
+            [
+              107.1,
+              47.9
+            ]
+          ],
+          "count": 260,
+          "spread_km": 12,
+          "delay": 1.2,
+          "duration": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "It's often called the coldest capital in the world. Winters can drop below minus forty.",
+      "camera": {
+        "center": [
+          106.9,
+          47.9
+        ],
+        "span": 1.0
+      },
+      "photos": [
+        {
+          "q": "Ulaanbaatar winter",
+          "caption": "ULAANBAATAR",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Why so empty? The south is the Gobi Desert. The north is cold mountains and forest.",
+      "camera": {
+        "center": [
+          103.5,
+          46.8
+        ],
+        "span": 30
+      },
+      "photos": [
+        {
+          "q": "Gobi Desert Mongolia",
+          "caption": "THE GOBI",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "In between is the steppe: endless grass, but too dry and cold for most farming.",
+      "camera": {
+        "center": [
+          103,
+          47
+        ],
+        "span": 8
+      }
+    },
+    {
+      "narration": "So for thousands of years, people here didn't farm. They herded animals and kept moving.",
+      "camera": {
+        "center": [
+          103,
+          47
+        ],
+        "span": 8
+      },
+      "photos": [
+        {
+          "q": "Mongolian ger steppe",
+          "caption": "THE GER",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Today Mongolia has around sixty-five million farm animals. That's nearly twenty for every person.",
+      "camera": {
+        "center": [
+          103,
+          47
+        ],
+        "span": 8
+      },
+      "texts": [
+        {
+          "text": "{n} ANIMALS",
+          "count": 65000000,
+          "accent": [
+            "ANIMALS"
+          ],
+          "y": 0.22,
+          "size": 80,
+          "delay": 1.0
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon fluffy sheep and a small horse standing together",
+          "name": "ewe",
+          "pos": [
+            0.5,
+            0.45
+          ],
+          "size": 220,
+          "delay": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "Families still live in round felt tents called gers, and can pack up a whole home in a few hours.",
+      "camera": {
+        "center": [
+          103,
+          47
+        ],
+        "span": 8
+      }
+    },
+    {
+      "narration": "But here's the twist. Eight hundred years ago, this empty land built the largest connected empire in history.",
+      "camera": {
+        "center": [
+          80,
+          45
+        ],
+        "span": 90
+      },
+      "year": "1200s"
+    },
+    {
+      "narration": "Genghis Khan's empire stretched from Korea all the way to Europe.",
+      "camera": {
+        "center": [
+          80,
+          45
+        ],
+        "span": 90
+      },
+      "photos": [
+        {
+          "q": "Genghis Khan portrait",
+          "caption": "GENGHIS KHAN",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Would you trade your apartment for a ger on the steppe? Yes or no?",
+      "camera": {
+        "center": [
+          103.5,
+          46.8
+        ],
+        "span": 30
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Mongolia so empty? 🇲🇳 #geography #mongolia",
+    "description": "Mongolia is the least densely populated country on Earth, and half its people live in one city. Desert, cold and dry grassland explain why.",
+    "hashtags": [
+      "#geography",
+      "#mongolia",
+      "#maps",
+      "#asia",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Apartment or a ger on the steppe? 👇"
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "title": "Nauru: The Island They Dug Up",
+  "imagery": "bluemarble",
+  "post": {
+    "title": "Why did Nauru dig up its own island? 🇳🇷 #geography #maps",
+    "description": "Nauru was one of the richest countries per person in the 1970s, thanks to phosphate for fertilizer. Mining stripped about 80% of the island. The money ran out, and the nearby island of Banaba was mined too; its people were moved to Fiji after World War II.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#nauru",
+      "#pacific",
+      "#mining",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you dig up your home for money? Yes or no 👇"
+  },
+  "scenes": [
+    {
+      "narration": "Nauru is a tiny island nation in the Pacific, about twenty-one square kilometers in all. In the 1970s it was one of the richest countries on Earth per person.",
+      "camera": {
+        "center": [
+          167,
+          -0.5
+        ],
+        "span": 30
+      },
+      "banner": {
+        "lines": [
+          "WHY DID NAURU",
+          "DIG UP ITS OWN ISLAND?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 84
+      },
+      "markers": [
+        {
+          "at": [
+            166.93,
+            -0.52
+          ],
+          "type": "pin",
+          "label": "Nauru",
+          "delay": 2.0
+        }
+      ]
+    },
+    {
+      "narration": "Its wealth came from one thing: phosphate, a mineral used to make fertilizer, lying under the island.",
+      "camera": {
+        "center": [
+          166.93,
+          -0.52
+        ],
+        "span": 8
+      },
+      "texts": [
+        {
+          "text": "PHOSPHATE",
+          "accent": [
+            "PHOSPHATE"
+          ],
+          "y": 0.14,
+          "size": 100,
+          "delay": 0.5
+        }
+      ]
+    },
+    {
+      "narration": "Miners stripped the land layer by layer. About eighty percent of the island was mined away.",
+      "camera": {
+        "center": [
+          166.93,
+          -0.52
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Nauru phosphate mining landscape",
+          "caption": "NAURU",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.0,
+          "size": 620
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon miner with a pickaxe and a helmet, flat sticker",
+          "name": "miner",
+          "at": [
+            166.93,
+            -0.52
+          ],
+          "size": 220,
+          "delay": 2.6
+        }
+      ],
+      "texts": [
+        {
+          "text": "80% MINED",
+          "accent": [
+            "80%"
+          ],
+          "y": 0.14,
+          "size": 100,
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "What is left is jagged limestone pillars, where very little grows. The government had few plans for after the phosphate ran out.",
+      "camera": {
+        "center": [
+          166.93,
+          -0.52
+        ],
+        "span": 4
+      },
+      "photos": [
+        {
+          "q": "Nauru Topside phosphate limestone pinnacles",
+          "caption": "JAGGED ROCK",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.0,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "By 2005, almost all the phosphate was gone, and the savings fund had shrunk badly.",
+      "camera": {
+        "center": [
+          166.93,
+          -0.52
+        ],
+        "span": 4
+      },
+      "texts": [
+        {
+          "text": "THE MONEY RAN OUT",
+          "accent": [
+            "OUT"
+          ],
+          "y": 0.14,
+          "size": 88,
+          "delay": 0.5
+        }
+      ]
+    },
+    {
+      "narration": "The phosphate was not only on Nauru. About three hundred kilometers away, the island of Banaba was mined too, until it was unfit for growing food.",
+      "camera": {
+        "center": [
+          168,
+          -0.7
+        ],
+        "span": 14
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              166.93,
+              -0.52
+            ],
+            [
+              169.54,
+              -0.84
+            ]
+          ],
+          "style": "ruler",
+          "delay": 0.6,
+          "draw_time": 1.6,
+          "label": "{n} KM",
+          "count": 300
+        }
+      ],
+      "markers": [
+        {
+          "at": [
+            169.54,
+            -0.84
+          ],
+          "type": "pin",
+          "label": "Banaba",
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "After the Second World War, its people were moved more than two thousand kilometers away, to Fiji.",
+      "camera": {
+        "center": [
+          174,
+          -4
+        ],
+        "span": 34
+      },
+      "texts": [
+        {
+          "text": "OVER 2,000 KM",
+          "accent": [
+            "2,000"
+          ],
+          "y": 0.14,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    },
+    {
+      "narration": "Today, some mining still continues on Nauru, digging deeper into the same rock. Would you dig up your home for money? Yes or no?",
+      "camera": {
+        "center": [
+          166.93,
+          -0.52
+        ],
+        "span": 6
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.14,
+          "size": 92,
+          "delay": 2.6
+        }
+      ]
+    }
+  ]
+}

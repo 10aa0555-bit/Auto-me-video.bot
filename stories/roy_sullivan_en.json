@@ -1,0 +1,651 @@
+{
+ "title": "Struck By Lightning Seven Times",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "am_michael",
+  "settings": {
+   "speed": 1.08
+  }
+ },
+ "hook": [
+  "STRUCK BY LIGHTNING",
+  "ONCE…",
+  "THEN SIX MORE TIMES"
+ ],
+ "post": {
+  "title": "He got struck by lightning… 7 times ⚡",
+  "description": "Send this to your friend who goes outside during storms ⛈️\n\nTrue story: park ranger Roy Sullivan was struck by lightning seven times between 1942 and 1977, and survived all of them. Guinness lists it as a world record.",
+  "hashtags": [
+   "#truestory",
+   "#lightning",
+   "#history",
+   "#animation",
+   "#storytime",
+   "#shorts"
+  ],
+  "pinned_comment": "Luckiest man alive or the unluckiest? ⚡🍀 👇"
+ },
+ "scenes": [
+  {
+   "narration": "Meet Roy Sullivan, a park ranger in Virginia. His whole job was to watch over the forest.",
+   "set": "forest",
+   "sky": "day",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     16,
+     9,
+     22
+    ],
+    "look": [
+     0,
+     4,
+     0
+    ]
+   },
+   "objects": [
+    {
+     "type": "tower",
+     "pos": [
+      -9,
+      0,
+      -6
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.9,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": true,
+     "pos": [
+      2,
+      0,
+      4
+     ],
+     "face": "happy",
+     "wave": 1,
+     "talk": true,
+     "rot": 10
+    }
+   ]
+  },
+  {
+   "narration": "In 1942, a storm rolled in while he was up in a lookout tower. Then lightning hit the tower.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     14,
+     13,
+     18
+    ],
+    "look": [
+     0,
+     9,
+     0
+    ]
+   },
+   "strike": {
+    "pos": [
+     0,
+     13.4,
+     0
+    ],
+    "delay": 3.4
+   },
+   "objects": [
+    {
+     "type": "tower",
+     "pos": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.45,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": true,
+     "pos": [
+      0,
+      9.9,
+      1.9
+     ],
+     "face": "worried",
+     "face2": "scream",
+     "at": 3.5,
+     "rot": 25
+    }
+   ],
+   "counter": "STRIKE 1",
+   "sub": "1942"
+  },
+  {
+   "narration": "It burned a hole in his shoe and blew off his toenail. Once in a lifetime, right?",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     4,
+     11.8,
+     9
+    ],
+    "look": [
+     0,
+     11,
+     1.9
+    ]
+   },
+   "objects": [
+    {
+     "type": "tower",
+     "pos": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.45,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": true,
+     "pos": [
+      0,
+      9.9,
+      1.9
+     ],
+     "face": "shock",
+     "hop": true,
+     "rot": 10
+    }
+   ]
+  },
+  {
+   "narration": "Twenty seven years later, he was driving his truck down a mountain road. Lightning hit again.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     20,
+     9,
+     16
+    ],
+    "look": [
+     0,
+     1.5,
+     0
+    ]
+   },
+   "strike": {
+    "pos": [
+     0,
+     2.4,
+     1
+    ],
+    "delay": 3.6
+   },
+   "objects": [
+    {
+     "type": "truck",
+     "pos": [
+      0,
+      0,
+      -18
+     ],
+     "to": [
+      0,
+      0,
+      6
+     ],
+     "rot": 0
+    }
+   ],
+   "counter": "STRIKE 2",
+   "sub": "1969"
+  },
+  {
+   "narration": "It knocked him out cold and burned off his eyebrows.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     10,
+     5,
+     15
+    ],
+    "look": [
+     0,
+     2,
+     4
+    ]
+   },
+   "objects": [
+    {
+     "type": "truck",
+     "pos": [
+      0,
+      0,
+      6
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.7,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "pos": [
+      2.6,
+      0,
+      6.5
+     ],
+     "face": "shock",
+     "rot": 40
+    }
+   ]
+  },
+  {
+   "narration": "The very next year, it found him in his own front yard and burned his shoulder.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     14,
+     7,
+     16
+    ],
+    "look": [
+     0,
+     2.5,
+     0
+    ]
+   },
+   "strike": {
+    "pos": [
+     3,
+     3.4,
+     3
+    ],
+    "delay": 2.2
+   },
+   "objects": [
+    {
+     "type": "cabin",
+     "pos": [
+      -4,
+      0,
+      -4
+     ],
+     "rot": 20
+    },
+    {
+     "type": "char",
+     "scale": 0.8,
+     "shirt": "#7aa6d9",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "pos": [
+      3,
+      0,
+      3
+     ],
+     "face": "normal",
+     "face2": "scream",
+     "at": 2.3,
+     "rot": 30
+    }
+   ],
+   "counter": "STRIKE 3",
+   "sub": "1970"
+  },
+  {
+   "narration": "In 1972, he was inside a ranger station. It still got him, and set his hair on fire.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     10,
+     6,
+     14
+    ],
+    "look": [
+     0,
+     2.6,
+     0
+    ]
+   },
+   "strike": {
+    "pos": [
+     0,
+     4.8,
+     0
+    ],
+    "delay": 2.0
+   },
+   "objects": [
+    {
+     "type": "cabin",
+     "pos": [
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.8,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "pos": [
+      1.6,
+      0,
+      4.2
+     ],
+     "face": "worried",
+     "face2": "scream",
+     "at": 2.1,
+     "fire": 2.1,
+     "hop": true,
+     "rot": 25
+    }
+   ],
+   "counter": "STRIKE 4",
+   "sub": "1972"
+  },
+  {
+   "narration": "A year later, he said a storm cloud followed him. He ran. It hit him anyway. Hair on fire, again.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     11,
+     6,
+     13
+    ],
+    "look": [
+     0,
+     2.2,
+     -5
+    ]
+   },
+   "strike": {
+    "pos": [
+     0,
+     3.6,
+     2
+    ],
+    "delay": 3.8
+   },
+   "objects": [
+    {
+     "type": "char",
+     "scale": 0.8,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": false,
+     "pos": [
+      0,
+      0,
+      -16
+     ],
+     "to": [
+      0,
+      0,
+      2
+     ],
+     "walk": true,
+     "face": "scream",
+     "fire": 3.9,
+     "rot": 0
+    }
+   ],
+   "counter": "STRIKE 5",
+   "sub": "1973"
+  },
+  {
+   "narration": "In 1976, number six hurt his ankle. People say coworkers stopped standing near him in storms.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     12,
+     6,
+     15
+    ],
+    "look": [
+     0,
+     2.4,
+     0
+    ]
+   },
+   "strike": {
+    "pos": [
+     0,
+     3.4,
+     0
+    ],
+    "delay": 1.2
+   },
+   "objects": [
+    {
+     "type": "char",
+     "scale": 0.8,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": true,
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "face": "worried",
+     "rot": 20
+    },
+    {
+     "type": "char",
+     "scale": 0.75,
+     "shirt": "#8fbf6a",
+     "pants": "#3a3f4a",
+     "hair": "#1f1a16",
+     "pos": [
+      -3,
+      0,
+      1
+     ],
+     "to": [
+      -10,
+      0,
+      3
+     ],
+     "walk": true,
+     "face": "shock",
+     "rot": -80
+    },
+    {
+     "type": "char",
+     "scale": 0.75,
+     "shirt": "#e0a24a",
+     "pants": "#3a3f4a",
+     "hair": "#c98a3a",
+     "pos": [
+      3,
+      0,
+      1
+     ],
+     "to": [
+      10,
+      0,
+      4
+     ],
+     "walk": true,
+     "face": "worried",
+     "rot": 80
+    }
+   ],
+   "counter": "STRIKE 6",
+   "sub": "1976"
+  },
+  {
+   "narration": "Then in 1977, he went fishing at a quiet pond. Strike number seven. Hair on fire, one more time.",
+   "set": "forest",
+   "sky": "storm",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     5,
+     7,
+     -17
+    ],
+    "look": [
+     0,
+     2.2,
+     5
+    ]
+   },
+   "strike": {
+    "pos": [
+     0,
+     3.6,
+     7
+    ],
+    "delay": 3.0
+   },
+   "objects": [
+    {
+     "type": "pond",
+     "pos": [
+      0,
+      0,
+      -2
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.8,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "pos": [
+      0,
+      0,
+      7
+     ],
+     "face": "happy",
+     "face2": "scream",
+     "at": 3.1,
+     "fire": 3.1,
+     "rot": 180
+    }
+   ],
+   "counter": "STRIKE 7",
+   "sub": "1977"
+  },
+  {
+   "narration": "Seven strikes, and he survived every single one. Guinness lists it as a world record.",
+   "set": "forest",
+   "sky": "sunset",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     14,
+     8,
+     20
+    ],
+    "look": [
+     0,
+     3,
+     0
+    ]
+   },
+   "objects": [
+    {
+     "type": "tower",
+     "pos": [
+      -10,
+      0,
+      -8
+     ]
+    },
+    {
+     "type": "char",
+     "scale": 0.9,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": true,
+     "pos": [
+      0,
+      0,
+      2
+     ],
+     "face": "smug",
+     "talk": true,
+     "rot": 20
+    }
+   ],
+   "counter": "7 STRIKES",
+   "sub": "WORLD RECORD"
+  },
+  {
+   "narration": "The odds are about one in twenty two septillion. So was Roy the luckiest man alive, or the unluckiest?",
+   "set": "forest",
+   "sky": "sunset",
+   "waves": 0,
+   "cam": {
+    "pos": [
+     5,
+     4.2,
+     9
+    ],
+    "look": [
+     0,
+     3.2,
+     2
+    ]
+   },
+   "objects": [
+    {
+     "type": "char",
+     "scale": 0.9,
+     "shirt": "#c9b07a",
+     "pants": "#4a5a3a",
+     "hair": "#5a3a22",
+     "hat": true,
+     "pos": [
+      0,
+      0,
+      2
+     ],
+     "face": "smug",
+     "talk": true,
+     "wave": 1,
+     "rot": 20
+    }
+   ],
+   "counter": "LUCKY?",
+   "sub": "OR CURSED?"
+  }
+ ]
+}

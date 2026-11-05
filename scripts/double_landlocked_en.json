@@ -1,0 +1,381 @@
+{
+  "title": "Only 2 countries on Earth are doubly landlocked",
+  "lang": "en",
+  "style": "satellite",
+  "voice": {
+    "id": "pNInz6obpgDQGcFmaJgB",
+    "model": "eleven_multilingual_v2",
+    "settings": {
+      "speed": 1.1,
+      "stability": 0.4,
+      "style": 0.35
+    }
+  },
+  "music": {
+    "prompt": "Mysterious, steady documentary background music for a geography short video, desert atmosphere, soft percussion, no vocals",
+    "volume": 0.22
+  },
+  "post": {
+    "title": "Only 2 countries on Earth are DOUBLY landlocked 🌍",
+    "description": "Uzbekistan and Liechtenstein: not only do they have no coast, none of their neighbors do either.",
+    "hashtags": [
+      "#geography",
+      "#maps",
+      "#uzbekistan",
+      "#liechtenstein",
+      "#landlocked",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Does the Caspian Sea count as a sea or a lake? 👀👇"
+  },
+  "scenes": [
+    {
+      "narration": "Only two countries on Earth are doubly landlocked.",
+      "camera": {
+        "center": [
+          36,
+          44
+        ],
+        "span": 70
+      },
+      "fill": {
+        "UZB": "flag:uz",
+        "LIE": "flag:li"
+      },
+      "markers": [
+        {
+          "at": [
+            9.55,
+            47.15
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.8
+        },
+        {
+          "at": [
+            64.0,
+            41.3
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 1.1
+        }
+      ],
+      "banner": {
+        "lines": [
+          "ONLY 2",
+          "ON EARTH"
+        ],
+        "y": 0.2,
+        "delay": 0.15,
+        "size": 90
+      }
+    },
+    {
+      "narration": "Landlocked means no coastline. Doubly landlocked means even all your neighbors have no coastline.",
+      "camera": {
+        "center": [
+          64,
+          40
+        ],
+        "span": 30
+      },
+      "fill": {
+        "KAZ": "flag:kz",
+        "KGZ": "flag:kg",
+        "TJK": "flag:tj",
+        "AFG": "flag:af",
+        "TKM": "flag:tm"
+      },
+      "outline": [
+        "UZB"
+      ]
+    },
+    {
+      "narration": "Meet Uzbekistan. All five of its neighbors are landlocked too.",
+      "camera": {
+        "center": [
+          64,
+          40.5
+        ],
+        "span": 26
+      },
+      "labels": [
+        {
+          "text": "UZBEKISTAN",
+          "of": "UZB",
+          "size": 56,
+          "delay": 0.4
+        }
+      ],
+      "icons": [
+        {
+          "name": "face with monocle",
+          "at": [
+            70.5,
+            44.0
+          ],
+          "size": 160,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "To reach the ocean from here, you'd have to cross at least two borders.",
+      "camera": {
+        "center": [
+          60,
+          34
+        ],
+        "span": 30
+      },
+      "fill": {
+        "IRN": "flag:ir"
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              64.4,
+              39.8
+            ],
+            [
+              61.0,
+              37.6
+            ],
+            [
+              58.5,
+              32.0
+            ],
+            [
+              57.8,
+              26.2
+            ]
+          ],
+          "color": "#ffe14d",
+          "style": "arrow_dashed",
+          "width": 9,
+          "delay": 0.8,
+          "draw_time": 2.8
+        }
+      ],
+      "icons": [
+        {
+          "name": "no entry",
+          "at": [
+            62.2,
+            38.8
+          ],
+          "size": 100,
+          "delay": 1.6,
+          "label": "BORDER 1"
+        },
+        {
+          "name": "no entry",
+          "at": [
+            60.4,
+            36.6
+          ],
+          "size": 100,
+          "delay": 2.6,
+          "label": "BORDER 2"
+        },
+        {
+          "name": "water wave",
+          "at": [
+            58.6,
+            24.6
+          ],
+          "size": 140,
+          "delay": 3.6
+        }
+      ]
+    },
+    {
+      "narration": "And no, the Caspian Sea doesn't count. It's technically the world's biggest lake.",
+      "camera": {
+        "center": [
+          51,
+          42
+        ],
+        "span": 22
+      },
+      "markers": [
+        {
+          "at": [
+            50.5,
+            41.5
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.4
+        }
+      ],
+      "texts": [
+        {
+          "text": "SEA? LAKE!",
+          "accent": [
+            "LAKE!"
+          ],
+          "at": [
+            50.5,
+            42.5
+          ],
+          "size": 84,
+          "delay": 1.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "fish",
+          "at": [
+            51.5,
+            39.5
+          ],
+          "size": 130,
+          "delay": 2.4
+        }
+      ]
+    },
+    {
+      "narration": "Even the Aral Sea on its border has lost around 90 percent of its water.",
+      "tts": "Even the Aral Sea on its border has lost around ninety percent of its water.",
+      "camera": {
+        "center": [
+          60.0,
+          45.0
+        ],
+        "span": 9
+      },
+      "markers": [
+        {
+          "at": [
+            59.6,
+            45.2
+          ],
+          "type": "pulse",
+          "color": "#ffd54f",
+          "delay": 0.4
+        }
+      ],
+      "texts": [
+        {
+          "text": "-90% WATER",
+          "accent": [
+            "-90%"
+          ],
+          "y": 0.24,
+          "size": 96,
+          "delay": 1.6
+        }
+      ],
+      "icons": [
+        {
+          "name": "droplet",
+          "at": [
+            58.5,
+            46.4
+          ],
+          "size": 120,
+          "delay": 2.2
+        },
+        {
+          "name": "cactus",
+          "at": [
+            61.0,
+            44.0
+          ],
+          "size": 140,
+          "delay": 2.8
+        }
+      ],
+      "reset_fills": true
+    },
+    {
+      "narration": "The other one is tiny Liechtenstein, squeezed between Switzerland and Austria.",
+      "flash": true,
+      "camera": {
+        "center": [
+          9.8,
+          47.1
+        ],
+        "span": 4
+      },
+      "fill": {
+        "CHE": "flag:ch",
+        "AUT": "flag:at"
+      },
+      "outline": [
+        "LIE"
+      ],
+      "labels": [
+        {
+          "text": "LIECHTENSTEIN",
+          "at": [
+            9.55,
+            47.32
+          ],
+          "size": 50,
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "It's smaller than Washington, D.C., with only about 40,000 people.",
+      "tts": "It's smaller than Washington D C, with only about forty thousand people.",
+      "camera": {
+        "center": [
+          9.55,
+          47.15
+        ],
+        "span": 2.2
+      },
+      "texts": [
+        {
+          "text": "{n} PEOPLE",
+          "count": 40000,
+          "accent": [
+            "PEOPLE"
+          ],
+          "y": 0.24,
+          "size": 90,
+          "delay": 1.8
+        }
+      ],
+      "icons": [
+        {
+          "name": "person walking",
+          "at": [
+            9.55,
+            47.15
+          ],
+          "size": 90,
+          "count": 3,
+          "spread": 60,
+          "delay": 2.2
+        }
+      ]
+    },
+    {
+      "narration": "Did you know this one? Follow for more weird geography.",
+      "camera": {
+        "center": [
+          36,
+          44
+        ],
+        "span": 70
+      },
+      "cta": {
+        "text": "FOLLOW FOR MORE",
+        "delay": 1.0,
+        "y": 0.8
+      },
+      "fill": {
+        "UZB": "flag:uz",
+        "LIE": "flag:li"
+      }
+    }
+  ]
+}

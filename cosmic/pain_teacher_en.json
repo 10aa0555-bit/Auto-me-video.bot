@@ -1,0 +1,235 @@
+{
+ "title": "Pain Is A Teacher",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Pain is a teacher, not a punishment. 🖤",
+  "description": "Send this to someone going through a hard time.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What did your hardest moment teach you? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "street",
+   "narration": "Pain is not your enemy. Pain is a teacher with a very strict voice.",
+   "hot": [
+    "TEACHER"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Every time something breaks you, it is showing you exactly where you need to grow.",
+   "hot": [
+    "BREAKS",
+    "GROW"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 15
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "The heartbreak taught you what you deserve. The failure taught you what doesn't work.",
+   "hot": [
+    "DESERVE",
+    "FAILURE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 1
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "The people who betrayed you taught you how to read people.",
+   "hot": [
+    "BETRAYED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 0
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "You are not the same person who walked into that storm. You walked out sharper.",
+   "hot": [
+    "STORM",
+    "SHARPER"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 7
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Most people run from pain. So they never learn its lessons, and repeat them forever.",
+   "hot": [
+    "REPEAT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 25
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "Don't run. Sit with it. Ask it one question. What are you trying to show me?",
+   "hot": [
+    "QUESTION"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 12
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "Steel is made in fire. Diamonds are made under pressure.",
+   "hot": [
+    "STEEL",
+    "PRESSURE"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "And people who have survived the worst become the hardest to break.",
+   "hot": [
+    "SURVIVED",
+    "BREAK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 28
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "One day you will thank this chapter for who it made you.",
+   "hot": [
+    "THANK"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 34
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Every scar you carry is proof that something tried to stop you, and failed.",
+   "hot": [
+    "SCAR",
+    "FAILED"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 31
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So, what is your pain trying to teach you?",
+   "hot": [
+    "TEACH"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

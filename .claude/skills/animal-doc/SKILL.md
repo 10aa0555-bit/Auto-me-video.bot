@@ -1,0 +1,57 @@
+---
+name: animal-doc
+description: Turn a pasted 2D wildlife documentary script (with narration by default) (the ChatGPT format in docs/chatgpt_animal_doc_prompt.md, or a free-form brief like "FROZEN… BUT STILL ALIVE") into a finished 60–75 s vertical short with the Cosmic engine (nature theme, silent, English subtitles), render it on GitHub Actions, QA it and send it. Use whenever the user pastes an animal / nature documentary script or brief.
+---
+
+# 動物ドキュメンタリー (2D・ナレーションなし) を台本から作る
+
+ユーザーがチャット欄に台本を貼ったら、設定を聞き直さずに最後まで作って送る。返事は日本語。
+
+## 1. 台本を JSON にする (`cosmic/<slug>_en.json`)
+台本は `docs/chatgpt_animal_doc_prompt.md` の形式 (TITLE / ANIMAL / LOOK / SCENE n ...) が基本。
+自由な書き方 (タイムスタンプ + Visual + Subtitle) でも、同じ項目に読み替える。
+
+```json
+{
+ "title": "...", "lang": "en", "captions": "plain", "music": false,
+ "style": "cosmic", "theme": "nature",
+ "voice": {"engine": "auto", "kokoro_voice": "bm_george", "settings": {"speed": 0.92}},
+ "animal": {"name": "wood frog", "latin": "Lithobates sylvaticus", "look": "small brown frog with a dark mask stripe across its eyes, golden eyes"},
+ "post": {"title": "...", "description": "...", "hashtags": ["#nature", "..."], "pinned_comment": "..."},
+ "scenes": [
+  {"scene": "nature", "duration": 6.0, "habitat": "snow_forest", "pose": "sitting under frozen leaves, eyes closed",
+   "motion": "still", "frost": 0.8, "fx": ["snow", "frost"], "cam": "push",
+   "narration": "This little frog can freeze solid… and still survive.", "hook": ["THIS FROG CAN", "FREEZE SOLID…"],
+   "sfx": [[0.0, "thud"], [0.4, "riser", {"dur": 1.2}]],
+   "ax": 0.5, "ay": 0.6, "size": 0.8}
+ ]
+}
+```
+- 既定はナレーションあり (落ち着いたイギリス英語の男性 bm_george、速さ 0.92)。字幕はナレーションと同じ言葉を黄色の行で出す。全体で 140〜160 語 (61〜75 秒)。場面の長さは声の長さで決まる
+- 1 場面目の `hook` は上に大きく出る大文字の一言
+- ユーザーが「ナレーションなし」と言ったときだけ `"silent": true` にして、各シーンの `subs` (行のリスト) と `duration` で作る
+- `habitat: "inside"` は体の中の断面図 (細胞・氷・光る粒)。`pose` は付けない。
+- 指し示し: `"callouts": [{"text": "HEART", "x": 0.5, "y": 0.55, "delay": 1.0}]` (1 場面 2 個まで。台本の CALLOUTS)
+- 2 場面目の頭に、名前テロップ (`animal.name` と `animal.latin`) が自動で出る。字幕は黄色。場面転換の効果音も自動
+- 動物の絵は `animal.name` から決まる乱数 (seed) で描くので、見た目がそろいやすい。そろわないときは `animal.seed` を変えて描き直す
+- 動物の位置: `ax` `ay` (0..1、既定 0.5 / 0.5)、大きさ `size` (画面の幅に対する割合、既定 0.6、0.65 まで)。字幕 (H×0.76) と重ねない。
+- AI のポーズ画像はポーズごとに少しずつ見た目がずれる。`look` に色・模様・目の色・体形を具体的に書くとそろいやすい
+- 効果音 `sfx` は台本の SFX から選ぶ: wind は環境音に入っているので不要。使えるのは thud, riser, whoosh, pop, tick, ding, glitch, heartbeat(bpm,bpm2), lock, slide, powerdown, birds, siren。
+- `season: "spring"` を付けた場面は環境音が小川になる。
+- 合計 61〜75 秒。各シーンの `duration` の合計で決まる。
+- BGM は入れない (ユーザーが投稿時に入れる)。台本に音楽の指定があっても、返事で一言そう伝える。
+
+## 2. 事実を確認する
+数字・研究は Web 検索で確認する。言い過ぎ ("most of its body", "illegal") は正確な言い方に直し、返事で何を直したか伝える。
+
+## 3. 手元で確認 → 書き出し
+1. `cd remotion && python3 ../tools/whatif_prep.py ../cosmic/<slug>_en.json --no-tts` (手元では AI の絵は描けないので背景だけになる。字幕の位置と背景を見る)
+2. `npx remotion still src/index.ts Cosmic out/x.jpg --frame=N --props=props.json --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-1243/*/chrome-headless-shell)`
+3. コミット・push → `gh workflow run remotion.yml --ref claude/geo-short-generator -f script=cosmic/<slug>_en.json`、完了をバックグラウンドで待つ
+   (CI では Cloudflare FLUX で動物のポーズ画像を描く。無料枠は約 30 枚 / 24 時間。1 本で 5〜8 枚使う)
+
+## 4. 確認して送る
+- renders ブランチから `<slug>_en_hq.mp4 / _grid.jpg / _post.txt` を取り出し、`tools/qa.py` とグリッドで見る
+  (動物が描けているか、同じ動物に見えるか、字幕と動物が重なっていないか、1 分を超えているか)
+- 動物の絵が欠けたら、無料枠切れの可能性が高い。時間をおいて書き出し直す
+- SendUserFile で mp4 を送り、タイトル・説明・ハッシュタグ・固定コメントを日本語の一言説明つきで渡す。投稿はしない

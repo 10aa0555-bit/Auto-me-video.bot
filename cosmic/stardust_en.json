@@ -1,0 +1,228 @@
+{
+ "title": "You Are 13.8 Billion Years Old",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "am_michael",
+  "settings": {
+   "speed": 1.0
+  }
+ },
+ "post": {
+  "title": "You are 13.8 billion years old 🌌",
+  "description": "Send this to someone who feels small today 💫\n\nThe hydrogen in your body formed in the early universe. Your carbon, oxygen, iron and calcium were made inside stars.",
+  "hashtags": [
+   "#space",
+   "#universe",
+   "#science",
+   "#animation",
+   "#existential",
+   "#shorts"
+  ],
+  "pinned_comment": "Does this make you feel small… or huge? 🌌👇"
+ },
+ "scenes": [
+  {
+   "scene": "hill",
+   "narration": "You are not twenty, or thirty, or fifty years old. You are 13.8 billion years old.",
+   "hot": [
+    "13.8",
+    "BILLION"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "atoms",
+   "narration": "Look closer. Your body is made of about seven octillion atoms.",
+   "hot": [
+    "OCTILLION",
+    "ATOMS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 2
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bigbang",
+   "narration": "Most of them are hydrogen. And every hydrogen atom inside you was born in the first moments of the universe.",
+   "hot": [
+    "HYDROGEN",
+    "UNIVERSE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "nebula",
+   "narration": "The rest came later. Giant stars crushed hydrogen together in their burning hearts, and forged carbon, oxygen and nitrogen.",
+   "hot": [
+    "STARS",
+    "CARBON",
+    "OXYGEN",
+    "NITROGEN"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.8,
+      "seed": 3
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "supernova",
+   "narration": "When those stars died, they exploded, and scattered those atoms across the galaxy.",
+   "hot": [
+    "EXPLODED",
+    "GALAXY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "riser",
+     {
+      "dur": 1.6
+     }
+    ],
+    [
+     1.6,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "disk",
+   "narration": "Billions of years later, that dust gathered around a young sun, and became a planet.",
+   "hot": [
+    "PLANET"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.8,
+      "seed": 4
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "ocean",
+   "narration": "The planet made oceans. The oceans made life.",
+   "hot": [
+    "LIFE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.6,
+      "seed": 5
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "city",
+   "narration": "And life, after four billion years of trying, made you.",
+   "hot": [
+    "YOU"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.6,
+      "seed": 6
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "blood",
+   "narration": "The iron in your blood was once inside a dying star.",
+   "hot": [
+    "IRON",
+    "STAR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.6,
+      "seed": 7
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "galaxy",
+   "narration": "The calcium in your bones was cooked in stars long before the Sun was even born.",
+   "hot": [
+    "CALCIUM",
+    "SUN"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.8,
+      "seed": 8
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "end",
+   "narration": "So the next time you feel small, remember. You are not just living in the universe. You are a tiny piece of it, that woke up, and looked around.",
+   "hot": [
+    "UNIVERSE",
+    "WOKE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 1.0,
+      "seed": 9
+     }
+    ]
+   ]
+  }
+ ]
+}

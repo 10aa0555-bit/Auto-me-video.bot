@@ -1,0 +1,385 @@
+{
+  "title": "Why Do Japanese Cities Squeeze Onto the Coast?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Over a hundred and twenty million people live in Japan. Almost all of them on a few thin strips of flat land.",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      },
+      "fill": {
+        "JPN": "flag:jp"
+      },
+      "banner": {
+        "lines": [
+          "WHY IS JAPAN",
+          "SO CROWDED?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "Look at where people actually live.",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      },
+      "fill": {
+        "JPN": null
+      },
+      "swarms": [
+        {
+          "path": [
+            [
+              139.69,
+              35.69
+            ],
+            [
+              139.0,
+              35.25
+            ],
+            [
+              138.4,
+              34.98
+            ],
+            [
+              137.73,
+              34.7
+            ],
+            [
+              136.9,
+              35.18
+            ],
+            [
+              136.0,
+              35.0
+            ],
+            [
+              135.5,
+              34.69
+            ],
+            [
+              135.2,
+              34.69
+            ]
+          ],
+          "count": 560,
+          "spread_km": 18,
+          "delay": 0.4,
+          "duration": 2.0,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              130.4,
+              33.59
+            ],
+            [
+              130.9,
+              33.88
+            ]
+          ],
+          "count": 60,
+          "spread_km": 12,
+          "delay": 1.6,
+          "duration": 0.4,
+          "keep": true
+        },
+        {
+          "path": [
+            [
+              141.35,
+              43.06
+            ],
+            [
+              141.6,
+              42.8
+            ]
+          ],
+          "count": 40,
+          "spread_km": 12,
+          "delay": 1.8,
+          "duration": 0.4,
+          "keep": true
+        }
+      ]
+    },
+    {
+      "narration": "About two thirds of Japan is covered in forest, on steep mountains.",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      },
+      "texts": [
+        {
+          "text": "~{n}% FOREST",
+          "count": 67,
+          "accent": [
+            "FOREST"
+          ],
+          "y": 0.22,
+          "size": 96,
+          "delay": 1.0
+        }
+      ],
+      "photos": [
+        {
+          "q": "Japanese Alps mountains",
+          "caption": "JAPANESE ALPS",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.4,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Japan sits where tectonic plates crash together, so the land got pushed up into mountains and volcanoes.",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      },
+      "lines": [
+        {
+          "path": [
+            [
+              145,
+              44
+            ],
+            [
+              143.5,
+              39
+            ],
+            [
+              141.5,
+              34
+            ],
+            [
+              138,
+              32
+            ],
+            [
+              133,
+              31
+            ],
+            [
+              130,
+              29
+            ]
+          ],
+          "style": "dashed",
+          "color": "#ff5a4f",
+          "width": 6,
+          "delay": 1.0,
+          "draw_time": 2.0,
+          "label": "PLATES"
+        }
+      ]
+    },
+    {
+      "narration": "The flat land is mostly small plains along the coast, built up over thousands of years by rivers carrying mud down from the mountains.",
+      "camera": {
+        "center": [
+          139.6,
+          35.7
+        ],
+        "span": 3
+      }
+    },
+    {
+      "narration": "The biggest one is the Kanto Plain. And on it sits greater Tokyo, the largest city area in the world.",
+      "camera": {
+        "center": [
+          139.6,
+          35.7
+        ],
+        "span": 3
+      },
+      "markers": [
+        {
+          "at": [
+            139.69,
+            35.69
+          ],
+          "type": "pin",
+          "label": "Tokyo",
+          "delay": 2.4
+        }
+      ],
+      "photos": [
+        {
+          "q": "Tokyo skyline Mount Fuji",
+          "caption": "TOKYO",
+          "pos": [
+            0.5,
+            0.36
+          ],
+          "delay": 3.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Around thirty-seven million people, in one metro area.",
+      "camera": {
+        "center": [
+          139.6,
+          35.7
+        ],
+        "span": 3
+      },
+      "texts": [
+        {
+          "text": "{n} PEOPLE",
+          "count": 37000000,
+          "accent": [
+            "PEOPLE"
+          ],
+          "y": 0.22,
+          "size": 84,
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "Running out of flat land, Japan started making more. Out of the sea.",
+      "camera": {
+        "center": [
+          135.24,
+          34.43
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "This airport near Osaka sits on an island that was built from scratch.",
+      "camera": {
+        "center": [
+          135.24,
+          34.43
+        ],
+        "span": 1.0
+      },
+      "markers": [
+        {
+          "at": [
+            135.24,
+            34.43
+          ],
+          "type": "pin",
+          "label": "Kansai Airport",
+          "delay": 0.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Kansai International Airport aerial",
+          "caption": "KANSAI AIRPORT",
+          "pos": [
+            0.5,
+            0.34
+          ],
+          "delay": 1.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Meanwhile, the mountain villages are emptying out, as young people move to the cities.",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon old wooden japanese farmhouse with a thatched roof in the mountains",
+          "name": "house",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 240,
+          "delay": 1.0
+        }
+      ]
+    },
+    {
+      "narration": "So Japan isn't a small country at all. It's just that most of it is far too steep to build a city on.",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      }
+    },
+    {
+      "narration": "Would you live in Tokyo or in a quiet mountain village?",
+      "camera": {
+        "center": [
+          137,
+          37
+        ],
+        "span": 22
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "CITY OR MOUNTAINS?",
+          "accent": [
+            "MOUNTAINS?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why is Japan so crowded? 🇯🇵 #geography #japan",
+    "description": "About two thirds of Japan is forested mountains, so 120+ million people squeeze onto small coastal plains. Greater Tokyo is the biggest metro area on Earth.",
+    "hashtags": [
+      "#geography",
+      "#japan",
+      "#tokyo",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Tokyo or a mountain village? 👇"
+  }
+}

@@ -1,0 +1,217 @@
+{
+ "title": "Nobody Is Coming To Save You",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Nobody is coming to save you. 🌧️",
+  "description": "Send this to someone who is still waiting for the right moment.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What are you still waiting for? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "street",
+   "narration": "Nobody is coming to save you. Not tomorrow. Not next year. Not ever.",
+   "hot": [
+    "NOBODY",
+    "EVER"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "You keep waiting for the right moment, the right person, the right sign.",
+   "hot": [
+    "WAITING",
+    "SIGN"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 37
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "But the world is not cruel. It is simply busy. Everyone is fighting their own war.",
+   "hot": [
+    "BUSY",
+    "WAR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 15
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Thousands of people walk past you every day, and not one of them is thinking about your dreams.",
+   "hot": [
+    "DREAMS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 42
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "That sounds cold. It is actually the most freeing thing you will ever hear.",
+   "hot": [
+    "FREEING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 22
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "Because if nobody is coming, then nobody is stopping you either.",
+   "hot": [
+    "STOPPING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 8
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "No permission. No rescue. No one to blame. Just you, and the next step.",
+   "hot": [
+    "PERMISSION",
+    "STEP"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 12
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "The people you admire were never saved. They simply got tired of waiting, and started climbing.",
+   "hot": [
+    "CLIMBING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 28
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "So burn the excuse that someone else will fix your life.",
+   "hot": [
+    "BURN",
+    "EXCUSE"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "You are the hero you have been waiting for. You always were.",
+   "hot": [
+    "HERO"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 20
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So tell me. How much longer are you going to wait?",
+   "hot": [
+    "WAIT"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,297 @@
+{
+  "title": "Why Does Alaska Belong to the US?",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "Alaska is part of the United States. But it used to belong to Russia.",
+      "camera": {
+        "center": [
+          -165,
+          62
+        ],
+        "span": 60
+      },
+      "fill": {
+        "USA@-150,64": "flag:us",
+        "RUS@-175,66": "flag:ru"
+      },
+      "banner": {
+        "lines": [
+          "WHY IS ALASKA",
+          "AMERICAN?"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "In 1867, the US bought it from Russia for seven point two million dollars.",
+      "tts": "In eighteen sixty-seven, the US bought it from Russia for seven point two million dollars.",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      },
+      "fill": {
+        "USA@-150,64": null,
+        "RUS@-175,66": null
+      },
+      "year": "1867",
+      "photos": [
+        {
+          "q": "Alaska Purchase check 7.2 million",
+          "caption": "THE $7.2M CHECK",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "That works out to about two cents an acre, for a piece of land the size of a small continent.",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      },
+      "texts": [
+        {
+          "text": "2¢ PER ACRE",
+          "accent": [
+            "2¢"
+          ],
+          "y": 0.22,
+          "size": 110,
+          "delay": 0.4
+        }
+      ]
+    },
+    {
+      "narration": "Why would Russia sell? It was far away, hard to defend, and Russia needed money after losing the Crimean War.",
+      "camera": {
+        "center": [
+          -165,
+          62
+        ],
+        "span": 60
+      },
+      "photos": [
+        {
+          "q": "Tsar Alexander II portrait",
+          "caption": "TSAR ALEXANDER II",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.2,
+          "size": 560
+        }
+      ]
+    },
+    {
+      "narration": "Russia also feared that Britain, right next door in Canada, would simply take it in the next war.",
+      "camera": {
+        "center": [
+          -140,
+          60
+        ],
+        "span": 50
+      }
+    },
+    {
+      "narration": "In America, people laughed. They called it Seward's Folly, after the man who made the deal.",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      },
+      "photos": [
+        {
+          "q": "William H. Seward portrait",
+          "caption": "WILLIAM SEWARD",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 0.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "But look how big it really is.",
+      "camera": {
+        "center": [
+          -115,
+          48
+        ],
+        "span": 75
+      },
+      "ghosts": [
+        {
+          "of": "USA@-150,64",
+          "to": [
+            -98,
+            38
+          ],
+          "delay": 0.4,
+          "move_time": 2.2,
+          "fill": "#ff5a4f",
+          "label": "ALASKA"
+        }
+      ]
+    },
+    {
+      "narration": "Alaska is more than twice the size of Texas, and bigger than California, Texas and Montana combined.",
+      "camera": {
+        "center": [
+          -115,
+          48
+        ],
+        "span": 75
+      },
+      "ghosts": [
+        {
+          "of": "USA@-150,64",
+          "from": [
+            -98,
+            38
+          ],
+          "to": [
+            -98,
+            38
+          ],
+          "delay": 0,
+          "move_time": 0.01,
+          "fill": "#ff5a4f"
+        }
+      ]
+    },
+    {
+      "narration": "Then the joke turned around. Gold was found in the 1890s, and people rushed north.",
+      "tts": "Then the joke turned around. Gold was found in the eighteen-nineties, and people rushed north.",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      },
+      "year": "1896",
+      "icons": [
+        {
+          "ai": "a cute cartoon gold miner with a pickaxe and a sack of gold nuggets",
+          "name": "money bag",
+          "pos": [
+            0.5,
+            0.44
+          ],
+          "size": 230,
+          "delay": 1.2
+        }
+      ]
+    },
+    {
+      "narration": "And in 1968, they found the biggest oil field in North America, at Prudhoe Bay.",
+      "tts": "And in nineteen sixty-eight, they found the biggest oil field in North America, at Prudhoe Bay.",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      },
+      "year": "1968",
+      "markers": [
+        {
+          "at": [
+            -148.4,
+            70.25
+          ],
+          "type": "pin",
+          "label": "Prudhoe Bay",
+          "delay": 1.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Trans-Alaska Pipeline",
+          "caption": "THE PIPELINE",
+          "pos": [
+            0.5,
+            0.36
+          ],
+          "delay": 2.8,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Seven million dollars turned out to be one of the best real estate deals in history, and Russia never got it back.",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      }
+    },
+    {
+      "narration": "Should Russia have sold Alaska? Yes or no?",
+      "camera": {
+        "center": [
+          -152,
+          63
+        ],
+        "span": 40
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "Why does Alaska belong to the US? 🇺🇸 #history #geography",
+    "description": "In 1867 the US bought Alaska from Russia for $7.2 million, about 2 cents an acre. People called it Seward's Folly, until gold and oil were found.",
+    "hashtags": [
+      "#history",
+      "#geography",
+      "#alaska",
+      "#maps",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Good deal for the US, or a mistake for Russia? 👇"
+  }
+}

@@ -1,0 +1,217 @@
+{
+ "title": "Control Your Emotions",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Whoever angers you, controls you. ♟️",
+  "description": "Send this to someone who reacts too fast.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "What is the hardest emotion for you to control? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "chess",
+   "narration": "Whoever can make you angry, can control you.",
+   "hot": [
+    "ANGRY",
+    "CONTROL"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Think about that. One comment, one look, and suddenly someone else is moving your pieces.",
+   "hot": [
+    "PIECES"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 1
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "Most people live like this. Every reaction decided by someone else.",
+   "hot": [
+    "REACTION"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 20
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "But a calm mind is a dangerous thing. It sees clearly while everyone else panics.",
+   "hot": [
+    "CALM",
+    "CLEARLY"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 33
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "street",
+   "narration": "Calm is not weakness. Calm is power that does not need to prove itself.",
+   "hot": [
+    "POWER"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 34
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "Before you react, pause. Breathe. Ask, will this matter in one year?",
+   "hot": [
+    "PAUSE",
+    "YEAR"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 2
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "If the answer is no, let it go. Don't waste your energy on small games.",
+   "hot": [
+    "ENERGY",
+    "GAMES"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 11
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "The strongest people are not the loudest ones. They are the hardest to provoke.",
+   "hot": [
+    "STRONGEST",
+    "PROVOKE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 20
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "fire",
+   "narration": "Feel your emotions. Just never let them hold the wheel.",
+   "hot": [
+    "WHEEL"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "Master yourself, and nobody can master you.",
+   "hot": [
+    "MASTER"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 46
+     }
+    ]
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "So, who has been controlling your emotions lately?",
+   "hot": [
+    "LATELY"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ]
+  }
+ ]
+}

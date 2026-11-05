@@ -1,0 +1,124 @@
+{
+  "title": "Why You Forget Why You Walked In",
+  "lang": "en",
+  "palette": "ocean",
+  "pill": [
+    "WHY DID I",
+    "COME IN HERE?"
+  ],
+  "voice": {
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.0
+    }
+  },
+  "music": false,
+  "scenes": [
+    {
+      "narration": "You walk into a room, and instantly forget why you came in.",
+      "art": "a confused young adult frozen in a kitchen doorway with a big question mark above their head, comedic"
+    },
+    {
+      "narration": "You stand there. You look around. You open the fridge for no reason.",
+      "art": "a young adult standing in front of an open glowing fridge at night staring blankly, comedic"
+    },
+    {
+      "narration": "It's not just you. And it might actually be the door's fault.",
+      "art": "a cartoon door with a sneaky mischievous face grinning, glowing purple doorway",
+      "stat": {
+        "text": "BLAME THE DOOR",
+        "delay": 1.6
+      }
+    },
+    {
+      "narration": "In one experiment, people carried objects through a virtual building. Sometimes across a big room, sometimes through a doorway.",
+      "art": "a simple video game style virtual building with rooms and doors, a small character carrying a box through a doorway",
+      "cite": "Radvansky, Krawietz & Tamplin, 2011"
+    },
+    {
+      "narration": "After walking through a door, they forgot more than after walking the same distance inside one room.",
+      "art": "a split scene: on the left a person walking across one room remembering a box, on the right a person walking through a door with the memory floating away like a balloon",
+      "points": [
+        {
+          "text": "SAME ROOM",
+          "at": [
+            0.25,
+            0.12
+          ],
+          "delay": 1.6,
+          "color": "#7cf29c"
+        },
+        {
+          "text": "THROUGH A DOOR",
+          "at": [
+            0.72,
+            0.12
+          ],
+          "delay": 2.4,
+          "color": "#ff6b6b"
+        }
+      ]
+    },
+    {
+      "narration": "So they tried it with real rooms too. Same result.",
+      "art": "a real looking cozy apartment hallway with several doors, a student holding a box looking puzzled"
+    },
+    {
+      "narration": "The theory: your brain chops life into scenes, like a movie. A doorway is a scene cut.",
+      "art": "a long film strip where each frame is a different room connected by doorways, a cartoon brain holding scissors",
+      "points": [
+        {
+          "text": "SCENE CUT",
+          "at": [
+            0.5,
+            0.12
+          ],
+          "delay": 2.6
+        }
+      ]
+    },
+    {
+      "narration": "When the scene changes, details from the last scene get filed away. Including why you walked in.",
+      "art": "a cartoon brain filing a sticky note labeled with a scissors icon into a tall cabinet drawer and closing it"
+    },
+    {
+      "narration": "Your brain isn't broken. Clearing out the old scene probably helps you focus on the new one. Mostly.",
+      "art": "a cartoon brain sweeping old memory clouds out of a room with a broom, smiling, slightly sweaty"
+    },
+    {
+      "narration": "And in the study, going back to the first room didn't really help. Which is awkward, because that's exactly what we all do.",
+      "art": "a young adult walking backwards through a doorway into the living room looking around hopefully, comedic"
+    },
+    {
+      "narration": "So next time, try saying it out loud before you go. I'm getting the scissors.",
+      "art": "a young adult pointing forward confidently while walking through a door, a speech bubble with a scissors icon",
+      "stat": {
+        "text": "SAY IT OUT LOUD",
+        "delay": 2.2
+      }
+    },
+    {
+      "narration": "Now, what were we talking about?",
+      "min_duration": 3.0,
+      "stat": {
+        "text": "WAIT, WHAT?",
+        "delay": 0.6
+      }
+    }
+  ],
+  "post": {
+    "title": "Why you forget why you walked into a room 🚪🤔",
+    "description": "It might be the door's fault. Scientists found that walking through a doorway makes you forget more than walking the same distance in one room.\n\nSource: Radvansky, Krawietz & Tamplin (2011) Quarterly Journal of Experimental Psychology",
+    "hashtags": [
+      "#psychology",
+      "#memory",
+      "#relatable",
+      "#brain",
+      "#science",
+      "#funny",
+      "#shorts"
+    ],
+    "pinned_comment": "What did you forget the last time you walked into a room? 😂👇"
+  },
+  "art_style": "v1"
+}

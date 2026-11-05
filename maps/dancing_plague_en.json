@@ -1,0 +1,275 @@
+{
+  "title": "The Town That Couldn't Stop Dancing",
+  "lang": "en",
+  "style": "satellite",
+  "captions": "plain",
+  "music": false,
+  "voice": {
+    "engine": "auto",
+    "kokoro_voice": "af_heart",
+    "settings": {
+      "speed": 1.08
+    }
+  },
+  "art_style": "cute 2D vector sticker illustration, minimalist flat design, chibi proportions, flat colors with no gradients, muted earthy palette, clean dark outline, full body, centered, isolated on a solid plain white background, no text",
+  "scenes": [
+    {
+      "narration": "In 1518, people in one city started dancing, and couldn't stop.",
+      "tts": "In fifteen eighteen, people in one city started dancing, and couldn't stop.",
+      "camera": {
+        "center": [
+          8,
+          48
+        ],
+        "span": 18
+      },
+      "fill": {
+        "FRA@2,47": "flag:fr"
+      },
+      "banner": {
+        "lines": [
+          "THE TOWN THAT",
+          "COULDN'T STOP DANCING"
+        ],
+        "badge": false,
+        "y": 0.12,
+        "delay": 0.1,
+        "size": 86
+      }
+    },
+    {
+      "narration": "This is Strasbourg, today in France. In July, a woman named Frau Troffea stepped into the street and began to dance.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      },
+      "fill": {
+        "FRA@2,47": null
+      },
+      "year": "1518",
+      "markers": [
+        {
+          "at": [
+            7.75,
+            48.58
+          ],
+          "type": "pin",
+          "label": "Strasbourg",
+          "delay": 0.6
+        }
+      ],
+      "icons": [
+        {
+          "ai": "a cute cartoon medieval woman in a long dress dancing wildly with arms in the air",
+          "name": "woman dancing",
+          "pos": [
+            0.5,
+            0.45
+          ],
+          "size": 240,
+          "delay": 3.0
+        }
+      ]
+    },
+    {
+      "narration": "She danced for days. No music, no reason, and she couldn't stop.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "Within weeks, dozens of people had joined her. Some accounts say it grew to hundreds.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon medieval woman in a long dress dancing wildly with arms in the air",
+          "name": "woman dancing",
+          "pos": [
+            0.5,
+            0.45
+          ],
+          "count": 7,
+          "spread": 120,
+          "size": 140,
+          "delay": 0.8
+        }
+      ]
+    },
+    {
+      "narration": "Here's the strange part. The city's doctors said the cure was to dance it out.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      },
+      "photos": [
+        {
+          "q": "Dancing pilgrims at Molenbeek Hondius Brueghel",
+          "caption": "DANCING MANIA",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.6,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "So, according to the old chronicles, the council hired musicians, and even set up a stage.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      },
+      "icons": [
+        {
+          "ai": "a cute cartoon medieval musician playing a drum and a flute",
+          "name": "drum",
+          "pos": [
+            0.5,
+            0.45
+          ],
+          "size": 230,
+          "delay": 1.4
+        }
+      ]
+    },
+    {
+      "narration": "It only made things worse. Some say dancers collapsed from exhaustion, but historians still argue about deaths.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "So what was going on? Strasbourg had just been hit by famine, disease and freezing winters.",
+      "camera": {
+        "center": [
+          8,
+          48
+        ],
+        "span": 18
+      },
+      "photos": [
+        {
+          "q": "Strasbourg 1572 Braun Hogenberg",
+          "caption": "OLD STRASBOURG",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 1.4,
+          "size": 620
+        }
+      ]
+    },
+    {
+      "narration": "Many historians think it was mass psychogenic illness: fear and stress spreading through a crowd, almost like a virus.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "Others blamed ergot, a mold on rye bread that can cause spasms and hallucinations.",
+      "camera": {
+        "center": [
+          7.75,
+          48.58
+        ],
+        "span": 1.0
+      }
+    },
+    {
+      "narration": "In the end, the dancers were taken to a shrine of Saint Vitus in the hills. And slowly, the dancing stopped.",
+      "camera": {
+        "center": [
+          7.55,
+          48.65
+        ],
+        "span": 1.0
+      },
+      "markers": [
+        {
+          "at": [
+            7.36,
+            48.74
+          ],
+          "type": "pin",
+          "label": "Saverne",
+          "delay": 1.6
+        }
+      ],
+      "photos": [
+        {
+          "q": "Saint Vitus medieval painting",
+          "caption": "SAINT VITUS",
+          "pos": [
+            0.5,
+            0.3
+          ],
+          "delay": 2.4,
+          "size": 540
+        }
+      ]
+    },
+    {
+      "narration": "If the whole town started dancing, would you join in? Yes or no?",
+      "camera": {
+        "center": [
+          8,
+          48
+        ],
+        "span": 18
+      },
+      "min_duration": 3.4,
+      "texts": [
+        {
+          "text": "YES OR NO?",
+          "accent": [
+            "NO?"
+          ],
+          "y": 0.22,
+          "size": 92,
+          "delay": 0.5
+        }
+      ]
+    }
+  ],
+  "post": {
+    "title": "The town that couldn't stop dancing 💃 #history #weirdhistory",
+    "description": "In 1518, a dancing plague hit Strasbourg. The city's answer was more music. Historians still debate what really happened.",
+    "hashtags": [
+      "#history",
+      "#weirdhistory",
+      "#dancingplague",
+      "#didyouknow",
+      "#shorts"
+    ],
+    "pinned_comment": "Would you have joined the dance? 👇"
+  }
+}

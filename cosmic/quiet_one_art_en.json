@@ -1,0 +1,278 @@
+{
+ "title": "The Quiet One (illustrated)",
+ "lang": "en",
+ "captions": "plain",
+ "music": false,
+ "style": "cosmic",
+ "theme": "noir",
+ "voice": {
+  "engine": "auto",
+  "kokoro_voice": "bm_george",
+  "settings": {
+   "speed": 0.9
+  }
+ },
+ "post": {
+  "title": "Be afraid of the quiet one. 🖤",
+  "description": "Send this to the quietest person you know.",
+  "hashtags": [
+   "#motivation",
+   "#mindset",
+   "#selfimprovement",
+   "#darkmotivation",
+   "#animation",
+   "#shorts"
+  ],
+  "pinned_comment": "Are you the loud one or the quiet one? 👇"
+ },
+ "scenes": [
+  {
+   "scene": "face",
+   "narration": "Be careful with the quiet ones. They are not weak. They are watching.",
+   "hot": [
+    "QUIET",
+    "WATCHING"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ],
+   "art": "close-up portrait of a man looking calmly at the viewer under a warm street lamp on a rainy night",
+   "cam": "in",
+   "fx": [
+    "rain"
+   ]
+  },
+  {
+   "scene": "crowd",
+   "narration": "While everyone else is talking, they are listening, learning, and remembering everything.",
+   "hot": [
+    "LISTENING",
+    "REMEMBERING"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 7
+     }
+    ]
+   ],
+   "art": "a man standing still in a busy crowded city street at night, the people around him blurred in motion, he is calm and focused",
+   "cam": "out",
+   "fx": [
+    "rain"
+   ]
+  },
+  {
+   "scene": "chess",
+   "narration": "Loud people show their cards. Quiet people plan their next three moves.",
+   "hot": [
+    "CARDS",
+    "MOVES"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 48
+     }
+    ]
+   ],
+   "art": "a man sitting at a wooden table in a dim room, thoughtfully moving a chess piece, warm lamp light",
+   "cam": "in",
+   "fx": [
+    "dust"
+   ]
+  },
+  {
+   "scene": "window",
+   "narration": "They don't announce their goals. They let the results arrive without a sound.",
+   "hot": [
+    "RESULTS"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 37
+     }
+    ]
+   ],
+   "art": "a quiet wooden desk at night with an open notebook full of handwritten plans, a warm desk lamp, a cup of coffee, rain on the glass and blurry city lights outside",
+   "cam": "in",
+   "fx": [
+    "dust"
+   ],
+   "man": false
+  },
+  {
+   "scene": "street",
+   "narration": "Silence is not empty. Silence is where real strength grows, far away from applause.",
+   "hot": [
+    "SILENCE",
+    "STRENGTH"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 22
+     }
+    ]
+   ],
+   "art": "a man walking alone down an empty cobblestone street at night, puddles reflecting golden street lamps",
+   "cam": "in",
+   "fx": [
+    "rain"
+   ]
+  },
+  {
+   "scene": "mirror",
+   "narration": "The quiet one does not need you to believe in them. They already believe in themselves.",
+   "hot": [
+    "BELIEVE"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 16
+     }
+    ]
+   ],
+   "art": "a man looking at his own reflection in a mirror with a slight confident smile, dim warm room",
+   "cam": "in",
+   "fx": [
+    "dust"
+   ]
+  },
+  {
+   "scene": "stairs",
+   "narration": "And one day, everyone who laughed at them will ask, how did that happen so fast?",
+   "hot": [
+    "FAST"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 36
+     }
+    ]
+   ],
+   "art": "a man seen from behind climbing a long stone staircase toward a bright light at the top, night",
+   "cam": "up",
+   "fx": [
+    "dust",
+    "glow"
+   ]
+  },
+  {
+   "scene": "smile",
+   "narration": "It didn't happen fast. It happened quietly, every single night, while nobody was looking.",
+   "hot": [
+    "QUIETLY",
+    "NIGHT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 38
+     }
+    ]
+   ],
+   "art": "a man working late at night at a desk with an open notebook, warm lamp light, quiet determined face, city lights through the window",
+   "cam": "right",
+   "fx": [
+    "dust"
+   ]
+  },
+  {
+   "scene": "bridge",
+   "narration": "So talk less. Work more. Let your progress make the noise.",
+   "hot": [
+    "NOISE"
+   ],
+   "sfx": [
+    [
+     0,
+     "riser",
+     {
+      "dur": 1.0
+     }
+    ],
+    [
+     1.0,
+     "thud"
+    ]
+   ],
+   "art": "a man seen from behind standing on an old stone bridge over a river at night, city skyline and a full moon",
+   "cam": "left",
+   "fx": [
+    "rain"
+   ]
+  },
+  {
+   "scene": "moon",
+   "narration": "The quiet one is not waiting for attention. They are waiting for the right moment.",
+   "hot": [
+    "MOMENT"
+   ],
+   "sfx": [
+    [
+     0.0,
+     "whoosh",
+     {
+      "dur": 0.7,
+      "seed": 5
+     }
+    ]
+   ],
+   "art": "a man standing on a rooftop at night in front of a huge full moon, calm and confident, his coat moving in the wind",
+   "cam": "out",
+   "fx": [
+    "glow"
+   ]
+  },
+  {
+   "scene": "face",
+   "narration": "Which one are you?",
+   "hot": [
+    "YOU"
+   ],
+   "sfx": [
+    [
+     0,
+     "thud"
+    ]
+   ],
+   "art": "portrait of a man turning to look at the viewer with a calm confident smile, warm light, rainy night",
+   "cam": "in",
+   "fx": [
+    "rain"
+   ]
+  }
+ ],
+ "character": {
+  "look": "a handsome man in his late twenties with short neat dark brown hair, calm kind eyes, a gentle confident expression, wearing a long black wool coat over a white shirt",
+  "seed": 4242
+ }
+}
