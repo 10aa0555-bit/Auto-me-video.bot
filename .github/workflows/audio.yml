@@ -19,14 +19,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests "moviepy<2.0" ffmpeg-python
+          pip install "moviepy<2.0" pillow
 
-      - name: Run Audio Script and Make Video
-        env:
-          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-        run: |
-          python generate_audio.py
-          python make_video.py
+      # storyboard.json から無音の mp4 を組み立てる(音声生成・API キーは不要)
+      - name: Make video from storyboard.json
+        run: python make_video.py
 
       - name: Upload Final Video
         uses: actions/upload-artifact@v4
